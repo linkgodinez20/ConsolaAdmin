@@ -1,0 +1,1891 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Actividades">
+    <Key>
+      <PropertyRef Name="Id_Actividad" />
+    </Key>
+    <Property Name="Id_Actividad" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Estatus" Type="bit" Nullable="false" />
+    <Property Name="Id_Directorio" Type="tinyint" Nullable="false" />
+    <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Actividades_x_AreasDeTrabajo">
+    <Key>
+      <PropertyRef Name="Id_Actividad" />
+      <PropertyRef Name="Id_AreaDeTrabajo" />
+    </Key>
+    <Property Name="Id_Actividad" Type="smallint" Nullable="false" />
+    <Property Name="Id_AreaDeTrabajo" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AreasDeTrabajo">
+    <Key>
+      <PropertyRef Name="Id_AreaDeTrabajo" />
+    </Key>
+    <Property Name="Id_AreaDeTrabajo" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AreasDeTrabajo_x_Perfiles">
+    <Key>
+      <PropertyRef Name="Id_AreaDeTrabajo" />
+      <PropertyRef Name="Id_Perfil" />
+    </Key>
+    <Property Name="Id_AreaDeTrabajo" Type="smallint" Nullable="false" />
+    <Property Name="Id_Perfil" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Baja">
+    <Key>
+      <PropertyRef Name="Id_Baja" />
+    </Key>
+    <Property Name="Id_Baja" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Baja_motivos">
+    <Key>
+      <PropertyRef Name="Id_MotivoBaja" />
+    </Key>
+    <Property Name="Id_MotivoBaja" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Id_Baja" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Beneficio">
+    <Key>
+      <PropertyRef Name="Id_Beneficio" />
+    </Key>
+    <Property Name="Id_Beneficio" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Id_BeneficioTipo" Type="tinyint" Nullable="false" />
+    <Property Name="Estatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Beneficio_tipo">
+    <Key>
+      <PropertyRef Name="Id_BeneficioTipo" />
+    </Key>
+    <Property Name="Id_BeneficioTipo" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Beneficio_x_AreaDeTrabajo">
+    <Key>
+      <PropertyRef Name="Id_Beneficio" />
+      <PropertyRef Name="Id_AreaDeTrabajo" />
+    </Key>
+    <Property Name="Id_Beneficio" Type="tinyint" Nullable="false" />
+    <Property Name="Id_AreaDeTrabajo" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Beneficio_x_Perfiles">
+    <Key>
+      <PropertyRef Name="Id_PerfilBeneficio" />
+    </Key>
+    <Property Name="Id_PerfilBeneficio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Perfil" Type="smallint" Nullable="false" />
+    <Property Name="Id_Beneficio" Type="tinyint" Nullable="false" />
+    <Property Name="Estatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Benficio_x_Cuenta">
+    <Key>
+      <PropertyRef Name="Id_BeneficioCuenta" />
+    </Key>
+    <Property Name="Id_BeneficioCuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Cuenta" Type="int" Nullable="false" />
+    <Property Name="Id_Beneficio" Type="tinyint" Nullable="false" />
+    <Property Name="Estatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contacto">
+    <Key>
+      <PropertyRef Name="Id_Contacto" />
+    </Key>
+    <Property Name="Id_Contacto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_ContactoTipo" Type="tinyint" Nullable="false" />
+    <Property Name="Contacto" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Id_ContactoMedio" Type="tinyint" Nullable="false" />
+    <Property Name="Notas" Type="varchar" MaxLength="128" />
+    <Property Name="Estatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contacto_medio">
+    <Key>
+      <PropertyRef Name="Id_ContactoMedio" />
+    </Key>
+    <Property Name="Id_ContactoMedio" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contacto_tipo">
+    <Key>
+      <PropertyRef Name="Id_ContactoTipo" />
+    </Key>
+    <Property Name="Id_ContactoTipo" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contacto_x_Domicilio">
+    <Key>
+      <PropertyRef Name="Id_Contacto" />
+      <PropertyRef Name="Id_Domicilio" />
+    </Key>
+    <Property Name="Id_Contacto" Type="int" Nullable="false" />
+    <Property Name="Id_Domicilio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contacto_x_Persona">
+    <Key>
+      <PropertyRef Name="Id_Persona" />
+      <PropertyRef Name="Id_Contacto" />
+    </Key>
+    <Property Name="Id_Persona" Type="int" Nullable="false" />
+    <Property Name="Id_Contacto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cuentas">
+    <Key>
+      <PropertyRef Name="Id_Cuenta" />
+    </Key>
+    <Property Name="Id_Cuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Login" Type="int" Nullable="false" />
+    <Property Name="Id_Perfil" Type="smallint" Nullable="false" />
+    <Property Name="FechaCreacion" Type="smalldatetime" Nullable="false" />
+    <Property Name="FechaModificacion" Type="smalldatetime" />
+    <Property Name="IntentosCnn" Type="tinyint" Nullable="false" />
+    <Property Name="InicioBloqueo" Type="smalldatetime" />
+    <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
+    <Property Name="Estatus" Type="bit" Nullable="false" />
+    <Property Name="Id_Baja" Type="tinyint" Nullable="false" />
+    <Property Name="RegistroCompleto" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cuentas_x_Personas">
+    <Key>
+      <PropertyRef Name="Id_Persona" />
+      <PropertyRef Name="Id_Cuenta" />
+    </Key>
+    <Property Name="Id_Persona" Type="int" Nullable="false" />
+    <Property Name="Id_Cuenta" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Directorio_tipo">
+    <Key>
+      <PropertyRef Name="Id_DirectorioTipo" />
+    </Key>
+    <Property Name="Id_DirectorioTipo" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Directorios">
+    <Key>
+      <PropertyRef Name="Id_Directorio" />
+    </Key>
+    <Property Name="Id_Directorio" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Id_DirectorioTipo" Type="tinyint" Nullable="false" />
+    <Property Name="Estatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Directorios_x_Perfiles">
+    <Key>
+      <PropertyRef Name="Id_Directorio" />
+      <PropertyRef Name="Id_Perfil" />
+    </Key>
+    <Property Name="Id_Directorio" Type="tinyint" Nullable="false" />
+    <Property Name="Id_Perfil" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Directorios_x_Sistemas">
+    <Key>
+      <PropertyRef Name="Id_Directorio" />
+      <PropertyRef Name="Id_Sistema" />
+    </Key>
+    <Property Name="Id_Directorio" Type="tinyint" Nullable="false" />
+    <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Domicilio_x_Personas">
+    <Key>
+      <PropertyRef Name="Id_Persona" />
+      <PropertyRef Name="Id_Domicilio" />
+    </Key>
+    <Property Name="Id_Persona" Type="int" Nullable="false" />
+    <Property Name="Id_Domicilio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Domicilios">
+    <Key>
+      <PropertyRef Name="Id_Domicilio" />
+    </Key>
+    <Property Name="Id_Domicilio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_ContactoTipo" Type="tinyint" Nullable="false" />
+    <Property Name="Domicilio" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="NumeroExterior" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="NumeroInterior" Type="varchar" MaxLength="10" />
+    <Property Name="Id_Pais" Type="smallint" Nullable="false" />
+    <Property Name="Id_Entidad" Type="smallint" Nullable="false" />
+    <Property Name="Id_Municipio" Type="smallint" />
+    <Property Name="Colonia" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="EntreCalle" Type="varchar" MaxLength="64" />
+    <Property Name="YCalle" Type="varchar" MaxLength="64" />
+    <Property Name="Notas" Type="varchar" MaxLength="128" />
+    <Property Name="FechaModificacion" Type="smalldatetime" />
+    <Property Name="Estatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Entidades">
+    <Key>
+      <PropertyRef Name="Id_Pais" />
+      <PropertyRef Name="Id_Entidad" />
+    </Key>
+    <Property Name="Id_Pais" Type="smallint" Nullable="false" />
+    <Property Name="Id_Entidad" Type="smallint" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="Abreviatura" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Equipos">
+    <Key>
+      <PropertyRef Name="Id_Equipo" />
+    </Key>
+    <Property Name="Id_Equipo" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Hostname" Type="nvarchar" MaxLength="50" />
+    <Property Name="IP" Type="nvarchar" MaxLength="50" />
+    <Property Name="MacAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="Id_EquipoTipo" Type="tinyint" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="128" />
+    <Property Name="Ubiacion" Type="geography" />
+    <Property Name="FechaAlta" Type="smalldatetime" Nullable="false" />
+    <Property Name="FechaCaducidad" Type="smalldatetime" />
+    <Property Name="Id_Cuenta" Type="int" Nullable="false" />
+    <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
+    <Property Name="Estatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Equipos_tipo">
+    <Key>
+      <PropertyRef Name="Id_EquipoTipo" />
+    </Key>
+    <Property Name="Id_EquipoTipo" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Events">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="text" Type="nvarchar" MaxLength="250" />
+    <Property Name="start_date" Type="datetime" />
+    <Property Name="end_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Genero">
+    <Key>
+      <PropertyRef Name="Id_Genero" />
+    </Key>
+    <Property Name="Id_Genero" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Locations">
+    <Key>
+      <PropertyRef Name="LocationId" />
+    </Key>
+    <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocationName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Latitude" Type="float" Nullable="false" />
+    <Property Name="Longitude" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LogIn">
+    <Key>
+      <PropertyRef Name="Id_Login" />
+    </Key>
+    <Property Name="Id_Login" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Senha" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Salt" Type="nvarchar" MaxLength="128" />
+    <Property Name="UsoSalt" Type="bit" Nullable="false" />
+    <Property Name="Id_Persona" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="Id_Menu" />
+    </Key>
+    <Property Name="Id_Menu" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Parent" Type="smallint" Nullable="false" />
+    <Property Name="Tooltip" Type="varchar" MaxLength="64" />
+    <Property Name="Id_Pagina" Type="smallint" Nullable="false" />
+    <Property Name="Orden" Type="tinyint" Nullable="false" />
+    <Property Name="Habilitado" Type="bit" Nullable="false" />
+    <Property Name="Id_MenuCategoria" Type="smallint" Nullable="false" />
+    <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Menu_categoria">
+    <Key>
+      <PropertyRef Name="Id_MenuCategoria" />
+    </Key>
+    <Property Name="Id_MenuCategoria" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Orden" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MotivoBaja_x_Cuenta">
+    <Key>
+      <PropertyRef Name="Id_Cuenta" />
+      <PropertyRef Name="Id_MotivoBaja" />
+    </Key>
+    <Property Name="Id_Cuenta" Type="int" Nullable="false" />
+    <Property Name="Id_MotivoBaja" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Municipios">
+    <Key>
+      <PropertyRef Name="Id_Pais" />
+      <PropertyRef Name="Id_Entidad" />
+      <PropertyRef Name="Id_Municipio" />
+    </Key>
+    <Property Name="Id_Pais" Type="smallint" Nullable="false" />
+    <Property Name="Id_Entidad" Type="smallint" Nullable="false" />
+    <Property Name="Id_Municipio" Type="smallint" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Abreviatura" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Paginas">
+    <Key>
+      <PropertyRef Name="Id_Pagina" />
+    </Key>
+    <Property Name="Id_Pagina" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Titulo" Type="varchar" MaxLength="64" />
+    <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Paginas_x_Actividades">
+    <Key>
+      <PropertyRef Name="Id_Pagina" />
+      <PropertyRef Name="Id_Actividad" />
+    </Key>
+    <Property Name="Id_Pagina" Type="smallint" Nullable="false" />
+    <Property Name="Id_Actividad" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Paises">
+    <Key>
+      <PropertyRef Name="Id_Pais" />
+    </Key>
+    <Property Name="Id_Pais" Type="smallint" Nullable="false" />
+    <Property Name="FIPS" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="Prioridad" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parametros">
+    <Key>
+      <PropertyRef Name="Id_Parametro" />
+    </Key>
+    <Property Name="Id_Parametro" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Id_ParametroTipoDato" Type="tinyint" Nullable="false" />
+    <Property Name="Id_GpoParametro" Type="smallint" Nullable="false" />
+    <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parametros_configuracion">
+    <Key>
+      <PropertyRef Name="Id_ParametroGral" />
+    </Key>
+    <Property Name="Id_ParametroGral" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Parametro" Type="smallint" Nullable="false" />
+    <Property Name="Bit_v" Type="bit" />
+    <Property Name="TinyInt_v" Type="tinyint" />
+    <Property Name="SmallInt_v" Type="smallint" />
+    <Property Name="Int_v" Type="int" />
+    <Property Name="Decimal_v" Type="decimal" Precision="2" Scale="2" />
+    <Property Name="DateTime_v" Type="datetime" />
+    <Property Name="SmallDateTime_v" Type="smalldatetime" />
+    <Property Name="VarChar64_v" Type="varchar" MaxLength="64" />
+    <Property Name="VarChar128_v" Type="varchar" MaxLength="128" />
+    <Property Name="Geography_v" Type="geography" />
+    <Property Name="Estatus" Type="bit" Nullable="false" />
+    <Property Name="Id_ParametroTipoDato" Type="tinyint" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="Caduca" Type="bit" Nullable="false" />
+    <Property Name="Vigencia" Type="datetime" />
+    <Property Name="FechaBaja" Type="datetime" />
+    <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
+    <Property Name="Version" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parametros_grupo">
+    <Key>
+      <PropertyRef Name="Id_GpoParametro" />
+    </Key>
+    <Property Name="Id_GpoParametro" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parametros_mensaje">
+    <Key>
+      <PropertyRef Name="Id_ParametroMsg" />
+    </Key>
+    <Property Name="Id_ParametroMsg" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Parametro" Type="smallint" Nullable="false" />
+    <Property Name="Mensaje" Type="varchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parametros_tipoDato">
+    <Key>
+      <PropertyRef Name="Id_ParametroTipoDato" />
+    </Key>
+    <Property Name="Id_ParametroTipoDato" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parametros_x_Beneficio">
+    <Key>
+      <PropertyRef Name="Id_Parametro" />
+      <PropertyRef Name="Id_Beneficio" />
+    </Key>
+    <Property Name="Id_Parametro" Type="smallint" Nullable="false" />
+    <Property Name="Id_Beneficio" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ParametrosGpo_x_Beneficio">
+    <Key>
+      <PropertyRef Name="Id_Beneficio" />
+      <PropertyRef Name="Id_GpoParametro" />
+    </Key>
+    <Property Name="Id_Beneficio" Type="tinyint" Nullable="false" />
+    <Property Name="Id_GpoParametro" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ParametrosGpo_x_Perfiles">
+    <Key>
+      <PropertyRef Name="Id_Perfil" />
+      <PropertyRef Name="Id_GpoParametro" />
+    </Key>
+    <Property Name="Id_Perfil" Type="smallint" Nullable="false" />
+    <Property Name="Id_GpoParametro" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Perfiles">
+    <Key>
+      <PropertyRef Name="Id_Perfil" />
+    </Key>
+    <Property Name="Id_Perfil" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Funcion" Type="varchar" MaxLength="256" />
+    <Property Name="Tipo" Type="char" MaxLength="5" />
+    <Property Name="Nivel" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Permisos">
+    <Key>
+      <PropertyRef Name="Id_Permiso" />
+    </Key>
+    <Property Name="Id_Permiso" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Estatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Permisos_AreaDeTrabajo_x_Cuenta">
+    <Key>
+      <PropertyRef Name="Id_Cuenta" />
+      <PropertyRef Name="Id_AreaDeTrabajo" />
+      <PropertyRef Name="Id_Permiso" />
+    </Key>
+    <Property Name="Id_Cuenta" Type="int" Nullable="false" />
+    <Property Name="Id_AreaDeTrabajo" Type="smallint" Nullable="false" />
+    <Property Name="Id_Permiso" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Permisos_Cuentas_x_Actividades">
+    <Key>
+      <PropertyRef Name="Id_Cuenta" />
+      <PropertyRef Name="Id_Actividad" />
+      <PropertyRef Name="Id_Permiso" />
+    </Key>
+    <Property Name="Id_Cuenta" Type="int" Nullable="false" />
+    <Property Name="Id_Actividad" Type="smallint" Nullable="false" />
+    <Property Name="Id_Permiso" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Permisos_Perfiles_x_Actividades">
+    <Key>
+      <PropertyRef Name="Id_Perfil" />
+      <PropertyRef Name="Id_Actividad" />
+      <PropertyRef Name="Id_Permiso" />
+    </Key>
+    <Property Name="Id_Perfil" Type="smallint" Nullable="false" />
+    <Property Name="Id_Actividad" Type="smallint" Nullable="false" />
+    <Property Name="Id_Permiso" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Personas">
+    <Key>
+      <PropertyRef Name="Id_Persona" />
+    </Key>
+    <Property Name="Id_Persona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="APaterno" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AMaterno" Type="varchar" MaxLength="50" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="FechaCreacion" Type="smalldatetime" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Id_Genero" Type="tinyint" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="smalldatetime" />
+    <Property Name="RFC" Type="varchar" MaxLength="10" />
+    <Property Name="Homoclave" Type="varchar" MaxLength="3" />
+    <Property Name="CURP" Type="varchar" MaxLength="18" />
+    <Property Name="Foto" Type="varchar" MaxLength="25" />
+    <Property Name="Estatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Preguntas">
+    <Key>
+      <PropertyRef Name="Id_Pregunta" />
+    </Key>
+    <Property Name="Id_Pregunta" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Pregunta" Type="varchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Preguntas_x_Login">
+    <Key>
+      <PropertyRef Name="Id_Login" />
+      <PropertyRef Name="Id_Pregunta" />
+    </Key>
+    <Property Name="Id_Login" Type="int" Nullable="false" />
+    <Property Name="Id_Pregunta" Type="tinyint" Nullable="false" />
+    <Property Name="Respuesta" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sesiones">
+    <Key>
+      <PropertyRef Name="Id_Sesion" />
+    </Key>
+    <Property Name="Id_Sesion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Identificador" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Id_Cuenta" Type="int" Nullable="false" />
+    <Property Name="FechaHoraInicio" Type="datetime" Nullable="false" />
+    <Property Name="OnLine" Type="bit" Nullable="false" />
+    <Property Name="CierreSesion" Type="bit" Nullable="false" />
+    <Property Name="UltimoMovimiento" Type="datetime" />
+    <Property Name="Ubiacion" Type="geography" />
+    <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
+    <Property Name="Estatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sistemas">
+    <Key>
+      <PropertyRef Name="Id_Sistema" />
+    </Key>
+    <Property Name="Id_Sistema" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="Siglas" Type="varchar" MaxLength="10" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="128" />
+    <Property Name="Estatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Actividades_Id_Directorio">
+    <End Role="Directorios" Type="Self.Directorios" Multiplicity="1" />
+    <End Role="Actividades" Type="Self.Actividades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Directorios">
+        <PropertyRef Name="Id_Directorio" />
+      </Principal>
+      <Dependent Role="Actividades">
+        <PropertyRef Name="Id_Directorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Actividades_Id_Sistema">
+    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
+    <End Role="Actividades" Type="Self.Actividades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sistemas">
+        <PropertyRef Name="Id_Sistema" />
+      </Principal>
+      <Dependent Role="Actividades">
+        <PropertyRef Name="Id_Sistema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Actividades_x_AreasDeTrabajo_Id_Actividad">
+    <End Role="Actividades" Type="Self.Actividades" Multiplicity="1" />
+    <End Role="Actividades_x_AreasDeTrabajo" Type="Self.Actividades_x_AreasDeTrabajo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividades">
+        <PropertyRef Name="Id_Actividad" />
+      </Principal>
+      <Dependent Role="Actividades_x_AreasDeTrabajo">
+        <PropertyRef Name="Id_Actividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Actividades_x_AreasDeTrabajo_Id_AreaDeTrabajo">
+    <End Role="AreasDeTrabajo" Type="Self.AreasDeTrabajo" Multiplicity="1" />
+    <End Role="Actividades_x_AreasDeTrabajo" Type="Self.Actividades_x_AreasDeTrabajo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AreasDeTrabajo">
+        <PropertyRef Name="Id_AreaDeTrabajo" />
+      </Principal>
+      <Dependent Role="Actividades_x_AreasDeTrabajo">
+        <PropertyRef Name="Id_AreaDeTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AreasDeTrabajo_Id_Sistema">
+    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
+    <End Role="AreasDeTrabajo" Type="Self.AreasDeTrabajo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sistemas">
+        <PropertyRef Name="Id_Sistema" />
+      </Principal>
+      <Dependent Role="AreasDeTrabajo">
+        <PropertyRef Name="Id_Sistema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AreasDeTrabajo_x_Perfiles_Id_AreaDeTrabajo">
+    <End Role="AreasDeTrabajo" Type="Self.AreasDeTrabajo" Multiplicity="1" />
+    <End Role="AreasDeTrabajo_x_Perfiles" Type="Self.AreasDeTrabajo_x_Perfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AreasDeTrabajo">
+        <PropertyRef Name="Id_AreaDeTrabajo" />
+      </Principal>
+      <Dependent Role="AreasDeTrabajo_x_Perfiles">
+        <PropertyRef Name="Id_AreaDeTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AreasDeTrabajo_x_Perfiles_Id_Perfil">
+    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+    <End Role="AreasDeTrabajo_x_Perfiles" Type="Self.AreasDeTrabajo_x_Perfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfiles">
+        <PropertyRef Name="Id_Perfil" />
+      </Principal>
+      <Dependent Role="AreasDeTrabajo_x_Perfiles">
+        <PropertyRef Name="Id_Perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Baja_motivos_Id_Baja">
+    <End Role="Baja" Type="Self.Baja" Multiplicity="1" />
+    <End Role="Baja_motivos" Type="Self.Baja_motivos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Baja">
+        <PropertyRef Name="Id_Baja" />
+      </Principal>
+      <Dependent Role="Baja_motivos">
+        <PropertyRef Name="Id_Baja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Beneficio_Id_BeneficioTipo">
+    <End Role="Beneficio_tipo" Type="Self.Beneficio_tipo" Multiplicity="1" />
+    <End Role="Beneficio" Type="Self.Beneficio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Beneficio_tipo">
+        <PropertyRef Name="Id_BeneficioTipo" />
+      </Principal>
+      <Dependent Role="Beneficio">
+        <PropertyRef Name="Id_BeneficioTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Beneficio_x_AreaDeTrabajo_Id_AreaDeTrabajo">
+    <End Role="AreasDeTrabajo" Type="Self.AreasDeTrabajo" Multiplicity="1" />
+    <End Role="Beneficio_x_AreaDeTrabajo" Type="Self.Beneficio_x_AreaDeTrabajo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AreasDeTrabajo">
+        <PropertyRef Name="Id_AreaDeTrabajo" />
+      </Principal>
+      <Dependent Role="Beneficio_x_AreaDeTrabajo">
+        <PropertyRef Name="Id_AreaDeTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Beneficio_x_AreaDeTrabajo_Id_Beneficio">
+    <End Role="Beneficio" Type="Self.Beneficio" Multiplicity="1" />
+    <End Role="Beneficio_x_AreaDeTrabajo" Type="Self.Beneficio_x_AreaDeTrabajo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Beneficio">
+        <PropertyRef Name="Id_Beneficio" />
+      </Principal>
+      <Dependent Role="Beneficio_x_AreaDeTrabajo">
+        <PropertyRef Name="Id_Beneficio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Beneficio_x_Perfiles_Id_Beneficio">
+    <End Role="Beneficio" Type="Self.Beneficio" Multiplicity="1" />
+    <End Role="Beneficio_x_Perfiles" Type="Self.Beneficio_x_Perfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Beneficio">
+        <PropertyRef Name="Id_Beneficio" />
+      </Principal>
+      <Dependent Role="Beneficio_x_Perfiles">
+        <PropertyRef Name="Id_Beneficio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Beneficio_x_Perfiles_Id_Perfil">
+    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+    <End Role="Beneficio_x_Perfiles" Type="Self.Beneficio_x_Perfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfiles">
+        <PropertyRef Name="Id_Perfil" />
+      </Principal>
+      <Dependent Role="Beneficio_x_Perfiles">
+        <PropertyRef Name="Id_Perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Benficio_x_Cuenta_Id_Beneficio">
+    <End Role="Beneficio" Type="Self.Beneficio" Multiplicity="1" />
+    <End Role="Benficio_x_Cuenta" Type="Self.Benficio_x_Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Beneficio">
+        <PropertyRef Name="Id_Beneficio" />
+      </Principal>
+      <Dependent Role="Benficio_x_Cuenta">
+        <PropertyRef Name="Id_Beneficio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Benficio_x_Cuenta_Id_Cuenta">
+    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+    <End Role="Benficio_x_Cuenta" Type="Self.Benficio_x_Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuentas">
+        <PropertyRef Name="Id_Cuenta" />
+      </Principal>
+      <Dependent Role="Benficio_x_Cuenta">
+        <PropertyRef Name="Id_Cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contacto_Id_ContactoMedio">
+    <End Role="Contacto_medio" Type="Self.Contacto_medio" Multiplicity="1" />
+    <End Role="Contacto" Type="Self.Contacto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contacto_medio">
+        <PropertyRef Name="Id_ContactoMedio" />
+      </Principal>
+      <Dependent Role="Contacto">
+        <PropertyRef Name="Id_ContactoMedio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contacto_Id_ContactoTipo">
+    <End Role="Contacto_tipo" Type="Self.Contacto_tipo" Multiplicity="1" />
+    <End Role="Contacto" Type="Self.Contacto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contacto_tipo">
+        <PropertyRef Name="Id_ContactoTipo" />
+      </Principal>
+      <Dependent Role="Contacto">
+        <PropertyRef Name="Id_ContactoTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contacto_x_Domicilio_Id_Contacto">
+    <End Role="Contacto" Type="Self.Contacto" Multiplicity="1" />
+    <End Role="Contacto_x_Domicilio" Type="Self.Contacto_x_Domicilio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contacto">
+        <PropertyRef Name="Id_Contacto" />
+      </Principal>
+      <Dependent Role="Contacto_x_Domicilio">
+        <PropertyRef Name="Id_Contacto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contacto_x_Domicilio_Id_Domicilio">
+    <End Role="Domicilios" Type="Self.Domicilios" Multiplicity="1" />
+    <End Role="Contacto_x_Domicilio" Type="Self.Contacto_x_Domicilio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Domicilios">
+        <PropertyRef Name="Id_Domicilio" />
+      </Principal>
+      <Dependent Role="Contacto_x_Domicilio">
+        <PropertyRef Name="Id_Domicilio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contacto_x_Persona_Id_Contacto">
+    <End Role="Contacto" Type="Self.Contacto" Multiplicity="1" />
+    <End Role="Contacto_x_Persona" Type="Self.Contacto_x_Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contacto">
+        <PropertyRef Name="Id_Contacto" />
+      </Principal>
+      <Dependent Role="Contacto_x_Persona">
+        <PropertyRef Name="Id_Contacto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contacto_x_Persona_Id_Persona">
+    <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
+    <End Role="Contacto_x_Persona" Type="Self.Contacto_x_Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personas">
+        <PropertyRef Name="Id_Persona" />
+      </Principal>
+      <Dependent Role="Contacto_x_Persona">
+        <PropertyRef Name="Id_Persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuentas_Id_Baja">
+    <End Role="Baja" Type="Self.Baja" Multiplicity="1" />
+    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Baja">
+        <PropertyRef Name="Id_Baja" />
+      </Principal>
+      <Dependent Role="Cuentas">
+        <PropertyRef Name="Id_Baja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuentas_Id_Login">
+    <End Role="LogIn" Type="Self.LogIn" Multiplicity="1" />
+    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LogIn">
+        <PropertyRef Name="Id_Login" />
+      </Principal>
+      <Dependent Role="Cuentas">
+        <PropertyRef Name="Id_Login" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuentas_Id_Perfil">
+    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfiles">
+        <PropertyRef Name="Id_Perfil" />
+      </Principal>
+      <Dependent Role="Cuentas">
+        <PropertyRef Name="Id_Perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuentas_Id_Sistema">
+    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
+    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sistemas">
+        <PropertyRef Name="Id_Sistema" />
+      </Principal>
+      <Dependent Role="Cuentas">
+        <PropertyRef Name="Id_Sistema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuentas_x_Personas_Id_Cuenta">
+    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+    <End Role="Cuentas_x_Personas" Type="Self.Cuentas_x_Personas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuentas">
+        <PropertyRef Name="Id_Cuenta" />
+      </Principal>
+      <Dependent Role="Cuentas_x_Personas">
+        <PropertyRef Name="Id_Cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cuentas_x_Personas_Id_Persona">
+    <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
+    <End Role="Cuentas_x_Personas" Type="Self.Cuentas_x_Personas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personas">
+        <PropertyRef Name="Id_Persona" />
+      </Principal>
+      <Dependent Role="Cuentas_x_Personas">
+        <PropertyRef Name="Id_Persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Directorio_tipo_Id_Sistema">
+    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
+    <End Role="Directorio_tipo" Type="Self.Directorio_tipo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sistemas">
+        <PropertyRef Name="Id_Sistema" />
+      </Principal>
+      <Dependent Role="Directorio_tipo">
+        <PropertyRef Name="Id_Sistema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Directorios_Id_DirectorioTipo">
+    <End Role="Directorio_tipo" Type="Self.Directorio_tipo" Multiplicity="1" />
+    <End Role="Directorios" Type="Self.Directorios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Directorio_tipo">
+        <PropertyRef Name="Id_DirectorioTipo" />
+      </Principal>
+      <Dependent Role="Directorios">
+        <PropertyRef Name="Id_DirectorioTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Directorios_x_Perfiles_Id_Directorio">
+    <End Role="Directorios" Type="Self.Directorios" Multiplicity="1" />
+    <End Role="Directorios_x_Perfiles" Type="Self.Directorios_x_Perfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Directorios">
+        <PropertyRef Name="Id_Directorio" />
+      </Principal>
+      <Dependent Role="Directorios_x_Perfiles">
+        <PropertyRef Name="Id_Directorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Directorios_x_Perfiles_Id_Perfil">
+    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+    <End Role="Directorios_x_Perfiles" Type="Self.Directorios_x_Perfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfiles">
+        <PropertyRef Name="Id_Perfil" />
+      </Principal>
+      <Dependent Role="Directorios_x_Perfiles">
+        <PropertyRef Name="Id_Perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Directorios_x_Sistemas_Id_Directorio">
+    <End Role="Directorios" Type="Self.Directorios" Multiplicity="1" />
+    <End Role="Directorios_x_Sistemas" Type="Self.Directorios_x_Sistemas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Directorios">
+        <PropertyRef Name="Id_Directorio" />
+      </Principal>
+      <Dependent Role="Directorios_x_Sistemas">
+        <PropertyRef Name="Id_Directorio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Directorios_x_Sistemas_Id_Sistema">
+    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
+    <End Role="Directorios_x_Sistemas" Type="Self.Directorios_x_Sistemas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sistemas">
+        <PropertyRef Name="Id_Sistema" />
+      </Principal>
+      <Dependent Role="Directorios_x_Sistemas">
+        <PropertyRef Name="Id_Sistema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Domicilio_x_Personas_Id_Domicilio">
+    <End Role="Domicilios" Type="Self.Domicilios" Multiplicity="1" />
+    <End Role="Domicilio_x_Personas" Type="Self.Domicilio_x_Personas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Domicilios">
+        <PropertyRef Name="Id_Domicilio" />
+      </Principal>
+      <Dependent Role="Domicilio_x_Personas">
+        <PropertyRef Name="Id_Domicilio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Domicilio_x_Personas_Id_Persona">
+    <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
+    <End Role="Domicilio_x_Personas" Type="Self.Domicilio_x_Personas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personas">
+        <PropertyRef Name="Id_Persona" />
+      </Principal>
+      <Dependent Role="Domicilio_x_Personas">
+        <PropertyRef Name="Id_Persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Domicilios_Id_ContactoTipo">
+    <End Role="Contacto_tipo" Type="Self.Contacto_tipo" Multiplicity="1" />
+    <End Role="Domicilios" Type="Self.Domicilios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contacto_tipo">
+        <PropertyRef Name="Id_ContactoTipo" />
+      </Principal>
+      <Dependent Role="Domicilios">
+        <PropertyRef Name="Id_ContactoTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Domicilios_Id_Pais_Id_Entidad_Id_Municipio">
+    <End Role="Municipios" Type="Self.Municipios" Multiplicity="0..1" />
+    <End Role="Domicilios" Type="Self.Domicilios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Municipios">
+        <PropertyRef Name="Id_Pais" />
+        <PropertyRef Name="Id_Entidad" />
+        <PropertyRef Name="Id_Municipio" />
+      </Principal>
+      <Dependent Role="Domicilios">
+        <PropertyRef Name="Id_Pais" />
+        <PropertyRef Name="Id_Entidad" />
+        <PropertyRef Name="Id_Municipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entidades_Id_Pais">
+    <End Role="Paises" Type="Self.Paises" Multiplicity="1" />
+    <End Role="Entidades" Type="Self.Entidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paises">
+        <PropertyRef Name="Id_Pais" />
+      </Principal>
+      <Dependent Role="Entidades">
+        <PropertyRef Name="Id_Pais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipos_Id_Cuenta">
+    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+    <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuentas">
+        <PropertyRef Name="Id_Cuenta" />
+      </Principal>
+      <Dependent Role="Equipos">
+        <PropertyRef Name="Id_Cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipos_Id_EquipoTipo">
+    <End Role="Equipos_tipo" Type="Self.Equipos_tipo" Multiplicity="1" />
+    <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipos_tipo">
+        <PropertyRef Name="Id_EquipoTipo" />
+      </Principal>
+      <Dependent Role="Equipos">
+        <PropertyRef Name="Id_EquipoTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipos_Id_Sistema">
+    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
+    <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sistemas">
+        <PropertyRef Name="Id_Sistema" />
+      </Principal>
+      <Dependent Role="Equipos">
+        <PropertyRef Name="Id_Sistema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LogIn_Id_Persona">
+    <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
+    <End Role="LogIn" Type="Self.LogIn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personas">
+        <PropertyRef Name="Id_Persona" />
+      </Principal>
+      <Dependent Role="LogIn">
+        <PropertyRef Name="Id_Persona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Menu_Id_MenuCategoria">
+    <End Role="Menu_categoria" Type="Self.Menu_categoria" Multiplicity="1" />
+    <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Menu_categoria">
+        <PropertyRef Name="Id_MenuCategoria" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="Id_MenuCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Menu_Id_Pagina">
+    <End Role="Paginas" Type="Self.Paginas" Multiplicity="1" />
+    <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paginas">
+        <PropertyRef Name="Id_Pagina" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="Id_Pagina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Menu_Id_Sistema">
+    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
+    <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sistemas">
+        <PropertyRef Name="Id_Sistema" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="Id_Sistema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MotivoBaja_x_Cuenta_Id_Cuenta">
+    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+    <End Role="MotivoBaja_x_Cuenta" Type="Self.MotivoBaja_x_Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuentas">
+        <PropertyRef Name="Id_Cuenta" />
+      </Principal>
+      <Dependent Role="MotivoBaja_x_Cuenta">
+        <PropertyRef Name="Id_Cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MotivoBaja_x_Cuenta_Id_MotivoBaja">
+    <End Role="Baja_motivos" Type="Self.Baja_motivos" Multiplicity="1" />
+    <End Role="MotivoBaja_x_Cuenta" Type="Self.MotivoBaja_x_Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Baja_motivos">
+        <PropertyRef Name="Id_MotivoBaja" />
+      </Principal>
+      <Dependent Role="MotivoBaja_x_Cuenta">
+        <PropertyRef Name="Id_MotivoBaja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Municipios_Id_Pais_Id_Entidad">
+    <End Role="Entidades" Type="Self.Entidades" Multiplicity="1" />
+    <End Role="Municipios" Type="Self.Municipios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entidades">
+        <PropertyRef Name="Id_Pais" />
+        <PropertyRef Name="Id_Entidad" />
+      </Principal>
+      <Dependent Role="Municipios">
+        <PropertyRef Name="Id_Pais" />
+        <PropertyRef Name="Id_Entidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Paginas_Id_Sistema">
+    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
+    <End Role="Paginas" Type="Self.Paginas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sistemas">
+        <PropertyRef Name="Id_Sistema" />
+      </Principal>
+      <Dependent Role="Paginas">
+        <PropertyRef Name="Id_Sistema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Paginas_x_Actividades_Id_Actividad">
+    <End Role="Actividades" Type="Self.Actividades" Multiplicity="1" />
+    <End Role="Paginas_x_Actividades" Type="Self.Paginas_x_Actividades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividades">
+        <PropertyRef Name="Id_Actividad" />
+      </Principal>
+      <Dependent Role="Paginas_x_Actividades">
+        <PropertyRef Name="Id_Actividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Paginas_x_Actividades_Id_Pagina">
+    <End Role="Paginas" Type="Self.Paginas" Multiplicity="1" />
+    <End Role="Paginas_x_Actividades" Type="Self.Paginas_x_Actividades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paginas">
+        <PropertyRef Name="Id_Pagina" />
+      </Principal>
+      <Dependent Role="Paginas_x_Actividades">
+        <PropertyRef Name="Id_Pagina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Parametros_configuracion_Id_Parametro">
+    <End Role="Parametros" Type="Self.Parametros" Multiplicity="1" />
+    <End Role="Parametros_configuracion" Type="Self.Parametros_configuracion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametros">
+        <PropertyRef Name="Id_Parametro" />
+      </Principal>
+      <Dependent Role="Parametros_configuracion">
+        <PropertyRef Name="Id_Parametro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Parametros_configuracion_Id_ParametroTipoDato">
+    <End Role="Parametros_tipoDato" Type="Self.Parametros_tipoDato" Multiplicity="1" />
+    <End Role="Parametros_configuracion" Type="Self.Parametros_configuracion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametros_tipoDato">
+        <PropertyRef Name="Id_ParametroTipoDato" />
+      </Principal>
+      <Dependent Role="Parametros_configuracion">
+        <PropertyRef Name="Id_ParametroTipoDato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Parametros_configuracion_Id_Sistema">
+    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
+    <End Role="Parametros_configuracion" Type="Self.Parametros_configuracion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sistemas">
+        <PropertyRef Name="Id_Sistema" />
+      </Principal>
+      <Dependent Role="Parametros_configuracion">
+        <PropertyRef Name="Id_Sistema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Parametros_grupo_Id_Sistema">
+    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
+    <End Role="Parametros_grupo" Type="Self.Parametros_grupo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sistemas">
+        <PropertyRef Name="Id_Sistema" />
+      </Principal>
+      <Dependent Role="Parametros_grupo">
+        <PropertyRef Name="Id_Sistema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Parametros_Id_GpoParametro">
+    <End Role="Parametros_grupo" Type="Self.Parametros_grupo" Multiplicity="1" />
+    <End Role="Parametros" Type="Self.Parametros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametros_grupo">
+        <PropertyRef Name="Id_GpoParametro" />
+      </Principal>
+      <Dependent Role="Parametros">
+        <PropertyRef Name="Id_GpoParametro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Parametros_Id_ParametroTipoDato">
+    <End Role="Parametros_tipoDato" Type="Self.Parametros_tipoDato" Multiplicity="1" />
+    <End Role="Parametros" Type="Self.Parametros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametros_tipoDato">
+        <PropertyRef Name="Id_ParametroTipoDato" />
+      </Principal>
+      <Dependent Role="Parametros">
+        <PropertyRef Name="Id_ParametroTipoDato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Parametros_Id_Sistema">
+    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
+    <End Role="Parametros" Type="Self.Parametros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sistemas">
+        <PropertyRef Name="Id_Sistema" />
+      </Principal>
+      <Dependent Role="Parametros">
+        <PropertyRef Name="Id_Sistema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Parametros_mensaje_Id_Parametro">
+    <End Role="Parametros" Type="Self.Parametros" Multiplicity="1" />
+    <End Role="Parametros_mensaje" Type="Self.Parametros_mensaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametros">
+        <PropertyRef Name="Id_Parametro" />
+      </Principal>
+      <Dependent Role="Parametros_mensaje">
+        <PropertyRef Name="Id_Parametro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Parametros_x_Beneficio_Id_Beneficio">
+    <End Role="Beneficio" Type="Self.Beneficio" Multiplicity="1" />
+    <End Role="Parametros_x_Beneficio" Type="Self.Parametros_x_Beneficio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Beneficio">
+        <PropertyRef Name="Id_Beneficio" />
+      </Principal>
+      <Dependent Role="Parametros_x_Beneficio">
+        <PropertyRef Name="Id_Beneficio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Parametros_x_Beneficio_Id_Parametro">
+    <End Role="Parametros" Type="Self.Parametros" Multiplicity="1" />
+    <End Role="Parametros_x_Beneficio" Type="Self.Parametros_x_Beneficio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametros">
+        <PropertyRef Name="Id_Parametro" />
+      </Principal>
+      <Dependent Role="Parametros_x_Beneficio">
+        <PropertyRef Name="Id_Parametro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParametrosGpo_x_Beneficio_Id_Beneficio">
+    <End Role="Beneficio" Type="Self.Beneficio" Multiplicity="1" />
+    <End Role="ParametrosGpo_x_Beneficio" Type="Self.ParametrosGpo_x_Beneficio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Beneficio">
+        <PropertyRef Name="Id_Beneficio" />
+      </Principal>
+      <Dependent Role="ParametrosGpo_x_Beneficio">
+        <PropertyRef Name="Id_Beneficio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParametrosGpo_x_Beneficio_Id_GpoParametro">
+    <End Role="Parametros_grupo" Type="Self.Parametros_grupo" Multiplicity="1" />
+    <End Role="ParametrosGpo_x_Beneficio" Type="Self.ParametrosGpo_x_Beneficio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametros_grupo">
+        <PropertyRef Name="Id_GpoParametro" />
+      </Principal>
+      <Dependent Role="ParametrosGpo_x_Beneficio">
+        <PropertyRef Name="Id_GpoParametro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParametrosGpo_x_Perfiles_Id_GpoParametro">
+    <End Role="Parametros_grupo" Type="Self.Parametros_grupo" Multiplicity="1" />
+    <End Role="ParametrosGpo_x_Perfiles" Type="Self.ParametrosGpo_x_Perfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametros_grupo">
+        <PropertyRef Name="Id_GpoParametro" />
+      </Principal>
+      <Dependent Role="ParametrosGpo_x_Perfiles">
+        <PropertyRef Name="Id_GpoParametro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParametrosGpo_x_Perfiles_Id_Perfil">
+    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+    <End Role="ParametrosGpo_x_Perfiles" Type="Self.ParametrosGpo_x_Perfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfiles">
+        <PropertyRef Name="Id_Perfil" />
+      </Principal>
+      <Dependent Role="ParametrosGpo_x_Perfiles">
+        <PropertyRef Name="Id_Perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Perfiles_Id_Sistema">
+    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
+    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sistemas">
+        <PropertyRef Name="Id_Sistema" />
+      </Principal>
+      <Dependent Role="Perfiles">
+        <PropertyRef Name="Id_Sistema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_AreaDeTrabajo">
+    <End Role="AreasDeTrabajo" Type="Self.AreasDeTrabajo" Multiplicity="1" />
+    <End Role="Permisos_AreaDeTrabajo_x_Cuenta" Type="Self.Permisos_AreaDeTrabajo_x_Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AreasDeTrabajo">
+        <PropertyRef Name="Id_AreaDeTrabajo" />
+      </Principal>
+      <Dependent Role="Permisos_AreaDeTrabajo_x_Cuenta">
+        <PropertyRef Name="Id_AreaDeTrabajo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Cuenta">
+    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+    <End Role="Permisos_AreaDeTrabajo_x_Cuenta" Type="Self.Permisos_AreaDeTrabajo_x_Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuentas">
+        <PropertyRef Name="Id_Cuenta" />
+      </Principal>
+      <Dependent Role="Permisos_AreaDeTrabajo_x_Cuenta">
+        <PropertyRef Name="Id_Cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Permiso">
+    <End Role="Permisos" Type="Self.Permisos" Multiplicity="1" />
+    <End Role="Permisos_AreaDeTrabajo_x_Cuenta" Type="Self.Permisos_AreaDeTrabajo_x_Cuenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permisos">
+        <PropertyRef Name="Id_Permiso" />
+      </Principal>
+      <Dependent Role="Permisos_AreaDeTrabajo_x_Cuenta">
+        <PropertyRef Name="Id_Permiso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permisos_Cuentas_x_Actividades_Id_Actividad">
+    <End Role="Actividades" Type="Self.Actividades" Multiplicity="1" />
+    <End Role="Permisos_Cuentas_x_Actividades" Type="Self.Permisos_Cuentas_x_Actividades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividades">
+        <PropertyRef Name="Id_Actividad" />
+      </Principal>
+      <Dependent Role="Permisos_Cuentas_x_Actividades">
+        <PropertyRef Name="Id_Actividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permisos_Cuentas_x_Actividades_Id_Cuenta">
+    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+    <End Role="Permisos_Cuentas_x_Actividades" Type="Self.Permisos_Cuentas_x_Actividades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuentas">
+        <PropertyRef Name="Id_Cuenta" />
+      </Principal>
+      <Dependent Role="Permisos_Cuentas_x_Actividades">
+        <PropertyRef Name="Id_Cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permisos_Cuentas_x_Actividades_Id_Permiso">
+    <End Role="Permisos" Type="Self.Permisos" Multiplicity="1" />
+    <End Role="Permisos_Cuentas_x_Actividades" Type="Self.Permisos_Cuentas_x_Actividades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permisos">
+        <PropertyRef Name="Id_Permiso" />
+      </Principal>
+      <Dependent Role="Permisos_Cuentas_x_Actividades">
+        <PropertyRef Name="Id_Permiso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permisos_Perfiles_x_Actividades_Id_Actividad">
+    <End Role="Actividades" Type="Self.Actividades" Multiplicity="1" />
+    <End Role="Permisos_Perfiles_x_Actividades" Type="Self.Permisos_Perfiles_x_Actividades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividades">
+        <PropertyRef Name="Id_Actividad" />
+      </Principal>
+      <Dependent Role="Permisos_Perfiles_x_Actividades">
+        <PropertyRef Name="Id_Actividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permisos_Perfiles_x_Actividades_Id_Perfil">
+    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
+    <End Role="Permisos_Perfiles_x_Actividades" Type="Self.Permisos_Perfiles_x_Actividades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Perfiles">
+        <PropertyRef Name="Id_Perfil" />
+      </Principal>
+      <Dependent Role="Permisos_Perfiles_x_Actividades">
+        <PropertyRef Name="Id_Perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permisos_Perfiles_x_Actividades_Id_Permiso">
+    <End Role="Permisos" Type="Self.Permisos" Multiplicity="1" />
+    <End Role="Permisos_Perfiles_x_Actividades" Type="Self.Permisos_Perfiles_x_Actividades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permisos">
+        <PropertyRef Name="Id_Permiso" />
+      </Principal>
+      <Dependent Role="Permisos_Perfiles_x_Actividades">
+        <PropertyRef Name="Id_Permiso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personas_Id_Genero">
+    <End Role="Genero" Type="Self.Genero" Multiplicity="1" />
+    <End Role="Personas" Type="Self.Personas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genero">
+        <PropertyRef Name="Id_Genero" />
+      </Principal>
+      <Dependent Role="Personas">
+        <PropertyRef Name="Id_Genero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Preguntas_x_Login_Id_Cuenta">
+    <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="1" />
+    <End Role="Preguntas_x_Login" Type="Self.Preguntas_x_Login" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Preguntas">
+        <PropertyRef Name="Id_Pregunta" />
+      </Principal>
+      <Dependent Role="Preguntas_x_Login">
+        <PropertyRef Name="Id_Pregunta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Preguntas_x_Login_Id_Login">
+    <End Role="LogIn" Type="Self.LogIn" Multiplicity="1" />
+    <End Role="Preguntas_x_Login" Type="Self.Preguntas_x_Login" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LogIn">
+        <PropertyRef Name="Id_Login" />
+      </Principal>
+      <Dependent Role="Preguntas_x_Login">
+        <PropertyRef Name="Id_Login" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sesiones_Id_Cuenta">
+    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+    <End Role="Sesiones" Type="Self.Sesiones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuentas">
+        <PropertyRef Name="Id_Cuenta" />
+      </Principal>
+      <Dependent Role="Sesiones">
+        <PropertyRef Name="Id_Cuenta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sesiones_Id_Sistema">
+    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
+    <End Role="Sesiones" Type="Self.Sesiones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sistemas">
+        <PropertyRef Name="Id_Sistema" />
+      </Principal>
+      <Dependent Role="Sesiones">
+        <PropertyRef Name="Id_Sistema" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TestModelStoreContainer">
+    <EntitySet Name="Actividades" EntityType="Self.Actividades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Actividades_x_AreasDeTrabajo" EntityType="Self.Actividades_x_AreasDeTrabajo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AreasDeTrabajo" EntityType="Self.AreasDeTrabajo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AreasDeTrabajo_x_Perfiles" EntityType="Self.AreasDeTrabajo_x_Perfiles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Baja" EntityType="Self.Baja" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Baja_motivos" EntityType="Self.Baja_motivos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Beneficio" EntityType="Self.Beneficio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Beneficio_tipo" EntityType="Self.Beneficio_tipo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Beneficio_x_AreaDeTrabajo" EntityType="Self.Beneficio_x_AreaDeTrabajo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Beneficio_x_Perfiles" EntityType="Self.Beneficio_x_Perfiles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Benficio_x_Cuenta" EntityType="Self.Benficio_x_Cuenta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contacto" EntityType="Self.Contacto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contacto_medio" EntityType="Self.Contacto_medio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contacto_tipo" EntityType="Self.Contacto_tipo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contacto_x_Domicilio" EntityType="Self.Contacto_x_Domicilio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contacto_x_Persona" EntityType="Self.Contacto_x_Persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cuentas" EntityType="Self.Cuentas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cuentas_x_Personas" EntityType="Self.Cuentas_x_Personas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Directorio_tipo" EntityType="Self.Directorio_tipo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Directorios" EntityType="Self.Directorios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Directorios_x_Perfiles" EntityType="Self.Directorios_x_Perfiles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Directorios_x_Sistemas" EntityType="Self.Directorios_x_Sistemas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Domicilio_x_Personas" EntityType="Self.Domicilio_x_Personas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Domicilios" EntityType="Self.Domicilios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Entidades" EntityType="Self.Entidades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Equipos" EntityType="Self.Equipos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Equipos_tipo" EntityType="Self.Equipos_tipo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Genero" EntityType="Self.Genero" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogIn" EntityType="Self.LogIn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Menu_categoria" EntityType="Self.Menu_categoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MotivoBaja_x_Cuenta" EntityType="Self.MotivoBaja_x_Cuenta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Municipios" EntityType="Self.Municipios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Paginas" EntityType="Self.Paginas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Paginas_x_Actividades" EntityType="Self.Paginas_x_Actividades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Parametros" EntityType="Self.Parametros" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Parametros_configuracion" EntityType="Self.Parametros_configuracion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Parametros_grupo" EntityType="Self.Parametros_grupo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Parametros_mensaje" EntityType="Self.Parametros_mensaje" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Parametros_tipoDato" EntityType="Self.Parametros_tipoDato" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Parametros_x_Beneficio" EntityType="Self.Parametros_x_Beneficio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ParametrosGpo_x_Beneficio" EntityType="Self.ParametrosGpo_x_Beneficio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ParametrosGpo_x_Perfiles" EntityType="Self.ParametrosGpo_x_Perfiles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permisos_AreaDeTrabajo_x_Cuenta" EntityType="Self.Permisos_AreaDeTrabajo_x_Cuenta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permisos_Cuentas_x_Actividades" EntityType="Self.Permisos_Cuentas_x_Actividades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permisos_Perfiles_x_Actividades" EntityType="Self.Permisos_Perfiles_x_Actividades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Preguntas" EntityType="Self.Preguntas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Preguntas_x_Login" EntityType="Self.Preguntas_x_Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sesiones" EntityType="Self.Sesiones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sistemas" EntityType="Self.Sistemas" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Actividades_Id_Directorio" Association="Self.FK_Actividades_Id_Directorio">
+      <End Role="Directorios" EntitySet="Directorios" />
+      <End Role="Actividades" EntitySet="Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Actividades_Id_Sistema" Association="Self.FK_Actividades_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Actividades" EntitySet="Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Actividades_x_AreasDeTrabajo_Id_Actividad" Association="Self.FK_Actividades_x_AreasDeTrabajo_Id_Actividad">
+      <End Role="Actividades" EntitySet="Actividades" />
+      <End Role="Actividades_x_AreasDeTrabajo" EntitySet="Actividades_x_AreasDeTrabajo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Actividades_x_AreasDeTrabajo_Id_AreaDeTrabajo" Association="Self.FK_Actividades_x_AreasDeTrabajo_Id_AreaDeTrabajo">
+      <End Role="AreasDeTrabajo" EntitySet="AreasDeTrabajo" />
+      <End Role="Actividades_x_AreasDeTrabajo" EntitySet="Actividades_x_AreasDeTrabajo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AreasDeTrabajo_Id_Sistema" Association="Self.FK_AreasDeTrabajo_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="AreasDeTrabajo" EntitySet="AreasDeTrabajo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AreasDeTrabajo_x_Perfiles_Id_AreaDeTrabajo" Association="Self.FK_AreasDeTrabajo_x_Perfiles_Id_AreaDeTrabajo">
+      <End Role="AreasDeTrabajo" EntitySet="AreasDeTrabajo" />
+      <End Role="AreasDeTrabajo_x_Perfiles" EntitySet="AreasDeTrabajo_x_Perfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AreasDeTrabajo_x_Perfiles_Id_Perfil" Association="Self.FK_AreasDeTrabajo_x_Perfiles_Id_Perfil">
+      <End Role="Perfiles" EntitySet="Perfiles" />
+      <End Role="AreasDeTrabajo_x_Perfiles" EntitySet="AreasDeTrabajo_x_Perfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Baja_motivos_Id_Baja" Association="Self.FK_Baja_motivos_Id_Baja">
+      <End Role="Baja" EntitySet="Baja" />
+      <End Role="Baja_motivos" EntitySet="Baja_motivos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Beneficio_Id_BeneficioTipo" Association="Self.FK_Beneficio_Id_BeneficioTipo">
+      <End Role="Beneficio_tipo" EntitySet="Beneficio_tipo" />
+      <End Role="Beneficio" EntitySet="Beneficio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Beneficio_x_AreaDeTrabajo_Id_AreaDeTrabajo" Association="Self.FK_Beneficio_x_AreaDeTrabajo_Id_AreaDeTrabajo">
+      <End Role="AreasDeTrabajo" EntitySet="AreasDeTrabajo" />
+      <End Role="Beneficio_x_AreaDeTrabajo" EntitySet="Beneficio_x_AreaDeTrabajo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Beneficio_x_AreaDeTrabajo_Id_Beneficio" Association="Self.FK_Beneficio_x_AreaDeTrabajo_Id_Beneficio">
+      <End Role="Beneficio" EntitySet="Beneficio" />
+      <End Role="Beneficio_x_AreaDeTrabajo" EntitySet="Beneficio_x_AreaDeTrabajo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Beneficio_x_Perfiles_Id_Beneficio" Association="Self.FK_Beneficio_x_Perfiles_Id_Beneficio">
+      <End Role="Beneficio" EntitySet="Beneficio" />
+      <End Role="Beneficio_x_Perfiles" EntitySet="Beneficio_x_Perfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Beneficio_x_Perfiles_Id_Perfil" Association="Self.FK_Beneficio_x_Perfiles_Id_Perfil">
+      <End Role="Perfiles" EntitySet="Perfiles" />
+      <End Role="Beneficio_x_Perfiles" EntitySet="Beneficio_x_Perfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Benficio_x_Cuenta_Id_Beneficio" Association="Self.FK_Benficio_x_Cuenta_Id_Beneficio">
+      <End Role="Beneficio" EntitySet="Beneficio" />
+      <End Role="Benficio_x_Cuenta" EntitySet="Benficio_x_Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Benficio_x_Cuenta_Id_Cuenta" Association="Self.FK_Benficio_x_Cuenta_Id_Cuenta">
+      <End Role="Cuentas" EntitySet="Cuentas" />
+      <End Role="Benficio_x_Cuenta" EntitySet="Benficio_x_Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contacto_Id_ContactoMedio" Association="Self.FK_Contacto_Id_ContactoMedio">
+      <End Role="Contacto_medio" EntitySet="Contacto_medio" />
+      <End Role="Contacto" EntitySet="Contacto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contacto_Id_ContactoTipo" Association="Self.FK_Contacto_Id_ContactoTipo">
+      <End Role="Contacto_tipo" EntitySet="Contacto_tipo" />
+      <End Role="Contacto" EntitySet="Contacto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contacto_x_Domicilio_Id_Contacto" Association="Self.FK_Contacto_x_Domicilio_Id_Contacto">
+      <End Role="Contacto" EntitySet="Contacto" />
+      <End Role="Contacto_x_Domicilio" EntitySet="Contacto_x_Domicilio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contacto_x_Domicilio_Id_Domicilio" Association="Self.FK_Contacto_x_Domicilio_Id_Domicilio">
+      <End Role="Domicilios" EntitySet="Domicilios" />
+      <End Role="Contacto_x_Domicilio" EntitySet="Contacto_x_Domicilio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contacto_x_Persona_Id_Contacto" Association="Self.FK_Contacto_x_Persona_Id_Contacto">
+      <End Role="Contacto" EntitySet="Contacto" />
+      <End Role="Contacto_x_Persona" EntitySet="Contacto_x_Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contacto_x_Persona_Id_Persona" Association="Self.FK_Contacto_x_Persona_Id_Persona">
+      <End Role="Personas" EntitySet="Personas" />
+      <End Role="Contacto_x_Persona" EntitySet="Contacto_x_Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuentas_Id_Baja" Association="Self.FK_Cuentas_Id_Baja">
+      <End Role="Baja" EntitySet="Baja" />
+      <End Role="Cuentas" EntitySet="Cuentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuentas_Id_Login" Association="Self.FK_Cuentas_Id_Login">
+      <End Role="LogIn" EntitySet="LogIn" />
+      <End Role="Cuentas" EntitySet="Cuentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuentas_Id_Perfil" Association="Self.FK_Cuentas_Id_Perfil">
+      <End Role="Perfiles" EntitySet="Perfiles" />
+      <End Role="Cuentas" EntitySet="Cuentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuentas_Id_Sistema" Association="Self.FK_Cuentas_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Cuentas" EntitySet="Cuentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuentas_x_Personas_Id_Cuenta" Association="Self.FK_Cuentas_x_Personas_Id_Cuenta">
+      <End Role="Cuentas" EntitySet="Cuentas" />
+      <End Role="Cuentas_x_Personas" EntitySet="Cuentas_x_Personas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuentas_x_Personas_Id_Persona" Association="Self.FK_Cuentas_x_Personas_Id_Persona">
+      <End Role="Personas" EntitySet="Personas" />
+      <End Role="Cuentas_x_Personas" EntitySet="Cuentas_x_Personas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Directorio_tipo_Id_Sistema" Association="Self.FK_Directorio_tipo_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Directorio_tipo" EntitySet="Directorio_tipo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Directorios_Id_DirectorioTipo" Association="Self.FK_Directorios_Id_DirectorioTipo">
+      <End Role="Directorio_tipo" EntitySet="Directorio_tipo" />
+      <End Role="Directorios" EntitySet="Directorios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Directorios_x_Perfiles_Id_Directorio" Association="Self.FK_Directorios_x_Perfiles_Id_Directorio">
+      <End Role="Directorios" EntitySet="Directorios" />
+      <End Role="Directorios_x_Perfiles" EntitySet="Directorios_x_Perfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Directorios_x_Perfiles_Id_Perfil" Association="Self.FK_Directorios_x_Perfiles_Id_Perfil">
+      <End Role="Perfiles" EntitySet="Perfiles" />
+      <End Role="Directorios_x_Perfiles" EntitySet="Directorios_x_Perfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Directorios_x_Sistemas_Id_Directorio" Association="Self.FK_Directorios_x_Sistemas_Id_Directorio">
+      <End Role="Directorios" EntitySet="Directorios" />
+      <End Role="Directorios_x_Sistemas" EntitySet="Directorios_x_Sistemas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Directorios_x_Sistemas_Id_Sistema" Association="Self.FK_Directorios_x_Sistemas_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Directorios_x_Sistemas" EntitySet="Directorios_x_Sistemas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Domicilio_x_Personas_Id_Domicilio" Association="Self.FK_Domicilio_x_Personas_Id_Domicilio">
+      <End Role="Domicilios" EntitySet="Domicilios" />
+      <End Role="Domicilio_x_Personas" EntitySet="Domicilio_x_Personas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Domicilio_x_Personas_Id_Persona" Association="Self.FK_Domicilio_x_Personas_Id_Persona">
+      <End Role="Personas" EntitySet="Personas" />
+      <End Role="Domicilio_x_Personas" EntitySet="Domicilio_x_Personas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Domicilios_Id_ContactoTipo" Association="Self.FK_Domicilios_Id_ContactoTipo">
+      <End Role="Contacto_tipo" EntitySet="Contacto_tipo" />
+      <End Role="Domicilios" EntitySet="Domicilios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Domicilios_Id_Pais_Id_Entidad_Id_Municipio" Association="Self.FK_Domicilios_Id_Pais_Id_Entidad_Id_Municipio">
+      <End Role="Municipios" EntitySet="Municipios" />
+      <End Role="Domicilios" EntitySet="Domicilios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entidades_Id_Pais" Association="Self.FK_Entidades_Id_Pais">
+      <End Role="Paises" EntitySet="Paises" />
+      <End Role="Entidades" EntitySet="Entidades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipos_Id_Cuenta" Association="Self.FK_Equipos_Id_Cuenta">
+      <End Role="Cuentas" EntitySet="Cuentas" />
+      <End Role="Equipos" EntitySet="Equipos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipos_Id_EquipoTipo" Association="Self.FK_Equipos_Id_EquipoTipo">
+      <End Role="Equipos_tipo" EntitySet="Equipos_tipo" />
+      <End Role="Equipos" EntitySet="Equipos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipos_Id_Sistema" Association="Self.FK_Equipos_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Equipos" EntitySet="Equipos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LogIn_Id_Persona" Association="Self.FK_LogIn_Id_Persona">
+      <End Role="Personas" EntitySet="Personas" />
+      <End Role="LogIn" EntitySet="LogIn" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Menu_Id_MenuCategoria" Association="Self.FK_Menu_Id_MenuCategoria">
+      <End Role="Menu_categoria" EntitySet="Menu_categoria" />
+      <End Role="Menu" EntitySet="Menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Menu_Id_Pagina" Association="Self.FK_Menu_Id_Pagina">
+      <End Role="Paginas" EntitySet="Paginas" />
+      <End Role="Menu" EntitySet="Menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Menu_Id_Sistema" Association="Self.FK_Menu_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Menu" EntitySet="Menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MotivoBaja_x_Cuenta_Id_Cuenta" Association="Self.FK_MotivoBaja_x_Cuenta_Id_Cuenta">
+      <End Role="Cuentas" EntitySet="Cuentas" />
+      <End Role="MotivoBaja_x_Cuenta" EntitySet="MotivoBaja_x_Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MotivoBaja_x_Cuenta_Id_MotivoBaja" Association="Self.FK_MotivoBaja_x_Cuenta_Id_MotivoBaja">
+      <End Role="Baja_motivos" EntitySet="Baja_motivos" />
+      <End Role="MotivoBaja_x_Cuenta" EntitySet="MotivoBaja_x_Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Municipios_Id_Pais_Id_Entidad" Association="Self.FK_Municipios_Id_Pais_Id_Entidad">
+      <End Role="Entidades" EntitySet="Entidades" />
+      <End Role="Municipios" EntitySet="Municipios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Paginas_Id_Sistema" Association="Self.FK_Paginas_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Paginas" EntitySet="Paginas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Paginas_x_Actividades_Id_Actividad" Association="Self.FK_Paginas_x_Actividades_Id_Actividad">
+      <End Role="Actividades" EntitySet="Actividades" />
+      <End Role="Paginas_x_Actividades" EntitySet="Paginas_x_Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Paginas_x_Actividades_Id_Pagina" Association="Self.FK_Paginas_x_Actividades_Id_Pagina">
+      <End Role="Paginas" EntitySet="Paginas" />
+      <End Role="Paginas_x_Actividades" EntitySet="Paginas_x_Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_configuracion_Id_Parametro" Association="Self.FK_Parametros_configuracion_Id_Parametro">
+      <End Role="Parametros" EntitySet="Parametros" />
+      <End Role="Parametros_configuracion" EntitySet="Parametros_configuracion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_configuracion_Id_ParametroTipoDato" Association="Self.FK_Parametros_configuracion_Id_ParametroTipoDato">
+      <End Role="Parametros_tipoDato" EntitySet="Parametros_tipoDato" />
+      <End Role="Parametros_configuracion" EntitySet="Parametros_configuracion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_configuracion_Id_Sistema" Association="Self.FK_Parametros_configuracion_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Parametros_configuracion" EntitySet="Parametros_configuracion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_grupo_Id_Sistema" Association="Self.FK_Parametros_grupo_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Parametros_grupo" EntitySet="Parametros_grupo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_Id_GpoParametro" Association="Self.FK_Parametros_Id_GpoParametro">
+      <End Role="Parametros_grupo" EntitySet="Parametros_grupo" />
+      <End Role="Parametros" EntitySet="Parametros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_Id_ParametroTipoDato" Association="Self.FK_Parametros_Id_ParametroTipoDato">
+      <End Role="Parametros_tipoDato" EntitySet="Parametros_tipoDato" />
+      <End Role="Parametros" EntitySet="Parametros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_Id_Sistema" Association="Self.FK_Parametros_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Parametros" EntitySet="Parametros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_mensaje_Id_Parametro" Association="Self.FK_Parametros_mensaje_Id_Parametro">
+      <End Role="Parametros" EntitySet="Parametros" />
+      <End Role="Parametros_mensaje" EntitySet="Parametros_mensaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_x_Beneficio_Id_Beneficio" Association="Self.FK_Parametros_x_Beneficio_Id_Beneficio">
+      <End Role="Beneficio" EntitySet="Beneficio" />
+      <End Role="Parametros_x_Beneficio" EntitySet="Parametros_x_Beneficio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_x_Beneficio_Id_Parametro" Association="Self.FK_Parametros_x_Beneficio_Id_Parametro">
+      <End Role="Parametros" EntitySet="Parametros" />
+      <End Role="Parametros_x_Beneficio" EntitySet="Parametros_x_Beneficio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParametrosGpo_x_Beneficio_Id_Beneficio" Association="Self.FK_ParametrosGpo_x_Beneficio_Id_Beneficio">
+      <End Role="Beneficio" EntitySet="Beneficio" />
+      <End Role="ParametrosGpo_x_Beneficio" EntitySet="ParametrosGpo_x_Beneficio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParametrosGpo_x_Beneficio_Id_GpoParametro" Association="Self.FK_ParametrosGpo_x_Beneficio_Id_GpoParametro">
+      <End Role="Parametros_grupo" EntitySet="Parametros_grupo" />
+      <End Role="ParametrosGpo_x_Beneficio" EntitySet="ParametrosGpo_x_Beneficio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParametrosGpo_x_Perfiles_Id_GpoParametro" Association="Self.FK_ParametrosGpo_x_Perfiles_Id_GpoParametro">
+      <End Role="Parametros_grupo" EntitySet="Parametros_grupo" />
+      <End Role="ParametrosGpo_x_Perfiles" EntitySet="ParametrosGpo_x_Perfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParametrosGpo_x_Perfiles_Id_Perfil" Association="Self.FK_ParametrosGpo_x_Perfiles_Id_Perfil">
+      <End Role="Perfiles" EntitySet="Perfiles" />
+      <End Role="ParametrosGpo_x_Perfiles" EntitySet="ParametrosGpo_x_Perfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Perfiles_Id_Sistema" Association="Self.FK_Perfiles_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Perfiles" EntitySet="Perfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_AreaDeTrabajo" Association="Self.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_AreaDeTrabajo">
+      <End Role="AreasDeTrabajo" EntitySet="AreasDeTrabajo" />
+      <End Role="Permisos_AreaDeTrabajo_x_Cuenta" EntitySet="Permisos_AreaDeTrabajo_x_Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Cuenta" Association="Self.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Cuenta">
+      <End Role="Cuentas" EntitySet="Cuentas" />
+      <End Role="Permisos_AreaDeTrabajo_x_Cuenta" EntitySet="Permisos_AreaDeTrabajo_x_Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Permiso" Association="Self.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Permiso">
+      <End Role="Permisos" EntitySet="Permisos" />
+      <End Role="Permisos_AreaDeTrabajo_x_Cuenta" EntitySet="Permisos_AreaDeTrabajo_x_Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_Cuentas_x_Actividades_Id_Actividad" Association="Self.FK_Permisos_Cuentas_x_Actividades_Id_Actividad">
+      <End Role="Actividades" EntitySet="Actividades" />
+      <End Role="Permisos_Cuentas_x_Actividades" EntitySet="Permisos_Cuentas_x_Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_Cuentas_x_Actividades_Id_Cuenta" Association="Self.FK_Permisos_Cuentas_x_Actividades_Id_Cuenta">
+      <End Role="Cuentas" EntitySet="Cuentas" />
+      <End Role="Permisos_Cuentas_x_Actividades" EntitySet="Permisos_Cuentas_x_Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_Cuentas_x_Actividades_Id_Permiso" Association="Self.FK_Permisos_Cuentas_x_Actividades_Id_Permiso">
+      <End Role="Permisos" EntitySet="Permisos" />
+      <End Role="Permisos_Cuentas_x_Actividades" EntitySet="Permisos_Cuentas_x_Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_Perfiles_x_Actividades_Id_Actividad" Association="Self.FK_Permisos_Perfiles_x_Actividades_Id_Actividad">
+      <End Role="Actividades" EntitySet="Actividades" />
+      <End Role="Permisos_Perfiles_x_Actividades" EntitySet="Permisos_Perfiles_x_Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_Perfiles_x_Actividades_Id_Perfil" Association="Self.FK_Permisos_Perfiles_x_Actividades_Id_Perfil">
+      <End Role="Perfiles" EntitySet="Perfiles" />
+      <End Role="Permisos_Perfiles_x_Actividades" EntitySet="Permisos_Perfiles_x_Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_Perfiles_x_Actividades_Id_Permiso" Association="Self.FK_Permisos_Perfiles_x_Actividades_Id_Permiso">
+      <End Role="Permisos" EntitySet="Permisos" />
+      <End Role="Permisos_Perfiles_x_Actividades" EntitySet="Permisos_Perfiles_x_Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personas_Id_Genero" Association="Self.FK_Personas_Id_Genero">
+      <End Role="Genero" EntitySet="Genero" />
+      <End Role="Personas" EntitySet="Personas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Preguntas_x_Login_Id_Cuenta" Association="Self.FK_Preguntas_x_Login_Id_Cuenta">
+      <End Role="Preguntas" EntitySet="Preguntas" />
+      <End Role="Preguntas_x_Login" EntitySet="Preguntas_x_Login" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Preguntas_x_Login_Id_Login" Association="Self.FK_Preguntas_x_Login_Id_Login">
+      <End Role="LogIn" EntitySet="LogIn" />
+      <End Role="Preguntas_x_Login" EntitySet="Preguntas_x_Login" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sesiones_Id_Cuenta" Association="Self.FK_Sesiones_Id_Cuenta">
+      <End Role="Cuentas" EntitySet="Cuentas" />
+      <End Role="Sesiones" EntitySet="Sesiones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sesiones_Id_Sistema" Association="Self.FK_Sesiones_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Sesiones" EntitySet="Sesiones" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="69a552b8342845f1bf265b15dd6829dc" Name="Diagram1">
+        <EntityTypeShape EntityType="TestModel.Actividades" Width="1.5" PointX="7.5" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.AreasDeTrabajo" Width="1.5" PointX="9.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Baja" Width="1.5" PointX="21" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Baja_motivos" Width="1.5" PointX="25.5" PointY="32.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Beneficio" Width="1.5" PointX="15" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Beneficio_tipo" Width="1.5" PointX="12.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Beneficio_x_Perfiles" Width="1.5" PointX="20.25" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Benficio_x_Cuenta" Width="1.5" PointX="28.5" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Contacto" Width="1.5" PointX="26.25" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Contacto_medio" Width="1.5" PointX="24" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Contacto_tipo" Width="1.5" PointX="24" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Cuentas" Width="1.5" PointX="23.25" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Directorio_tipo" Width="1.5" PointX="3" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Directorios" Width="1.5" PointX="5.25" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Domicilios" Width="1.5" PointX="26.25" PointY="37.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Entidades" Width="1.5" PointX="21.75" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Equipos" Width="1.5" PointX="28.5" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Equipos_tipo" Width="1.5" PointX="26.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Events" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Genero" Width="1.5" PointX="26.25" PointY="42.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Locations" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.LogIn" Width="1.5" PointX="30.75" PointY="32.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Menu" Width="1.5" PointX="18" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Menu_categoria" Width="1.5" PointX="15.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Municipios" Width="1.5" PointX="24" PointY="38.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Paginas" Width="1.5" PointX="12.75" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Paises" Width="1.5" PointX="19.5" PointY="38.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Parametros" Width="1.5" PointX="20.25" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Parametros_configuracion" Width="1.5" PointX="25.5" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Parametros_grupo" Width="1.5" PointX="17.25" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Parametros_mensaje" Width="1.5" PointX="22.5" PointY="34.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Parametros_tipoDato" Width="1.5" PointX="18" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Perfiles" Width="1.5" PointX="15" PointY="30.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Permisos" Width="1.5" PointX="9.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Permisos_AreaDeTrabajo_x_Cuenta" Width="1.5" PointX="12" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Permisos_Cuentas_x_Actividades" Width="1.5" PointX="9.75" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Permisos_Perfiles_x_Actividades" Width="1.5" PointX="12.75" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Personas" Width="1.5" PointX="28.5" PointY="32" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Preguntas" Width="1.5" PointX="30.75" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Preguntas_x_Login" Width="1.5" PointX="33" PointY="33.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Sesiones" Width="1.5" PointX="31.5" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TestModel.Sistemas" Width="1.5" PointX="0.75" PointY="26" IsExpanded="true" />
+        <AssociationConnector Association="TestModel.FK_Actividades_Id_Directorio" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Actividades_Id_Sistema" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Permisos_Cuentas_x_Actividades_Id_Actividad" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Permisos_Perfiles_x_Actividades_Id_Actividad" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_AreasDeTrabajo_Id_Sistema" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_AreaDeTrabajo" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Baja_motivos_Id_Baja" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Cuentas_Id_Baja" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Beneficio_Id_BeneficioTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Beneficio_x_Perfiles_Id_Beneficio" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Benficio_x_Cuenta_Id_Beneficio" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Beneficio_x_Perfiles_Id_Perfil" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Benficio_x_Cuenta_Id_Cuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Contacto_Id_ContactoMedio" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Contacto_Id_ContactoTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Domicilios_Id_ContactoTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Cuentas_Id_Login" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Cuentas_Id_Perfil" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Cuentas_Id_Sistema" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Equipos_Id_Cuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Cuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Permisos_Cuentas_x_Actividades_Id_Cuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Sesiones_Id_Cuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Directorio_tipo_Id_Sistema" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Directorios_Id_DirectorioTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Domicilios_Id_Pais_Id_Entidad_Id_Municipio" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Entidades_Id_Pais" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Municipios_Id_Pais_Id_Entidad" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Equipos_Id_EquipoTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Equipos_Id_Sistema" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Personas_Id_Genero" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_LogIn_Id_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Preguntas_x_Login_Id_Login" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Menu_Id_MenuCategoria" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Menu_Id_Pagina" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Menu_Id_Sistema" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Paginas_Id_Sistema" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Parametros_configuracion_Id_Parametro" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Parametros_Id_GpoParametro" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Parametros_Id_ParametroTipoDato" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Parametros_Id_Sistema" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Parametros_mensaje_Id_Parametro" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Parametros_configuracion_Id_ParametroTipoDato" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Parametros_configuracion_Id_Sistema" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Parametros_grupo_Id_Sistema" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Perfiles_Id_Sistema" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Permisos_Perfiles_x_Actividades_Id_Perfil" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Permiso" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Permisos_Cuentas_x_Actividades_Id_Permiso" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Permisos_Perfiles_x_Actividades_Id_Permiso" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Preguntas_x_Login_Id_Cuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.FK_Sesiones_Id_Sistema" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.Actividades_x_AreasDeTrabajo" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.AreasDeTrabajo_x_Perfiles" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.Beneficio_x_AreaDeTrabajo" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.Contacto_x_Domicilio" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.Contacto_x_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.Cuentas_x_Personas" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.Directorios_x_Perfiles" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.Directorios_x_Sistemas" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.Domicilio_x_Personas" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.MotivoBaja_x_Cuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.Paginas_x_Actividades" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.Parametros_x_Beneficio" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.ParametrosGpo_x_Beneficio" ManuallyRouted="false" />
+        <AssociationConnector Association="TestModel.ParametrosGpo_x_Perfiles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

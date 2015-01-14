@@ -1,0 +1,138 @@
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.Tests.dll.config
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.Tests.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.Tests.pdb
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.SqlServer.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Newtonsoft.Json.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Omu.ValueInjecter.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Helpers.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Mvc.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Razor.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Optimization.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Ninject.Web.Common.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Ninject.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\WebActivatorEx.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Data.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Core.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.WebHost.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Net.Http.Formatting.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.pdb
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.xml
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.SqlServer.xml
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Newtonsoft.Json.xml
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Omu.ValueInjecter.xml
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Helpers.xml
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Mvc.xml
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Razor.xml
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.xml
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Optimization.xml
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Ninject.Web.Common.xml
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Ninject.xml
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.xml
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Data.pdb
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Core.pdb
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.WebHost.xml
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Net.Http.Formatting.xml
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.csprojResolveAssemblyReference.cache
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.dll
+d:\humberto flores\documentos\visual studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.pdb
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.csprojResolveAssemblyReference.cache
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.Tests.dll.config
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.Tests.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.Tests.pdb
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.SqlServer.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Newtonsoft.Json.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Omu.ValueInjecter.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Helpers.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Mvc.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Razor.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Optimization.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Ninject.Web.Common.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Ninject.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\WebActivatorEx.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Data.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Core.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.WebHost.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Net.Http.Formatting.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.pdb
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.xml
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.SqlServer.xml
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Newtonsoft.Json.xml
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Omu.ValueInjecter.xml
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Helpers.xml
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Mvc.xml
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Razor.xml
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.xml
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Optimization.xml
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Ninject.Web.Common.xml
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Ninject.xml
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.xml
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Data.pdb
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Core.pdb
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.WebHost.xml
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Net.Http.Formatting.xml
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.pdb
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.Tests.dll.config
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.Tests.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.Tests.pdb
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.SqlServer.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Newtonsoft.Json.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Omu.ValueInjecter.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Helpers.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Mvc.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Razor.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Optimization.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Ninject.Web.Common.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Ninject.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Core.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\WebActivatorEx.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Data.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.WebHost.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Net.Http.Formatting.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.pdb
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.SqlServer.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Newtonsoft.Json.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Omu.ValueInjecter.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Helpers.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Mvc.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Razor.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Optimization.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Ninject.Web.Common.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Ninject.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Core.pdb
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Data.pdb
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.WebHost.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Net.Http.Formatting.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.csprojResolveAssemblyReference.cache
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.pdb

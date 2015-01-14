@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{27ED079A-D309-45CC-8658-BE0E3FF5E306}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Security.Core</RootNamespace>
+    <AssemblyName>Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Omu.ValueInjecter">
+      <HintPath>..\packages\valueinjecter.2.3.3\lib\net35\Omu.ValueInjecter.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\Actividades.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AreasDeTrabajo.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Baja.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Baja_motivos.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Beneficio.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Beneficio_tipo.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Beneficio_x_Perfiles.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Benficio_x_Cuenta.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Contacto.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Contacto_medio.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Contacto_tipo.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Cuentas.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Directorios.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Directorio_tipo.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Domicilios.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Entidades.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Equipos.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Equipos_tipo.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Events.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Genero.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Locations.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LogIn.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Menu.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Menu_categoria.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Metadata.cs" />
+    <Compile Include="Model\MetadataLinker.cs" />
+    <Compile Include="Model\Municipios.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Paginas.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Paises.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Parametros.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Parametros_configuracion.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Parametros_grupo.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Parametros_mensaje.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Parametros_tipoDato.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Perfiles.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Permisos.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Permisos_AreaDeTrabajo_x_Cuenta.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Permisos_Cuentas_x_Actividades.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Permisos_Perfiles_x_Actividades.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Personas.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Preguntas.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Preguntas_x_Login.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SecurityModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SecurityModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SecurityModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SecurityModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SecurityModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Sesiones.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Sistemas.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IRepo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Model\SecurityModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SecurityModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="Model\SecurityModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SecurityModel.edmx</DependentUpon>
+      <LastGenOutput>SecurityModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Model\SecurityModel.edmx.diagram">
+      <DependentUpon>SecurityModel.edmx</DependentUpon>
+    </None>
+    <None Include="Model\SecurityModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SecurityModel.edmx</DependentUpon>
+      <LastGenOutput>SecurityModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

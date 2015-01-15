@@ -40,3 +40,17 @@ D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Debu
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\obj\Debug\Data.dll
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\obj\Debug\Data.pdb
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\Data.dll.config
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\Data.dll
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\Data.pdb
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\Core.dll
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\EntityFramework.dll
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\Omu.ValueInjecter.dll
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\Core.pdb
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\EntityFramework.xml
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\Omu.ValueInjecter.xml
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Data\obj\Debug\Data.dll
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Data\obj\Debug\Data.pdb

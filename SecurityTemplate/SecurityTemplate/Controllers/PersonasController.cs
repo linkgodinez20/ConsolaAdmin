@@ -42,11 +42,9 @@ namespace Security.Controllers
         }
 
 
-        // GET: Personas/Create
-        
+        // GET: Personas/Create        
         public ActionResult Create()
-        {
-            
+        {            
             ViewBag.Id_Genero = new SelectList(genero.GetAll(), "Id_Genero", "Nombre");
             return View();
         }
@@ -83,8 +81,6 @@ namespace Security.Controllers
         }
 
         // POST: Personas/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id_Persona,APaterno,AMaterno,Nombre,FechaCreacion,Email,Id_Genero,FechaNacimiento,RFC,Homoclave,CURP,Foto,Estatus")] Personas personas)

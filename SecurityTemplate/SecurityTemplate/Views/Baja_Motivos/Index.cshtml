@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Security.Core.Model.Baja_motivos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Baja.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Baja.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id_MotivoBaja }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id_MotivoBaja }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id_MotivoBaja })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,14 +1,14 @@
 ﻿@model IEnumerable<Security.Core.Model.Permisos>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Listado";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Listado</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo", "Create")
 </p>
 <table class="table">
     <tr>
@@ -30,9 +30,9 @@
             @Html.DisplayFor(modelItem => item.Estatus)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Permiso }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_Permiso }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Permiso })
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id_Permiso }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.Id_Permiso }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id_Permiso })
         </td>
     </tr>
 }

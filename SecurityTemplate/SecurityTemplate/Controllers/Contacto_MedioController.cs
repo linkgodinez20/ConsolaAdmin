@@ -27,7 +27,7 @@ namespace Security.Controllers
         }
 
         // GET: /Contacto_Medio/Details/5
-        public ActionResult Details(int id)//Byte
+        public ActionResult Details(byte id)
         {
             if (id == null)
             {
@@ -63,7 +63,7 @@ namespace Security.Controllers
         }
 
         // GET: /Contacto_Medio/Edit/5
-        public ActionResult Edit(int id)//Byte
+        public ActionResult Edit(byte id)
         {
             if (id == null)
             {
@@ -92,7 +92,7 @@ namespace Security.Controllers
         }
 
         // GET: /Contacto_Medio/Delete/5
-        public ActionResult Delete(int id)//Byte
+        public ActionResult Delete(byte id)
         {
             if (id == null)
             {
@@ -109,7 +109,7 @@ namespace Security.Controllers
         // POST: /Contacto_Medio/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)//Byte
+        public ActionResult DeleteConfirmed(byte id)
         {
             Contacto_medio contacto_medio = repo.Get(id);
             repo.Delete(contacto_medio);

@@ -4,577 +4,577 @@
     <EntitySetMapping Name="Actividades">
       <EntityTypeMapping TypeName="TestModel.Actividades">
         <MappingFragment StoreEntitySet="Actividades">
-          <ScalarProperty Name="Id_Actividad" ColumnName="Id_Actividad" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
-          <ScalarProperty Name="Id_Directorio" ColumnName="Id_Directorio" />
           <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+          <ScalarProperty Name="Id_Directorio" ColumnName="Id_Directorio" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Actividad" ColumnName="Id_Actividad" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AreasDeTrabajo">
       <EntityTypeMapping TypeName="TestModel.AreasDeTrabajo">
         <MappingFragment StoreEntitySet="AreasDeTrabajo">
-          <ScalarProperty Name="Id_AreaDeTrabajo" ColumnName="Id_AreaDeTrabajo" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_AreaDeTrabajo" ColumnName="Id_AreaDeTrabajo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Baja">
       <EntityTypeMapping TypeName="TestModel.Baja">
         <MappingFragment StoreEntitySet="Baja">
-          <ScalarProperty Name="Id_Baja" ColumnName="Id_Baja" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Baja" ColumnName="Id_Baja" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Baja_motivos">
       <EntityTypeMapping TypeName="TestModel.Baja_motivos">
         <MappingFragment StoreEntitySet="Baja_motivos">
-          <ScalarProperty Name="Id_MotivoBaja" ColumnName="Id_MotivoBaja" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="Id_Baja" ColumnName="Id_Baja" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Id_MotivoBaja" ColumnName="Id_MotivoBaja" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Beneficio">
       <EntityTypeMapping TypeName="TestModel.Beneficio">
         <MappingFragment StoreEntitySet="Beneficio">
-          <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Id_BeneficioTipo" ColumnName="Id_BeneficioTipo" />
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Id_BeneficioTipo" ColumnName="Id_BeneficioTipo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Beneficio_tipo">
       <EntityTypeMapping TypeName="TestModel.Beneficio_tipo">
         <MappingFragment StoreEntitySet="Beneficio_tipo">
-          <ScalarProperty Name="Id_BeneficioTipo" ColumnName="Id_BeneficioTipo" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_BeneficioTipo" ColumnName="Id_BeneficioTipo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Beneficio_x_Perfiles">
       <EntityTypeMapping TypeName="TestModel.Beneficio_x_Perfiles">
         <MappingFragment StoreEntitySet="Beneficio_x_Perfiles">
-          <ScalarProperty Name="Id_PerfilBeneficio" ColumnName="Id_PerfilBeneficio" />
-          <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
-          <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
+          <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
+          <ScalarProperty Name="Id_PerfilBeneficio" ColumnName="Id_PerfilBeneficio" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Benficio_x_Cuenta">
       <EntityTypeMapping TypeName="TestModel.Benficio_x_Cuenta">
         <MappingFragment StoreEntitySet="Benficio_x_Cuenta">
-          <ScalarProperty Name="Id_BeneficioCuenta" ColumnName="Id_BeneficioCuenta" />
-          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
-          <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
+          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+          <ScalarProperty Name="Id_BeneficioCuenta" ColumnName="Id_BeneficioCuenta" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Contacto">
       <EntityTypeMapping TypeName="TestModel.Contacto">
         <MappingFragment StoreEntitySet="Contacto">
-          <ScalarProperty Name="Id_Contacto" ColumnName="Id_Contacto" />
-          <ScalarProperty Name="Id_ContactoTipo" ColumnName="Id_ContactoTipo" />
-          <ScalarProperty Name="Contacto1" ColumnName="Contacto" />
-          <ScalarProperty Name="Id_ContactoMedio" ColumnName="Id_ContactoMedio" />
-          <ScalarProperty Name="Notas" ColumnName="Notas" />
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Notas" ColumnName="Notas" />
+          <ScalarProperty Name="Id_ContactoMedio" ColumnName="Id_ContactoMedio" />
+          <ScalarProperty Name="Contacto1" ColumnName="Contacto" />
+          <ScalarProperty Name="Id_ContactoTipo" ColumnName="Id_ContactoTipo" />
+          <ScalarProperty Name="Id_Contacto" ColumnName="Id_Contacto" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Contacto_medio">
       <EntityTypeMapping TypeName="TestModel.Contacto_medio">
         <MappingFragment StoreEntitySet="Contacto_medio">
-          <ScalarProperty Name="Id_ContactoMedio" ColumnName="Id_ContactoMedio" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_ContactoMedio" ColumnName="Id_ContactoMedio" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Contacto_tipo">
       <EntityTypeMapping TypeName="TestModel.Contacto_tipo">
         <MappingFragment StoreEntitySet="Contacto_tipo">
-          <ScalarProperty Name="Id_ContactoTipo" ColumnName="Id_ContactoTipo" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_ContactoTipo" ColumnName="Id_ContactoTipo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Cuentas">
       <EntityTypeMapping TypeName="TestModel.Cuentas">
         <MappingFragment StoreEntitySet="Cuentas">
-          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
-          <ScalarProperty Name="Id_Login" ColumnName="Id_Login" />
-          <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
-          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
-          <ScalarProperty Name="IntentosCnn" ColumnName="IntentosCnn" />
-          <ScalarProperty Name="InicioBloqueo" ColumnName="InicioBloqueo" />
-          <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
-          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
-          <ScalarProperty Name="Id_Baja" ColumnName="Id_Baja" />
           <ScalarProperty Name="RegistroCompleto" ColumnName="RegistroCompleto" />
+          <ScalarProperty Name="Id_Baja" ColumnName="Id_Baja" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+          <ScalarProperty Name="InicioBloqueo" ColumnName="InicioBloqueo" />
+          <ScalarProperty Name="IntentosCnn" ColumnName="IntentosCnn" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
+          <ScalarProperty Name="Id_Login" ColumnName="Id_Login" />
+          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Directorio_tipo">
       <EntityTypeMapping TypeName="TestModel.Directorio_tipo">
         <MappingFragment StoreEntitySet="Directorio_tipo">
-          <ScalarProperty Name="Id_DirectorioTipo" ColumnName="Id_DirectorioTipo" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_DirectorioTipo" ColumnName="Id_DirectorioTipo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Directorios">
       <EntityTypeMapping TypeName="TestModel.Directorios">
         <MappingFragment StoreEntitySet="Directorios">
-          <ScalarProperty Name="Id_Directorio" ColumnName="Id_Directorio" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Id_DirectorioTipo" ColumnName="Id_DirectorioTipo" />
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Id_DirectorioTipo" ColumnName="Id_DirectorioTipo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Directorio" ColumnName="Id_Directorio" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Domicilios">
       <EntityTypeMapping TypeName="TestModel.Domicilios">
         <MappingFragment StoreEntitySet="Domicilios">
-          <ScalarProperty Name="Id_Domicilio" ColumnName="Id_Domicilio" />
-          <ScalarProperty Name="Id_ContactoTipo" ColumnName="Id_ContactoTipo" />
-          <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
-          <ScalarProperty Name="NumeroExterior" ColumnName="NumeroExterior" />
-          <ScalarProperty Name="NumeroInterior" ColumnName="NumeroInterior" />
-          <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
-          <ScalarProperty Name="Id_Entidad" ColumnName="Id_Entidad" />
-          <ScalarProperty Name="Id_Municipio" ColumnName="Id_Municipio" />
-          <ScalarProperty Name="Colonia" ColumnName="Colonia" />
-          <ScalarProperty Name="EntreCalle" ColumnName="EntreCalle" />
-          <ScalarProperty Name="YCalle" ColumnName="YCalle" />
-          <ScalarProperty Name="Notas" ColumnName="Notas" />
-          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="Notas" ColumnName="Notas" />
+          <ScalarProperty Name="YCalle" ColumnName="YCalle" />
+          <ScalarProperty Name="EntreCalle" ColumnName="EntreCalle" />
+          <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+          <ScalarProperty Name="Id_Municipio" ColumnName="Id_Municipio" />
+          <ScalarProperty Name="Id_Entidad" ColumnName="Id_Entidad" />
+          <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+          <ScalarProperty Name="NumeroInterior" ColumnName="NumeroInterior" />
+          <ScalarProperty Name="NumeroExterior" ColumnName="NumeroExterior" />
+          <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+          <ScalarProperty Name="Id_ContactoTipo" ColumnName="Id_ContactoTipo" />
+          <ScalarProperty Name="Id_Domicilio" ColumnName="Id_Domicilio" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Entidades">
       <EntityTypeMapping TypeName="TestModel.Entidades">
         <MappingFragment StoreEntitySet="Entidades">
-          <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
-          <ScalarProperty Name="Id_Entidad" ColumnName="Id_Entidad" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Entidad" ColumnName="Id_Entidad" />
+          <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Equipos">
       <EntityTypeMapping TypeName="TestModel.Equipos">
         <MappingFragment StoreEntitySet="Equipos">
-          <ScalarProperty Name="Id_Equipo" ColumnName="Id_Equipo" />
-          <ScalarProperty Name="Hostname" ColumnName="Hostname" />
-          <ScalarProperty Name="IP" ColumnName="IP" />
-          <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
-          <ScalarProperty Name="Id_EquipoTipo" ColumnName="Id_EquipoTipo" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="Ubiacion" ColumnName="Ubiacion" />
-          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
-          <ScalarProperty Name="FechaCaducidad" ColumnName="FechaCaducidad" />
-          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
-          <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+          <ScalarProperty Name="FechaCaducidad" ColumnName="FechaCaducidad" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="Ubiacion" ColumnName="Ubiacion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Id_EquipoTipo" ColumnName="Id_EquipoTipo" />
+          <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="Hostname" ColumnName="Hostname" />
+          <ScalarProperty Name="Id_Equipo" ColumnName="Id_Equipo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Equipos_tipo">
       <EntityTypeMapping TypeName="TestModel.Equipos_tipo">
         <MappingFragment StoreEntitySet="Equipos_tipo">
-          <ScalarProperty Name="Id_EquipoTipo" ColumnName="Id_EquipoTipo" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_EquipoTipo" ColumnName="Id_EquipoTipo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Events">
       <EntityTypeMapping TypeName="TestModel.Events">
         <MappingFragment StoreEntitySet="Events">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="text" ColumnName="text" />
-          <ScalarProperty Name="start_date" ColumnName="start_date" />
           <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Genero">
       <EntityTypeMapping TypeName="TestModel.Genero">
         <MappingFragment StoreEntitySet="Genero">
-          <ScalarProperty Name="Id_Genero" ColumnName="Id_Genero" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Genero" ColumnName="Id_Genero" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Locations">
       <EntityTypeMapping TypeName="TestModel.Locations">
         <MappingFragment StoreEntitySet="Locations">
-          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
-          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
-          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
           <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="LogIn">
       <EntityTypeMapping TypeName="TestModel.LogIn">
         <MappingFragment StoreEntitySet="LogIn">
-          <ScalarProperty Name="Id_Login" ColumnName="Id_Login" />
-          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-          <ScalarProperty Name="Senha" ColumnName="Senha" />
-          <ScalarProperty Name="Salt" ColumnName="Salt" />
-          <ScalarProperty Name="UsoSalt" ColumnName="UsoSalt" />
           <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
+          <ScalarProperty Name="UsoSalt" ColumnName="UsoSalt" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Id_Login" ColumnName="Id_Login" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Menu">
       <EntityTypeMapping TypeName="TestModel.Menu">
         <MappingFragment StoreEntitySet="Menu">
-          <ScalarProperty Name="Id_Menu" ColumnName="Id_Menu" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Parent" ColumnName="Parent" />
-          <ScalarProperty Name="Tooltip" ColumnName="Tooltip" />
-          <ScalarProperty Name="Id_Pagina" ColumnName="Id_Pagina" />
-          <ScalarProperty Name="Orden" ColumnName="Orden" />
-          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
-          <ScalarProperty Name="Id_MenuCategoria" ColumnName="Id_MenuCategoria" />
           <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+          <ScalarProperty Name="Id_MenuCategoria" ColumnName="Id_MenuCategoria" />
+          <ScalarProperty Name="Habilitado" ColumnName="Habilitado" />
+          <ScalarProperty Name="Orden" ColumnName="Orden" />
+          <ScalarProperty Name="Id_Pagina" ColumnName="Id_Pagina" />
+          <ScalarProperty Name="Tooltip" ColumnName="Tooltip" />
+          <ScalarProperty Name="Parent" ColumnName="Parent" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Menu" ColumnName="Id_Menu" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Menu_categoria">
       <EntityTypeMapping TypeName="TestModel.Menu_categoria">
         <MappingFragment StoreEntitySet="Menu_categoria">
-          <ScalarProperty Name="Id_MenuCategoria" ColumnName="Id_MenuCategoria" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Orden" ColumnName="Orden" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_MenuCategoria" ColumnName="Id_MenuCategoria" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Municipios">
       <EntityTypeMapping TypeName="TestModel.Municipios">
         <MappingFragment StoreEntitySet="Municipios">
-          <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
-          <ScalarProperty Name="Id_Entidad" ColumnName="Id_Entidad" />
-          <ScalarProperty Name="Id_Municipio" ColumnName="Id_Municipio" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Municipio" ColumnName="Id_Municipio" />
+          <ScalarProperty Name="Id_Entidad" ColumnName="Id_Entidad" />
+          <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Paginas">
       <EntityTypeMapping TypeName="TestModel.Paginas">
         <MappingFragment StoreEntitySet="Paginas">
-          <ScalarProperty Name="Id_Pagina" ColumnName="Id_Pagina" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
           <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Pagina" ColumnName="Id_Pagina" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Paises">
       <EntityTypeMapping TypeName="TestModel.Paises">
         <MappingFragment StoreEntitySet="Paises">
-          <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
-          <ScalarProperty Name="FIPS" ColumnName="FIPS" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Prioridad" ColumnName="Prioridad" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="FIPS" ColumnName="FIPS" />
+          <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Parametros">
       <EntityTypeMapping TypeName="TestModel.Parametros">
         <MappingFragment StoreEntitySet="Parametros">
-          <ScalarProperty Name="Id_Parametro" ColumnName="Id_Parametro" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Id_ParametroTipoDato" ColumnName="Id_ParametroTipoDato" />
-          <ScalarProperty Name="Id_GpoParametro" ColumnName="Id_GpoParametro" />
           <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+          <ScalarProperty Name="Id_GpoParametro" ColumnName="Id_GpoParametro" />
+          <ScalarProperty Name="Id_ParametroTipoDato" ColumnName="Id_ParametroTipoDato" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Parametro" ColumnName="Id_Parametro" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Parametros_configuracion">
       <EntityTypeMapping TypeName="TestModel.Parametros_configuracion">
         <MappingFragment StoreEntitySet="Parametros_configuracion">
-          <ScalarProperty Name="Id_ParametroGral" ColumnName="Id_ParametroGral" />
-          <ScalarProperty Name="Id_Parametro" ColumnName="Id_Parametro" />
-          <ScalarProperty Name="Bit_v" ColumnName="Bit_v" />
-          <ScalarProperty Name="TinyInt_v" ColumnName="TinyInt_v" />
-          <ScalarProperty Name="SmallInt_v" ColumnName="SmallInt_v" />
-          <ScalarProperty Name="Int_v" ColumnName="Int_v" />
-          <ScalarProperty Name="Decimal_v" ColumnName="Decimal_v" />
-          <ScalarProperty Name="DateTime_v" ColumnName="DateTime_v" />
-          <ScalarProperty Name="SmallDateTime_v" ColumnName="SmallDateTime_v" />
-          <ScalarProperty Name="VarChar64_v" ColumnName="VarChar64_v" />
-          <ScalarProperty Name="VarChar128_v" ColumnName="VarChar128_v" />
-          <ScalarProperty Name="Geography_v" ColumnName="Geography_v" />
-          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
-          <ScalarProperty Name="Id_ParametroTipoDato" ColumnName="Id_ParametroTipoDato" />
-          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-          <ScalarProperty Name="Caduca" ColumnName="Caduca" />
-          <ScalarProperty Name="Vigencia" ColumnName="Vigencia" />
-          <ScalarProperty Name="FechaBaja" ColumnName="FechaBaja" />
-          <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
           <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+          <ScalarProperty Name="FechaBaja" ColumnName="FechaBaja" />
+          <ScalarProperty Name="Vigencia" ColumnName="Vigencia" />
+          <ScalarProperty Name="Caduca" ColumnName="Caduca" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="Id_ParametroTipoDato" ColumnName="Id_ParametroTipoDato" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Geography_v" ColumnName="Geography_v" />
+          <ScalarProperty Name="VarChar128_v" ColumnName="VarChar128_v" />
+          <ScalarProperty Name="VarChar64_v" ColumnName="VarChar64_v" />
+          <ScalarProperty Name="SmallDateTime_v" ColumnName="SmallDateTime_v" />
+          <ScalarProperty Name="DateTime_v" ColumnName="DateTime_v" />
+          <ScalarProperty Name="Decimal_v" ColumnName="Decimal_v" />
+          <ScalarProperty Name="Int_v" ColumnName="Int_v" />
+          <ScalarProperty Name="SmallInt_v" ColumnName="SmallInt_v" />
+          <ScalarProperty Name="TinyInt_v" ColumnName="TinyInt_v" />
+          <ScalarProperty Name="Bit_v" ColumnName="Bit_v" />
+          <ScalarProperty Name="Id_Parametro" ColumnName="Id_Parametro" />
+          <ScalarProperty Name="Id_ParametroGral" ColumnName="Id_ParametroGral" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Parametros_grupo">
       <EntityTypeMapping TypeName="TestModel.Parametros_grupo">
         <MappingFragment StoreEntitySet="Parametros_grupo">
-          <ScalarProperty Name="Id_GpoParametro" ColumnName="Id_GpoParametro" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_GpoParametro" ColumnName="Id_GpoParametro" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Parametros_mensaje">
       <EntityTypeMapping TypeName="TestModel.Parametros_mensaje">
         <MappingFragment StoreEntitySet="Parametros_mensaje">
-          <ScalarProperty Name="Id_ParametroMsg" ColumnName="Id_ParametroMsg" />
-          <ScalarProperty Name="Id_Parametro" ColumnName="Id_Parametro" />
           <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="Id_Parametro" ColumnName="Id_Parametro" />
+          <ScalarProperty Name="Id_ParametroMsg" ColumnName="Id_ParametroMsg" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Parametros_tipoDato">
       <EntityTypeMapping TypeName="TestModel.Parametros_tipoDato">
         <MappingFragment StoreEntitySet="Parametros_tipoDato">
-          <ScalarProperty Name="Id_ParametroTipoDato" ColumnName="Id_ParametroTipoDato" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_ParametroTipoDato" ColumnName="Id_ParametroTipoDato" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Perfiles">
       <EntityTypeMapping TypeName="TestModel.Perfiles">
         <MappingFragment StoreEntitySet="Perfiles">
-          <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Funcion" ColumnName="Funcion" />
-          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-          <ScalarProperty Name="Nivel" ColumnName="Nivel" />
           <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+          <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Funcion" ColumnName="Funcion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Permisos">
       <EntityTypeMapping TypeName="TestModel.Permisos">
         <MappingFragment StoreEntitySet="Permisos">
-          <ScalarProperty Name="Id_Permiso" ColumnName="Id_Permiso" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Permiso" ColumnName="Id_Permiso" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Permisos_AreaDeTrabajo_x_Cuenta">
       <EntityTypeMapping TypeName="TestModel.Permisos_AreaDeTrabajo_x_Cuenta">
         <MappingFragment StoreEntitySet="Permisos_AreaDeTrabajo_x_Cuenta">
-          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
-          <ScalarProperty Name="Id_AreaDeTrabajo" ColumnName="Id_AreaDeTrabajo" />
           <ScalarProperty Name="Id_Permiso" ColumnName="Id_Permiso" />
+          <ScalarProperty Name="Id_AreaDeTrabajo" ColumnName="Id_AreaDeTrabajo" />
+          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Permisos_Cuentas_x_Actividades">
       <EntityTypeMapping TypeName="TestModel.Permisos_Cuentas_x_Actividades">
         <MappingFragment StoreEntitySet="Permisos_Cuentas_x_Actividades">
-          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
-          <ScalarProperty Name="Id_Actividad" ColumnName="Id_Actividad" />
           <ScalarProperty Name="Id_Permiso" ColumnName="Id_Permiso" />
+          <ScalarProperty Name="Id_Actividad" ColumnName="Id_Actividad" />
+          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Permisos_Perfiles_x_Actividades">
       <EntityTypeMapping TypeName="TestModel.Permisos_Perfiles_x_Actividades">
         <MappingFragment StoreEntitySet="Permisos_Perfiles_x_Actividades">
-          <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
-          <ScalarProperty Name="Id_Actividad" ColumnName="Id_Actividad" />
           <ScalarProperty Name="Id_Permiso" ColumnName="Id_Permiso" />
+          <ScalarProperty Name="Id_Actividad" ColumnName="Id_Actividad" />
+          <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Personas">
       <EntityTypeMapping TypeName="TestModel.Personas">
         <MappingFragment StoreEntitySet="Personas">
-          <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
-          <ScalarProperty Name="APaterno" ColumnName="APaterno" />
-          <ScalarProperty Name="AMaterno" ColumnName="AMaterno" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Id_Genero" ColumnName="Id_Genero" />
-          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
-          <ScalarProperty Name="RFC" ColumnName="RFC" />
-          <ScalarProperty Name="Homoclave" ColumnName="Homoclave" />
-          <ScalarProperty Name="CURP" ColumnName="CURP" />
-          <ScalarProperty Name="Foto" ColumnName="Foto" />
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+          <ScalarProperty Name="CURP" ColumnName="CURP" />
+          <ScalarProperty Name="Homoclave" ColumnName="Homoclave" />
+          <ScalarProperty Name="RFC" ColumnName="RFC" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Id_Genero" ColumnName="Id_Genero" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="AMaterno" ColumnName="AMaterno" />
+          <ScalarProperty Name="APaterno" ColumnName="APaterno" />
+          <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Preguntas">
       <EntityTypeMapping TypeName="TestModel.Preguntas">
         <MappingFragment StoreEntitySet="Preguntas">
-          <ScalarProperty Name="Id_Pregunta" ColumnName="Id_Pregunta" />
           <ScalarProperty Name="Pregunta" ColumnName="Pregunta" />
+          <ScalarProperty Name="Id_Pregunta" ColumnName="Id_Pregunta" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Preguntas_x_Login">
       <EntityTypeMapping TypeName="TestModel.Preguntas_x_Login">
         <MappingFragment StoreEntitySet="Preguntas_x_Login">
-          <ScalarProperty Name="Id_Login" ColumnName="Id_Login" />
-          <ScalarProperty Name="Id_Pregunta" ColumnName="Id_Pregunta" />
           <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
+          <ScalarProperty Name="Id_Pregunta" ColumnName="Id_Pregunta" />
+          <ScalarProperty Name="Id_Login" ColumnName="Id_Login" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Sesiones">
       <EntityTypeMapping TypeName="TestModel.Sesiones">
         <MappingFragment StoreEntitySet="Sesiones">
-          <ScalarProperty Name="Id_Sesion" ColumnName="Id_Sesion" />
-          <ScalarProperty Name="Identificador" ColumnName="Identificador" />
-          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
-          <ScalarProperty Name="FechaHoraInicio" ColumnName="FechaHoraInicio" />
-          <ScalarProperty Name="OnLine" ColumnName="OnLine" />
-          <ScalarProperty Name="CierreSesion" ColumnName="CierreSesion" />
-          <ScalarProperty Name="UltimoMovimiento" ColumnName="UltimoMovimiento" />
-          <ScalarProperty Name="Ubiacion" ColumnName="Ubiacion" />
-          <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+          <ScalarProperty Name="Ubiacion" ColumnName="Ubiacion" />
+          <ScalarProperty Name="UltimoMovimiento" ColumnName="UltimoMovimiento" />
+          <ScalarProperty Name="CierreSesion" ColumnName="CierreSesion" />
+          <ScalarProperty Name="OnLine" ColumnName="OnLine" />
+          <ScalarProperty Name="FechaHoraInicio" ColumnName="FechaHoraInicio" />
+          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+          <ScalarProperty Name="Identificador" ColumnName="Identificador" />
+          <ScalarProperty Name="Id_Sesion" ColumnName="Id_Sesion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Sistemas">
       <EntityTypeMapping TypeName="TestModel.Sistemas">
         <MappingFragment StoreEntitySet="Sistemas">
-          <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Siglas" ColumnName="Siglas" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Siglas" ColumnName="Siglas" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <AssociationSetMapping Name="Actividades_x_AreasDeTrabajo" TypeName="TestModel.Actividades_x_AreasDeTrabajo" StoreEntitySet="Actividades_x_AreasDeTrabajo">
-      <EndProperty Name="Actividades">
-        <ScalarProperty Name="Id_Actividad" ColumnName="Id_Actividad" />
-      </EndProperty>
       <EndProperty Name="AreasDeTrabajo">
         <ScalarProperty Name="Id_AreaDeTrabajo" ColumnName="Id_AreaDeTrabajo" />
+      </EndProperty>
+      <EndProperty Name="Actividades">
+        <ScalarProperty Name="Id_Actividad" ColumnName="Id_Actividad" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="AreasDeTrabajo_x_Perfiles" TypeName="TestModel.AreasDeTrabajo_x_Perfiles" StoreEntitySet="AreasDeTrabajo_x_Perfiles">
-      <EndProperty Name="AreasDeTrabajo">
-        <ScalarProperty Name="Id_AreaDeTrabajo" ColumnName="Id_AreaDeTrabajo" />
-      </EndProperty>
       <EndProperty Name="Perfiles">
         <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
+      </EndProperty>
+      <EndProperty Name="AreasDeTrabajo">
+        <ScalarProperty Name="Id_AreaDeTrabajo" ColumnName="Id_AreaDeTrabajo" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="Beneficio_x_AreaDeTrabajo" TypeName="TestModel.Beneficio_x_AreaDeTrabajo" StoreEntitySet="Beneficio_x_AreaDeTrabajo">
+      <EndProperty Name="Beneficio">
+        <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
+      </EndProperty>
       <EndProperty Name="AreasDeTrabajo">
         <ScalarProperty Name="Id_AreaDeTrabajo" ColumnName="Id_AreaDeTrabajo" />
       </EndProperty>
-      <EndProperty Name="Beneficio">
-        <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
-      </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="Contacto_x_Domicilio" TypeName="TestModel.Contacto_x_Domicilio" StoreEntitySet="Contacto_x_Domicilio">
-      <EndProperty Name="Contacto">
-        <ScalarProperty Name="Id_Contacto" ColumnName="Id_Contacto" />
-      </EndProperty>
       <EndProperty Name="Domicilios">
         <ScalarProperty Name="Id_Domicilio" ColumnName="Id_Domicilio" />
+      </EndProperty>
+      <EndProperty Name="Contacto">
+        <ScalarProperty Name="Id_Contacto" ColumnName="Id_Contacto" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="Contacto_x_Persona" TypeName="TestModel.Contacto_x_Persona" StoreEntitySet="Contacto_x_Persona">
+      <EndProperty Name="Personas">
+        <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
+      </EndProperty>
       <EndProperty Name="Contacto">
         <ScalarProperty Name="Id_Contacto" ColumnName="Id_Contacto" />
       </EndProperty>
-      <EndProperty Name="Personas">
-        <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
-      </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="Cuentas_x_Personas" TypeName="TestModel.Cuentas_x_Personas" StoreEntitySet="Cuentas_x_Personas">
-      <EndProperty Name="Cuentas">
-        <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
-      </EndProperty>
       <EndProperty Name="Personas">
         <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
+      </EndProperty>
+      <EndProperty Name="Cuentas">
+        <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="Directorios_x_Perfiles" TypeName="TestModel.Directorios_x_Perfiles" StoreEntitySet="Directorios_x_Perfiles">
-      <EndProperty Name="Directorios">
-        <ScalarProperty Name="Id_Directorio" ColumnName="Id_Directorio" />
-      </EndProperty>
       <EndProperty Name="Perfiles">
         <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
+      </EndProperty>
+      <EndProperty Name="Directorios">
+        <ScalarProperty Name="Id_Directorio" ColumnName="Id_Directorio" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="Directorios_x_Sistemas" TypeName="TestModel.Directorios_x_Sistemas" StoreEntitySet="Directorios_x_Sistemas">
-      <EndProperty Name="Directorios">
-        <ScalarProperty Name="Id_Directorio" ColumnName="Id_Directorio" />
-      </EndProperty>
       <EndProperty Name="Sistemas">
         <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
       </EndProperty>
+      <EndProperty Name="Directorios">
+        <ScalarProperty Name="Id_Directorio" ColumnName="Id_Directorio" />
+      </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="Domicilio_x_Personas" TypeName="TestModel.Domicilio_x_Personas" StoreEntitySet="Domicilio_x_Personas">
-      <EndProperty Name="Domicilios">
-        <ScalarProperty Name="Id_Domicilio" ColumnName="Id_Domicilio" />
-      </EndProperty>
       <EndProperty Name="Personas">
         <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
       </EndProperty>
+      <EndProperty Name="Domicilios">
+        <ScalarProperty Name="Id_Domicilio" ColumnName="Id_Domicilio" />
+      </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="MotivoBaja_x_Cuenta" TypeName="TestModel.MotivoBaja_x_Cuenta" StoreEntitySet="MotivoBaja_x_Cuenta">
-      <EndProperty Name="Cuentas">
-        <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
-      </EndProperty>
       <EndProperty Name="Baja_motivos">
         <ScalarProperty Name="Id_MotivoBaja" ColumnName="Id_MotivoBaja" />
       </EndProperty>
+      <EndProperty Name="Cuentas">
+        <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+      </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="Paginas_x_Actividades" TypeName="TestModel.Paginas_x_Actividades" StoreEntitySet="Paginas_x_Actividades">
-      <EndProperty Name="Actividades">
-        <ScalarProperty Name="Id_Actividad" ColumnName="Id_Actividad" />
-      </EndProperty>
       <EndProperty Name="Paginas">
         <ScalarProperty Name="Id_Pagina" ColumnName="Id_Pagina" />
       </EndProperty>
+      <EndProperty Name="Actividades">
+        <ScalarProperty Name="Id_Actividad" ColumnName="Id_Actividad" />
+      </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="Parametros_x_Beneficio" TypeName="TestModel.Parametros_x_Beneficio" StoreEntitySet="Parametros_x_Beneficio">
-      <EndProperty Name="Beneficio">
-        <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
-      </EndProperty>
       <EndProperty Name="Parametros">
         <ScalarProperty Name="Id_Parametro" ColumnName="Id_Parametro" />
       </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="ParametrosGpo_x_Beneficio" TypeName="TestModel.ParametrosGpo_x_Beneficio" StoreEntitySet="ParametrosGpo_x_Beneficio">
       <EndProperty Name="Beneficio">
         <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
       </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ParametrosGpo_x_Beneficio" TypeName="TestModel.ParametrosGpo_x_Beneficio" StoreEntitySet="ParametrosGpo_x_Beneficio">
       <EndProperty Name="Parametros_grupo">
         <ScalarProperty Name="Id_GpoParametro" ColumnName="Id_GpoParametro" />
+      </EndProperty>
+      <EndProperty Name="Beneficio">
+        <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="ParametrosGpo_x_Perfiles" TypeName="TestModel.ParametrosGpo_x_Perfiles" StoreEntitySet="ParametrosGpo_x_Perfiles">
-      <EndProperty Name="Parametros_grupo">
-        <ScalarProperty Name="Id_GpoParametro" ColumnName="Id_GpoParametro" />
-      </EndProperty>
       <EndProperty Name="Perfiles">
         <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
+      </EndProperty>
+      <EndProperty Name="Parametros_grupo">
+        <ScalarProperty Name="Id_GpoParametro" ColumnName="Id_GpoParametro" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

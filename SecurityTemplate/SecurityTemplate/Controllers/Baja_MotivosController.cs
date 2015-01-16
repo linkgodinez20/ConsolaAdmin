@@ -48,8 +48,6 @@ namespace Security.Controllers
         }
 
         // POST: /Baja_Motivos/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="Id_MotivoBaja,Descripcion,Id_Baja")] Baja_motivos baja_motivos)
@@ -66,7 +64,7 @@ namespace Security.Controllers
         }
 
         // GET: /Baja_Motivos/Edit/5
-        public ActionResult Edit(int id)//byte
+        public ActionResult Edit(byte id)
         {
             Baja_motivos baja_motivos = repo.Get(id);
             if (baja_motivos == null)
@@ -94,7 +92,7 @@ namespace Security.Controllers
         }
 
         // GET: /Baja_Motivos/Delete/5
-        public ActionResult Delete(int id)//byte
+        public ActionResult Delete(byte id)
         {           
             Baja_motivos baja_motivos = repo.Get(id);
             if (baja_motivos == null)
@@ -120,6 +118,7 @@ namespace Security.Controllers
             if (disposing)
             {
                 repo.Dispose();
+                baja.Dispose();
             }
             base.Dispose(disposing);
         }

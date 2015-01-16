@@ -1,0 +1,43 @@
+﻿@model Security.Core.Model.Permisos_Cuentas_x_Actividades
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Permisos_Cuentas_x_Actividades</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Actividades.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actividades.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuentas.Id_Cuenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuentas.Id_Cuenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Permisos.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Permisos.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

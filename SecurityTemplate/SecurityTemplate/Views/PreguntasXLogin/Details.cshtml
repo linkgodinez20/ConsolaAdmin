@@ -1,0 +1,43 @@
+﻿@model Security.Core.Model.Preguntas_x_Login
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Preguntas_x_Login</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Respuesta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Respuesta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LogIn.Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogIn.Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Preguntas.Pregunta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Preguntas.Pregunta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

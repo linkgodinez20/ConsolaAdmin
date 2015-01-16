@@ -117,6 +117,7 @@ namespace Security.Controllers
             if (disposing)
             {
                 repo.Dispose();
+                dirTipo.Dispose();
             }
             base.Dispose(disposing);
         }

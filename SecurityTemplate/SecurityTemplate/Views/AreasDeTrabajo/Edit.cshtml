@@ -1,19 +1,18 @@
 ﻿@model Security.Core.Model.AreasDeTrabajo
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar area de trabajo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Editar area de trabajo</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>AreasDeTrabajo</h4>
+    <div class="form-horizontal">        
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.Id_AreaDeTrabajo)

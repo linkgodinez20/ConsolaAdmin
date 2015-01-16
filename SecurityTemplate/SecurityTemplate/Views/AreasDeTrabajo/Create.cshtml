@@ -1,7 +1,7 @@
 ﻿@model Security.Core.Model.AreasDeTrabajo
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Crear Area de trabajo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,7 +13,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>AreasDeTrabajo</h4>
+        <h4>Areas de trabajo</h4>
         <hr />
         @Html.ValidationSummary(true)
 
@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_Sistema, "Id_Sistema", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Id_Sistema, "Sistema", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Id_Sistema", String.Empty)
                 @Html.ValidationMessageFor(model => model.Id_Sistema)
@@ -42,7 +42,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regreso al listado", "Index")
 </div>
 
 @section Scripts {

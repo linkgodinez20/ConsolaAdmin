@@ -125,6 +125,7 @@ namespace Security.Controllers
             if (disposing)
             {
                 repo.Dispose();
+                paises.Dispose();
             }
             base.Dispose(disposing);
         }

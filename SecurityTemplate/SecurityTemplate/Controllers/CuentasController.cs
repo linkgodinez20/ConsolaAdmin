@@ -61,8 +61,6 @@ namespace Security.Controllers
         }
 
         // POST: /Cuentas/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="Id_Cuenta,Id_Login,Id_Perfil,FechaCreacion,FechaModificacion,IntentosCnn,InicioBloqueo,Id_Sistema,Estatus,Id_Baja,RegistroCompleto")] Cuentas cuentas)
@@ -149,6 +147,10 @@ namespace Security.Controllers
             if (disposing)
             {
                 repo.Dispose();
+                baja.Dispose();
+                login.Dispose();
+                perfiles.Dispose();
+                sistemas.Dispose();
             }
             base.Dispose(disposing);
         }

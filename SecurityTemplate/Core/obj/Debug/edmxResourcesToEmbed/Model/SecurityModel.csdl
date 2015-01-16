@@ -1,75 +1,383 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="TestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SecurityEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Actividades" EntityType="TestModel.Actividades" />
+    <EntitySet Name="AreasDeTrabajo" EntityType="TestModel.AreasDeTrabajo" />
+    <EntitySet Name="Baja" EntityType="TestModel.Baja" />
+    <EntitySet Name="Baja_motivos" EntityType="TestModel.Baja_motivos" />
+    <EntitySet Name="Beneficio" EntityType="TestModel.Beneficio" />
+    <EntitySet Name="Beneficio_tipo" EntityType="TestModel.Beneficio_tipo" />
+    <EntitySet Name="Beneficio_x_Perfiles" EntityType="TestModel.Beneficio_x_Perfiles" />
+    <EntitySet Name="Benficio_x_Cuenta" EntityType="TestModel.Benficio_x_Cuenta" />
+    <EntitySet Name="Contacto" EntityType="TestModel.Contacto" />
+    <EntitySet Name="Contacto_medio" EntityType="TestModel.Contacto_medio" />
+    <EntitySet Name="Contacto_tipo" EntityType="TestModel.Contacto_tipo" />
+    <EntitySet Name="Cuentas" EntityType="TestModel.Cuentas" />
+    <EntitySet Name="Directorio_tipo" EntityType="TestModel.Directorio_tipo" />
+    <EntitySet Name="Directorios" EntityType="TestModel.Directorios" />
+    <EntitySet Name="Domicilios" EntityType="TestModel.Domicilios" />
+    <EntitySet Name="Entidades" EntityType="TestModel.Entidades" />
+    <EntitySet Name="Equipos" EntityType="TestModel.Equipos" />
+    <EntitySet Name="Equipos_tipo" EntityType="TestModel.Equipos_tipo" />
+    <EntitySet Name="Events" EntityType="TestModel.Events" />
+    <EntitySet Name="Genero" EntityType="TestModel.Genero" />
+    <EntitySet Name="Locations" EntityType="TestModel.Locations" />
+    <EntitySet Name="LogIn" EntityType="TestModel.LogIn" />
+    <EntitySet Name="Menu" EntityType="TestModel.Menu" />
+    <EntitySet Name="Menu_categoria" EntityType="TestModel.Menu_categoria" />
+    <EntitySet Name="Municipios" EntityType="TestModel.Municipios" />
+    <EntitySet Name="Paginas" EntityType="TestModel.Paginas" />
+    <EntitySet Name="Paises" EntityType="TestModel.Paises" />
+    <EntitySet Name="Parametros" EntityType="TestModel.Parametros" />
+    <EntitySet Name="Parametros_configuracion" EntityType="TestModel.Parametros_configuracion" />
+    <EntitySet Name="Parametros_grupo" EntityType="TestModel.Parametros_grupo" />
+    <EntitySet Name="Parametros_mensaje" EntityType="TestModel.Parametros_mensaje" />
+    <EntitySet Name="Parametros_tipoDato" EntityType="TestModel.Parametros_tipoDato" />
+    <EntitySet Name="Perfiles" EntityType="TestModel.Perfiles" />
+    <EntitySet Name="Permisos" EntityType="TestModel.Permisos" />
+    <EntitySet Name="Permisos_AreaDeTrabajo_x_Cuenta" EntityType="TestModel.Permisos_AreaDeTrabajo_x_Cuenta" />
+    <EntitySet Name="Permisos_Cuentas_x_Actividades" EntityType="TestModel.Permisos_Cuentas_x_Actividades" />
+    <EntitySet Name="Permisos_Perfiles_x_Actividades" EntityType="TestModel.Permisos_Perfiles_x_Actividades" />
+    <EntitySet Name="Personas" EntityType="TestModel.Personas" />
+    <EntitySet Name="Preguntas" EntityType="TestModel.Preguntas" />
+    <EntitySet Name="Preguntas_x_Login" EntityType="TestModel.Preguntas_x_Login" />
+    <EntitySet Name="Sesiones" EntityType="TestModel.Sesiones" />
+    <EntitySet Name="Sistemas" EntityType="TestModel.Sistemas" />
+    <AssociationSet Name="FK_Actividades_Id_Directorio" Association="TestModel.FK_Actividades_Id_Directorio">
+      <End Role="Directorios" EntitySet="Directorios" />
+      <End Role="Actividades" EntitySet="Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Actividades_Id_Sistema" Association="TestModel.FK_Actividades_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Actividades" EntitySet="Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_Cuentas_x_Actividades_Id_Actividad" Association="TestModel.FK_Permisos_Cuentas_x_Actividades_Id_Actividad">
+      <End Role="Actividades" EntitySet="Actividades" />
+      <End Role="Permisos_Cuentas_x_Actividades" EntitySet="Permisos_Cuentas_x_Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_Perfiles_x_Actividades_Id_Actividad" Association="TestModel.FK_Permisos_Perfiles_x_Actividades_Id_Actividad">
+      <End Role="Actividades" EntitySet="Actividades" />
+      <End Role="Permisos_Perfiles_x_Actividades" EntitySet="Permisos_Perfiles_x_Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AreasDeTrabajo_Id_Sistema" Association="TestModel.FK_AreasDeTrabajo_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="AreasDeTrabajo" EntitySet="AreasDeTrabajo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_AreaDeTrabajo" Association="TestModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_AreaDeTrabajo">
+      <End Role="AreasDeTrabajo" EntitySet="AreasDeTrabajo" />
+      <End Role="Permisos_AreaDeTrabajo_x_Cuenta" EntitySet="Permisos_AreaDeTrabajo_x_Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Baja_motivos_Id_Baja" Association="TestModel.FK_Baja_motivos_Id_Baja">
+      <End Role="Baja" EntitySet="Baja" />
+      <End Role="Baja_motivos" EntitySet="Baja_motivos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuentas_Id_Baja" Association="TestModel.FK_Cuentas_Id_Baja">
+      <End Role="Baja" EntitySet="Baja" />
+      <End Role="Cuentas" EntitySet="Cuentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Beneficio_Id_BeneficioTipo" Association="TestModel.FK_Beneficio_Id_BeneficioTipo">
+      <End Role="Beneficio_tipo" EntitySet="Beneficio_tipo" />
+      <End Role="Beneficio" EntitySet="Beneficio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Beneficio_x_Perfiles_Id_Beneficio" Association="TestModel.FK_Beneficio_x_Perfiles_Id_Beneficio">
+      <End Role="Beneficio" EntitySet="Beneficio" />
+      <End Role="Beneficio_x_Perfiles" EntitySet="Beneficio_x_Perfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Benficio_x_Cuenta_Id_Beneficio" Association="TestModel.FK_Benficio_x_Cuenta_Id_Beneficio">
+      <End Role="Beneficio" EntitySet="Beneficio" />
+      <End Role="Benficio_x_Cuenta" EntitySet="Benficio_x_Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Beneficio_x_Perfiles_Id_Perfil" Association="TestModel.FK_Beneficio_x_Perfiles_Id_Perfil">
+      <End Role="Perfiles" EntitySet="Perfiles" />
+      <End Role="Beneficio_x_Perfiles" EntitySet="Beneficio_x_Perfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Benficio_x_Cuenta_Id_Cuenta" Association="TestModel.FK_Benficio_x_Cuenta_Id_Cuenta">
+      <End Role="Cuentas" EntitySet="Cuentas" />
+      <End Role="Benficio_x_Cuenta" EntitySet="Benficio_x_Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contacto_Id_ContactoMedio" Association="TestModel.FK_Contacto_Id_ContactoMedio">
+      <End Role="Contacto_medio" EntitySet="Contacto_medio" />
+      <End Role="Contacto" EntitySet="Contacto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contacto_Id_ContactoTipo" Association="TestModel.FK_Contacto_Id_ContactoTipo">
+      <End Role="Contacto_tipo" EntitySet="Contacto_tipo" />
+      <End Role="Contacto" EntitySet="Contacto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Domicilios_Id_ContactoTipo" Association="TestModel.FK_Domicilios_Id_ContactoTipo">
+      <End Role="Contacto_tipo" EntitySet="Contacto_tipo" />
+      <End Role="Domicilios" EntitySet="Domicilios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuentas_Id_Login" Association="TestModel.FK_Cuentas_Id_Login">
+      <End Role="LogIn" EntitySet="LogIn" />
+      <End Role="Cuentas" EntitySet="Cuentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuentas_Id_Perfil" Association="TestModel.FK_Cuentas_Id_Perfil">
+      <End Role="Perfiles" EntitySet="Perfiles" />
+      <End Role="Cuentas" EntitySet="Cuentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cuentas_Id_Sistema" Association="TestModel.FK_Cuentas_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Cuentas" EntitySet="Cuentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipos_Id_Cuenta" Association="TestModel.FK_Equipos_Id_Cuenta">
+      <End Role="Cuentas" EntitySet="Cuentas" />
+      <End Role="Equipos" EntitySet="Equipos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Cuenta" Association="TestModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Cuenta">
+      <End Role="Cuentas" EntitySet="Cuentas" />
+      <End Role="Permisos_AreaDeTrabajo_x_Cuenta" EntitySet="Permisos_AreaDeTrabajo_x_Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_Cuentas_x_Actividades_Id_Cuenta" Association="TestModel.FK_Permisos_Cuentas_x_Actividades_Id_Cuenta">
+      <End Role="Cuentas" EntitySet="Cuentas" />
+      <End Role="Permisos_Cuentas_x_Actividades" EntitySet="Permisos_Cuentas_x_Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sesiones_Id_Cuenta" Association="TestModel.FK_Sesiones_Id_Cuenta">
+      <End Role="Cuentas" EntitySet="Cuentas" />
+      <End Role="Sesiones" EntitySet="Sesiones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Directorio_tipo_Id_Sistema" Association="TestModel.FK_Directorio_tipo_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Directorio_tipo" EntitySet="Directorio_tipo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Directorios_Id_DirectorioTipo" Association="TestModel.FK_Directorios_Id_DirectorioTipo">
+      <End Role="Directorio_tipo" EntitySet="Directorio_tipo" />
+      <End Role="Directorios" EntitySet="Directorios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Domicilios_Id_Pais_Id_Entidad_Id_Municipio" Association="TestModel.FK_Domicilios_Id_Pais_Id_Entidad_Id_Municipio">
+      <End Role="Municipios" EntitySet="Municipios" />
+      <End Role="Domicilios" EntitySet="Domicilios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entidades_Id_Pais" Association="TestModel.FK_Entidades_Id_Pais">
+      <End Role="Paises" EntitySet="Paises" />
+      <End Role="Entidades" EntitySet="Entidades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Municipios_Id_Pais_Id_Entidad" Association="TestModel.FK_Municipios_Id_Pais_Id_Entidad">
+      <End Role="Entidades" EntitySet="Entidades" />
+      <End Role="Municipios" EntitySet="Municipios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipos_Id_EquipoTipo" Association="TestModel.FK_Equipos_Id_EquipoTipo">
+      <End Role="Equipos_tipo" EntitySet="Equipos_tipo" />
+      <End Role="Equipos" EntitySet="Equipos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipos_Id_Sistema" Association="TestModel.FK_Equipos_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Equipos" EntitySet="Equipos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personas_Id_Genero" Association="TestModel.FK_Personas_Id_Genero">
+      <End Role="Genero" EntitySet="Genero" />
+      <End Role="Personas" EntitySet="Personas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LogIn_Id_Persona" Association="TestModel.FK_LogIn_Id_Persona">
+      <End Role="Personas" EntitySet="Personas" />
+      <End Role="LogIn" EntitySet="LogIn" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Preguntas_x_Login_Id_Login" Association="TestModel.FK_Preguntas_x_Login_Id_Login">
+      <End Role="LogIn" EntitySet="LogIn" />
+      <End Role="Preguntas_x_Login" EntitySet="Preguntas_x_Login" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Menu_Id_MenuCategoria" Association="TestModel.FK_Menu_Id_MenuCategoria">
+      <End Role="Menu_categoria" EntitySet="Menu_categoria" />
+      <End Role="Menu" EntitySet="Menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Menu_Id_Pagina" Association="TestModel.FK_Menu_Id_Pagina">
+      <End Role="Paginas" EntitySet="Paginas" />
+      <End Role="Menu" EntitySet="Menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Menu_Id_Sistema" Association="TestModel.FK_Menu_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Menu" EntitySet="Menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Paginas_Id_Sistema" Association="TestModel.FK_Paginas_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Paginas" EntitySet="Paginas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_configuracion_Id_Parametro" Association="TestModel.FK_Parametros_configuracion_Id_Parametro">
+      <End Role="Parametros" EntitySet="Parametros" />
+      <End Role="Parametros_configuracion" EntitySet="Parametros_configuracion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_Id_GpoParametro" Association="TestModel.FK_Parametros_Id_GpoParametro">
+      <End Role="Parametros_grupo" EntitySet="Parametros_grupo" />
+      <End Role="Parametros" EntitySet="Parametros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_Id_ParametroTipoDato" Association="TestModel.FK_Parametros_Id_ParametroTipoDato">
+      <End Role="Parametros_tipoDato" EntitySet="Parametros_tipoDato" />
+      <End Role="Parametros" EntitySet="Parametros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_Id_Sistema" Association="TestModel.FK_Parametros_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Parametros" EntitySet="Parametros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_mensaje_Id_Parametro" Association="TestModel.FK_Parametros_mensaje_Id_Parametro">
+      <End Role="Parametros" EntitySet="Parametros" />
+      <End Role="Parametros_mensaje" EntitySet="Parametros_mensaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_configuracion_Id_ParametroTipoDato" Association="TestModel.FK_Parametros_configuracion_Id_ParametroTipoDato">
+      <End Role="Parametros_tipoDato" EntitySet="Parametros_tipoDato" />
+      <End Role="Parametros_configuracion" EntitySet="Parametros_configuracion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_configuracion_Id_Sistema" Association="TestModel.FK_Parametros_configuracion_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Parametros_configuracion" EntitySet="Parametros_configuracion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parametros_grupo_Id_Sistema" Association="TestModel.FK_Parametros_grupo_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Parametros_grupo" EntitySet="Parametros_grupo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Perfiles_Id_Sistema" Association="TestModel.FK_Perfiles_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Perfiles" EntitySet="Perfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_Perfiles_x_Actividades_Id_Perfil" Association="TestModel.FK_Permisos_Perfiles_x_Actividades_Id_Perfil">
+      <End Role="Perfiles" EntitySet="Perfiles" />
+      <End Role="Permisos_Perfiles_x_Actividades" EntitySet="Permisos_Perfiles_x_Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Permiso" Association="TestModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Permiso">
+      <End Role="Permisos" EntitySet="Permisos" />
+      <End Role="Permisos_AreaDeTrabajo_x_Cuenta" EntitySet="Permisos_AreaDeTrabajo_x_Cuenta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_Cuentas_x_Actividades_Id_Permiso" Association="TestModel.FK_Permisos_Cuentas_x_Actividades_Id_Permiso">
+      <End Role="Permisos" EntitySet="Permisos" />
+      <End Role="Permisos_Cuentas_x_Actividades" EntitySet="Permisos_Cuentas_x_Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permisos_Perfiles_x_Actividades_Id_Permiso" Association="TestModel.FK_Permisos_Perfiles_x_Actividades_Id_Permiso">
+      <End Role="Permisos" EntitySet="Permisos" />
+      <End Role="Permisos_Perfiles_x_Actividades" EntitySet="Permisos_Perfiles_x_Actividades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Preguntas_x_Login_Id_Cuenta" Association="TestModel.FK_Preguntas_x_Login_Id_Cuenta">
+      <End Role="Preguntas" EntitySet="Preguntas" />
+      <End Role="Preguntas_x_Login" EntitySet="Preguntas_x_Login" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sesiones_Id_Sistema" Association="TestModel.FK_Sesiones_Id_Sistema">
+      <End Role="Sistemas" EntitySet="Sistemas" />
+      <End Role="Sesiones" EntitySet="Sesiones" />
+    </AssociationSet>
+    <AssociationSet Name="Actividades_x_AreasDeTrabajo" Association="TestModel.Actividades_x_AreasDeTrabajo">
+      <End Role="Actividades" EntitySet="Actividades" />
+      <End Role="AreasDeTrabajo" EntitySet="AreasDeTrabajo" />
+    </AssociationSet>
+    <AssociationSet Name="AreasDeTrabajo_x_Perfiles" Association="TestModel.AreasDeTrabajo_x_Perfiles">
+      <End Role="AreasDeTrabajo" EntitySet="AreasDeTrabajo" />
+      <End Role="Perfiles" EntitySet="Perfiles" />
+    </AssociationSet>
+    <AssociationSet Name="Beneficio_x_AreaDeTrabajo" Association="TestModel.Beneficio_x_AreaDeTrabajo">
+      <End Role="AreasDeTrabajo" EntitySet="AreasDeTrabajo" />
+      <End Role="Beneficio" EntitySet="Beneficio" />
+    </AssociationSet>
+    <AssociationSet Name="Contacto_x_Domicilio" Association="TestModel.Contacto_x_Domicilio">
+      <End Role="Contacto" EntitySet="Contacto" />
+      <End Role="Domicilios" EntitySet="Domicilios" />
+    </AssociationSet>
+    <AssociationSet Name="Contacto_x_Persona" Association="TestModel.Contacto_x_Persona">
+      <End Role="Contacto" EntitySet="Contacto" />
+      <End Role="Personas" EntitySet="Personas" />
+    </AssociationSet>
+    <AssociationSet Name="Cuentas_x_Personas" Association="TestModel.Cuentas_x_Personas">
+      <End Role="Cuentas" EntitySet="Cuentas" />
+      <End Role="Personas" EntitySet="Personas" />
+    </AssociationSet>
+    <AssociationSet Name="Directorios_x_Perfiles" Association="TestModel.Directorios_x_Perfiles">
+      <End Role="Directorios" EntitySet="Directorios" />
+      <End Role="Perfiles" EntitySet="Perfiles" />
+    </AssociationSet>
+    <AssociationSet Name="Directorios_x_Sistemas" Association="TestModel.Directorios_x_Sistemas">
+      <End Role="Directorios" EntitySet="Directorios" />
+      <End Role="Sistemas" EntitySet="Sistemas" />
+    </AssociationSet>
+    <AssociationSet Name="Domicilio_x_Personas" Association="TestModel.Domicilio_x_Personas">
+      <End Role="Domicilios" EntitySet="Domicilios" />
+      <End Role="Personas" EntitySet="Personas" />
+    </AssociationSet>
+    <AssociationSet Name="MotivoBaja_x_Cuenta" Association="TestModel.MotivoBaja_x_Cuenta">
+      <End Role="Cuentas" EntitySet="Cuentas" />
+      <End Role="Baja_motivos" EntitySet="Baja_motivos" />
+    </AssociationSet>
+    <AssociationSet Name="Paginas_x_Actividades" Association="TestModel.Paginas_x_Actividades">
+      <End Role="Actividades" EntitySet="Actividades" />
+      <End Role="Paginas" EntitySet="Paginas" />
+    </AssociationSet>
+    <AssociationSet Name="Parametros_x_Beneficio" Association="TestModel.Parametros_x_Beneficio">
+      <End Role="Beneficio" EntitySet="Beneficio" />
+      <End Role="Parametros" EntitySet="Parametros" />
+    </AssociationSet>
+    <AssociationSet Name="ParametrosGpo_x_Beneficio" Association="TestModel.ParametrosGpo_x_Beneficio">
+      <End Role="Beneficio" EntitySet="Beneficio" />
+      <End Role="Parametros_grupo" EntitySet="Parametros_grupo" />
+    </AssociationSet>
+    <AssociationSet Name="ParametrosGpo_x_Perfiles" Association="TestModel.ParametrosGpo_x_Perfiles">
+      <End Role="Parametros_grupo" EntitySet="Parametros_grupo" />
+      <End Role="Perfiles" EntitySet="Perfiles" />
+    </AssociationSet>
+  </EntityContainer>
   <EntityType Name="Actividades">
     <Key>
       <PropertyRef Name="Id_Actividad" />
     </Key>
     <Property Name="Id_Actividad" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
     <Property Name="Id_Directorio" Type="Byte" Nullable="false" />
     <Property Name="Id_Sistema" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="Directorios" Relationship="Self.FK_Actividades_Id_Directorio" FromRole="Actividades" ToRole="Directorios" />
-    <NavigationProperty Name="Sistemas" Relationship="Self.FK_Actividades_Id_Sistema" FromRole="Actividades" ToRole="Sistemas" />
-    <NavigationProperty Name="Permisos_Cuentas_x_Actividades" Relationship="Self.FK_Permisos_Cuentas_x_Actividades_Id_Actividad" FromRole="Actividades" ToRole="Permisos_Cuentas_x_Actividades" />
-    <NavigationProperty Name="Permisos_Perfiles_x_Actividades" Relationship="Self.FK_Permisos_Perfiles_x_Actividades_Id_Actividad" FromRole="Actividades" ToRole="Permisos_Perfiles_x_Actividades" />
-    <NavigationProperty Name="AreasDeTrabajo" Relationship="Self.Actividades_x_AreasDeTrabajo" FromRole="Actividades" ToRole="AreasDeTrabajo" />
-    <NavigationProperty Name="Paginas" Relationship="Self.Paginas_x_Actividades" FromRole="Actividades" ToRole="Paginas" />
+    <NavigationProperty Name="Directorios" Relationship="TestModel.FK_Actividades_Id_Directorio" FromRole="Actividades" ToRole="Directorios" />
+    <NavigationProperty Name="Sistemas" Relationship="TestModel.FK_Actividades_Id_Sistema" FromRole="Actividades" ToRole="Sistemas" />
+    <NavigationProperty Name="Permisos_Cuentas_x_Actividades" Relationship="TestModel.FK_Permisos_Cuentas_x_Actividades_Id_Actividad" FromRole="Actividades" ToRole="Permisos_Cuentas_x_Actividades" />
+    <NavigationProperty Name="Permisos_Perfiles_x_Actividades" Relationship="TestModel.FK_Permisos_Perfiles_x_Actividades_Id_Actividad" FromRole="Actividades" ToRole="Permisos_Perfiles_x_Actividades" />
+    <NavigationProperty Name="AreasDeTrabajo" Relationship="TestModel.Actividades_x_AreasDeTrabajo" FromRole="Actividades" ToRole="AreasDeTrabajo" />
+    <NavigationProperty Name="Paginas" Relationship="TestModel.Paginas_x_Actividades" FromRole="Actividades" ToRole="Paginas" />
   </EntityType>
   <EntityType Name="AreasDeTrabajo">
     <Key>
       <PropertyRef Name="Id_AreaDeTrabajo" />
     </Key>
     <Property Name="Id_AreaDeTrabajo" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="Id_Sistema" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="Sistemas" Relationship="Self.FK_AreasDeTrabajo_Id_Sistema" FromRole="AreasDeTrabajo" ToRole="Sistemas" />
-    <NavigationProperty Name="Permisos_AreaDeTrabajo_x_Cuenta" Relationship="Self.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_AreaDeTrabajo" FromRole="AreasDeTrabajo" ToRole="Permisos_AreaDeTrabajo_x_Cuenta" />
-    <NavigationProperty Name="Actividades" Relationship="Self.Actividades_x_AreasDeTrabajo" FromRole="AreasDeTrabajo" ToRole="Actividades" />
-    <NavigationProperty Name="Perfiles" Relationship="Self.AreasDeTrabajo_x_Perfiles" FromRole="AreasDeTrabajo" ToRole="Perfiles" />
-    <NavigationProperty Name="Beneficio" Relationship="Self.Beneficio_x_AreaDeTrabajo" FromRole="AreasDeTrabajo" ToRole="Beneficio" />
+    <NavigationProperty Name="Sistemas" Relationship="TestModel.FK_AreasDeTrabajo_Id_Sistema" FromRole="AreasDeTrabajo" ToRole="Sistemas" />
+    <NavigationProperty Name="Permisos_AreaDeTrabajo_x_Cuenta" Relationship="TestModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_AreaDeTrabajo" FromRole="AreasDeTrabajo" ToRole="Permisos_AreaDeTrabajo_x_Cuenta" />
+    <NavigationProperty Name="Actividades" Relationship="TestModel.Actividades_x_AreasDeTrabajo" FromRole="AreasDeTrabajo" ToRole="Actividades" />
+    <NavigationProperty Name="Perfiles" Relationship="TestModel.AreasDeTrabajo_x_Perfiles" FromRole="AreasDeTrabajo" ToRole="Perfiles" />
+    <NavigationProperty Name="Beneficio" Relationship="TestModel.Beneficio_x_AreaDeTrabajo" FromRole="AreasDeTrabajo" ToRole="Beneficio" />
   </EntityType>
   <EntityType Name="Baja">
     <Key>
       <PropertyRef Name="Id_Baja" />
     </Key>
     <Property Name="Id_Baja" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Baja_motivos" Relationship="Self.FK_Baja_motivos_Id_Baja" FromRole="Baja" ToRole="Baja_motivos" />
-    <NavigationProperty Name="Cuentas" Relationship="Self.FK_Cuentas_Id_Baja" FromRole="Baja" ToRole="Cuentas" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Baja_motivos" Relationship="TestModel.FK_Baja_motivos_Id_Baja" FromRole="Baja" ToRole="Baja_motivos" />
+    <NavigationProperty Name="Cuentas" Relationship="TestModel.FK_Cuentas_Id_Baja" FromRole="Baja" ToRole="Cuentas" />
   </EntityType>
   <EntityType Name="Baja_motivos">
     <Key>
       <PropertyRef Name="Id_MotivoBaja" />
     </Key>
     <Property Name="Id_MotivoBaja" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Descripcion" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
     <Property Name="Id_Baja" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="Baja" Relationship="Self.FK_Baja_motivos_Id_Baja" FromRole="Baja_motivos" ToRole="Baja" />
-    <NavigationProperty Name="Cuentas" Relationship="Self.MotivoBaja_x_Cuenta" FromRole="Baja_motivos" ToRole="Cuentas" />
+    <NavigationProperty Name="Baja" Relationship="TestModel.FK_Baja_motivos_Id_Baja" FromRole="Baja_motivos" ToRole="Baja" />
+    <NavigationProperty Name="Cuentas" Relationship="TestModel.MotivoBaja_x_Cuenta" FromRole="Baja_motivos" ToRole="Cuentas" />
   </EntityType>
   <EntityType Name="Beneficio">
     <Key>
       <PropertyRef Name="Id_Beneficio" />
     </Key>
     <Property Name="Id_Beneficio" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="Id_BeneficioTipo" Type="Byte" Nullable="false" />
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Beneficio_tipo" Relationship="Self.FK_Beneficio_Id_BeneficioTipo" FromRole="Beneficio" ToRole="Beneficio_tipo" />
-    <NavigationProperty Name="Beneficio_x_Perfiles" Relationship="Self.FK_Beneficio_x_Perfiles_Id_Beneficio" FromRole="Beneficio" ToRole="Beneficio_x_Perfiles" />
-    <NavigationProperty Name="Benficio_x_Cuenta" Relationship="Self.FK_Benficio_x_Cuenta_Id_Beneficio" FromRole="Beneficio" ToRole="Benficio_x_Cuenta" />
-    <NavigationProperty Name="AreasDeTrabajo" Relationship="Self.Beneficio_x_AreaDeTrabajo" FromRole="Beneficio" ToRole="AreasDeTrabajo" />
-    <NavigationProperty Name="Parametros" Relationship="Self.Parametros_x_Beneficio" FromRole="Beneficio" ToRole="Parametros" />
-    <NavigationProperty Name="Parametros_grupo" Relationship="Self.ParametrosGpo_x_Beneficio" FromRole="Beneficio" ToRole="Parametros_grupo" />
+    <NavigationProperty Name="Beneficio_tipo" Relationship="TestModel.FK_Beneficio_Id_BeneficioTipo" FromRole="Beneficio" ToRole="Beneficio_tipo" />
+    <NavigationProperty Name="Beneficio_x_Perfiles" Relationship="TestModel.FK_Beneficio_x_Perfiles_Id_Beneficio" FromRole="Beneficio" ToRole="Beneficio_x_Perfiles" />
+    <NavigationProperty Name="Benficio_x_Cuenta" Relationship="TestModel.FK_Benficio_x_Cuenta_Id_Beneficio" FromRole="Beneficio" ToRole="Benficio_x_Cuenta" />
+    <NavigationProperty Name="AreasDeTrabajo" Relationship="TestModel.Beneficio_x_AreaDeTrabajo" FromRole="Beneficio" ToRole="AreasDeTrabajo" />
+    <NavigationProperty Name="Parametros" Relationship="TestModel.Parametros_x_Beneficio" FromRole="Beneficio" ToRole="Parametros" />
+    <NavigationProperty Name="Parametros_grupo" Relationship="TestModel.ParametrosGpo_x_Beneficio" FromRole="Beneficio" ToRole="Parametros_grupo" />
   </EntityType>
   <EntityType Name="Beneficio_tipo">
     <Key>
       <PropertyRef Name="Id_BeneficioTipo" />
     </Key>
     <Property Name="Id_BeneficioTipo" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Beneficio" Relationship="Self.FK_Beneficio_Id_BeneficioTipo" FromRole="Beneficio_tipo" ToRole="Beneficio" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Beneficio" Relationship="TestModel.FK_Beneficio_Id_BeneficioTipo" FromRole="Beneficio_tipo" ToRole="Beneficio" />
   </EntityType>
   <EntityType Name="Beneficio_x_Perfiles">
     <Key>
@@ -79,8 +387,8 @@
     <Property Name="Id_Perfil" Type="Int16" Nullable="false" />
     <Property Name="Id_Beneficio" Type="Byte" Nullable="false" />
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Beneficio" Relationship="Self.FK_Beneficio_x_Perfiles_Id_Beneficio" FromRole="Beneficio_x_Perfiles" ToRole="Beneficio" />
-    <NavigationProperty Name="Perfiles" Relationship="Self.FK_Beneficio_x_Perfiles_Id_Perfil" FromRole="Beneficio_x_Perfiles" ToRole="Perfiles" />
+    <NavigationProperty Name="Beneficio" Relationship="TestModel.FK_Beneficio_x_Perfiles_Id_Beneficio" FromRole="Beneficio_x_Perfiles" ToRole="Beneficio" />
+    <NavigationProperty Name="Perfiles" Relationship="TestModel.FK_Beneficio_x_Perfiles_Id_Perfil" FromRole="Beneficio_x_Perfiles" ToRole="Perfiles" />
   </EntityType>
   <EntityType Name="Benficio_x_Cuenta">
     <Key>
@@ -90,8 +398,8 @@
     <Property Name="Id_Cuenta" Type="Int32" Nullable="false" />
     <Property Name="Id_Beneficio" Type="Byte" Nullable="false" />
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Beneficio" Relationship="Self.FK_Benficio_x_Cuenta_Id_Beneficio" FromRole="Benficio_x_Cuenta" ToRole="Beneficio" />
-    <NavigationProperty Name="Cuentas" Relationship="Self.FK_Benficio_x_Cuenta_Id_Cuenta" FromRole="Benficio_x_Cuenta" ToRole="Cuentas" />
+    <NavigationProperty Name="Beneficio" Relationship="TestModel.FK_Benficio_x_Cuenta_Id_Beneficio" FromRole="Benficio_x_Cuenta" ToRole="Beneficio" />
+    <NavigationProperty Name="Cuentas" Relationship="TestModel.FK_Benficio_x_Cuenta_Id_Cuenta" FromRole="Benficio_x_Cuenta" ToRole="Cuentas" />
   </EntityType>
   <EntityType Name="Contacto">
     <Key>
@@ -99,31 +407,31 @@
     </Key>
     <Property Name="Id_Contacto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Id_ContactoTipo" Type="Byte" Nullable="false" />
-    <Property Name="Contacto1" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Contacto1" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
     <Property Name="Id_ContactoMedio" Type="Byte" Nullable="false" />
     <Property Name="Notas" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Contacto_medio" Relationship="Self.FK_Contacto_Id_ContactoMedio" FromRole="Contacto" ToRole="Contacto_medio" />
-    <NavigationProperty Name="Contacto_tipo" Relationship="Self.FK_Contacto_Id_ContactoTipo" FromRole="Contacto" ToRole="Contacto_tipo" />
-    <NavigationProperty Name="Domicilios" Relationship="Self.Contacto_x_Domicilio" FromRole="Contacto" ToRole="Domicilios" />
-    <NavigationProperty Name="Personas" Relationship="Self.Contacto_x_Persona" FromRole="Contacto" ToRole="Personas" />
+    <NavigationProperty Name="Contacto_medio" Relationship="TestModel.FK_Contacto_Id_ContactoMedio" FromRole="Contacto" ToRole="Contacto_medio" />
+    <NavigationProperty Name="Contacto_tipo" Relationship="TestModel.FK_Contacto_Id_ContactoTipo" FromRole="Contacto" ToRole="Contacto_tipo" />
+    <NavigationProperty Name="Domicilios" Relationship="TestModel.Contacto_x_Domicilio" FromRole="Contacto" ToRole="Domicilios" />
+    <NavigationProperty Name="Personas" Relationship="TestModel.Contacto_x_Persona" FromRole="Contacto" ToRole="Personas" />
   </EntityType>
   <EntityType Name="Contacto_medio">
     <Key>
       <PropertyRef Name="Id_ContactoMedio" />
     </Key>
     <Property Name="Id_ContactoMedio" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Contacto" Relationship="Self.FK_Contacto_Id_ContactoMedio" FromRole="Contacto_medio" ToRole="Contacto" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Contacto" Relationship="TestModel.FK_Contacto_Id_ContactoMedio" FromRole="Contacto_medio" ToRole="Contacto" />
   </EntityType>
   <EntityType Name="Contacto_tipo">
     <Key>
       <PropertyRef Name="Id_ContactoTipo" />
     </Key>
     <Property Name="Id_ContactoTipo" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Contacto" Relationship="Self.FK_Contacto_Id_ContactoTipo" FromRole="Contacto_tipo" ToRole="Contacto" />
-    <NavigationProperty Name="Domicilios" Relationship="Self.FK_Domicilios_Id_ContactoTipo" FromRole="Contacto_tipo" ToRole="Domicilios" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Contacto" Relationship="TestModel.FK_Contacto_Id_ContactoTipo" FromRole="Contacto_tipo" ToRole="Contacto" />
+    <NavigationProperty Name="Domicilios" Relationship="TestModel.FK_Domicilios_Id_ContactoTipo" FromRole="Contacto_tipo" ToRole="Domicilios" />
   </EntityType>
   <EntityType Name="Cuentas">
     <Key>
@@ -140,40 +448,40 @@
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
     <Property Name="Id_Baja" Type="Byte" Nullable="false" />
     <Property Name="RegistroCompleto" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Baja" Relationship="Self.FK_Cuentas_Id_Baja" FromRole="Cuentas" ToRole="Baja" />
-    <NavigationProperty Name="Benficio_x_Cuenta" Relationship="Self.FK_Benficio_x_Cuenta_Id_Cuenta" FromRole="Cuentas" ToRole="Benficio_x_Cuenta" />
-    <NavigationProperty Name="LogIn" Relationship="Self.FK_Cuentas_Id_Login" FromRole="Cuentas" ToRole="LogIn" />
-    <NavigationProperty Name="Perfiles" Relationship="Self.FK_Cuentas_Id_Perfil" FromRole="Cuentas" ToRole="Perfiles" />
-    <NavigationProperty Name="Sistemas" Relationship="Self.FK_Cuentas_Id_Sistema" FromRole="Cuentas" ToRole="Sistemas" />
-    <NavigationProperty Name="Equipos" Relationship="Self.FK_Equipos_Id_Cuenta" FromRole="Cuentas" ToRole="Equipos" />
-    <NavigationProperty Name="Permisos_AreaDeTrabajo_x_Cuenta" Relationship="Self.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Cuenta" FromRole="Cuentas" ToRole="Permisos_AreaDeTrabajo_x_Cuenta" />
-    <NavigationProperty Name="Permisos_Cuentas_x_Actividades" Relationship="Self.FK_Permisos_Cuentas_x_Actividades_Id_Cuenta" FromRole="Cuentas" ToRole="Permisos_Cuentas_x_Actividades" />
-    <NavigationProperty Name="Sesiones" Relationship="Self.FK_Sesiones_Id_Cuenta" FromRole="Cuentas" ToRole="Sesiones" />
-    <NavigationProperty Name="Personas" Relationship="Self.Cuentas_x_Personas" FromRole="Cuentas" ToRole="Personas" />
-    <NavigationProperty Name="Baja_motivos" Relationship="Self.MotivoBaja_x_Cuenta" FromRole="Cuentas" ToRole="Baja_motivos" />
+    <NavigationProperty Name="Baja" Relationship="TestModel.FK_Cuentas_Id_Baja" FromRole="Cuentas" ToRole="Baja" />
+    <NavigationProperty Name="Benficio_x_Cuenta" Relationship="TestModel.FK_Benficio_x_Cuenta_Id_Cuenta" FromRole="Cuentas" ToRole="Benficio_x_Cuenta" />
+    <NavigationProperty Name="LogIn" Relationship="TestModel.FK_Cuentas_Id_Login" FromRole="Cuentas" ToRole="LogIn" />
+    <NavigationProperty Name="Perfiles" Relationship="TestModel.FK_Cuentas_Id_Perfil" FromRole="Cuentas" ToRole="Perfiles" />
+    <NavigationProperty Name="Sistemas" Relationship="TestModel.FK_Cuentas_Id_Sistema" FromRole="Cuentas" ToRole="Sistemas" />
+    <NavigationProperty Name="Equipos" Relationship="TestModel.FK_Equipos_Id_Cuenta" FromRole="Cuentas" ToRole="Equipos" />
+    <NavigationProperty Name="Permisos_AreaDeTrabajo_x_Cuenta" Relationship="TestModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Cuenta" FromRole="Cuentas" ToRole="Permisos_AreaDeTrabajo_x_Cuenta" />
+    <NavigationProperty Name="Permisos_Cuentas_x_Actividades" Relationship="TestModel.FK_Permisos_Cuentas_x_Actividades_Id_Cuenta" FromRole="Cuentas" ToRole="Permisos_Cuentas_x_Actividades" />
+    <NavigationProperty Name="Sesiones" Relationship="TestModel.FK_Sesiones_Id_Cuenta" FromRole="Cuentas" ToRole="Sesiones" />
+    <NavigationProperty Name="Personas" Relationship="TestModel.Cuentas_x_Personas" FromRole="Cuentas" ToRole="Personas" />
+    <NavigationProperty Name="Baja_motivos" Relationship="TestModel.MotivoBaja_x_Cuenta" FromRole="Cuentas" ToRole="Baja_motivos" />
   </EntityType>
   <EntityType Name="Directorio_tipo">
     <Key>
       <PropertyRef Name="Id_DirectorioTipo" />
     </Key>
     <Property Name="Id_DirectorioTipo" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="Id_Sistema" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="Sistemas" Relationship="Self.FK_Directorio_tipo_Id_Sistema" FromRole="Directorio_tipo" ToRole="Sistemas" />
-    <NavigationProperty Name="Directorios" Relationship="Self.FK_Directorios_Id_DirectorioTipo" FromRole="Directorio_tipo" ToRole="Directorios" />
+    <NavigationProperty Name="Sistemas" Relationship="TestModel.FK_Directorio_tipo_Id_Sistema" FromRole="Directorio_tipo" ToRole="Sistemas" />
+    <NavigationProperty Name="Directorios" Relationship="TestModel.FK_Directorios_Id_DirectorioTipo" FromRole="Directorio_tipo" ToRole="Directorios" />
   </EntityType>
   <EntityType Name="Directorios">
     <Key>
       <PropertyRef Name="Id_Directorio" />
     </Key>
     <Property Name="Id_Directorio" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="Id_DirectorioTipo" Type="Byte" Nullable="false" />
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Actividades" Relationship="Self.FK_Actividades_Id_Directorio" FromRole="Directorios" ToRole="Actividades" />
-    <NavigationProperty Name="Directorio_tipo" Relationship="Self.FK_Directorios_Id_DirectorioTipo" FromRole="Directorios" ToRole="Directorio_tipo" />
-    <NavigationProperty Name="Perfiles" Relationship="Self.Directorios_x_Perfiles" FromRole="Directorios" ToRole="Perfiles" />
-    <NavigationProperty Name="Sistemas" Relationship="Self.Directorios_x_Sistemas" FromRole="Directorios" ToRole="Sistemas" />
+    <NavigationProperty Name="Actividades" Relationship="TestModel.FK_Actividades_Id_Directorio" FromRole="Directorios" ToRole="Actividades" />
+    <NavigationProperty Name="Directorio_tipo" Relationship="TestModel.FK_Directorios_Id_DirectorioTipo" FromRole="Directorios" ToRole="Directorio_tipo" />
+    <NavigationProperty Name="Perfiles" Relationship="TestModel.Directorios_x_Perfiles" FromRole="Directorios" ToRole="Perfiles" />
+    <NavigationProperty Name="Sistemas" Relationship="TestModel.Directorios_x_Sistemas" FromRole="Directorios" ToRole="Sistemas" />
   </EntityType>
   <EntityType Name="Domicilios">
     <Key>
@@ -181,22 +489,22 @@
     </Key>
     <Property Name="Id_Domicilio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Id_ContactoTipo" Type="Byte" Nullable="false" />
-    <Property Name="Domicilio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="NumeroExterior" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Domicilio" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroExterior" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="NumeroInterior" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Id_Pais" Type="Int16" Nullable="false" />
     <Property Name="Id_Entidad" Type="Int16" Nullable="false" />
     <Property Name="Id_Municipio" Type="Int16" />
-    <Property Name="Colonia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Colonia" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="EntreCalle" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="YCalle" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="Notas" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
     <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Contacto_tipo" Relationship="Self.FK_Domicilios_Id_ContactoTipo" FromRole="Domicilios" ToRole="Contacto_tipo" />
-    <NavigationProperty Name="Municipios" Relationship="Self.FK_Domicilios_Id_Pais_Id_Entidad_Id_Municipio" FromRole="Domicilios" ToRole="Municipios" />
-    <NavigationProperty Name="Contacto" Relationship="Self.Contacto_x_Domicilio" FromRole="Domicilios" ToRole="Contacto" />
-    <NavigationProperty Name="Personas" Relationship="Self.Domicilio_x_Personas" FromRole="Domicilios" ToRole="Personas" />
+    <NavigationProperty Name="Contacto_tipo" Relationship="TestModel.FK_Domicilios_Id_ContactoTipo" FromRole="Domicilios" ToRole="Contacto_tipo" />
+    <NavigationProperty Name="Municipios" Relationship="TestModel.FK_Domicilios_Id_Pais_Id_Entidad_Id_Municipio" FromRole="Domicilios" ToRole="Municipios" />
+    <NavigationProperty Name="Contacto" Relationship="TestModel.Contacto_x_Domicilio" FromRole="Domicilios" ToRole="Contacto" />
+    <NavigationProperty Name="Personas" Relationship="TestModel.Domicilio_x_Personas" FromRole="Domicilios" ToRole="Personas" />
   </EntityType>
   <EntityType Name="Entidades">
     <Key>
@@ -205,10 +513,10 @@
     </Key>
     <Property Name="Id_Pais" Type="Int16" Nullable="false" />
     <Property Name="Id_Entidad" Type="Int16" Nullable="false" />
-    <Property Name="Nombre" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Abreviatura" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Paises" Relationship="Self.FK_Entidades_Id_Pais" FromRole="Entidades" ToRole="Paises" />
-    <NavigationProperty Name="Municipios" Relationship="Self.FK_Municipios_Id_Pais_Id_Entidad" FromRole="Entidades" ToRole="Municipios" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Abreviatura" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Paises" Relationship="TestModel.FK_Entidades_Id_Pais" FromRole="Entidades" ToRole="Paises" />
+    <NavigationProperty Name="Municipios" Relationship="TestModel.FK_Municipios_Id_Pais_Id_Entidad" FromRole="Entidades" ToRole="Municipios" />
   </EntityType>
   <EntityType Name="Equipos">
     <Key>
@@ -226,17 +534,17 @@
     <Property Name="Id_Cuenta" Type="Int32" Nullable="false" />
     <Property Name="Id_Sistema" Type="Byte" Nullable="false" />
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Cuentas" Relationship="Self.FK_Equipos_Id_Cuenta" FromRole="Equipos" ToRole="Cuentas" />
-    <NavigationProperty Name="Equipos_tipo" Relationship="Self.FK_Equipos_Id_EquipoTipo" FromRole="Equipos" ToRole="Equipos_tipo" />
-    <NavigationProperty Name="Sistemas" Relationship="Self.FK_Equipos_Id_Sistema" FromRole="Equipos" ToRole="Sistemas" />
+    <NavigationProperty Name="Cuentas" Relationship="TestModel.FK_Equipos_Id_Cuenta" FromRole="Equipos" ToRole="Cuentas" />
+    <NavigationProperty Name="Equipos_tipo" Relationship="TestModel.FK_Equipos_Id_EquipoTipo" FromRole="Equipos" ToRole="Equipos_tipo" />
+    <NavigationProperty Name="Sistemas" Relationship="TestModel.FK_Equipos_Id_Sistema" FromRole="Equipos" ToRole="Sistemas" />
   </EntityType>
   <EntityType Name="Equipos_tipo">
     <Key>
       <PropertyRef Name="Id_EquipoTipo" />
     </Key>
     <Property Name="Id_EquipoTipo" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Equipos" Relationship="Self.FK_Equipos_Id_EquipoTipo" FromRole="Equipos_tipo" ToRole="Equipos" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Equipos" Relationship="TestModel.FK_Equipos_Id_EquipoTipo" FromRole="Equipos_tipo" ToRole="Equipos" />
   </EntityType>
   <EntityType Name="Events">
     <Key>
@@ -252,15 +560,15 @@
       <PropertyRef Name="Id_Genero" />
     </Key>
     <Property Name="Id_Genero" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Personas" Relationship="Self.FK_Personas_Id_Genero" FromRole="Genero" ToRole="Personas" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Personas" Relationship="TestModel.FK_Personas_Id_Genero" FromRole="Genero" ToRole="Personas" />
   </EntityType>
   <EntityType Name="Locations">
     <Key>
       <PropertyRef Name="LocationId" />
     </Key>
     <Property Name="LocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="LocationName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LocationName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Latitude" Type="Double" Nullable="false" />
     <Property Name="Longitude" Type="Double" Nullable="false" />
   </EntityType>
@@ -269,21 +577,21 @@
       <PropertyRef Name="Id_Login" />
     </Key>
     <Property Name="Id_Login" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Senha" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Senha" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Salt" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
     <Property Name="UsoSalt" Type="Boolean" Nullable="false" />
     <Property Name="Id_Persona" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Cuentas" Relationship="Self.FK_Cuentas_Id_Login" FromRole="LogIn" ToRole="Cuentas" />
-    <NavigationProperty Name="Personas" Relationship="Self.FK_LogIn_Id_Persona" FromRole="LogIn" ToRole="Personas" />
-    <NavigationProperty Name="Preguntas_x_Login" Relationship="Self.FK_Preguntas_x_Login_Id_Login" FromRole="LogIn" ToRole="Preguntas_x_Login" />
+    <NavigationProperty Name="Cuentas" Relationship="TestModel.FK_Cuentas_Id_Login" FromRole="LogIn" ToRole="Cuentas" />
+    <NavigationProperty Name="Personas" Relationship="TestModel.FK_LogIn_Id_Persona" FromRole="LogIn" ToRole="Personas" />
+    <NavigationProperty Name="Preguntas_x_Login" Relationship="TestModel.FK_Preguntas_x_Login_Id_Login" FromRole="LogIn" ToRole="Preguntas_x_Login" />
   </EntityType>
   <EntityType Name="Menu">
     <Key>
       <PropertyRef Name="Id_Menu" />
     </Key>
     <Property Name="Id_Menu" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Parent" Type="Int16" Nullable="false" />
     <Property Name="Tooltip" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="Id_Pagina" Type="Int16" Nullable="false" />
@@ -291,18 +599,18 @@
     <Property Name="Habilitado" Type="Boolean" Nullable="false" />
     <Property Name="Id_MenuCategoria" Type="Int16" Nullable="false" />
     <Property Name="Id_Sistema" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="Menu_categoria" Relationship="Self.FK_Menu_Id_MenuCategoria" FromRole="Menu" ToRole="Menu_categoria" />
-    <NavigationProperty Name="Paginas" Relationship="Self.FK_Menu_Id_Pagina" FromRole="Menu" ToRole="Paginas" />
-    <NavigationProperty Name="Sistemas" Relationship="Self.FK_Menu_Id_Sistema" FromRole="Menu" ToRole="Sistemas" />
+    <NavigationProperty Name="Menu_categoria" Relationship="TestModel.FK_Menu_Id_MenuCategoria" FromRole="Menu" ToRole="Menu_categoria" />
+    <NavigationProperty Name="Paginas" Relationship="TestModel.FK_Menu_Id_Pagina" FromRole="Menu" ToRole="Paginas" />
+    <NavigationProperty Name="Sistemas" Relationship="TestModel.FK_Menu_Id_Sistema" FromRole="Menu" ToRole="Sistemas" />
   </EntityType>
   <EntityType Name="Menu_categoria">
     <Key>
       <PropertyRef Name="Id_MenuCategoria" />
     </Key>
     <Property Name="Id_MenuCategoria" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="Orden" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="Menu" Relationship="Self.FK_Menu_Id_MenuCategoria" FromRole="Menu_categoria" ToRole="Menu" />
+    <NavigationProperty Name="Menu" Relationship="TestModel.FK_Menu_Id_MenuCategoria" FromRole="Menu_categoria" ToRole="Menu" />
   </EntityType>
   <EntityType Name="Municipios">
     <Key>
@@ -313,48 +621,48 @@
     <Property Name="Id_Pais" Type="Int16" Nullable="false" />
     <Property Name="Id_Entidad" Type="Int16" Nullable="false" />
     <Property Name="Id_Municipio" Type="Int16" Nullable="false" />
-    <Property Name="Nombre" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="Abreviatura" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Domicilios" Relationship="Self.FK_Domicilios_Id_Pais_Id_Entidad_Id_Municipio" FromRole="Municipios" ToRole="Domicilios" />
-    <NavigationProperty Name="Entidades" Relationship="Self.FK_Municipios_Id_Pais_Id_Entidad" FromRole="Municipios" ToRole="Entidades" />
+    <NavigationProperty Name="Domicilios" Relationship="TestModel.FK_Domicilios_Id_Pais_Id_Entidad_Id_Municipio" FromRole="Municipios" ToRole="Domicilios" />
+    <NavigationProperty Name="Entidades" Relationship="TestModel.FK_Municipios_Id_Pais_Id_Entidad" FromRole="Municipios" ToRole="Entidades" />
   </EntityType>
   <EntityType Name="Paginas">
     <Key>
       <PropertyRef Name="Id_Pagina" />
     </Key>
     <Property Name="Id_Pagina" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="Titulo" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="Id_Sistema" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="Menu" Relationship="Self.FK_Menu_Id_Pagina" FromRole="Paginas" ToRole="Menu" />
-    <NavigationProperty Name="Sistemas" Relationship="Self.FK_Paginas_Id_Sistema" FromRole="Paginas" ToRole="Sistemas" />
-    <NavigationProperty Name="Actividades" Relationship="Self.Paginas_x_Actividades" FromRole="Paginas" ToRole="Actividades" />
+    <NavigationProperty Name="Menu" Relationship="TestModel.FK_Menu_Id_Pagina" FromRole="Paginas" ToRole="Menu" />
+    <NavigationProperty Name="Sistemas" Relationship="TestModel.FK_Paginas_Id_Sistema" FromRole="Paginas" ToRole="Sistemas" />
+    <NavigationProperty Name="Actividades" Relationship="TestModel.Paginas_x_Actividades" FromRole="Paginas" ToRole="Actividades" />
   </EntityType>
   <EntityType Name="Paises">
     <Key>
       <PropertyRef Name="Id_Pais" />
     </Key>
     <Property Name="Id_Pais" Type="Int16" Nullable="false" />
-    <Property Name="FIPS" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="Nombre" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FIPS" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
     <Property Name="Prioridad" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="Entidades" Relationship="Self.FK_Entidades_Id_Pais" FromRole="Paises" ToRole="Entidades" />
+    <NavigationProperty Name="Entidades" Relationship="TestModel.FK_Entidades_Id_Pais" FromRole="Paises" ToRole="Entidades" />
   </EntityType>
   <EntityType Name="Parametros">
     <Key>
       <PropertyRef Name="Id_Parametro" />
     </Key>
     <Property Name="Id_Parametro" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="Id_ParametroTipoDato" Type="Byte" Nullable="false" />
     <Property Name="Id_GpoParametro" Type="Int16" Nullable="false" />
     <Property Name="Id_Sistema" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="Parametros_configuracion" Relationship="Self.FK_Parametros_configuracion_Id_Parametro" FromRole="Parametros" ToRole="Parametros_configuracion" />
-    <NavigationProperty Name="Parametros_grupo" Relationship="Self.FK_Parametros_Id_GpoParametro" FromRole="Parametros" ToRole="Parametros_grupo" />
-    <NavigationProperty Name="Parametros_tipoDato" Relationship="Self.FK_Parametros_Id_ParametroTipoDato" FromRole="Parametros" ToRole="Parametros_tipoDato" />
-    <NavigationProperty Name="Sistemas" Relationship="Self.FK_Parametros_Id_Sistema" FromRole="Parametros" ToRole="Sistemas" />
-    <NavigationProperty Name="Parametros_mensaje" Relationship="Self.FK_Parametros_mensaje_Id_Parametro" FromRole="Parametros" ToRole="Parametros_mensaje" />
-    <NavigationProperty Name="Beneficio" Relationship="Self.Parametros_x_Beneficio" FromRole="Parametros" ToRole="Beneficio" />
+    <NavigationProperty Name="Parametros_configuracion" Relationship="TestModel.FK_Parametros_configuracion_Id_Parametro" FromRole="Parametros" ToRole="Parametros_configuracion" />
+    <NavigationProperty Name="Parametros_grupo" Relationship="TestModel.FK_Parametros_Id_GpoParametro" FromRole="Parametros" ToRole="Parametros_grupo" />
+    <NavigationProperty Name="Parametros_tipoDato" Relationship="TestModel.FK_Parametros_Id_ParametroTipoDato" FromRole="Parametros" ToRole="Parametros_tipoDato" />
+    <NavigationProperty Name="Sistemas" Relationship="TestModel.FK_Parametros_Id_Sistema" FromRole="Parametros" ToRole="Sistemas" />
+    <NavigationProperty Name="Parametros_mensaje" Relationship="TestModel.FK_Parametros_mensaje_Id_Parametro" FromRole="Parametros" ToRole="Parametros_mensaje" />
+    <NavigationProperty Name="Beneficio" Relationship="TestModel.Parametros_x_Beneficio" FromRole="Parametros" ToRole="Beneficio" />
   </EntityType>
   <EntityType Name="Parametros_configuracion">
     <Key>
@@ -380,21 +688,21 @@
     <Property Name="FechaBaja" Type="DateTime" Precision="3" />
     <Property Name="Id_Sistema" Type="Byte" Nullable="false" />
     <Property Name="Version" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="Parametros" Relationship="Self.FK_Parametros_configuracion_Id_Parametro" FromRole="Parametros_configuracion" ToRole="Parametros" />
-    <NavigationProperty Name="Parametros_tipoDato" Relationship="Self.FK_Parametros_configuracion_Id_ParametroTipoDato" FromRole="Parametros_configuracion" ToRole="Parametros_tipoDato" />
-    <NavigationProperty Name="Sistemas" Relationship="Self.FK_Parametros_configuracion_Id_Sistema" FromRole="Parametros_configuracion" ToRole="Sistemas" />
+    <NavigationProperty Name="Parametros" Relationship="TestModel.FK_Parametros_configuracion_Id_Parametro" FromRole="Parametros_configuracion" ToRole="Parametros" />
+    <NavigationProperty Name="Parametros_tipoDato" Relationship="TestModel.FK_Parametros_configuracion_Id_ParametroTipoDato" FromRole="Parametros_configuracion" ToRole="Parametros_tipoDato" />
+    <NavigationProperty Name="Sistemas" Relationship="TestModel.FK_Parametros_configuracion_Id_Sistema" FromRole="Parametros_configuracion" ToRole="Sistemas" />
   </EntityType>
   <EntityType Name="Parametros_grupo">
     <Key>
       <PropertyRef Name="Id_GpoParametro" />
     </Key>
     <Property Name="Id_GpoParametro" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="Id_Sistema" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="Parametros" Relationship="Self.FK_Parametros_Id_GpoParametro" FromRole="Parametros_grupo" ToRole="Parametros" />
-    <NavigationProperty Name="Sistemas" Relationship="Self.FK_Parametros_grupo_Id_Sistema" FromRole="Parametros_grupo" ToRole="Sistemas" />
-    <NavigationProperty Name="Beneficio" Relationship="Self.ParametrosGpo_x_Beneficio" FromRole="Parametros_grupo" ToRole="Beneficio" />
-    <NavigationProperty Name="Perfiles" Relationship="Self.ParametrosGpo_x_Perfiles" FromRole="Parametros_grupo" ToRole="Perfiles" />
+    <NavigationProperty Name="Parametros" Relationship="TestModel.FK_Parametros_Id_GpoParametro" FromRole="Parametros_grupo" ToRole="Parametros" />
+    <NavigationProperty Name="Sistemas" Relationship="TestModel.FK_Parametros_grupo_Id_Sistema" FromRole="Parametros_grupo" ToRole="Sistemas" />
+    <NavigationProperty Name="Beneficio" Relationship="TestModel.ParametrosGpo_x_Beneficio" FromRole="Parametros_grupo" ToRole="Beneficio" />
+    <NavigationProperty Name="Perfiles" Relationship="TestModel.ParametrosGpo_x_Perfiles" FromRole="Parametros_grupo" ToRole="Perfiles" />
   </EntityType>
   <EntityType Name="Parametros_mensaje">
     <Key>
@@ -402,46 +710,46 @@
     </Key>
     <Property Name="Id_ParametroMsg" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Id_Parametro" Type="Int16" Nullable="false" />
-    <Property Name="Mensaje" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Parametros" Relationship="Self.FK_Parametros_mensaje_Id_Parametro" FromRole="Parametros_mensaje" ToRole="Parametros" />
+    <Property Name="Mensaje" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Parametros" Relationship="TestModel.FK_Parametros_mensaje_Id_Parametro" FromRole="Parametros_mensaje" ToRole="Parametros" />
   </EntityType>
   <EntityType Name="Parametros_tipoDato">
     <Key>
       <PropertyRef Name="Id_ParametroTipoDato" />
     </Key>
     <Property Name="Id_ParametroTipoDato" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Parametros" Relationship="Self.FK_Parametros_Id_ParametroTipoDato" FromRole="Parametros_tipoDato" ToRole="Parametros" />
-    <NavigationProperty Name="Parametros_configuracion" Relationship="Self.FK_Parametros_configuracion_Id_ParametroTipoDato" FromRole="Parametros_tipoDato" ToRole="Parametros_configuracion" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Parametros" Relationship="TestModel.FK_Parametros_Id_ParametroTipoDato" FromRole="Parametros_tipoDato" ToRole="Parametros" />
+    <NavigationProperty Name="Parametros_configuracion" Relationship="TestModel.FK_Parametros_configuracion_Id_ParametroTipoDato" FromRole="Parametros_tipoDato" ToRole="Parametros_configuracion" />
   </EntityType>
   <EntityType Name="Perfiles">
     <Key>
       <PropertyRef Name="Id_Perfil" />
     </Key>
     <Property Name="Id_Perfil" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="Funcion" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
     <Property Name="Tipo" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
-    <Property Name="Nivel" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nivel" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
     <Property Name="Id_Sistema" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="Beneficio_x_Perfiles" Relationship="Self.FK_Beneficio_x_Perfiles_Id_Perfil" FromRole="Perfiles" ToRole="Beneficio_x_Perfiles" />
-    <NavigationProperty Name="Cuentas" Relationship="Self.FK_Cuentas_Id_Perfil" FromRole="Perfiles" ToRole="Cuentas" />
-    <NavigationProperty Name="Sistemas" Relationship="Self.FK_Perfiles_Id_Sistema" FromRole="Perfiles" ToRole="Sistemas" />
-    <NavigationProperty Name="Permisos_Perfiles_x_Actividades" Relationship="Self.FK_Permisos_Perfiles_x_Actividades_Id_Perfil" FromRole="Perfiles" ToRole="Permisos_Perfiles_x_Actividades" />
-    <NavigationProperty Name="AreasDeTrabajo" Relationship="Self.AreasDeTrabajo_x_Perfiles" FromRole="Perfiles" ToRole="AreasDeTrabajo" />
-    <NavigationProperty Name="Directorios" Relationship="Self.Directorios_x_Perfiles" FromRole="Perfiles" ToRole="Directorios" />
-    <NavigationProperty Name="Parametros_grupo" Relationship="Self.ParametrosGpo_x_Perfiles" FromRole="Perfiles" ToRole="Parametros_grupo" />
+    <NavigationProperty Name="Beneficio_x_Perfiles" Relationship="TestModel.FK_Beneficio_x_Perfiles_Id_Perfil" FromRole="Perfiles" ToRole="Beneficio_x_Perfiles" />
+    <NavigationProperty Name="Cuentas" Relationship="TestModel.FK_Cuentas_Id_Perfil" FromRole="Perfiles" ToRole="Cuentas" />
+    <NavigationProperty Name="Sistemas" Relationship="TestModel.FK_Perfiles_Id_Sistema" FromRole="Perfiles" ToRole="Sistemas" />
+    <NavigationProperty Name="Permisos_Perfiles_x_Actividades" Relationship="TestModel.FK_Permisos_Perfiles_x_Actividades_Id_Perfil" FromRole="Perfiles" ToRole="Permisos_Perfiles_x_Actividades" />
+    <NavigationProperty Name="AreasDeTrabajo" Relationship="TestModel.AreasDeTrabajo_x_Perfiles" FromRole="Perfiles" ToRole="AreasDeTrabajo" />
+    <NavigationProperty Name="Directorios" Relationship="TestModel.Directorios_x_Perfiles" FromRole="Perfiles" ToRole="Directorios" />
+    <NavigationProperty Name="Parametros_grupo" Relationship="TestModel.ParametrosGpo_x_Perfiles" FromRole="Perfiles" ToRole="Parametros_grupo" />
   </EntityType>
   <EntityType Name="Permisos">
     <Key>
       <PropertyRef Name="Id_Permiso" />
     </Key>
     <Property Name="Id_Permiso" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Permisos_AreaDeTrabajo_x_Cuenta" Relationship="Self.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Permiso" FromRole="Permisos" ToRole="Permisos_AreaDeTrabajo_x_Cuenta" />
-    <NavigationProperty Name="Permisos_Cuentas_x_Actividades" Relationship="Self.FK_Permisos_Cuentas_x_Actividades_Id_Permiso" FromRole="Permisos" ToRole="Permisos_Cuentas_x_Actividades" />
-    <NavigationProperty Name="Permisos_Perfiles_x_Actividades" Relationship="Self.FK_Permisos_Perfiles_x_Actividades_Id_Permiso" FromRole="Permisos" ToRole="Permisos_Perfiles_x_Actividades" />
+    <NavigationProperty Name="Permisos_AreaDeTrabajo_x_Cuenta" Relationship="TestModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Permiso" FromRole="Permisos" ToRole="Permisos_AreaDeTrabajo_x_Cuenta" />
+    <NavigationProperty Name="Permisos_Cuentas_x_Actividades" Relationship="TestModel.FK_Permisos_Cuentas_x_Actividades_Id_Permiso" FromRole="Permisos" ToRole="Permisos_Cuentas_x_Actividades" />
+    <NavigationProperty Name="Permisos_Perfiles_x_Actividades" Relationship="TestModel.FK_Permisos_Perfiles_x_Actividades_Id_Permiso" FromRole="Permisos" ToRole="Permisos_Perfiles_x_Actividades" />
   </EntityType>
   <EntityType Name="Permisos_AreaDeTrabajo_x_Cuenta">
     <Key>
@@ -452,9 +760,9 @@
     <Property Name="Id_Cuenta" Type="Int32" Nullable="false" />
     <Property Name="Id_AreaDeTrabajo" Type="Int16" Nullable="false" />
     <Property Name="Id_Permiso" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="AreasDeTrabajo" Relationship="Self.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_AreaDeTrabajo" FromRole="Permisos_AreaDeTrabajo_x_Cuenta" ToRole="AreasDeTrabajo" />
-    <NavigationProperty Name="Cuentas" Relationship="Self.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Cuenta" FromRole="Permisos_AreaDeTrabajo_x_Cuenta" ToRole="Cuentas" />
-    <NavigationProperty Name="Permisos" Relationship="Self.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Permiso" FromRole="Permisos_AreaDeTrabajo_x_Cuenta" ToRole="Permisos" />
+    <NavigationProperty Name="AreasDeTrabajo" Relationship="TestModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_AreaDeTrabajo" FromRole="Permisos_AreaDeTrabajo_x_Cuenta" ToRole="AreasDeTrabajo" />
+    <NavigationProperty Name="Cuentas" Relationship="TestModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Cuenta" FromRole="Permisos_AreaDeTrabajo_x_Cuenta" ToRole="Cuentas" />
+    <NavigationProperty Name="Permisos" Relationship="TestModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Permiso" FromRole="Permisos_AreaDeTrabajo_x_Cuenta" ToRole="Permisos" />
   </EntityType>
   <EntityType Name="Permisos_Cuentas_x_Actividades">
     <Key>
@@ -465,9 +773,9 @@
     <Property Name="Id_Cuenta" Type="Int32" Nullable="false" />
     <Property Name="Id_Actividad" Type="Int16" Nullable="false" />
     <Property Name="Id_Permiso" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="Actividades" Relationship="Self.FK_Permisos_Cuentas_x_Actividades_Id_Actividad" FromRole="Permisos_Cuentas_x_Actividades" ToRole="Actividades" />
-    <NavigationProperty Name="Cuentas" Relationship="Self.FK_Permisos_Cuentas_x_Actividades_Id_Cuenta" FromRole="Permisos_Cuentas_x_Actividades" ToRole="Cuentas" />
-    <NavigationProperty Name="Permisos" Relationship="Self.FK_Permisos_Cuentas_x_Actividades_Id_Permiso" FromRole="Permisos_Cuentas_x_Actividades" ToRole="Permisos" />
+    <NavigationProperty Name="Actividades" Relationship="TestModel.FK_Permisos_Cuentas_x_Actividades_Id_Actividad" FromRole="Permisos_Cuentas_x_Actividades" ToRole="Actividades" />
+    <NavigationProperty Name="Cuentas" Relationship="TestModel.FK_Permisos_Cuentas_x_Actividades_Id_Cuenta" FromRole="Permisos_Cuentas_x_Actividades" ToRole="Cuentas" />
+    <NavigationProperty Name="Permisos" Relationship="TestModel.FK_Permisos_Cuentas_x_Actividades_Id_Permiso" FromRole="Permisos_Cuentas_x_Actividades" ToRole="Permisos" />
   </EntityType>
   <EntityType Name="Permisos_Perfiles_x_Actividades">
     <Key>
@@ -478,20 +786,20 @@
     <Property Name="Id_Perfil" Type="Int16" Nullable="false" />
     <Property Name="Id_Actividad" Type="Int16" Nullable="false" />
     <Property Name="Id_Permiso" Type="Byte" Nullable="false" />
-    <NavigationProperty Name="Actividades" Relationship="Self.FK_Permisos_Perfiles_x_Actividades_Id_Actividad" FromRole="Permisos_Perfiles_x_Actividades" ToRole="Actividades" />
-    <NavigationProperty Name="Perfiles" Relationship="Self.FK_Permisos_Perfiles_x_Actividades_Id_Perfil" FromRole="Permisos_Perfiles_x_Actividades" ToRole="Perfiles" />
-    <NavigationProperty Name="Permisos" Relationship="Self.FK_Permisos_Perfiles_x_Actividades_Id_Permiso" FromRole="Permisos_Perfiles_x_Actividades" ToRole="Permisos" />
+    <NavigationProperty Name="Actividades" Relationship="TestModel.FK_Permisos_Perfiles_x_Actividades_Id_Actividad" FromRole="Permisos_Perfiles_x_Actividades" ToRole="Actividades" />
+    <NavigationProperty Name="Perfiles" Relationship="TestModel.FK_Permisos_Perfiles_x_Actividades_Id_Perfil" FromRole="Permisos_Perfiles_x_Actividades" ToRole="Perfiles" />
+    <NavigationProperty Name="Permisos" Relationship="TestModel.FK_Permisos_Perfiles_x_Actividades_Id_Permiso" FromRole="Permisos_Perfiles_x_Actividades" ToRole="Permisos" />
   </EntityType>
   <EntityType Name="Personas">
     <Key>
       <PropertyRef Name="Id_Persona" />
     </Key>
     <Property Name="Id_Persona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="APaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="APaterno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="AMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="Email" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="Id_Genero" Type="Byte" Nullable="false" />
     <Property Name="FechaNacimiento" Type="DateTime" Precision="0" />
     <Property Name="RFC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
@@ -499,19 +807,19 @@
     <Property Name="CURP" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
     <Property Name="Foto" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Genero" Relationship="Self.FK_Personas_Id_Genero" FromRole="Personas" ToRole="Genero" />
-    <NavigationProperty Name="LogIn" Relationship="Self.FK_LogIn_Id_Persona" FromRole="Personas" ToRole="LogIn" />
-    <NavigationProperty Name="Contacto" Relationship="Self.Contacto_x_Persona" FromRole="Personas" ToRole="Contacto" />
-    <NavigationProperty Name="Cuentas" Relationship="Self.Cuentas_x_Personas" FromRole="Personas" ToRole="Cuentas" />
-    <NavigationProperty Name="Domicilios" Relationship="Self.Domicilio_x_Personas" FromRole="Personas" ToRole="Domicilios" />
+    <NavigationProperty Name="Genero" Relationship="TestModel.FK_Personas_Id_Genero" FromRole="Personas" ToRole="Genero" />
+    <NavigationProperty Name="LogIn" Relationship="TestModel.FK_LogIn_Id_Persona" FromRole="Personas" ToRole="LogIn" />
+    <NavigationProperty Name="Contacto" Relationship="TestModel.Contacto_x_Persona" FromRole="Personas" ToRole="Contacto" />
+    <NavigationProperty Name="Cuentas" Relationship="TestModel.Cuentas_x_Personas" FromRole="Personas" ToRole="Cuentas" />
+    <NavigationProperty Name="Domicilios" Relationship="TestModel.Domicilio_x_Personas" FromRole="Personas" ToRole="Domicilios" />
   </EntityType>
   <EntityType Name="Preguntas">
     <Key>
       <PropertyRef Name="Id_Pregunta" />
     </Key>
     <Property Name="Id_Pregunta" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Pregunta" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Preguntas_x_Login" Relationship="Self.FK_Preguntas_x_Login_Id_Cuenta" FromRole="Preguntas" ToRole="Preguntas_x_Login" />
+    <Property Name="Pregunta" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Preguntas_x_Login" Relationship="TestModel.FK_Preguntas_x_Login_Id_Cuenta" FromRole="Preguntas" ToRole="Preguntas_x_Login" />
   </EntityType>
   <EntityType Name="Preguntas_x_Login">
     <Key>
@@ -520,9 +828,9 @@
     </Key>
     <Property Name="Id_Login" Type="Int32" Nullable="false" />
     <Property Name="Id_Pregunta" Type="Byte" Nullable="false" />
-    <Property Name="Respuesta" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="LogIn" Relationship="Self.FK_Preguntas_x_Login_Id_Login" FromRole="Preguntas_x_Login" ToRole="LogIn" />
-    <NavigationProperty Name="Preguntas" Relationship="Self.FK_Preguntas_x_Login_Id_Cuenta" FromRole="Preguntas_x_Login" ToRole="Preguntas" />
+    <Property Name="Respuesta" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LogIn" Relationship="TestModel.FK_Preguntas_x_Login_Id_Login" FromRole="Preguntas_x_Login" ToRole="LogIn" />
+    <NavigationProperty Name="Preguntas" Relationship="TestModel.FK_Preguntas_x_Login_Id_Cuenta" FromRole="Preguntas_x_Login" ToRole="Preguntas" />
   </EntityType>
   <EntityType Name="Sesiones">
     <Key>
@@ -538,35 +846,35 @@
     <Property Name="Ubiacion" Type="Geography" />
     <Property Name="Id_Sistema" Type="Byte" Nullable="false" />
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Cuentas" Relationship="Self.FK_Sesiones_Id_Cuenta" FromRole="Sesiones" ToRole="Cuentas" />
-    <NavigationProperty Name="Sistemas" Relationship="Self.FK_Sesiones_Id_Sistema" FromRole="Sesiones" ToRole="Sistemas" />
+    <NavigationProperty Name="Cuentas" Relationship="TestModel.FK_Sesiones_Id_Cuenta" FromRole="Sesiones" ToRole="Cuentas" />
+    <NavigationProperty Name="Sistemas" Relationship="TestModel.FK_Sesiones_Id_Sistema" FromRole="Sesiones" ToRole="Sistemas" />
   </EntityType>
   <EntityType Name="Sistemas">
     <Key>
       <PropertyRef Name="Id_Sistema" />
     </Key>
     <Property Name="Id_Sistema" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Nombre" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="Siglas" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Descripcion" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Actividades" Relationship="Self.FK_Actividades_Id_Sistema" FromRole="Sistemas" ToRole="Actividades" />
-    <NavigationProperty Name="AreasDeTrabajo" Relationship="Self.FK_AreasDeTrabajo_Id_Sistema" FromRole="Sistemas" ToRole="AreasDeTrabajo" />
-    <NavigationProperty Name="Cuentas" Relationship="Self.FK_Cuentas_Id_Sistema" FromRole="Sistemas" ToRole="Cuentas" />
-    <NavigationProperty Name="Directorio_tipo" Relationship="Self.FK_Directorio_tipo_Id_Sistema" FromRole="Sistemas" ToRole="Directorio_tipo" />
-    <NavigationProperty Name="Equipos" Relationship="Self.FK_Equipos_Id_Sistema" FromRole="Sistemas" ToRole="Equipos" />
-    <NavigationProperty Name="Menu" Relationship="Self.FK_Menu_Id_Sistema" FromRole="Sistemas" ToRole="Menu" />
-    <NavigationProperty Name="Paginas" Relationship="Self.FK_Paginas_Id_Sistema" FromRole="Sistemas" ToRole="Paginas" />
-    <NavigationProperty Name="Parametros" Relationship="Self.FK_Parametros_Id_Sistema" FromRole="Sistemas" ToRole="Parametros" />
-    <NavigationProperty Name="Parametros_configuracion" Relationship="Self.FK_Parametros_configuracion_Id_Sistema" FromRole="Sistemas" ToRole="Parametros_configuracion" />
-    <NavigationProperty Name="Parametros_grupo" Relationship="Self.FK_Parametros_grupo_Id_Sistema" FromRole="Sistemas" ToRole="Parametros_grupo" />
-    <NavigationProperty Name="Perfiles" Relationship="Self.FK_Perfiles_Id_Sistema" FromRole="Sistemas" ToRole="Perfiles" />
-    <NavigationProperty Name="Sesiones" Relationship="Self.FK_Sesiones_Id_Sistema" FromRole="Sistemas" ToRole="Sesiones" />
-    <NavigationProperty Name="Directorios" Relationship="Self.Directorios_x_Sistemas" FromRole="Sistemas" ToRole="Directorios" />
+    <NavigationProperty Name="Actividades" Relationship="TestModel.FK_Actividades_Id_Sistema" FromRole="Sistemas" ToRole="Actividades" />
+    <NavigationProperty Name="AreasDeTrabajo" Relationship="TestModel.FK_AreasDeTrabajo_Id_Sistema" FromRole="Sistemas" ToRole="AreasDeTrabajo" />
+    <NavigationProperty Name="Cuentas" Relationship="TestModel.FK_Cuentas_Id_Sistema" FromRole="Sistemas" ToRole="Cuentas" />
+    <NavigationProperty Name="Directorio_tipo" Relationship="TestModel.FK_Directorio_tipo_Id_Sistema" FromRole="Sistemas" ToRole="Directorio_tipo" />
+    <NavigationProperty Name="Equipos" Relationship="TestModel.FK_Equipos_Id_Sistema" FromRole="Sistemas" ToRole="Equipos" />
+    <NavigationProperty Name="Menu" Relationship="TestModel.FK_Menu_Id_Sistema" FromRole="Sistemas" ToRole="Menu" />
+    <NavigationProperty Name="Paginas" Relationship="TestModel.FK_Paginas_Id_Sistema" FromRole="Sistemas" ToRole="Paginas" />
+    <NavigationProperty Name="Parametros" Relationship="TestModel.FK_Parametros_Id_Sistema" FromRole="Sistemas" ToRole="Parametros" />
+    <NavigationProperty Name="Parametros_configuracion" Relationship="TestModel.FK_Parametros_configuracion_Id_Sistema" FromRole="Sistemas" ToRole="Parametros_configuracion" />
+    <NavigationProperty Name="Parametros_grupo" Relationship="TestModel.FK_Parametros_grupo_Id_Sistema" FromRole="Sistemas" ToRole="Parametros_grupo" />
+    <NavigationProperty Name="Perfiles" Relationship="TestModel.FK_Perfiles_Id_Sistema" FromRole="Sistemas" ToRole="Perfiles" />
+    <NavigationProperty Name="Sesiones" Relationship="TestModel.FK_Sesiones_Id_Sistema" FromRole="Sistemas" ToRole="Sesiones" />
+    <NavigationProperty Name="Directorios" Relationship="TestModel.Directorios_x_Sistemas" FromRole="Sistemas" ToRole="Directorios" />
   </EntityType>
   <Association Name="FK_Actividades_Id_Directorio">
-    <End Role="Directorios" Type="Self.Directorios" Multiplicity="1" />
-    <End Role="Actividades" Type="Self.Actividades" Multiplicity="*" />
+    <End Type="TestModel.Directorios" Role="Directorios" Multiplicity="1" />
+    <End Type="TestModel.Actividades" Role="Actividades" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Directorios">
         <PropertyRef Name="Id_Directorio" />
@@ -577,8 +885,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Actividades_Id_Sistema">
-    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
-    <End Role="Actividades" Type="Self.Actividades" Multiplicity="*" />
+    <End Type="TestModel.Sistemas" Role="Sistemas" Multiplicity="1" />
+    <End Type="TestModel.Actividades" Role="Actividades" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sistemas">
         <PropertyRef Name="Id_Sistema" />
@@ -589,8 +897,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Permisos_Cuentas_x_Actividades_Id_Actividad">
-    <End Role="Actividades" Type="Self.Actividades" Multiplicity="1" />
-    <End Role="Permisos_Cuentas_x_Actividades" Type="Self.Permisos_Cuentas_x_Actividades" Multiplicity="*" />
+    <End Type="TestModel.Actividades" Role="Actividades" Multiplicity="1" />
+    <End Type="TestModel.Permisos_Cuentas_x_Actividades" Role="Permisos_Cuentas_x_Actividades" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Actividades">
         <PropertyRef Name="Id_Actividad" />
@@ -601,8 +909,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Permisos_Perfiles_x_Actividades_Id_Actividad">
-    <End Role="Actividades" Type="Self.Actividades" Multiplicity="1" />
-    <End Role="Permisos_Perfiles_x_Actividades" Type="Self.Permisos_Perfiles_x_Actividades" Multiplicity="*" />
+    <End Type="TestModel.Actividades" Role="Actividades" Multiplicity="1" />
+    <End Type="TestModel.Permisos_Perfiles_x_Actividades" Role="Permisos_Perfiles_x_Actividades" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Actividades">
         <PropertyRef Name="Id_Actividad" />
@@ -613,8 +921,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_AreasDeTrabajo_Id_Sistema">
-    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
-    <End Role="AreasDeTrabajo" Type="Self.AreasDeTrabajo" Multiplicity="*" />
+    <End Type="TestModel.Sistemas" Role="Sistemas" Multiplicity="1" />
+    <End Type="TestModel.AreasDeTrabajo" Role="AreasDeTrabajo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sistemas">
         <PropertyRef Name="Id_Sistema" />
@@ -625,8 +933,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_AreaDeTrabajo">
-    <End Role="AreasDeTrabajo" Type="Self.AreasDeTrabajo" Multiplicity="1" />
-    <End Role="Permisos_AreaDeTrabajo_x_Cuenta" Type="Self.Permisos_AreaDeTrabajo_x_Cuenta" Multiplicity="*" />
+    <End Type="TestModel.AreasDeTrabajo" Role="AreasDeTrabajo" Multiplicity="1" />
+    <End Type="TestModel.Permisos_AreaDeTrabajo_x_Cuenta" Role="Permisos_AreaDeTrabajo_x_Cuenta" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="AreasDeTrabajo">
         <PropertyRef Name="Id_AreaDeTrabajo" />
@@ -637,8 +945,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Baja_motivos_Id_Baja">
-    <End Role="Baja" Type="Self.Baja" Multiplicity="1" />
-    <End Role="Baja_motivos" Type="Self.Baja_motivos" Multiplicity="*" />
+    <End Type="TestModel.Baja" Role="Baja" Multiplicity="1" />
+    <End Type="TestModel.Baja_motivos" Role="Baja_motivos" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Baja">
         <PropertyRef Name="Id_Baja" />
@@ -649,8 +957,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Cuentas_Id_Baja">
-    <End Role="Baja" Type="Self.Baja" Multiplicity="1" />
-    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+    <End Type="TestModel.Baja" Role="Baja" Multiplicity="1" />
+    <End Type="TestModel.Cuentas" Role="Cuentas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Baja">
         <PropertyRef Name="Id_Baja" />
@@ -661,8 +969,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Beneficio_Id_BeneficioTipo">
-    <End Role="Beneficio_tipo" Type="Self.Beneficio_tipo" Multiplicity="1" />
-    <End Role="Beneficio" Type="Self.Beneficio" Multiplicity="*" />
+    <End Type="TestModel.Beneficio_tipo" Role="Beneficio_tipo" Multiplicity="1" />
+    <End Type="TestModel.Beneficio" Role="Beneficio" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Beneficio_tipo">
         <PropertyRef Name="Id_BeneficioTipo" />
@@ -673,8 +981,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Beneficio_x_Perfiles_Id_Beneficio">
-    <End Role="Beneficio" Type="Self.Beneficio" Multiplicity="1" />
-    <End Role="Beneficio_x_Perfiles" Type="Self.Beneficio_x_Perfiles" Multiplicity="*" />
+    <End Type="TestModel.Beneficio" Role="Beneficio" Multiplicity="1" />
+    <End Type="TestModel.Beneficio_x_Perfiles" Role="Beneficio_x_Perfiles" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Beneficio">
         <PropertyRef Name="Id_Beneficio" />
@@ -685,8 +993,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Benficio_x_Cuenta_Id_Beneficio">
-    <End Role="Beneficio" Type="Self.Beneficio" Multiplicity="1" />
-    <End Role="Benficio_x_Cuenta" Type="Self.Benficio_x_Cuenta" Multiplicity="*" />
+    <End Type="TestModel.Beneficio" Role="Beneficio" Multiplicity="1" />
+    <End Type="TestModel.Benficio_x_Cuenta" Role="Benficio_x_Cuenta" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Beneficio">
         <PropertyRef Name="Id_Beneficio" />
@@ -697,8 +1005,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Beneficio_x_Perfiles_Id_Perfil">
-    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
-    <End Role="Beneficio_x_Perfiles" Type="Self.Beneficio_x_Perfiles" Multiplicity="*" />
+    <End Type="TestModel.Perfiles" Role="Perfiles" Multiplicity="1" />
+    <End Type="TestModel.Beneficio_x_Perfiles" Role="Beneficio_x_Perfiles" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Perfiles">
         <PropertyRef Name="Id_Perfil" />
@@ -709,8 +1017,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Benficio_x_Cuenta_Id_Cuenta">
-    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
-    <End Role="Benficio_x_Cuenta" Type="Self.Benficio_x_Cuenta" Multiplicity="*" />
+    <End Type="TestModel.Cuentas" Role="Cuentas" Multiplicity="1" />
+    <End Type="TestModel.Benficio_x_Cuenta" Role="Benficio_x_Cuenta" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Cuentas">
         <PropertyRef Name="Id_Cuenta" />
@@ -721,8 +1029,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Contacto_Id_ContactoMedio">
-    <End Role="Contacto_medio" Type="Self.Contacto_medio" Multiplicity="1" />
-    <End Role="Contacto" Type="Self.Contacto" Multiplicity="*" />
+    <End Type="TestModel.Contacto_medio" Role="Contacto_medio" Multiplicity="1" />
+    <End Type="TestModel.Contacto" Role="Contacto" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Contacto_medio">
         <PropertyRef Name="Id_ContactoMedio" />
@@ -733,8 +1041,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Contacto_Id_ContactoTipo">
-    <End Role="Contacto_tipo" Type="Self.Contacto_tipo" Multiplicity="1" />
-    <End Role="Contacto" Type="Self.Contacto" Multiplicity="*" />
+    <End Type="TestModel.Contacto_tipo" Role="Contacto_tipo" Multiplicity="1" />
+    <End Type="TestModel.Contacto" Role="Contacto" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Contacto_tipo">
         <PropertyRef Name="Id_ContactoTipo" />
@@ -745,8 +1053,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Domicilios_Id_ContactoTipo">
-    <End Role="Contacto_tipo" Type="Self.Contacto_tipo" Multiplicity="1" />
-    <End Role="Domicilios" Type="Self.Domicilios" Multiplicity="*" />
+    <End Type="TestModel.Contacto_tipo" Role="Contacto_tipo" Multiplicity="1" />
+    <End Type="TestModel.Domicilios" Role="Domicilios" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Contacto_tipo">
         <PropertyRef Name="Id_ContactoTipo" />
@@ -757,8 +1065,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Cuentas_Id_Login">
-    <End Role="LogIn" Type="Self.LogIn" Multiplicity="1" />
-    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+    <End Type="TestModel.LogIn" Role="LogIn" Multiplicity="1" />
+    <End Type="TestModel.Cuentas" Role="Cuentas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="LogIn">
         <PropertyRef Name="Id_Login" />
@@ -769,8 +1077,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Cuentas_Id_Perfil">
-    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
-    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+    <End Type="TestModel.Perfiles" Role="Perfiles" Multiplicity="1" />
+    <End Type="TestModel.Cuentas" Role="Cuentas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Perfiles">
         <PropertyRef Name="Id_Perfil" />
@@ -781,8 +1089,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Cuentas_Id_Sistema">
-    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
-    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
+    <End Type="TestModel.Sistemas" Role="Sistemas" Multiplicity="1" />
+    <End Type="TestModel.Cuentas" Role="Cuentas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sistemas">
         <PropertyRef Name="Id_Sistema" />
@@ -793,8 +1101,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Equipos_Id_Cuenta">
-    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
-    <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+    <End Type="TestModel.Cuentas" Role="Cuentas" Multiplicity="1" />
+    <End Type="TestModel.Equipos" Role="Equipos" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Cuentas">
         <PropertyRef Name="Id_Cuenta" />
@@ -805,8 +1113,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Cuenta">
-    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
-    <End Role="Permisos_AreaDeTrabajo_x_Cuenta" Type="Self.Permisos_AreaDeTrabajo_x_Cuenta" Multiplicity="*" />
+    <End Type="TestModel.Cuentas" Role="Cuentas" Multiplicity="1" />
+    <End Type="TestModel.Permisos_AreaDeTrabajo_x_Cuenta" Role="Permisos_AreaDeTrabajo_x_Cuenta" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Cuentas">
         <PropertyRef Name="Id_Cuenta" />
@@ -817,8 +1125,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Permisos_Cuentas_x_Actividades_Id_Cuenta">
-    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
-    <End Role="Permisos_Cuentas_x_Actividades" Type="Self.Permisos_Cuentas_x_Actividades" Multiplicity="*" />
+    <End Type="TestModel.Cuentas" Role="Cuentas" Multiplicity="1" />
+    <End Type="TestModel.Permisos_Cuentas_x_Actividades" Role="Permisos_Cuentas_x_Actividades" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Cuentas">
         <PropertyRef Name="Id_Cuenta" />
@@ -829,8 +1137,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Sesiones_Id_Cuenta">
-    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
-    <End Role="Sesiones" Type="Self.Sesiones" Multiplicity="*" />
+    <End Type="TestModel.Cuentas" Role="Cuentas" Multiplicity="1" />
+    <End Type="TestModel.Sesiones" Role="Sesiones" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Cuentas">
         <PropertyRef Name="Id_Cuenta" />
@@ -841,8 +1149,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Directorio_tipo_Id_Sistema">
-    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
-    <End Role="Directorio_tipo" Type="Self.Directorio_tipo" Multiplicity="*" />
+    <End Type="TestModel.Sistemas" Role="Sistemas" Multiplicity="1" />
+    <End Type="TestModel.Directorio_tipo" Role="Directorio_tipo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sistemas">
         <PropertyRef Name="Id_Sistema" />
@@ -853,8 +1161,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Directorios_Id_DirectorioTipo">
-    <End Role="Directorio_tipo" Type="Self.Directorio_tipo" Multiplicity="1" />
-    <End Role="Directorios" Type="Self.Directorios" Multiplicity="*" />
+    <End Type="TestModel.Directorio_tipo" Role="Directorio_tipo" Multiplicity="1" />
+    <End Type="TestModel.Directorios" Role="Directorios" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Directorio_tipo">
         <PropertyRef Name="Id_DirectorioTipo" />
@@ -865,8 +1173,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Domicilios_Id_Pais_Id_Entidad_Id_Municipio">
-    <End Role="Municipios" Type="Self.Municipios" Multiplicity="0..1" />
-    <End Role="Domicilios" Type="Self.Domicilios" Multiplicity="*" />
+    <End Type="TestModel.Municipios" Role="Municipios" Multiplicity="0..1" />
+    <End Type="TestModel.Domicilios" Role="Domicilios" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Municipios">
         <PropertyRef Name="Id_Pais" />
@@ -881,8 +1189,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Entidades_Id_Pais">
-    <End Role="Paises" Type="Self.Paises" Multiplicity="1" />
-    <End Role="Entidades" Type="Self.Entidades" Multiplicity="*" />
+    <End Type="TestModel.Paises" Role="Paises" Multiplicity="1" />
+    <End Type="TestModel.Entidades" Role="Entidades" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Paises">
         <PropertyRef Name="Id_Pais" />
@@ -893,8 +1201,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Municipios_Id_Pais_Id_Entidad">
-    <End Role="Entidades" Type="Self.Entidades" Multiplicity="1" />
-    <End Role="Municipios" Type="Self.Municipios" Multiplicity="*" />
+    <End Type="TestModel.Entidades" Role="Entidades" Multiplicity="1" />
+    <End Type="TestModel.Municipios" Role="Municipios" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Entidades">
         <PropertyRef Name="Id_Pais" />
@@ -907,8 +1215,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Equipos_Id_EquipoTipo">
-    <End Role="Equipos_tipo" Type="Self.Equipos_tipo" Multiplicity="1" />
-    <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+    <End Type="TestModel.Equipos_tipo" Role="Equipos_tipo" Multiplicity="1" />
+    <End Type="TestModel.Equipos" Role="Equipos" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Equipos_tipo">
         <PropertyRef Name="Id_EquipoTipo" />
@@ -919,8 +1227,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Equipos_Id_Sistema">
-    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
-    <End Role="Equipos" Type="Self.Equipos" Multiplicity="*" />
+    <End Type="TestModel.Sistemas" Role="Sistemas" Multiplicity="1" />
+    <End Type="TestModel.Equipos" Role="Equipos" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sistemas">
         <PropertyRef Name="Id_Sistema" />
@@ -931,8 +1239,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Personas_Id_Genero">
-    <End Role="Genero" Type="Self.Genero" Multiplicity="1" />
-    <End Role="Personas" Type="Self.Personas" Multiplicity="*" />
+    <End Type="TestModel.Genero" Role="Genero" Multiplicity="1" />
+    <End Type="TestModel.Personas" Role="Personas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Genero">
         <PropertyRef Name="Id_Genero" />
@@ -943,8 +1251,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_LogIn_Id_Persona">
-    <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
-    <End Role="LogIn" Type="Self.LogIn" Multiplicity="*" />
+    <End Type="TestModel.Personas" Role="Personas" Multiplicity="1" />
+    <End Type="TestModel.LogIn" Role="LogIn" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Personas">
         <PropertyRef Name="Id_Persona" />
@@ -955,8 +1263,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Preguntas_x_Login_Id_Login">
-    <End Role="LogIn" Type="Self.LogIn" Multiplicity="1" />
-    <End Role="Preguntas_x_Login" Type="Self.Preguntas_x_Login" Multiplicity="*" />
+    <End Type="TestModel.LogIn" Role="LogIn" Multiplicity="1" />
+    <End Type="TestModel.Preguntas_x_Login" Role="Preguntas_x_Login" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="LogIn">
         <PropertyRef Name="Id_Login" />
@@ -967,8 +1275,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Menu_Id_MenuCategoria">
-    <End Role="Menu_categoria" Type="Self.Menu_categoria" Multiplicity="1" />
-    <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+    <End Type="TestModel.Menu_categoria" Role="Menu_categoria" Multiplicity="1" />
+    <End Type="TestModel.Menu" Role="Menu" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Menu_categoria">
         <PropertyRef Name="Id_MenuCategoria" />
@@ -979,8 +1287,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Menu_Id_Pagina">
-    <End Role="Paginas" Type="Self.Paginas" Multiplicity="1" />
-    <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+    <End Type="TestModel.Paginas" Role="Paginas" Multiplicity="1" />
+    <End Type="TestModel.Menu" Role="Menu" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Paginas">
         <PropertyRef Name="Id_Pagina" />
@@ -991,8 +1299,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Menu_Id_Sistema">
-    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
-    <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+    <End Type="TestModel.Sistemas" Role="Sistemas" Multiplicity="1" />
+    <End Type="TestModel.Menu" Role="Menu" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sistemas">
         <PropertyRef Name="Id_Sistema" />
@@ -1003,8 +1311,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Paginas_Id_Sistema">
-    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
-    <End Role="Paginas" Type="Self.Paginas" Multiplicity="*" />
+    <End Type="TestModel.Sistemas" Role="Sistemas" Multiplicity="1" />
+    <End Type="TestModel.Paginas" Role="Paginas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sistemas">
         <PropertyRef Name="Id_Sistema" />
@@ -1015,8 +1323,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Parametros_configuracion_Id_Parametro">
-    <End Role="Parametros" Type="Self.Parametros" Multiplicity="1" />
-    <End Role="Parametros_configuracion" Type="Self.Parametros_configuracion" Multiplicity="*" />
+    <End Type="TestModel.Parametros" Role="Parametros" Multiplicity="1" />
+    <End Type="TestModel.Parametros_configuracion" Role="Parametros_configuracion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Parametros">
         <PropertyRef Name="Id_Parametro" />
@@ -1027,8 +1335,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Parametros_Id_GpoParametro">
-    <End Role="Parametros_grupo" Type="Self.Parametros_grupo" Multiplicity="1" />
-    <End Role="Parametros" Type="Self.Parametros" Multiplicity="*" />
+    <End Type="TestModel.Parametros_grupo" Role="Parametros_grupo" Multiplicity="1" />
+    <End Type="TestModel.Parametros" Role="Parametros" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Parametros_grupo">
         <PropertyRef Name="Id_GpoParametro" />
@@ -1039,8 +1347,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Parametros_Id_ParametroTipoDato">
-    <End Role="Parametros_tipoDato" Type="Self.Parametros_tipoDato" Multiplicity="1" />
-    <End Role="Parametros" Type="Self.Parametros" Multiplicity="*" />
+    <End Type="TestModel.Parametros_tipoDato" Role="Parametros_tipoDato" Multiplicity="1" />
+    <End Type="TestModel.Parametros" Role="Parametros" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Parametros_tipoDato">
         <PropertyRef Name="Id_ParametroTipoDato" />
@@ -1051,8 +1359,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Parametros_Id_Sistema">
-    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
-    <End Role="Parametros" Type="Self.Parametros" Multiplicity="*" />
+    <End Type="TestModel.Sistemas" Role="Sistemas" Multiplicity="1" />
+    <End Type="TestModel.Parametros" Role="Parametros" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sistemas">
         <PropertyRef Name="Id_Sistema" />
@@ -1063,8 +1371,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Parametros_mensaje_Id_Parametro">
-    <End Role="Parametros" Type="Self.Parametros" Multiplicity="1" />
-    <End Role="Parametros_mensaje" Type="Self.Parametros_mensaje" Multiplicity="*" />
+    <End Type="TestModel.Parametros" Role="Parametros" Multiplicity="1" />
+    <End Type="TestModel.Parametros_mensaje" Role="Parametros_mensaje" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Parametros">
         <PropertyRef Name="Id_Parametro" />
@@ -1075,8 +1383,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Parametros_configuracion_Id_ParametroTipoDato">
-    <End Role="Parametros_tipoDato" Type="Self.Parametros_tipoDato" Multiplicity="1" />
-    <End Role="Parametros_configuracion" Type="Self.Parametros_configuracion" Multiplicity="*" />
+    <End Type="TestModel.Parametros_tipoDato" Role="Parametros_tipoDato" Multiplicity="1" />
+    <End Type="TestModel.Parametros_configuracion" Role="Parametros_configuracion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Parametros_tipoDato">
         <PropertyRef Name="Id_ParametroTipoDato" />
@@ -1087,8 +1395,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Parametros_configuracion_Id_Sistema">
-    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
-    <End Role="Parametros_configuracion" Type="Self.Parametros_configuracion" Multiplicity="*" />
+    <End Type="TestModel.Sistemas" Role="Sistemas" Multiplicity="1" />
+    <End Type="TestModel.Parametros_configuracion" Role="Parametros_configuracion" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sistemas">
         <PropertyRef Name="Id_Sistema" />
@@ -1099,8 +1407,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Parametros_grupo_Id_Sistema">
-    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
-    <End Role="Parametros_grupo" Type="Self.Parametros_grupo" Multiplicity="*" />
+    <End Type="TestModel.Sistemas" Role="Sistemas" Multiplicity="1" />
+    <End Type="TestModel.Parametros_grupo" Role="Parametros_grupo" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sistemas">
         <PropertyRef Name="Id_Sistema" />
@@ -1111,8 +1419,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Perfiles_Id_Sistema">
-    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
-    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="*" />
+    <End Type="TestModel.Sistemas" Role="Sistemas" Multiplicity="1" />
+    <End Type="TestModel.Perfiles" Role="Perfiles" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sistemas">
         <PropertyRef Name="Id_Sistema" />
@@ -1123,8 +1431,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Permisos_Perfiles_x_Actividades_Id_Perfil">
-    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
-    <End Role="Permisos_Perfiles_x_Actividades" Type="Self.Permisos_Perfiles_x_Actividades" Multiplicity="*" />
+    <End Type="TestModel.Perfiles" Role="Perfiles" Multiplicity="1" />
+    <End Type="TestModel.Permisos_Perfiles_x_Actividades" Role="Permisos_Perfiles_x_Actividades" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Perfiles">
         <PropertyRef Name="Id_Perfil" />
@@ -1135,8 +1443,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Permiso">
-    <End Role="Permisos" Type="Self.Permisos" Multiplicity="1" />
-    <End Role="Permisos_AreaDeTrabajo_x_Cuenta" Type="Self.Permisos_AreaDeTrabajo_x_Cuenta" Multiplicity="*" />
+    <End Type="TestModel.Permisos" Role="Permisos" Multiplicity="1" />
+    <End Type="TestModel.Permisos_AreaDeTrabajo_x_Cuenta" Role="Permisos_AreaDeTrabajo_x_Cuenta" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Permisos">
         <PropertyRef Name="Id_Permiso" />
@@ -1147,8 +1455,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Permisos_Cuentas_x_Actividades_Id_Permiso">
-    <End Role="Permisos" Type="Self.Permisos" Multiplicity="1" />
-    <End Role="Permisos_Cuentas_x_Actividades" Type="Self.Permisos_Cuentas_x_Actividades" Multiplicity="*" />
+    <End Type="TestModel.Permisos" Role="Permisos" Multiplicity="1" />
+    <End Type="TestModel.Permisos_Cuentas_x_Actividades" Role="Permisos_Cuentas_x_Actividades" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Permisos">
         <PropertyRef Name="Id_Permiso" />
@@ -1159,8 +1467,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Permisos_Perfiles_x_Actividades_Id_Permiso">
-    <End Role="Permisos" Type="Self.Permisos" Multiplicity="1" />
-    <End Role="Permisos_Perfiles_x_Actividades" Type="Self.Permisos_Perfiles_x_Actividades" Multiplicity="*" />
+    <End Type="TestModel.Permisos" Role="Permisos" Multiplicity="1" />
+    <End Type="TestModel.Permisos_Perfiles_x_Actividades" Role="Permisos_Perfiles_x_Actividades" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Permisos">
         <PropertyRef Name="Id_Permiso" />
@@ -1171,8 +1479,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Preguntas_x_Login_Id_Cuenta">
-    <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="1" />
-    <End Role="Preguntas_x_Login" Type="Self.Preguntas_x_Login" Multiplicity="*" />
+    <End Type="TestModel.Preguntas" Role="Preguntas" Multiplicity="1" />
+    <End Type="TestModel.Preguntas_x_Login" Role="Preguntas_x_Login" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Preguntas">
         <PropertyRef Name="Id_Pregunta" />
@@ -1183,8 +1491,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Sesiones_Id_Sistema">
-    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="1" />
-    <End Role="Sesiones" Type="Self.Sesiones" Multiplicity="*" />
+    <End Type="TestModel.Sistemas" Role="Sistemas" Multiplicity="1" />
+    <End Type="TestModel.Sesiones" Role="Sesiones" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sistemas">
         <PropertyRef Name="Id_Sistema" />
@@ -1195,367 +1503,59 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="Actividades_x_AreasDeTrabajo">
-    <End Role="Actividades" Type="Self.Actividades" Multiplicity="*" />
-    <End Role="AreasDeTrabajo" Type="Self.AreasDeTrabajo" Multiplicity="*" />
+    <End Type="TestModel.Actividades" Role="Actividades" Multiplicity="*" />
+    <End Type="TestModel.AreasDeTrabajo" Role="AreasDeTrabajo" Multiplicity="*" />
   </Association>
   <Association Name="AreasDeTrabajo_x_Perfiles">
-    <End Role="AreasDeTrabajo" Type="Self.AreasDeTrabajo" Multiplicity="*" />
-    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="*" />
+    <End Type="TestModel.AreasDeTrabajo" Role="AreasDeTrabajo" Multiplicity="*" />
+    <End Type="TestModel.Perfiles" Role="Perfiles" Multiplicity="*" />
   </Association>
   <Association Name="Beneficio_x_AreaDeTrabajo">
-    <End Role="AreasDeTrabajo" Type="Self.AreasDeTrabajo" Multiplicity="*" />
-    <End Role="Beneficio" Type="Self.Beneficio" Multiplicity="*" />
+    <End Type="TestModel.AreasDeTrabajo" Role="AreasDeTrabajo" Multiplicity="*" />
+    <End Type="TestModel.Beneficio" Role="Beneficio" Multiplicity="*" />
   </Association>
   <Association Name="Contacto_x_Domicilio">
-    <End Role="Contacto" Type="Self.Contacto" Multiplicity="*" />
-    <End Role="Domicilios" Type="Self.Domicilios" Multiplicity="*" />
+    <End Type="TestModel.Contacto" Role="Contacto" Multiplicity="*" />
+    <End Type="TestModel.Domicilios" Role="Domicilios" Multiplicity="*" />
   </Association>
   <Association Name="Contacto_x_Persona">
-    <End Role="Contacto" Type="Self.Contacto" Multiplicity="*" />
-    <End Role="Personas" Type="Self.Personas" Multiplicity="*" />
+    <End Type="TestModel.Contacto" Role="Contacto" Multiplicity="*" />
+    <End Type="TestModel.Personas" Role="Personas" Multiplicity="*" />
   </Association>
   <Association Name="Cuentas_x_Personas">
-    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
-    <End Role="Personas" Type="Self.Personas" Multiplicity="*" />
+    <End Type="TestModel.Cuentas" Role="Cuentas" Multiplicity="*" />
+    <End Type="TestModel.Personas" Role="Personas" Multiplicity="*" />
   </Association>
   <Association Name="Directorios_x_Perfiles">
-    <End Role="Directorios" Type="Self.Directorios" Multiplicity="*" />
-    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="*" />
+    <End Type="TestModel.Directorios" Role="Directorios" Multiplicity="*" />
+    <End Type="TestModel.Perfiles" Role="Perfiles" Multiplicity="*" />
   </Association>
   <Association Name="Directorios_x_Sistemas">
-    <End Role="Directorios" Type="Self.Directorios" Multiplicity="*" />
-    <End Role="Sistemas" Type="Self.Sistemas" Multiplicity="*" />
+    <End Type="TestModel.Directorios" Role="Directorios" Multiplicity="*" />
+    <End Type="TestModel.Sistemas" Role="Sistemas" Multiplicity="*" />
   </Association>
   <Association Name="Domicilio_x_Personas">
-    <End Role="Domicilios" Type="Self.Domicilios" Multiplicity="*" />
-    <End Role="Personas" Type="Self.Personas" Multiplicity="*" />
+    <End Type="TestModel.Domicilios" Role="Domicilios" Multiplicity="*" />
+    <End Type="TestModel.Personas" Role="Personas" Multiplicity="*" />
   </Association>
   <Association Name="MotivoBaja_x_Cuenta">
-    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
-    <End Role="Baja_motivos" Type="Self.Baja_motivos" Multiplicity="*" />
+    <End Type="TestModel.Cuentas" Role="Cuentas" Multiplicity="*" />
+    <End Type="TestModel.Baja_motivos" Role="Baja_motivos" Multiplicity="*" />
   </Association>
   <Association Name="Paginas_x_Actividades">
-    <End Role="Actividades" Type="Self.Actividades" Multiplicity="*" />
-    <End Role="Paginas" Type="Self.Paginas" Multiplicity="*" />
+    <End Type="TestModel.Actividades" Role="Actividades" Multiplicity="*" />
+    <End Type="TestModel.Paginas" Role="Paginas" Multiplicity="*" />
   </Association>
   <Association Name="Parametros_x_Beneficio">
-    <End Role="Beneficio" Type="Self.Beneficio" Multiplicity="*" />
-    <End Role="Parametros" Type="Self.Parametros" Multiplicity="*" />
+    <End Type="TestModel.Beneficio" Role="Beneficio" Multiplicity="*" />
+    <End Type="TestModel.Parametros" Role="Parametros" Multiplicity="*" />
   </Association>
   <Association Name="ParametrosGpo_x_Beneficio">
-    <End Role="Beneficio" Type="Self.Beneficio" Multiplicity="*" />
-    <End Role="Parametros_grupo" Type="Self.Parametros_grupo" Multiplicity="*" />
+    <End Type="TestModel.Beneficio" Role="Beneficio" Multiplicity="*" />
+    <End Type="TestModel.Parametros_grupo" Role="Parametros_grupo" Multiplicity="*" />
   </Association>
   <Association Name="ParametrosGpo_x_Perfiles">
-    <End Role="Parametros_grupo" Type="Self.Parametros_grupo" Multiplicity="*" />
-    <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="*" />
+    <End Type="TestModel.Parametros_grupo" Role="Parametros_grupo" Multiplicity="*" />
+    <End Type="TestModel.Perfiles" Role="Perfiles" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="SecurityEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Actividades" EntityType="Self.Actividades" />
-    <EntitySet Name="AreasDeTrabajo" EntityType="Self.AreasDeTrabajo" />
-    <EntitySet Name="Baja" EntityType="Self.Baja" />
-    <EntitySet Name="Baja_motivos" EntityType="Self.Baja_motivos" />
-    <EntitySet Name="Beneficio" EntityType="Self.Beneficio" />
-    <EntitySet Name="Beneficio_tipo" EntityType="Self.Beneficio_tipo" />
-    <EntitySet Name="Beneficio_x_Perfiles" EntityType="Self.Beneficio_x_Perfiles" />
-    <EntitySet Name="Benficio_x_Cuenta" EntityType="Self.Benficio_x_Cuenta" />
-    <EntitySet Name="Contacto" EntityType="Self.Contacto" />
-    <EntitySet Name="Contacto_medio" EntityType="Self.Contacto_medio" />
-    <EntitySet Name="Contacto_tipo" EntityType="Self.Contacto_tipo" />
-    <EntitySet Name="Cuentas" EntityType="Self.Cuentas" />
-    <EntitySet Name="Directorio_tipo" EntityType="Self.Directorio_tipo" />
-    <EntitySet Name="Directorios" EntityType="Self.Directorios" />
-    <EntitySet Name="Domicilios" EntityType="Self.Domicilios" />
-    <EntitySet Name="Entidades" EntityType="Self.Entidades" />
-    <EntitySet Name="Equipos" EntityType="Self.Equipos" />
-    <EntitySet Name="Equipos_tipo" EntityType="Self.Equipos_tipo" />
-    <EntitySet Name="Events" EntityType="Self.Events" />
-    <EntitySet Name="Genero" EntityType="Self.Genero" />
-    <EntitySet Name="Locations" EntityType="Self.Locations" />
-    <EntitySet Name="LogIn" EntityType="Self.LogIn" />
-    <EntitySet Name="Menu" EntityType="Self.Menu" />
-    <EntitySet Name="Menu_categoria" EntityType="Self.Menu_categoria" />
-    <EntitySet Name="Municipios" EntityType="Self.Municipios" />
-    <EntitySet Name="Paginas" EntityType="Self.Paginas" />
-    <EntitySet Name="Paises" EntityType="Self.Paises" />
-    <EntitySet Name="Parametros" EntityType="Self.Parametros" />
-    <EntitySet Name="Parametros_configuracion" EntityType="Self.Parametros_configuracion" />
-    <EntitySet Name="Parametros_grupo" EntityType="Self.Parametros_grupo" />
-    <EntitySet Name="Parametros_mensaje" EntityType="Self.Parametros_mensaje" />
-    <EntitySet Name="Parametros_tipoDato" EntityType="Self.Parametros_tipoDato" />
-    <EntitySet Name="Perfiles" EntityType="Self.Perfiles" />
-    <EntitySet Name="Permisos" EntityType="Self.Permisos" />
-    <EntitySet Name="Permisos_AreaDeTrabajo_x_Cuenta" EntityType="Self.Permisos_AreaDeTrabajo_x_Cuenta" />
-    <EntitySet Name="Permisos_Cuentas_x_Actividades" EntityType="Self.Permisos_Cuentas_x_Actividades" />
-    <EntitySet Name="Permisos_Perfiles_x_Actividades" EntityType="Self.Permisos_Perfiles_x_Actividades" />
-    <EntitySet Name="Personas" EntityType="Self.Personas" />
-    <EntitySet Name="Preguntas" EntityType="Self.Preguntas" />
-    <EntitySet Name="Preguntas_x_Login" EntityType="Self.Preguntas_x_Login" />
-    <EntitySet Name="Sesiones" EntityType="Self.Sesiones" />
-    <EntitySet Name="Sistemas" EntityType="Self.Sistemas" />
-    <AssociationSet Name="FK_Actividades_Id_Directorio" Association="Self.FK_Actividades_Id_Directorio">
-      <End Role="Directorios" EntitySet="Directorios" />
-      <End Role="Actividades" EntitySet="Actividades" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Actividades_Id_Sistema" Association="Self.FK_Actividades_Id_Sistema">
-      <End Role="Sistemas" EntitySet="Sistemas" />
-      <End Role="Actividades" EntitySet="Actividades" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Permisos_Cuentas_x_Actividades_Id_Actividad" Association="Self.FK_Permisos_Cuentas_x_Actividades_Id_Actividad">
-      <End Role="Actividades" EntitySet="Actividades" />
-      <End Role="Permisos_Cuentas_x_Actividades" EntitySet="Permisos_Cuentas_x_Actividades" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Permisos_Perfiles_x_Actividades_Id_Actividad" Association="Self.FK_Permisos_Perfiles_x_Actividades_Id_Actividad">
-      <End Role="Actividades" EntitySet="Actividades" />
-      <End Role="Permisos_Perfiles_x_Actividades" EntitySet="Permisos_Perfiles_x_Actividades" />
-    </AssociationSet>
-    <AssociationSet Name="FK_AreasDeTrabajo_Id_Sistema" Association="Self.FK_AreasDeTrabajo_Id_Sistema">
-      <End Role="Sistemas" EntitySet="Sistemas" />
-      <End Role="AreasDeTrabajo" EntitySet="AreasDeTrabajo" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_AreaDeTrabajo" Association="Self.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_AreaDeTrabajo">
-      <End Role="AreasDeTrabajo" EntitySet="AreasDeTrabajo" />
-      <End Role="Permisos_AreaDeTrabajo_x_Cuenta" EntitySet="Permisos_AreaDeTrabajo_x_Cuenta" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Baja_motivos_Id_Baja" Association="Self.FK_Baja_motivos_Id_Baja">
-      <End Role="Baja" EntitySet="Baja" />
-      <End Role="Baja_motivos" EntitySet="Baja_motivos" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Cuentas_Id_Baja" Association="Self.FK_Cuentas_Id_Baja">
-      <End Role="Baja" EntitySet="Baja" />
-      <End Role="Cuentas" EntitySet="Cuentas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Beneficio_Id_BeneficioTipo" Association="Self.FK_Beneficio_Id_BeneficioTipo">
-      <End Role="Beneficio_tipo" EntitySet="Beneficio_tipo" />
-      <End Role="Beneficio" EntitySet="Beneficio" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Beneficio_x_Perfiles_Id_Beneficio" Association="Self.FK_Beneficio_x_Perfiles_Id_Beneficio">
-      <End Role="Beneficio" EntitySet="Beneficio" />
-      <End Role="Beneficio_x_Perfiles" EntitySet="Beneficio_x_Perfiles" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Benficio_x_Cuenta_Id_Beneficio" Association="Self.FK_Benficio_x_Cuenta_Id_Beneficio">
-      <End Role="Beneficio" EntitySet="Beneficio" />
-      <End Role="Benficio_x_Cuenta" EntitySet="Benficio_x_Cuenta" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Beneficio_x_Perfiles_Id_Perfil" Association="Self.FK_Beneficio_x_Perfiles_Id_Perfil">
-      <End Role="Perfiles" EntitySet="Perfiles" />
-      <End Role="Beneficio_x_Perfiles" EntitySet="Beneficio_x_Perfiles" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Benficio_x_Cuenta_Id_Cuenta" Association="Self.FK_Benficio_x_Cuenta_Id_Cuenta">
-      <End Role="Cuentas" EntitySet="Cuentas" />
-      <End Role="Benficio_x_Cuenta" EntitySet="Benficio_x_Cuenta" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Contacto_Id_ContactoMedio" Association="Self.FK_Contacto_Id_ContactoMedio">
-      <End Role="Contacto_medio" EntitySet="Contacto_medio" />
-      <End Role="Contacto" EntitySet="Contacto" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Contacto_Id_ContactoTipo" Association="Self.FK_Contacto_Id_ContactoTipo">
-      <End Role="Contacto_tipo" EntitySet="Contacto_tipo" />
-      <End Role="Contacto" EntitySet="Contacto" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Domicilios_Id_ContactoTipo" Association="Self.FK_Domicilios_Id_ContactoTipo">
-      <End Role="Contacto_tipo" EntitySet="Contacto_tipo" />
-      <End Role="Domicilios" EntitySet="Domicilios" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Cuentas_Id_Login" Association="Self.FK_Cuentas_Id_Login">
-      <End Role="LogIn" EntitySet="LogIn" />
-      <End Role="Cuentas" EntitySet="Cuentas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Cuentas_Id_Perfil" Association="Self.FK_Cuentas_Id_Perfil">
-      <End Role="Perfiles" EntitySet="Perfiles" />
-      <End Role="Cuentas" EntitySet="Cuentas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Cuentas_Id_Sistema" Association="Self.FK_Cuentas_Id_Sistema">
-      <End Role="Sistemas" EntitySet="Sistemas" />
-      <End Role="Cuentas" EntitySet="Cuentas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Equipos_Id_Cuenta" Association="Self.FK_Equipos_Id_Cuenta">
-      <End Role="Cuentas" EntitySet="Cuentas" />
-      <End Role="Equipos" EntitySet="Equipos" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Cuenta" Association="Self.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Cuenta">
-      <End Role="Cuentas" EntitySet="Cuentas" />
-      <End Role="Permisos_AreaDeTrabajo_x_Cuenta" EntitySet="Permisos_AreaDeTrabajo_x_Cuenta" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Permisos_Cuentas_x_Actividades_Id_Cuenta" Association="Self.FK_Permisos_Cuentas_x_Actividades_Id_Cuenta">
-      <End Role="Cuentas" EntitySet="Cuentas" />
-      <End Role="Permisos_Cuentas_x_Actividades" EntitySet="Permisos_Cuentas_x_Actividades" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Sesiones_Id_Cuenta" Association="Self.FK_Sesiones_Id_Cuenta">
-      <End Role="Cuentas" EntitySet="Cuentas" />
-      <End Role="Sesiones" EntitySet="Sesiones" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Directorio_tipo_Id_Sistema" Association="Self.FK_Directorio_tipo_Id_Sistema">
-      <End Role="Sistemas" EntitySet="Sistemas" />
-      <End Role="Directorio_tipo" EntitySet="Directorio_tipo" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Directorios_Id_DirectorioTipo" Association="Self.FK_Directorios_Id_DirectorioTipo">
-      <End Role="Directorio_tipo" EntitySet="Directorio_tipo" />
-      <End Role="Directorios" EntitySet="Directorios" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Domicilios_Id_Pais_Id_Entidad_Id_Municipio" Association="Self.FK_Domicilios_Id_Pais_Id_Entidad_Id_Municipio">
-      <End Role="Municipios" EntitySet="Municipios" />
-      <End Role="Domicilios" EntitySet="Domicilios" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Entidades_Id_Pais" Association="Self.FK_Entidades_Id_Pais">
-      <End Role="Paises" EntitySet="Paises" />
-      <End Role="Entidades" EntitySet="Entidades" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Municipios_Id_Pais_Id_Entidad" Association="Self.FK_Municipios_Id_Pais_Id_Entidad">
-      <End Role="Entidades" EntitySet="Entidades" />
-      <End Role="Municipios" EntitySet="Municipios" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Equipos_Id_EquipoTipo" Association="Self.FK_Equipos_Id_EquipoTipo">
-      <End Role="Equipos_tipo" EntitySet="Equipos_tipo" />
-      <End Role="Equipos" EntitySet="Equipos" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Equipos_Id_Sistema" Association="Self.FK_Equipos_Id_Sistema">
-      <End Role="Sistemas" EntitySet="Sistemas" />
-      <End Role="Equipos" EntitySet="Equipos" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Personas_Id_Genero" Association="Self.FK_Personas_Id_Genero">
-      <End Role="Genero" EntitySet="Genero" />
-      <End Role="Personas" EntitySet="Personas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_LogIn_Id_Persona" Association="Self.FK_LogIn_Id_Persona">
-      <End Role="Personas" EntitySet="Personas" />
-      <End Role="LogIn" EntitySet="LogIn" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Preguntas_x_Login_Id_Login" Association="Self.FK_Preguntas_x_Login_Id_Login">
-      <End Role="LogIn" EntitySet="LogIn" />
-      <End Role="Preguntas_x_Login" EntitySet="Preguntas_x_Login" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Menu_Id_MenuCategoria" Association="Self.FK_Menu_Id_MenuCategoria">
-      <End Role="Menu_categoria" EntitySet="Menu_categoria" />
-      <End Role="Menu" EntitySet="Menu" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Menu_Id_Pagina" Association="Self.FK_Menu_Id_Pagina">
-      <End Role="Paginas" EntitySet="Paginas" />
-      <End Role="Menu" EntitySet="Menu" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Menu_Id_Sistema" Association="Self.FK_Menu_Id_Sistema">
-      <End Role="Sistemas" EntitySet="Sistemas" />
-      <End Role="Menu" EntitySet="Menu" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Paginas_Id_Sistema" Association="Self.FK_Paginas_Id_Sistema">
-      <End Role="Sistemas" EntitySet="Sistemas" />
-      <End Role="Paginas" EntitySet="Paginas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Parametros_configuracion_Id_Parametro" Association="Self.FK_Parametros_configuracion_Id_Parametro">
-      <End Role="Parametros" EntitySet="Parametros" />
-      <End Role="Parametros_configuracion" EntitySet="Parametros_configuracion" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Parametros_Id_GpoParametro" Association="Self.FK_Parametros_Id_GpoParametro">
-      <End Role="Parametros_grupo" EntitySet="Parametros_grupo" />
-      <End Role="Parametros" EntitySet="Parametros" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Parametros_Id_ParametroTipoDato" Association="Self.FK_Parametros_Id_ParametroTipoDato">
-      <End Role="Parametros_tipoDato" EntitySet="Parametros_tipoDato" />
-      <End Role="Parametros" EntitySet="Parametros" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Parametros_Id_Sistema" Association="Self.FK_Parametros_Id_Sistema">
-      <End Role="Sistemas" EntitySet="Sistemas" />
-      <End Role="Parametros" EntitySet="Parametros" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Parametros_mensaje_Id_Parametro" Association="Self.FK_Parametros_mensaje_Id_Parametro">
-      <End Role="Parametros" EntitySet="Parametros" />
-      <End Role="Parametros_mensaje" EntitySet="Parametros_mensaje" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Parametros_configuracion_Id_ParametroTipoDato" Association="Self.FK_Parametros_configuracion_Id_ParametroTipoDato">
-      <End Role="Parametros_tipoDato" EntitySet="Parametros_tipoDato" />
-      <End Role="Parametros_configuracion" EntitySet="Parametros_configuracion" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Parametros_configuracion_Id_Sistema" Association="Self.FK_Parametros_configuracion_Id_Sistema">
-      <End Role="Sistemas" EntitySet="Sistemas" />
-      <End Role="Parametros_configuracion" EntitySet="Parametros_configuracion" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Parametros_grupo_Id_Sistema" Association="Self.FK_Parametros_grupo_Id_Sistema">
-      <End Role="Sistemas" EntitySet="Sistemas" />
-      <End Role="Parametros_grupo" EntitySet="Parametros_grupo" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Perfiles_Id_Sistema" Association="Self.FK_Perfiles_Id_Sistema">
-      <End Role="Sistemas" EntitySet="Sistemas" />
-      <End Role="Perfiles" EntitySet="Perfiles" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Permisos_Perfiles_x_Actividades_Id_Perfil" Association="Self.FK_Permisos_Perfiles_x_Actividades_Id_Perfil">
-      <End Role="Perfiles" EntitySet="Perfiles" />
-      <End Role="Permisos_Perfiles_x_Actividades" EntitySet="Permisos_Perfiles_x_Actividades" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Permiso" Association="Self.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Permiso">
-      <End Role="Permisos" EntitySet="Permisos" />
-      <End Role="Permisos_AreaDeTrabajo_x_Cuenta" EntitySet="Permisos_AreaDeTrabajo_x_Cuenta" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Permisos_Cuentas_x_Actividades_Id_Permiso" Association="Self.FK_Permisos_Cuentas_x_Actividades_Id_Permiso">
-      <End Role="Permisos" EntitySet="Permisos" />
-      <End Role="Permisos_Cuentas_x_Actividades" EntitySet="Permisos_Cuentas_x_Actividades" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Permisos_Perfiles_x_Actividades_Id_Permiso" Association="Self.FK_Permisos_Perfiles_x_Actividades_Id_Permiso">
-      <End Role="Permisos" EntitySet="Permisos" />
-      <End Role="Permisos_Perfiles_x_Actividades" EntitySet="Permisos_Perfiles_x_Actividades" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Preguntas_x_Login_Id_Cuenta" Association="Self.FK_Preguntas_x_Login_Id_Cuenta">
-      <End Role="Preguntas" EntitySet="Preguntas" />
-      <End Role="Preguntas_x_Login" EntitySet="Preguntas_x_Login" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Sesiones_Id_Sistema" Association="Self.FK_Sesiones_Id_Sistema">
-      <End Role="Sistemas" EntitySet="Sistemas" />
-      <End Role="Sesiones" EntitySet="Sesiones" />
-    </AssociationSet>
-    <AssociationSet Name="Actividades_x_AreasDeTrabajo" Association="Self.Actividades_x_AreasDeTrabajo">
-      <End Role="Actividades" EntitySet="Actividades" />
-      <End Role="AreasDeTrabajo" EntitySet="AreasDeTrabajo" />
-    </AssociationSet>
-    <AssociationSet Name="AreasDeTrabajo_x_Perfiles" Association="Self.AreasDeTrabajo_x_Perfiles">
-      <End Role="AreasDeTrabajo" EntitySet="AreasDeTrabajo" />
-      <End Role="Perfiles" EntitySet="Perfiles" />
-    </AssociationSet>
-    <AssociationSet Name="Beneficio_x_AreaDeTrabajo" Association="Self.Beneficio_x_AreaDeTrabajo">
-      <End Role="AreasDeTrabajo" EntitySet="AreasDeTrabajo" />
-      <End Role="Beneficio" EntitySet="Beneficio" />
-    </AssociationSet>
-    <AssociationSet Name="Contacto_x_Domicilio" Association="Self.Contacto_x_Domicilio">
-      <End Role="Contacto" EntitySet="Contacto" />
-      <End Role="Domicilios" EntitySet="Domicilios" />
-    </AssociationSet>
-    <AssociationSet Name="Contacto_x_Persona" Association="Self.Contacto_x_Persona">
-      <End Role="Contacto" EntitySet="Contacto" />
-      <End Role="Personas" EntitySet="Personas" />
-    </AssociationSet>
-    <AssociationSet Name="Cuentas_x_Personas" Association="Self.Cuentas_x_Personas">
-      <End Role="Cuentas" EntitySet="Cuentas" />
-      <End Role="Personas" EntitySet="Personas" />
-    </AssociationSet>
-    <AssociationSet Name="Directorios_x_Perfiles" Association="Self.Directorios_x_Perfiles">
-      <End Role="Directorios" EntitySet="Directorios" />
-      <End Role="Perfiles" EntitySet="Perfiles" />
-    </AssociationSet>
-    <AssociationSet Name="Directorios_x_Sistemas" Association="Self.Directorios_x_Sistemas">
-      <End Role="Directorios" EntitySet="Directorios" />
-      <End Role="Sistemas" EntitySet="Sistemas" />
-    </AssociationSet>
-    <AssociationSet Name="Domicilio_x_Personas" Association="Self.Domicilio_x_Personas">
-      <End Role="Domicilios" EntitySet="Domicilios" />
-      <End Role="Personas" EntitySet="Personas" />
-    </AssociationSet>
-    <AssociationSet Name="MotivoBaja_x_Cuenta" Association="Self.MotivoBaja_x_Cuenta">
-      <End Role="Cuentas" EntitySet="Cuentas" />
-      <End Role="Baja_motivos" EntitySet="Baja_motivos" />
-    </AssociationSet>
-    <AssociationSet Name="Paginas_x_Actividades" Association="Self.Paginas_x_Actividades">
-      <End Role="Actividades" EntitySet="Actividades" />
-      <End Role="Paginas" EntitySet="Paginas" />
-    </AssociationSet>
-    <AssociationSet Name="Parametros_x_Beneficio" Association="Self.Parametros_x_Beneficio">
-      <End Role="Beneficio" EntitySet="Beneficio" />
-      <End Role="Parametros" EntitySet="Parametros" />
-    </AssociationSet>
-    <AssociationSet Name="ParametrosGpo_x_Beneficio" Association="Self.ParametrosGpo_x_Beneficio">
-      <End Role="Beneficio" EntitySet="Beneficio" />
-      <End Role="Parametros_grupo" EntitySet="Parametros_grupo" />
-    </AssociationSet>
-    <AssociationSet Name="ParametrosGpo_x_Perfiles" Association="Self.ParametrosGpo_x_Perfiles">
-      <End Role="Parametros_grupo" EntitySet="Parametros_grupo" />
-      <End Role="Perfiles" EntitySet="Perfiles" />
-    </AssociationSet>
-  </EntityContainer>
 </Schema>

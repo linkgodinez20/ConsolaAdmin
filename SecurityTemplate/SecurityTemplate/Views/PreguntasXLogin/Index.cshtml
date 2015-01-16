@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Security.Core.Model.Preguntas_x_Login>
+
+@{
+    ViewBag.Title = "Listado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listado</h2>
+
+<p>
+    @Html.ActionLink("Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Respuesta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LogIn.Usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Preguntas.Pregunta)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Respuesta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LogIn.Usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Preguntas.Pregunta)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Detalles", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

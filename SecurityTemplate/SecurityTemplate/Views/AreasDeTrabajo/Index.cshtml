@@ -1,40 +1,43 @@
 ﻿@model IEnumerable<Security.Core.Model.AreasDeTrabajo>
 
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Areas de trabajo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Areas de Trabajo</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sistemas.Nombre)
-        </th>
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sistemas.Nombre)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sistemas.Nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_AreaDeTrabajo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_AreaDeTrabajo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_AreaDeTrabajo })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sistemas.Nombre)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id_AreaDeTrabajo }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.Id_AreaDeTrabajo }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Id_AreaDeTrabajo })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+

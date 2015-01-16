@@ -1,0 +1,48 @@
+﻿@model Security.Core.Model.Permisos_Cuentas_x_Actividades
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Actividades por cuentas(Permisos)</h2>
+
+<h3>¿Está seguro que desea eliminar este elemento?</h3>
+<div>    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Actividades.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Actividades.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuentas.Id_Cuenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuentas.Id_Cuenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Permisos.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Permisos.Nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

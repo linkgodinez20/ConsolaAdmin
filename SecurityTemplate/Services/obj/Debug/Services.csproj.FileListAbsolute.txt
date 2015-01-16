@@ -24,6 +24,7 @@ E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\Services\obj\Debu
 E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\Services\obj\Debug\Services.pdb
 E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\Services\bin\Debug\Core.dll
 E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\Services\bin\Debug\Core.pdb
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Services\bin\Debug\Services.dll.config
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Services\bin\Debug\Services.dll
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Services\bin\Debug\Services.pdb
@@ -35,6 +36,5 @@ D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\Sec
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Services\bin\Debug\EntityFramework.xml
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Services\bin\Debug\EntityFramework.SqlServer.xml
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Services\bin\Debug\Omu.ValueInjecter.xml
-D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Services\obj\Debug\Services.dll
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Services\obj\Debug\Services.pdb

@@ -164,12 +164,15 @@
     <Compile Include="Controllers\Equipos_TipoController.cs" />
     <Compile Include="Controllers\GeneroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\Menu_CategoriaController.cs" />
     <Compile Include="Controllers\PaginasController.cs" />
     <Compile Include="Controllers\PermisosController.cs" />
+    <Compile Include="Controllers\Permisos_CuentasXActividadesController.cs" />
     <Compile Include="Controllers\PersonasController.cs" />
     <Compile Include="Controllers\PreguntasController.cs" />
+    <Compile Include="Controllers\PreguntasXLoginController.cs" />
     <Compile Include="Controllers\SistemasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -303,6 +306,21 @@
     <Content Include="Views\Preguntas\Details.cshtml" />
     <Content Include="Views\Preguntas\Edit.cshtml" />
     <Content Include="Views\Preguntas\Index.cshtml" />
+    <Content Include="Views\PreguntasXLogin\Create.cshtml" />
+    <Content Include="Views\PreguntasXLogin\Delete.cshtml" />
+    <Content Include="Views\PreguntasXLogin\Details.cshtml" />
+    <Content Include="Views\PreguntasXLogin\Edit.cshtml" />
+    <Content Include="Views\PreguntasXLogin\Index.cshtml" />
+    <Content Include="Views\Permisos_CuentasXActividades\Create.cshtml" />
+    <Content Include="Views\Permisos_CuentasXActividades\Delete.cshtml" />
+    <Content Include="Views\Permisos_CuentasXActividades\Details.cshtml" />
+    <Content Include="Views\Permisos_CuentasXActividades\Edit.cshtml" />
+    <Content Include="Views\Permisos_CuentasXActividades\Index.cshtml" />
+    <Content Include="Views\Locations\Create.cshtml" />
+    <Content Include="Views\Locations\Delete.cshtml" />
+    <Content Include="Views\Locations\Details.cshtml" />
+    <Content Include="Views\Locations\Edit.cshtml" />
+    <Content Include="Views\Locations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

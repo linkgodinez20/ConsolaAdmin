@@ -7,8 +7,9 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    <div class="container" style="Width: 980px;">
+<body>    
+    <div class="container" style="Width: 100%;">
+        <!--<div class="container" style="Width: 980px;">-->
         <!--<div id="container" runat="server">
             <table class="alert bg-primary TituloSistema">
                 <tr>
@@ -19,9 +20,8 @@
             </table>
           </div>
             -->
-        <!--================================================= NAVBAR ================================================== -->
-
-       <!-- <nav class="navbar navbar-default">--> 
+        <!-- ================ NAVBAR ================ -->
+        <!-- <nav class="navbar navbar-default">-->
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -31,17 +31,15 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">CONADUS</a>
+                    <a class="navbar-brand" href="">CONADUS</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
-                        <li>@Html.ActionLink("Personas", "Index", "Personas")</li>
-                        <li>@Html.ActionLink("Genero", "Index", "Genero")</li>                      
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">                               
-                                <li class="divider"></li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MIKE <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
                                 <li class="dropdown-header">Creados Mike</li>
                                 <li>@Html.ActionLink("AreasTrabajo", "Index", "AreasDeTrabajo")</li>
                                 <li>@Html.ActionLink("Baja_Motivos", "Index", "Baja_Motivos")</li>
@@ -50,8 +48,27 @@
                                 <li>@Html.ActionLink("Cuentas", "Index", "Cuentas")</li>
                                 <li>@Html.ActionLink("Directorios", "Index", "Directorios")</li>
                                 <li>@Html.ActionLink("Entidades", "Index", "Entidades")</li>
-                                <li><a href="#">Separated link</a></li>
-                                <li><a href="#">One more separated link</a></li>
+                                <li>@Html.ActionLink("Equipos_Tipo", "Index", "Equipos_Tipo")</li>
+                                <li>@Html.ActionLink("Menu_Categoria", "Index", "Menu_Categoria")</li>
+                                <li>@Html.ActionLink("Paginas", "Index", "Paginas")</li>
+                                <li>@Html.ActionLink("Permisos", "Index", "Permisos")</li>
+                                <li>@Html.ActionLink("Preguntas", "Index", "Preguntas")</li>
+                                <li>@Html.ActionLink("PreguntasXLogin", "Index", "PreguntasXLogin")</li>
+                                <li>@Html.ActionLink("Permisos_CuentasXActividades", "Index", "Permisos_CuentasXActividades")</li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Mapa</li>
+                                <li>@Html.ActionLink("Locations", "Index", "Locations")</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">HUMBERTO <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">Humberto</li>
+                                <li>@Html.ActionLink("Genero", "Index", "Genero")</li>
+                                <li>@Html.ActionLink("Personas", "Index", "Personas")</li>
+                                <li>@Html.ActionLink("Sistemas", "Index", "Sistemas")</li>
+                                <li class="divider"></li>
+                                <li><a href="#">Hola</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -63,28 +80,35 @@
                     </ul>
                         -->
                 </div>
-                <!--================================================= NAVBAR ================================================== -->
+                <!-- ================ NAVBAR ================ -->
 
             </div>
         </nav>
 
-        <div class="container body-content">
-            <div class="container">
-                @RenderBody()                
-            </div>                  
+        <div class="container">
+            @RenderBody()
             <hr />
-            <!-- FOOTER -->
+            <!-- ================ ALERTS ================= -->
+            <div class="footer" align="justify" style="alignment-adjust:central">
+                <div id="logSuccess" runat="server" style=" margin-bottom:5px;">  </div>
+                <div id="logInfo" runat="server" style=" margin-bottom:5px;">  </div>
+                <div id="logWarning" runat="server" style=" margin-bottom:5px;">  </div>
+                <div id="logDanger" runat="server" style=" margin-bottom:5px;">  </div>
+            </div>
+            <!-- ================ ALERTS ================= -->
+            <hr />
+            <!-- ================ FOOTER ================ -->
             <footer>
-                <p class="pull-right"><a href="#">Back to top</a></p>
+                <p class="pull-right"><a href="#">Regresar inicio</a></p>
                 <p>&copy; @DateTime.Now.Year  &middot; <a href="http://www.tago.com.mx/">Solutia Intelligence</a></p>
             </footer>
-           
+            <!-- ================ FOOTER ================ -->
         </div>
+        <!-- ================ SCRIPTS ================ -->
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        @Scripts.Render("scripts/js/mike.js")
 
-        </div>
-
-            @Scripts.Render("~/bundles/jquery")
-            @Scripts.Render("~/bundles/bootstrap")
-            @RenderSection("scripts", required: false)
 </body>
 </html>

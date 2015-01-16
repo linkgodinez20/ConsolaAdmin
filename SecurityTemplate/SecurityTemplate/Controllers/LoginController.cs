@@ -124,6 +124,7 @@ namespace Security.Controllers
             if (disposing)
             {
                 repo.Dispose();
+                personas.Dispose();
             }
             base.Dispose(disposing);
         }

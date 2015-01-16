@@ -136,6 +136,8 @@ D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTempl
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.csprojResolveAssemblyReference.cache
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.dll
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.pdb
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.xml
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.csprojResolveAssemblyReference.cache
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.Tests.dll.config
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.Tests.dll
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.Tests.pdb
@@ -161,7 +163,6 @@ D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\Sec
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.WebHost.dll
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Net.Http.Formatting.dll
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.pdb
-D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.xml
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.SqlServer.xml
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Newtonsoft.Json.xml
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Omu.ValueInjecter.xml
@@ -179,6 +180,5 @@ D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\Sec
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Data.pdb
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.WebHost.xml
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Net.Http.Formatting.xml
-D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.csprojResolveAssemblyReference.cache
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.dll
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.pdb

@@ -1,9 +1,69 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-    </div>
+  
+<div class="row" align="center">
+    <h2>Getting started</h2>
 </div>
+<!---------------------------------   COMIENZA EL GRUPOS DE PANELES    --------------------------------->
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <!-- Inicio del grupo de paneles-->
+    <!-------------------------- Panel 1 ------------------------------->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    1. Alertas coloridas
+                </a>
+            </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+                <p id="demo"></p>
+                <h4>Press the buttons to show the alerts</h4>
+                <label>
+                    <input type="checkbox" id="cbTodos"> Elimina todos al crear una notificacion.
+                </label>
+                <br>
+                <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" class="btn btn-success" onclick="success();" data-toggle="tooltip" data-placement="top" title="Todo correcto">Success</button>
+                    <button type="button" class="btn btn-info" onclick="info();" data-toggle="tooltip" data-placement="top" title="Algo puede estar pasando">Info</button>
+                    <button type="button" class="btn btn-warning" onclick="warning();" data-toggle="tooltip" data-placement="top" title="Algo definitivamente pasa">Warning</button>
+                    <button type="button" class="btn btn-danger" onclick="danger();" data-toggle="tooltip" data-placement="top" title="Esta ocuriendo un error">Danger</button>
+                    <button type="button" class="btn btn-default" onclick="eliminaNotificaciones();" data-toggle="tooltip" data-placement="top" title="Elimina todo!">LIMPIA</button>
+                    &nbsp;
+                </div>                        
+            </div>
+        </div>
+    </div>
+    <!-------------------------- Panel 2 ------------------------------->
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingSeven">
+            <h4 class="panel-title">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                    2. Two columns
+                </a>
+            </h4>
+        </div>
+        <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+            <div class="panel-body">
+
+                <div class="container-fluid">
+                    <h1>Hello World!</h1>
+                    <p>Resize the browser window to see the effect.</p>
+                    <div class="row">
+                        <div class="col-sm-6" style="background-color:lavender;">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div class="col-sm-6" style="background-color:lavenderblush;">
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>        
+    </div>
+    <!-------------------------- Panel 2 ------------------------------->
+</div> <!---------------------------------   TERMINA EL GRUPOS DE PANELES    --------------------------------->

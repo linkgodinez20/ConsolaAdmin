@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Security.Core.Model;
 using Security.Core.Repository;
 using Ninject;
+using PagedList;
 
 namespace Security.Controllers
 {

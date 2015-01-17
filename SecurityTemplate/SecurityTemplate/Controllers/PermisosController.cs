@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Security.Core.Model;
 using Security.Core.Repository;
+using PagedList;
 
 namespace Security.Controllers
 {

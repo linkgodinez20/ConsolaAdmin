@@ -8,22 +8,77 @@ using System.Web;
 using System.Web.Mvc;
 using Security.Core.Model;
 using Security.Core.Repository;
+using PagedList;
 
 namespace Security.Controllers
 {
     public class LocationsController : Controller
     {        
         private readonly IRepo<Locations> repo;
-
         public LocationsController(IRepo<Locations> Repo)
         {
+
             this.repo = Repo;
         }
 
         // GET: /Locations/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(repo.GetAll());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.Ubicaciones = String.IsNullOrEmpty(sortOrder) ? "Ubicaciones" : "Ubicaciones_desc";
+            ViewBag.Latitude = sortOrder == "Latitud" ? "Latitud" : "Latitud_desc";
+            ViewBag.Longitud = sortOrder == "Longitud" ? "Longitud" : "Longitud_desc";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            IOrderedQueryable<Locations> ubicaciones = repo.GetAll()
+                .OrderBy(x => x.LocationName);
+
+            var locations = from s in ubicaciones
+                            select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                locations = locations.Where(s => s.LocationName.Contains(searchString)
+                                       || s.LocationName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "Ubicaciones":
+                    locations = locations.OrderBy(s => s.LocationName);
+                    break;
+                case "Ubicaciones_desc":
+                    locations = locations.OrderByDescending(s => s.LocationName);
+                    break;
+                case "Latitud":
+                    locations = locations.OrderBy(s => s.Latitude);
+                    break;
+                case "Latitud_desc":
+                    locations = locations.OrderByDescending(s => s.Latitude);
+                    break;
+                case "Longitud":
+                    locations = locations.OrderBy(s => s.Longitude);
+                    break;
+                case "Longitud_desc":
+                    locations = locations.OrderByDescending(s => s.Longitude);
+                    break; 
+                default:  // Nombre ascendente
+                    locations = locations.OrderBy(s => s.LocationName);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(locations.ToPagedList(pageNumber, pageSize));                      
         }
 
         // GET: /Locations/Details/5

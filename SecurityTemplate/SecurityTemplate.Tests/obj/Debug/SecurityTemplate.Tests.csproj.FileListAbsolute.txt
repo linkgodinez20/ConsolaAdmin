@@ -182,3 +182,5 @@ D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\Sec
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Net.Http.Formatting.xml
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.dll
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.pdb
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\PagedList.dll
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\PagedList.xml

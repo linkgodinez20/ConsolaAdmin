@@ -24,10 +24,53 @@ namespace Security.Controllers
         }
 
         // GET: /Baja_Motivos/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var baja_motivos = repo.GetAll();
-            return View(baja_motivos.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.Motivo = String.IsNullOrEmpty(sortOrder) ? "Motivo_desc" : "";
+            ViewBag.Baja = sortOrder == "Baja" ? "Baja" : "Baja_desc";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            IOrderedQueryable<Baja_motivos> baja_mot = repo.GetAll().OrderBy(x => x.Descripcion);
+
+            var modelo = from s in baja_mot select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                modelo = modelo.Where(s => s.Descripcion.Contains(searchString) || s.Baja.Nombre.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "Motivo":
+                    modelo = modelo.OrderBy(s => s.Descripcion);
+                    break;
+                case "Motivo_desc":
+                    modelo = modelo.OrderByDescending(s => s.Descripcion);
+                    break;
+                case "Baja":
+                    modelo = modelo.OrderBy(s => s.Baja.Nombre);
+                    break;
+                case "Baja_desc":
+                    modelo = modelo.OrderByDescending(s => s.Baja.Nombre);
+                    break;
+                default:
+                    modelo = modelo.OrderBy(s => s.Descripcion);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(modelo.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Baja_Motivos/Details/5

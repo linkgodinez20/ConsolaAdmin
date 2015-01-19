@@ -30,11 +30,61 @@ namespace Security.Controllers
         } 
 
         // GET: /Cuentas/
-        public ActionResult Index()
-        {
-            var cuentas = repo.GetAll().Include(c => c.Baja).Include(c => c.LogIn).Include(c => c.Perfiles).Include(c => c.Sistemas);
-            return View(cuentas.ToList());
-        }
+        //public ActionResult Index()
+        //{
+        //    var cuentas = repo.GetAll().Include(c => c.Baja).Include(c => c.LogIn).Include(c => c.Perfiles).Include(c => c.Sistemas);
+        //    return View(cuentas.ToList());
+        //}
+
+        //public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        //{
+        //    ViewBag.CurrentSort = sortOrder;
+        //    ViewBag.Ubicaciones = String.IsNullOrEmpty(sortOrder) ? "Motivo" : "Motivo_desc";
+        //    ViewBag.Latitude = sortOrder == "Motivo" ? "Motivo" : "Motivo_desc";
+        //    ViewBag.Longitud = sortOrder == "Baja" ? "Baja" : "Baja_desc";
+
+        //    if (searchString != null)
+        //    {
+        //        page = 1;
+        //    }
+        //    else
+        //    {
+        //        searchString = currentFilter;
+        //    }
+
+        //    ViewBag.CurrentFilter = searchString;
+
+        //    IOrderedQueryable<Cuentas> cuentas = repo.GetAll().OrderBy(x => x.Descripcion);
+
+        //    var modelo = from s in cuentas select s;
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        modelo = modelo.Where(s => s.Descripcion.Contains(searchString) || s.Baja.Nombre.Contains(searchString));
+        //    }
+        //    switch (sortOrder)
+        //    {
+        //        case "Motivo":
+        //            modelo = modelo.OrderBy(s => s.Descripcion);
+        //            break;
+        //        case "Motivo_desc":
+        //            modelo = modelo.OrderByDescending(s => s.Descripcion);
+        //            break;
+        //        case "Baja":
+        //            modelo = modelo.OrderBy(s => s.Baja.Nombre);
+        //            break;
+        //        case "Baja_desc":
+        //            modelo = modelo.OrderByDescending(s => s.Baja.Nombre);
+        //            break;
+        //        default:
+        //            modelo = modelo.OrderBy(s => s.Descripcion);
+        //            break;
+        //    }
+
+        //    int pageSize = 10;
+        //    int pageNumber = (page ?? 1);
+
+        //    return View(modelo.ToPagedList(pageNumber, pageSize));
+        //}
 
         // GET: /Cuentas/Details/5
         public ActionResult Details(int id)

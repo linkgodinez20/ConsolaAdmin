@@ -22,9 +22,46 @@ namespace Security.Controllers
         }
 
         // GET: /Equipos_Tipo/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(repo.GetAll());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.TipoEquipo = String.IsNullOrEmpty(sortOrder) ? "TipoEquipo_desc" : "";
+          
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            IOrderedQueryable<Equipos_tipo> equipTip = repo.GetAll().OrderBy(x => x.Nombre);
+
+            var modelo = from s in equipTip select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                modelo = modelo.Where(s => s.Nombre.Contains(searchString) );
+            }
+            switch (sortOrder)
+            {
+                case "TipoEquipo":
+                    modelo = modelo.OrderBy(s => s.Nombre);
+                    break;
+                case "TipoEquipo_desc":
+                    modelo = modelo.OrderByDescending(s => s.Nombre);
+                    break;               
+                default:
+                    modelo = modelo.OrderBy(s => s.Nombre);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(modelo.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Equipos_Tipo/Details/5

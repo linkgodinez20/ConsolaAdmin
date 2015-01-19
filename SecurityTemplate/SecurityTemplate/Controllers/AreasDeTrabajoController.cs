@@ -27,9 +27,8 @@ namespace Security.Controllers
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.Ubicaciones = String.IsNullOrEmpty(sortOrder) ? "AreasDeTrabajo" : "AreasDeTrabajo_desc";
-            ViewBag.Latitude = sortOrder == "AreasDeTrabajo" ? "AreasDeTrabajo" : "AreasDeTrabajo_desc";
-            ViewBag.Longitud = sortOrder == "Sistema" ? "Sistema" : "Sistema_desc";
+            ViewBag.AreasDeTrabajo = String.IsNullOrEmpty(sortOrder) ? "AreasDeTrabajo_desc" : "";
+            ViewBag.Sistema = sortOrder == "Sistema" ? "Sistema" : "Sistema_desc";
 
             if (searchString != null)
             {
@@ -74,8 +73,6 @@ namespace Security.Controllers
             int pageNumber = (page ?? 1);
 
             return View(AreasTrabajo.ToPagedList(pageNumber, pageSize));         
-            
-            //return View(repo.GetAll());
         }
 
         // GET: /AreasDeTrabajo/Details/5

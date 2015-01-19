@@ -1,15 +1,28 @@
-﻿@model IEnumerable<Security.Core.Model.Personas>
+﻿@model PagedList.IPagedList<Security.Core.Model.Personas>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "Listado";    
+    ViewBag.Title = "Personas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Listado</h2>
+<h2 align="center">Personas</h2>
 
-<p>
-    @Html.ActionLink("Nuevo", "Create")
-</p>
+@using (Html.BeginForm("Index", "Personas", FormMethod.Get))
+{
+    <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5">
+        <div class="input-group">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+            <span class="input-group-btn">
+                <input type="submit" value="Buscar" placeholder="Valor de búsqueda" class="btn btn-default" />
+            </span>
+        </div>
+    </div>
+}
+
+<br /><br /><br />
+
 <table class="table">
     <tr>
         <th>
@@ -97,4 +110,17 @@
     </tr>
 }
 
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+<table class="btn-group">
+    <tr>
+        <td>
+            <div class="input-group">
+                <p>
+                    @Html.ActionLink("Nuevo", "Create", "Personas", null, new { @class = "btn btn-info" })
+                </p>
+            </div>
+        </td>
+    </tr>
 </table>

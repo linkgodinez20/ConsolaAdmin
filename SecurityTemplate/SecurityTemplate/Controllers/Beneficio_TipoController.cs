@@ -22,9 +22,47 @@ namespace Security.Controllers
         }
 
         // GET: /Beneficio_Tipo/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(repo.GetAll());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.Ubicaciones = String.IsNullOrEmpty(sortOrder) ? "Beneficio" : "Beneficio_desc";
+            ViewBag.Latitude = sortOrder == "Beneficio" ? "Beneficio" : "Beneficio_desc";            
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            IOrderedQueryable<Beneficio_tipo> beneficio_tip = repo.GetAll().OrderBy(x => x.Nombre);
+
+            var modelo = from s in beneficio_tip select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                modelo = modelo.Where(s => s.Nombre.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "Beneficio":
+                    modelo = modelo.OrderBy(s => s.Nombre);
+                    break;
+                case "Beneficio_desc":
+                    modelo = modelo.OrderByDescending(s => s.Nombre);
+                    break;              
+                default:
+                    modelo = modelo.OrderBy(s => s.Nombre);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(modelo.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Beneficio_Tipo/Details/5

@@ -31,5 +31,6 @@ D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\Sec
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Core\bin\Debug\EntityFramework.xml
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Core\bin\Debug\EntityFramework.SqlServer.xml
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Core\bin\Debug\Omu.ValueInjecter.xml
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Core\obj\Debug\Core.dll
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Core\obj\Debug\Core.pdb

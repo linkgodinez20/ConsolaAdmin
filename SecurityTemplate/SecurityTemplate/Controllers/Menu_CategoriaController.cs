@@ -22,9 +22,53 @@ namespace Security.Controllers
         }
 
         // GET: /MenuCategoria/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(repo.GetAll());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.Categoria = String.IsNullOrEmpty(sortOrder) ? "Categoria_desc" : "";
+            ViewBag.Orden = sortOrder == "Orden" ? "Orden" : "Orden_desc";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            IOrderedQueryable<Menu_categoria> menu_cat = repo.GetAll().OrderBy(x => x.Nombre);
+
+            var modelo = from s in menu_cat select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                modelo = modelo.Where(s => s.Nombre.Contains(searchString) || s.Orden.ToString().Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "Categoria":
+                    modelo = modelo.OrderBy(s => s.Nombre);
+                    break;
+                case "Categoria_desc":
+                    modelo = modelo.OrderByDescending(s => s.Nombre);
+                    break;
+                case "Orden":
+                    modelo = modelo.OrderBy(s => s.Orden.ToString());
+                    break;
+                case "Orden_desc":
+                    modelo = modelo.OrderByDescending(s => s.Orden.ToString());
+                    break;                
+                default:
+                    modelo = modelo.OrderBy(s => s.Nombre);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(modelo.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /MenuCategoria/Details/5

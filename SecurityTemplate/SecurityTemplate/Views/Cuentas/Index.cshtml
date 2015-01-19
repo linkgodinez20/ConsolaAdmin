@@ -1,48 +1,73 @@
-﻿@model IEnumerable<Security.Core.Model.Cuentas>
+﻿@model PagedList.IPagedList<Security.Core.Model.Cuentas>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "Listado";
+    ViewBag.Title = "Cuentas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Listado</h2>
+<h2 align="center">Cuentas</h2>
 
-<p>
-    @Html.ActionLink("Nuevo", "Create")
-</p>
+@using (Html.BeginForm("Index", "Cuentas", FormMethod.Get))
+{
+    <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5">
+        <div class="input-group">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+            <span class="input-group-btn">
+                <input type="submit" value="Buscar" placeholder="Valor de búsqueda" class="btn btn-default" />
+            </span>
+        </div>
+    </div>
+}
+
+<br /><br /><br />
+
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaCreacion)
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.FechaCreacion)*@
+            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaModificacion)
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.FechaModificacion)*@
+            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IntentosCnn)
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.IntentosCnn)*@
+            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.InicioBloqueo)
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.InicioBloqueo)*@
+            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estatus)
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.Estatus)*@
+            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RegistroCompleto)
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.RegistroCompleto)*@
+            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Baja.Nombre)
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.Baja.Nombre)*@
+            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LogIn.Usuario)
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.LogIn.Usuario)*@
+            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Perfiles.Nombre)
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.Perfiles.Nombre)*@
+            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sistemas.Nombre)
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.Sistemas.Nombre)*@
+            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
         </th>
-        <th></th>
+        <th class="alert-success">
+            <span class="glyphicon glyphicon-cog"> <b>Acciones</b> </span>
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -85,4 +110,17 @@
     </tr>
 }
 
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+<table class="btn-group">
+    <tr>
+        <td>
+            <div class="input-group">
+                <p>
+                    @Html.ActionLink("Nuevo", "Create", "Cuentas", null, new { @class = "btn btn-info" })
+                </p>
+            </div>
+        </td>
+    </tr>
 </table>

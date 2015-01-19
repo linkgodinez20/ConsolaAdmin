@@ -1,0 +1,107 @@
+﻿@model Security.Core.Model.Equipos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Equipos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Hostname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hostname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MacAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MacAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ubiacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ubiacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAlta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAlta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCaducidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCaducidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuentas.Id_Cuenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuentas.Id_Cuenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Equipos_tipo.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Equipos_tipo.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sistemas.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sistemas.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Equipo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

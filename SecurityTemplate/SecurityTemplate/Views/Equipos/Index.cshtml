@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Security.Core.Model.Equipos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Hostname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MacAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ubiacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaAlta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaCaducidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cuentas.Id_Cuenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Equipos_tipo.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sistemas.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hostname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MacAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ubiacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaAlta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaCaducidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cuentas.Id_Cuenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Equipos_tipo.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sistemas.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Equipo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id_Equipo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Equipo })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,79 @@
+﻿﻿@model PagedList.IPagedList<Security.Core.Model.Actividades>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Listado";    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "Actividades", FormMethod.Get))
+{
+    <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5">
+
+        <div class="input-group">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+            <span class="input-group-btn">
+                <input type="submit" value="Buscar" placeholder="Valor de búsqueda" class="btn btn-default" />
+            </span>
+        </div>
+    </div>
+    <br />
+}
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Nombre", "Index", new { sortOrder = ViewBag.SortByNombre, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Estatus
+        </th>
+        <th>
+            @Html.ActionLink("Directorio", "Index", new { sortOrder = ViewBag.SortByDirectorio, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Sistema
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Directorios.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sistemas.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Actividad }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id_Actividad }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Actividad })
+        </td>
+    </tr>
+}
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+@*P&aacute;gina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount*@
+<table class="btn-group">
+    <tr>
+        <td>
+            <div class="input-group">
+                <p>
+                    @Html.ActionLink("Agregar", "Create", "Actividades", null, new { @class = "btn btn-info" })
+                </p>
+            </div>
+        </td>
+    </tr>
+</table>

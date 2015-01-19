@@ -82,4 +82,44 @@ namespace Security.Core.Model
     [MetadataType(typeof(PersonasMetadata))]
     public partial class Personas
     { }
+
+    [MetadataType(typeof(ActividadesMetadata))]
+    public partial class Actividades { }
+
+    [MetadataType(typeof(BajaMetadata))]
+    public partial class Baja { }
+
+    [MetadataType(typeof(BeneficioMetadata))]
+    public partial class Beneficio { }
+
+    [MetadataType(typeof(ContactoMetadata))]
+    public partial class Contacto { }
+
+    [MetadataType(typeof(Contacto_tipoMetadata))]
+    public partial class Contacto_tipo { }
+
+    [MetadataType(typeof(DomiciliosMetadata))]
+    public partial class Domicilios { }
+
+    [MetadataType(typeof(GeneroMetadata))]
+    public partial class Genero { }
+
+    [MetadataType(typeof(MenuMetadata))]
+    public partial class Menu { }
+
+    [MetadataType(typeof(MunicipiosMetadata))]
+    public partial class Municipios { }
+
+    [MetadataType(typeof(PaisesMetadata))]
+    public partial class Paises { }
+
+    [MetadataType(typeof(PerfilesMetadata))]
+    public partial class Perfiles { }
+
+    [MetadataType(typeof(PreguntasMetadata))]
+    public partial class Preguntas { }
+
+    [MetadataType(typeof(SesionesMetadata))]
+    public partial class Sesiones { }
+
 }

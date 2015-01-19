@@ -1,0 +1,123 @@
+﻿@model Security.Core.Model.Domicilios
+
+@{
+    ViewBag.Title = "Domicilio/Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalle</h2>
+
+<div>
+    <h4>Domicilios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Domicilio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Domicilio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroExterior)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroExterior)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroInterior)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroInterior)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Colonia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Colonia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntreCalle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntreCalle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YCalle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YCalle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaModificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaModificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contacto_tipo.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contacto_tipo.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Municipios.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Municipios.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<table class="btn-group">
+    <tr>
+        <td>
+            <div class="input-group">
+                <p>
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.Id_Domicilio }, new { @class = "btn btn-warning" })
+
+                </p>
+            </div>
+        </td>
+        <td class="Space_h"></td>
+        <td>
+            <div class="input-group">
+                <p>
+                    @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default" })
+                </p>
+            </div>
+        </td>
+    </tr>
+</table>

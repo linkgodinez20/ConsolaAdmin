@@ -1,13 +1,13 @@
 ﻿@model Security.Core.Model.Personas
 
 @{
-    ViewBag.Title = "Eliminar";
+    ViewBag.Title = "Persona/Eliminar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Personas</h2>
+<h2>Eliminar</h2>
 
-<h3>¿Está seguro que desea eliminar este elemento?</h3>
+<h3>¿Est&aacute; seguro que desea eliminar este registro?</h3>
 <div>    
     <hr />
     <dl class="dl-horizontal">
@@ -114,7 +114,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default" })
         </div>
     }
 </div>

@@ -1,100 +1,111 @@
-﻿@model IEnumerable<Security.Core.Model.Personas>
-
+﻿﻿@model PagedList.IPagedList<Security.Core.Model.Personas>
+@using PagedList.Mvc;
+@*<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />*@
 @{
     ViewBag.Title = "Listado";    
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Listado</h2>
-
-<p>
-    @Html.ActionLink("Nuevo", "Create")
-</p>
-<table class="table">
+<ol class="breadcrumb">
+    <li>Inicio</li>
+    <li><b>Personas</b></li>
+    <li class="active">Lista</li>
+</ol>
+@*<table>
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.APaterno)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AMaterno)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaCreacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaNacimiento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RFC)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Homoclave)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CURP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Foto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Genero.Nombre)
-        </th>
-        <th></th>
+        <td class="lead">Lista de Personas</td>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.APaterno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AMaterno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaCreacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaNacimiento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RFC)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Homoclave)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CURP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Foto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genero.Nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id_Persona }) |
-            @Html.ActionLink("Detalles", "Details",new { id=item.Id_Persona }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id_Persona })
-        </td>
-    </tr>
+</table>*@
+@*<h2>Personas</h2>
+<h4>Lista</h4>*@
+<hr />
+@using (Html.BeginForm("Index", "Personas", FormMethod.Get))
+{
+    <div class="col-lg-3">
+    
+        <div class="input-group">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+            <span class="input-group-btn">
+                <input type="submit" value="Buscar" placeholder="Valor de búsqueda" class="btn btn-default" />
+            </span>
+        </div>
+    </div>
+    <br />
 }
+<br />
+<br />
+<table class="table table-bordered table-condensed table-responsive table-hover">
+    <tr>
+        <th class="alert-info">
+            @Html.ActionLink("Ap. Paterno", "Index", new { sortOrder = ViewBag.SortByAPaterno, currentFilter = ViewBag.CurrentFilter })
+            
+        </th>
+        <th class="alert-info">
+            @Html.ActionLink("Ap. Materno", "Index", new { sortOrder = ViewBag.SortByAMaterno, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th class="alert-info">
+            @Html.ActionLink("Nombre", "Index", new { sortOrder = ViewBag.SortByNombre, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th class="alert-info">
+            @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.SortByEmail, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th class="alert-info">
+            @Html.ActionLink("RFC", "Index", new { sortOrder = ViewBag.SortByRFC, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th class="alert-info">
+            Homoclave
+        </th>
+        <th class="alert-info">
+            @Html.ActionLink("Estatus", "Index", new { sortOrder = ViewBag.SortByEstatus, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th class="alert-success">
+            <span class="glyphicon glyphicon-cog"> Acciones</span>
+        </th>
+    </tr>
 
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.APaterno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AMaterno)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RFC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Homoclave)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estatus)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.Id_Persona }, new { @class = "ButtonSettings Edit" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.Id_Persona }, new { @class = "ButtonSettings Details" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.Id_Persona }, new { @class = "ButtonSettings Delete" })
+            </td>
+        </tr>
+    }
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+<table class="btn-group">
+    <tr>
+        <td>
+            <div class="input-group">
+                <p>
+                    @Html.ActionLink("Agregar", "Create", "Personas", null, new { @class = "btn btn-info" })
+                </p>
+            </div>
+        </td>
+    </tr>
 </table>

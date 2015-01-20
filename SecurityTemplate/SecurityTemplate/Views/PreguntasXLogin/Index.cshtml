@@ -9,7 +9,7 @@
 
 <h2 align="center">Preguntas por login</h2>
 
-@using (Html.BeginForm("Index", "Preguntas_x_Login", FormMethod.Get))
+@using (Html.BeginForm("Index", "PreguntasXLogin", FormMethod.Get))
 {
     <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5">
         <div class="input-group">
@@ -23,37 +23,56 @@
 
 <br /><br /><br />
 
-<table class="table">
+<table class="table table-bordered table-condensed table-striped table-hover">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Respuesta)
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.Respuesta)*@
+            @Html.ActionLink("Respuesta", "Index", new { sortOrder = ViewBag.Respuesta, currentFilter = ViewBag.CurrentFilter })            
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LogIn.Usuario)
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.LogIn.Usuario)*@
+            @Html.ActionLink("Usuario", "Index", new { sortOrder = ViewBag.Usuario, currentFilter = ViewBag.CurrentFilter })            
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Preguntas.Pregunta)
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.Preguntas.Pregunta)*@
+            @Html.ActionLink("Pregunta", "Index", new { sortOrder = ViewBag.Pregunta, currentFilter = ViewBag.CurrentFilter })            
         </th>
-        <th></th>
+        <th class="alert-success">
+            <span class="glyphicon glyphicon-cog"> <b>Acciones</b> </span>
+        </th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Respuesta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LogIn.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preguntas.Pregunta)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Detalles", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+<table class="btn-group">
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Respuesta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LogIn.Usuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Preguntas.Pregunta)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Detalles", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ })
+            <div class="input-group">
+                <p>
+                    @Html.ActionLink("Nuevo", "Create", "PreguntasXLogin", null, new { @class = "btn btn-info" })
+                </p>
+            </div>
         </td>
     </tr>
-}
-
 </table>

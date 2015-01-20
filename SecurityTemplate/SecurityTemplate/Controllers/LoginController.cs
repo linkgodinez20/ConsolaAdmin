@@ -23,10 +23,52 @@ namespace Security.Controllers
         }
 
         // GET: /Login/
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var login = repo.GetAll().Include(l => l.Personas);
+        //    return View(login.ToList());
+        //}
+
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var login = repo.GetAll().Include(l => l.Personas);
-            return View(login.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.Usuario = String.IsNullOrEmpty(sortOrder) ? "Usuario_desc" : "";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            IOrderedQueryable<LogIn> login = repo.GetAll().OrderBy(x => x.Usuario);
+
+            var modelo = from s in login select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                modelo = modelo.Where(s => s.Usuario.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "Usuario":
+                    modelo = modelo.OrderBy(s => s.Usuario);
+                    break;
+                case "Usuario_desc":
+                    modelo = modelo.OrderByDescending(s => s.Usuario);
+                    break;                
+                default:
+                    modelo = modelo.OrderBy(s => s.Usuario);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(modelo.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Login/Details/5

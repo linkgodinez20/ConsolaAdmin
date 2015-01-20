@@ -22,9 +22,46 @@ namespace Security.Controllers
         }      
 
         // GET: /Preguntas/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(repo.GetAll());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.Directorio = String.IsNullOrEmpty(sortOrder) ? "Pregunta_desc" : "";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            IOrderedQueryable<Preguntas> preg = repo.GetAll().OrderBy(x => x.Pregunta);
+
+            var modelo = from s in preg select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                modelo = modelo.Where(s => s.Pregunta.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "Pregunta":
+                    modelo = modelo.OrderBy(s => s.Pregunta);
+                    break;
+                case "Pregunta_desc":
+                    modelo = modelo.OrderByDescending(s => s.Pregunta);
+                    break;                
+                default:
+                    modelo = modelo.OrderBy(s => s.Pregunta);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(modelo.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Preguntas/Details/5

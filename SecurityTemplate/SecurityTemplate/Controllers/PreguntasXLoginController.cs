@@ -24,10 +24,66 @@ namespace Security.Controllers
             this.preguntas = Preguntas;
         }
         // GET: /PreguntasXLogin/
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var preguntas_x_login = repo.GetAll().Include(p => p.LogIn).Include(p => p.Preguntas);
+        //    return View(preguntas_x_login.ToList());
+        //}
+
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var preguntas_x_login = repo.GetAll().Include(p => p.LogIn).Include(p => p.Preguntas);
-            return View(preguntas_x_login.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.Respuesta = String.IsNullOrEmpty(sortOrder) ? "Respuesta_desc" : "";
+            ViewBag.Usuario = sortOrder == "Usuario" ? "Usuario" : "Usuario_desc";
+            ViewBag.Pregunta = sortOrder == "Pregunta" ? "Pregunta" : "Pregunta_desc";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            IOrderedQueryable<Preguntas_x_Login> pXl = repo.GetAll().OrderBy(x => x.Respuesta);
+
+            var modelo = from s in pXl select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                modelo = modelo.Where(s => s.Respuesta.Contains(searchString) || s.LogIn.Usuario.Contains(searchString) || s.Preguntas.Pregunta.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "Respuesta":
+                    modelo = modelo.OrderBy(s => s.Respuesta);
+                    break;
+                case "Respuesta_desc":
+                    modelo = modelo.OrderByDescending(s => s.Respuesta);
+                    break;
+                case "Usuario":
+                    modelo = modelo.OrderBy(s => s.LogIn.Usuario);
+                    break;
+                case "Usuario_desc":
+                    modelo = modelo.OrderByDescending(s => s.LogIn.Usuario);
+                    break;
+                case "Pregunta":
+                    modelo = modelo.OrderBy(s => s.Preguntas.Pregunta);
+                    break;
+                case "Pregunta_desc":
+                    modelo = modelo.OrderByDescending(s => s.Preguntas.Pregunta);
+                    break;
+                default:
+                    modelo = modelo.OrderBy(s => s.Respuesta);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(modelo.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /PreguntasXLogin/Details/5

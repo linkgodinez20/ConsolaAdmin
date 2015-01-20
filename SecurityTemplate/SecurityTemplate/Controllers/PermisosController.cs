@@ -22,9 +22,53 @@ namespace Security.Controllers
         }      
 
         // GET: /Permisos/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(repo.GetAll());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.Permiso = String.IsNullOrEmpty(sortOrder) ? "Permiso_desc" : "";
+            ViewBag.Estatus = sortOrder == "Estatus" ? "Estatus" : "Estatus_desc";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            IOrderedQueryable<Permisos> perms = repo.GetAll().OrderBy(x => x.Nombre);
+
+            var modelo = from s in perms select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                modelo = modelo.Where(s => s.Nombre.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "Permiso":
+                    modelo = modelo.OrderBy(s => s.Nombre);
+                    break;
+                case "Permiso_desc":
+                    modelo = modelo.OrderByDescending(s => s.Nombre);
+                    break;
+                case "Estatus":
+                    modelo = modelo.OrderBy(s => s.Estatus);
+                    break;
+                case "Estatus_desc":
+                    modelo = modelo.OrderByDescending(s => s.Estatus);
+                    break;
+                default:
+                    modelo = modelo.OrderBy(s => s.Nombre);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(modelo.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Permisos/Details/5

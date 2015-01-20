@@ -24,10 +24,66 @@ namespace Security.Controllers
         }
 
         // GET: /Entidades/
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var entidades = repo.GetAll().Include(e => e.Paises);
+        //    return View(entidades.ToList());
+        //}
+
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var entidades = repo.GetAll().Include(e => e.Paises);
-            return View(entidades.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.Entidad = String.IsNullOrEmpty(sortOrder) ? "Entidad_desc" : "";
+            ViewBag.Abreviatura = sortOrder == "Abreviatura" ? "Abreviatura" : "Abreviatura_desc";
+            ViewBag.Pais = sortOrder == "Pais" ? "Pais" : "Pais_desc";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            IOrderedQueryable<Entidades> entidades = repo.GetAll().OrderBy(x => x.Nombre);
+
+            var modelo = from s in entidades select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                modelo = modelo.Where(s => s.Nombre.Contains(searchString) || s.Abreviatura.Contains(searchString) || s.Paises.FIPS.ToString().Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "Entidad":
+                    modelo = modelo.OrderBy(s => s.Nombre);
+                    break;
+                case "Entidad_desc":
+                    modelo = modelo.OrderByDescending(s => s.Nombre);
+                    break;
+                case "Abreviatura":
+                    modelo = modelo.OrderBy(s => s.Abreviatura);
+                    break;
+                case "Abreviatura_desc":
+                    modelo = modelo.OrderByDescending(s => s.Abreviatura);
+                    break;
+                case "Pais":
+                    modelo = modelo.OrderBy(s => s.Paises.FIPS);
+                    break;
+                case "Pais_desc":
+                    modelo = modelo.OrderByDescending(s => s.Paises.FIPS);
+                    break;
+                default:
+                    modelo = modelo.OrderBy(s => s.Nombre);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(modelo.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Entidades/Details/5

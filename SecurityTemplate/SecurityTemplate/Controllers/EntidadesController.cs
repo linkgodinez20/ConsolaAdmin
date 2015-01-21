@@ -48,7 +48,7 @@ namespace Security.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            IOrderedQueryable<Entidades> entidades = repo.GetAll().OrderBy(x => x.Nombre);
+            IOrderedQueryable<Entidades> entidades = repo.GetAll().Include(e => e.Paises).OrderBy(x => x.Nombre);
 
             var modelo = from s in entidades select s;
             if (!String.IsNullOrEmpty(searchString))
@@ -169,7 +169,7 @@ namespace Security.Controllers
         // POST: /Entidades/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(short id)
+        public ActionResult DeleteConfirmed(Int16 id)
         {
             Entidades entidades = repo.Get(id);
             repo.Delete(entidades);

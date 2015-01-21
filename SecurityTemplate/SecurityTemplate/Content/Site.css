@@ -20,10 +20,57 @@
 input,
 select,
 textarea {
-    max-width: 100%;
+    max-width: 280px;
 }
 
  .TituloSistema
  {
     width: 950px;
  }
+
+.Edit {
+    background-image:url('Images/pencil.png');
+}
+
+.Details {
+    background-image:url('Images/table.ico');
+}
+
+.Delete {
+    background-image:url('Images/action_delete.ico');
+}
+
+.Space_h {
+    width: 5px;
+}
+
+.Icon_Settings {
+    padding-left:5px;
+    background-position:1px;
+    background-repeat:no-repeat;
+    vertical-align:middle;
+    margin: auto;
+}
+
+.ButtonSettings {
+    padding-left:5px;
+    background-position:1px;
+    background-repeat:no-repeat;
+    vertical-align:middle;
+    background-color:#F7F7F7;
+    /*border: 1pt solid #ADADAD;*/
+    width:20px;
+    height:20px;
+    text-indent: -9999px;
+    display:inline-block;
+    
+
+}
+
+    .ButtonSettings:hover {        
+        background-color:#A6F4FF;
+        border: 1pt solid #4AB8E9;
+        -webkit-box-shadow:0 1px 4px #4AB8E9, 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        box-shadow:0 1px 4px #4AB8E9, 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        /*border-radius:100px / 10px;*/
+    }

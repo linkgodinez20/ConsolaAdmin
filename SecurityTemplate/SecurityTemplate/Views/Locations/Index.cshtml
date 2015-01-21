@@ -52,9 +52,9 @@
                 @Html.DisplayFor(modelItem => item.Longitude)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.LocationId }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.LocationId }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.LocationId })
+                @Html.ActionLink(" ", "Edit", new { id = item.LocationId }      , new { @class = "ButtonSettings Edit" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.LocationId } , new { @class = "ButtonSettings Details" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.LocationId }  , new { @class = "ButtonSettings Delete" })
             </td>
         </tr>
     }
@@ -66,7 +66,7 @@ new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilt
         <td>
             <div class="input-group">
                 <p>
-                    @Html.ActionLink("Nuevo", "Create", "Locations", null, new { @class = "btn btn-info" })
+                    @Html.ActionLink(" ", "Create", "Locations", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
                 </p>
             </div>
         </td>

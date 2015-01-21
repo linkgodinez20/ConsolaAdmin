@@ -103,9 +103,9 @@
             @Html.DisplayFor(modelItem => item.Genero.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id_Persona }) |
-            @Html.ActionLink("Detalles", "Details",new { id=item.Id_Persona }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id_Persona })
+            @Html.ActionLink(" ", "Edit", new { id=item.Id_Persona }        , new { @class = "ButtonSettings Edit" }) |
+            @Html.ActionLink(" ", "Details", new { id = item.Id_Persona } , new { @class = "ButtonSettings Details" }) |
+            @Html.ActionLink(" ", "Delete", new { id = item.Id_Persona }  , new { @class = "ButtonSettings Delete" })
         </td>
     </tr>
 }
@@ -118,7 +118,7 @@ new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilt
         <td>
             <div class="input-group">
                 <p>
-                    @Html.ActionLink("Nuevo", "Create", "Personas", null, new { @class = "btn btn-info" })
+                    @Html.ActionLink(" ", "Create", "Personas", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
                 </p>
             </div>
         </td>

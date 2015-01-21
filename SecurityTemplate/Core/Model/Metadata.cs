@@ -80,13 +80,13 @@ namespace Security.Core.Model
         public short Id_Perfil;
 
         [Display(Name = "FechaCreacion")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy")]        
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]        
         [DataType(DataType.DateTime)]
         public System.DateTime FechaCreacion;
 
         [Display(Name = "Fecha Modificación")]
         [ScaffoldColumn(false)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy")]        
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]        
         [DataType(DataType.DateTime)]
         public Nullable<System.DateTime> FechaModificacion;
 
@@ -95,7 +95,7 @@ namespace Security.Core.Model
 
         [Display(Name = "Inicio Bloqueo")]
         [ScaffoldColumn(false)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy")]        
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]        
         [DataType(DataType.DateTime)]
         public Nullable<System.DateTime> InicioBloqueo;
 

@@ -46,9 +46,9 @@
                 @Html.DisplayFor(modelItem => item.Orden)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id_MenuCategoria }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.Id_MenuCategoria }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id_MenuCategoria })
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id_MenuCategoria }      , new { @class = "ButtonSettings Edit" }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id_MenuCategoria } , new { @class = "ButtonSettings Details" }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id_MenuCategoria }  , new { @class = "ButtonSettings Delete" })
             </td>
         </tr>
     }
@@ -61,7 +61,7 @@ new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilt
         <td>
             <div class="input-group">
                 <p>
-                    @Html.ActionLink("Nuevo", "Create", "Menu_categoria", null, new { @class = "btn btn-info" })
+                    @Html.ActionLink(" ", "Create", "Menu_categoria", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
                 </p>
             </div>
         </td>

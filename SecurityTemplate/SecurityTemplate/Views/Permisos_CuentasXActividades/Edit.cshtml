@@ -20,19 +20,17 @@
 
         @Html.HiddenFor(model => model.Id_Actividad)
 
-        @Html.HiddenFor(model => model.Id_Permiso)
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+        @Html.HiddenFor(model => model.Id_Permiso)        
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" value="Save" class="btn btn-success">
+                <i class="glyphicon glyphicon-ok"></i>
+            </button>
+            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

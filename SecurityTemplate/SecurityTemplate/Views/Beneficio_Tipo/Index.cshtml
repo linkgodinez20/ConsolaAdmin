@@ -40,9 +40,9 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id_BeneficioTipo }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.Id_BeneficioTipo }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id_BeneficioTipo })
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id_BeneficioTipo }      , new { @class = "ButtonSettings Edit" }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id_BeneficioTipo } , new { @class = "ButtonSettings Details" }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id_BeneficioTipo }  , new { @class = "ButtonSettings Delete" })
             </td>
         </tr>
     }
@@ -54,8 +54,8 @@ new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilt
     <tr>
         <td>
             <div class="input-group">
-                <p>
-                    @Html.ActionLink("Nuevo", "Create", "Beneficio_tipo", null, new { @class = "btn btn-info" })
+                <p>                    
+                    @Html.ActionLink(" ", "Create", "Beneficio_tipo", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
                 </p>
             </div>
         </td>

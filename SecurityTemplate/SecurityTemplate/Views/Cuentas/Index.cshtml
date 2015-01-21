@@ -23,92 +23,96 @@
 
 <br /><br /><br />
 
-<table class="table">
+<table class="table table-bordered table-condensed table-striped table-hover">
     <tr>
         <th class="alert-info">
             @*@Html.DisplayNameFor(model => model.FechaCreacion)*@
-            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
+            @Html.ActionLink("Fecha Creación", "Index", new { sortOrder = ViewBag.FechaCrea, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th class="alert-info">
             @*@Html.DisplayNameFor(model => model.FechaModificacion)*@
-            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
+            @Html.ActionLink("Fecha mod", "Index", new { sortOrder = ViewBag.FechaMod, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th class="alert-info">
             @*@Html.DisplayNameFor(model => model.IntentosCnn)*@
-            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
+            @Html.ActionLink("Intentos Conex", "Index", new { sortOrder = ViewBag.Intentos, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th class="alert-info">
             @*@Html.DisplayNameFor(model => model.InicioBloqueo)*@
-            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
+            @*@Html.ActionLink("Inicio Bloqueo", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })*@
+            <a>Inicio Bloqueo</a>
         </th>
         <th class="alert-info">
             @*@Html.DisplayNameFor(model => model.Estatus)*@
-            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
+            @* @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })*@
+            <a>Estatus</a>
         </th>
         <th class="alert-info">
             @*@Html.DisplayNameFor(model => model.RegistroCompleto)*@
-            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
+            @*@Html.ActionLink("RegistroCompleto", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })*@
+            <a>RegistroCompleto</a>
         </th>
         <th class="alert-info">
             @*@Html.DisplayNameFor(model => model.Baja.Nombre)*@
-            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
+            @Html.ActionLink("Nombre", "Index", new { sortOrder = ViewBag.Nombre, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th class="alert-info">
             @*@Html.DisplayNameFor(model => model.LogIn.Usuario)*@
-            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
+            @Html.ActionLink("Login Usuario", "Index", new { sortOrder = ViewBag.Usuario, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th class="alert-info">
             @*@Html.DisplayNameFor(model => model.Perfiles.Nombre)*@
-            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
+            @Html.ActionLink("Perfil", "Index", new { sortOrder = ViewBag.Perfil, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th class="alert-info">
             @*@Html.DisplayNameFor(model => model.Sistemas.Nombre)*@
-            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })            
+            @Html.ActionLink("Sistema", "Index", new { sortOrder = ViewBag.Sistema, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th class="alert-success">
             <span class="glyphicon glyphicon-cog"> <b>Acciones</b> </span>
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaCreacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaModificacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IntentosCnn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InicioBloqueo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RegistroCompleto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Baja.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LogIn.Usuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Perfiles.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sistemas.Nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id_Cuenta }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.Id_Cuenta }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id_Cuenta })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCreacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaModificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IntentosCnn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InicioBloqueo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistroCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Baja.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LogIn.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Perfiles.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sistemas.Nombre)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.Id_Cuenta }, new { @class = "ButtonSettings Edit" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.Id_Cuenta }, new { @class = "ButtonSettings Details" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.Id_Cuenta }, new { @class = "ButtonSettings Delete" })
+            </td>
+        </tr>
+    }
 
 </table>
 @Html.PagedListPager(Model, page => Url.Action("Index",
@@ -117,8 +121,8 @@ new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilt
     <tr>
         <td>
             <div class="input-group">
-                <p>
-                    @Html.ActionLink("Nuevo", "Create", "Cuentas", null, new { @class = "btn btn-info" })
+                <p>                   
+                    @Html.ActionLink(" ", "Create", "Cuentas", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
                 </p>
             </div>
         </td>

@@ -33,6 +33,7 @@ namespace Security.Controllers
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.Usuario = String.IsNullOrEmpty(sortOrder) ? "Usuario_desc" : "";
+            ViewBag.Persona = sortOrder == "Persona" ? "Persona" : "Persona_desc";
 
             if (searchString != null)
             {
@@ -50,7 +51,7 @@ namespace Security.Controllers
             var modelo = from s in login select s;
             if (!String.IsNullOrEmpty(searchString))
             {
-                modelo = modelo.Where(s => s.Usuario.Contains(searchString));
+                modelo = modelo.Where(s => s.Usuario.Contains(searchString) || s.Personas.APaterno.Contains(searchString));
             }
             switch (sortOrder)
             {
@@ -59,7 +60,13 @@ namespace Security.Controllers
                     break;
                 case "Usuario_desc":
                     modelo = modelo.OrderByDescending(s => s.Usuario);
-                    break;                
+                    break;
+                case "Persona":
+                    modelo = modelo.OrderBy(s => s.Personas.APaterno);
+                    break;
+                case "Persona_desc":
+                    modelo = modelo.OrderByDescending(s => s.Personas.APaterno);
+                    break;  
                 default:
                     modelo = modelo.OrderBy(s => s.Usuario);
                     break;

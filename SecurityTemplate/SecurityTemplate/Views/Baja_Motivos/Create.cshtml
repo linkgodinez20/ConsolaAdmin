@@ -20,16 +20,16 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Descripcion, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Descripcion)
-                @Html.ValidationMessageFor(model => model.Descripcion)
+                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Id_Baja, "Id_Baja", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Id_Baja", String.Empty)
-                @Html.ValidationMessageFor(model => model.Id_Baja)
+                @Html.DropDownList("Id_Baja", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Id_Baja, "", new { @class = "text-danger" })
             </div>
         </div>
 

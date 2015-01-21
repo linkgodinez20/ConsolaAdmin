@@ -20,32 +20,32 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Id_Pais, "Id_Pais", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Id_Pais", String.Empty)
-                @Html.ValidationMessageFor(model => model.Id_Pais)
+                @Html.DropDownList("Id_Pais", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Id_Pais, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Id_Entidad, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Id_Entidad)
-                @Html.ValidationMessageFor(model => model.Id_Entidad)
+                @Html.EditorFor(model => model.Id_Entidad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Id_Entidad, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Nombre, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Nombre)
-                @Html.ValidationMessageFor(model => model.Nombre)
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Abreviatura, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Abreviatura)
-                @Html.ValidationMessageFor(model => model.Abreviatura)
+                @Html.EditorFor(model => model.Abreviatura, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Abreviatura, "", new { @class = "text-danger" })
             </div>
         </div>
 

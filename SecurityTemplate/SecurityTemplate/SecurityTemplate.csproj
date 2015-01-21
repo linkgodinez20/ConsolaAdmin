@@ -191,6 +191,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\action_delete.ico" />
+    <Content Include="Content\Images\archives.png" />
+    <Content Include="Content\Images\page_white.png" />
+    <Content Include="Content\Images\pencil.png" />
+    <Content Include="Content\Images\table.ico" />
+    <Content Include="Content\Images\x.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

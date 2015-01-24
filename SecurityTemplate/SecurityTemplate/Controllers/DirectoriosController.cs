@@ -156,10 +156,18 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(byte id)
         {
-            Directorios directorios = repo.Get(id);
-            repo.Delete(directorios);
-            repo.Save();
-            return RedirectToAction("Index");
+            try
+            {
+                Directorios directorios = repo.Get(id);
+                repo.Delete(directorios);
+                repo.Save();
+                return RedirectToAction("Index");
+            }catch(Exception ex)
+            {
+                ViewBag.Error ="Error "+ ex.Message;
+                ViewBag.True = 1;
+                return View();
+            }
         }
 
         protected override void Dispose(bool disposing)

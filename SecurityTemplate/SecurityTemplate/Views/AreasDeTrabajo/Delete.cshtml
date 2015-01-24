@@ -27,6 +27,10 @@
         </dd>
 
     </dl>
+    @using(Html.BeginForm("ProcessSubmitUpload", "AreaDeTRabajo", FormMethod.Post))
+    {
+        @Html.ValidationSummary()
+    }
 
     @using (Html.BeginForm()) 
     {        

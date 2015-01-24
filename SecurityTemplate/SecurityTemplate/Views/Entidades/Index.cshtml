@@ -55,9 +55,9 @@
                 @Html.DisplayFor(modelItem => item.Paises.FIPS)
             </td>
             <td>
-                @Html.ActionLink(" ", "Edit", new { /* id=item.PrimaryKey */ }    , new { @class = "ButtonSettings Edit" }) |
-                @Html.ActionLink(" ", "Details", new { /* id=item.PrimaryKey */ } , new { @class = "ButtonSettings Details" }) |
-                @Html.ActionLink(" ", "Delete", new { /* id=item.PrimaryKey */ }  , new { @class = "ButtonSettings Delete" })
+                @Html.ActionLink(" ", "Edit", new {  id=item.Id_Entidad  }    , new { @class = "ButtonSettings Edit" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.Id_Entidad }, new { @class = "ButtonSettings Details" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.Id_Entidad }, new { @class = "ButtonSettings Delete" })
             </td>
         </tr>
     }

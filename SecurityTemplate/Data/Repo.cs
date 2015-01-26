@@ -10,6 +10,8 @@ namespace Security.Data
     public class Repo<T> : IRepo<T> where T : class//, new()
     {
         protected readonly DbContext dbContext;
+        
+        //protected readonly RepoHelper<T> repoHelper = new RepoHelper<T>();
 
         public Repo(IDbContextFactory f)
         {
@@ -34,14 +36,14 @@ namespace Security.Data
             dbContext.Set<T>().Remove(o);
         }
 
-        public virtual void Update(T o)
+        public virtual void Update(T o)//, params String[] pkey)
         {
             dbContext.Entry(o).State = EntityState.Modified;
         }
 
-        public T Get(int id)
+        public T Get(params Object[] KeyValues)
         {
-            return dbContext.Set<T>().Find(id);
+            return dbContext.Set<T>().Find(KeyValues);
         }
 
         public virtual IQueryable<T> Where(Expression<Func<T, bool>> predicate, bool showDeleted = false)
@@ -78,5 +80,8 @@ namespace Security.Data
             GC.SuppressFinalize(this);
         }
 
+
+
     }
+
 }

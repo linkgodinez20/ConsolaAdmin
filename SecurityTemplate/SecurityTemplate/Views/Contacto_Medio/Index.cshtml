@@ -4,31 +4,41 @@
     ViewBag.Title = "Listado";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Listado</h2>
-
-<p>
-    @Html.ActionLink("Nuevo", "Create")
-</p>
-<table class="table">
+<ol class="breadcrumb">
+    <li>Inicio</li>
+    <li><b>Contacto (medio)</b></li>
+    <li class="active">Lista</li>
+</ol>
+<hr />
+<table class="table table-bordered table-condensed table-hover">
     <tr>
-        <th>
+        <th class="alert-info">
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
-        <th></th>
+        <th class="alert-success">
+            <span class="glyphicon glyphicon-cog"> Acciones</span>
+        </th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.Id_ContactoMedio }, new { @class = "ButtonSettings Edit" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.Id_ContactoMedio }, new { @class = "ButtonSettings Details" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.Id_ContactoMedio }, new { @class = "ButtonSettings Delete" })
+            </td>
+        </tr>
+    }
+
+</table>
+<table>
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id_ContactoMedio }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.Id_ContactoMedio }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id_ContactoMedio })
+            @Html.ActionLink(" ", "Create", "Contacto_Medio", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
         </td>
     </tr>
-}
-
 </table>

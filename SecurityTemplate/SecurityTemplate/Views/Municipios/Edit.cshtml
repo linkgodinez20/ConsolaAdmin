@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2 class="Titulo">Editar</h2>
 
 
 @using (Html.BeginForm())
@@ -13,13 +13,11 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Municipios</h4>
+        <h4>Municipios / <b>@Html.DisplayFor(model => model.Entidades.Nombre, new { htmlAttributes = new { @class = "form-control" } })</b></h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id_Pais)
-
         @Html.HiddenFor(model => model.Id_Entidad)
-
         @Html.HiddenFor(model => model.Id_Municipio)
 
         <div class="form-group">
@@ -40,15 +38,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <button type="submit" value="Guardar" class="btn btn-success">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

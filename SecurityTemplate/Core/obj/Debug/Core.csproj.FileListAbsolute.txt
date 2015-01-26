@@ -33,7 +33,6 @@ D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\Sec
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Core\bin\Debug\Omu.ValueInjecter.xml
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Core\obj\Debug\Core.dll
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Core\obj\Debug\Core.pdb
-D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Core\bin\Debug\Core.dll.config
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Core\bin\Debug\Core.dll
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Core\bin\Debug\Core.pdb
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Core\bin\Debug\EntityFramework.dll

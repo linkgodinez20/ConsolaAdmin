@@ -1,11 +1,11 @@
 ﻿@model Security.Core.Model.Personas
 
 @{
-    ViewBag.Title = "Editar";
+    ViewBag.Title = "Persona/Editar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Editar</h2>
+<h2 class="Titulo">Editar</h2>
 
 
 @using (Html.BeginForm())
@@ -43,14 +43,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FechaCreacion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FechaCreacion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FechaCreacion, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
@@ -62,6 +54,9 @@
             @Html.LabelFor(model => model.Id_Genero, "Id_Genero", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Id_Genero", null, htmlAttributes: new { @class = "form-control" })
+
+                
+
                 @Html.ValidationMessageFor(model => model.Id_Genero, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -118,16 +113,33 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <button type="submit" value="Guardar" class="btn btn-success">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
             </div>
         </div>
+
+        @*<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-success" />
+
+                @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>*@
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<script src="~/Scripts/jquery-2.1.3.js"></script>
+<script src="~/Scripts/jquery-ui-1.11.2.js"></script>
+<link href="~/Content/themes/base/all.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.datepicker.setDefaults($.datepicker.regional['es-MX']);
+        $('#FechaNacimiento').datepicker({ dateFormat: "yy-mm-dd" });
+    });
+</script>

@@ -5,8 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
-
+<h2 class="Titulo">Nuevo</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -20,15 +19,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Nombre, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Nombre)
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Nombre)
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_DirectorioTipo, "Id_DirectorioTipo", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Id_DirectorioTipo, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Id_DirectorioTipo", String.Empty)
+                @Html.DropDownList("Id_DirectorioTipo", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Id_DirectorioTipo)
             </div>
         </div>
@@ -36,22 +35,21 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Estatus, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Estatus)
+                @Html.EditorFor(model => model.Estatus, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Estatus)
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button type="submit" value="create" class="btn btn-success">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

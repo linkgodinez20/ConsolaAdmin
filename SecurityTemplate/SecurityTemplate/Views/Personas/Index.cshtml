@@ -2,7 +2,7 @@
 @using PagedList.Mvc;
 @*<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />*@
 @{
-    ViewBag.Title = "Listado";    
+    ViewBag.Title = "Persona/Lista";    
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <ol class="breadcrumb">
@@ -10,6 +10,7 @@
     <li><b>Personas</b></li>
     <li class="active">Lista</li>
 </ol>
+
 @*<table>
     <tr>
         <td class="lead">Lista de Personas</td>
@@ -20,8 +21,8 @@
 <hr />
 @using (Html.BeginForm("Index", "Personas", FormMethod.Get))
 {
-    <div class="col-lg-3">
-    
+    <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5">
+
         <div class="input-group">
             @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
             <span class="input-group-btn">
@@ -98,14 +99,10 @@
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
-<table class="btn-group">
+<table >
     <tr>
         <td>
-            <div class="input-group">
-                <p>
-                    @Html.ActionLink("Agregar", "Create", "Personas", null, new { @class = "btn btn-info" })
-                </p>
-            </div>
+            @Html.ActionLink(" ", "Create", "Personas", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
         </td>
     </tr>
 </table>

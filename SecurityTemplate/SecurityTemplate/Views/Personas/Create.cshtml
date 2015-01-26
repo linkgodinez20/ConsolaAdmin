@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Nuevo</h2>
+<h2 class="Titulo">Nuevo</h2>
 
 
 @using (Html.BeginForm()) 
@@ -41,14 +41,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FechaCreacion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FechaCreacion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FechaCreacion, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
@@ -60,7 +52,10 @@
             @*@Html.LabelFor(model => model.Id_Genero, "Id_Genero", htmlAttributes: new { @class = "control-label col-md-2" })*@
             @Html.LabelFor(model => model.Id_Genero, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Id_Genero", null, htmlAttributes: new { @class = "form-control" })
+                @*@Html.DropDownList("Id_Genero", null, htmlAttributes: new { @class = "form-control" })*@
+
+                @Html.DropDownList("Id_Genero", null, htmlAttributes: new { placeholder = "Elija una opción", @class = "form-control" })
+
                 @Html.ValidationMessageFor(model => model.Id_Genero, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -114,18 +109,48 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-success" />
-
-                @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default" })
+                <button type="submit" value="create" class="btn btn-success">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
             </div>
         </div>
 
+        @*<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                
+                <input type="submit" value="" class="btn btn-success glyphicon-align-plus" />
+            </div>
+            @Html.ActionLink("volver", "Index", null, new { @class = "btn btn-default" })
+        </div>*@
     </div>
 }
 
 @section Scripts {
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/MX-calendar")
 }
+@*<script type="text/javascript">
+        function pageLoad(sender, args) {
+
+            $(document).ready(function () {
+                $.datepicker.setDefaults($.datepicker.regional['es-MX']);
+                $('#FechaNacimiento').datepicker({});
+            });
+
+        }
+</script>*@
+<script src="~/Scripts/jquery-2.1.3.js"></script>
+<script src="~/Scripts/jquery-ui-1.11.2.js"></script>
+<link href="~/Content/themes/base/all.css" rel="stylesheet" />
+@*<link href="~/Content/themes/base/datepicker.css" rel="stylesheet" />*@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.datepicker.setDefaults($.datepicker.regional['es-MX']);
+        $('#FechaNacimiento').datepicker({ dateFormat: "yy-mm-dd" });
+    });
+</script>

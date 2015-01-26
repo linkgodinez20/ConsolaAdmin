@@ -74,3 +74,15 @@ textarea {
         box-shadow:0 1px 4px #4AB8E9, 0 0 40px rgba(0, 0, 0, 0.1) inset;
         /*border-radius:100px / 10px;*/
     }
+
+.Titulo {
+    color:#428BCA;
+}
+
+.Dialogos {
+    color:#9D9D7E;
+}
+
+.Gray {
+    color:#9D9D7E;
+}

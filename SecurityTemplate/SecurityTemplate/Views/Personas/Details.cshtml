@@ -1,11 +1,11 @@
 ﻿@model Security.Core.Model.Personas
 
 @{
-    ViewBag.Title = "Detalle";
+    ViewBag.Title = "Persona/Detalle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Detalle</h2>
+<h2 class="=Titulo">Detalle</h2>
 
 <div>
     <h4>Personas</h4>
@@ -109,7 +109,7 @@
 
     </dl>
 </div>
-<table class="btn-group">
+@*<table class="btn-group">
     <tr>
         <td>
             <div class="input-group">
@@ -128,4 +128,14 @@
             </div>
         </td>
     </tr>
-</table>
+</table>*@
+<p>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink(" ", "Edit", new { id = Model.Id_Persona }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
+            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+
+        </div>
+    </div>
+
+</p>

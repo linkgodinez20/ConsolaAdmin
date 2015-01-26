@@ -5,17 +5,20 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<ol class="breadcrumb">
+    <li>Inicio</li>
+    <li><b>Bajas</b></li>
+    <li class="active">Lista</li>
+</ol>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="table table-bordered table-condensed table-hover">
     <tr>
-        <th>
+        <th class="alert-info">
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
-        <th></th>
+        <th class="alert-success">
+            <span class="glyphicon glyphicon-cog"> Acciones</span>
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -24,11 +27,18 @@
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Baja }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_Baja }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Baja })
+            @Html.ActionLink(" ", "Edit", new { id = item.Id_Baja }, new { @class = "ButtonSettings Edit" }) |
+            @Html.ActionLink(" ", "Details", new { id = item.Id_Baja }, new { @class = "ButtonSettings Details" }) |
+            @Html.ActionLink(" ", "Delete", new { id = item.Id_Baja }, new { @class = "ButtonSettings Delete" })
         </td>
     </tr>
 }
 
+</table>
+<table>
+    <tr>
+        <td>
+            @Html.ActionLink(" ", "Create", "Bajas", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
+        </td>
+    </tr>
 </table>

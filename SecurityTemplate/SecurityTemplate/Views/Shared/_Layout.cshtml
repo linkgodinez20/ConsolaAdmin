@@ -10,7 +10,7 @@
 <body>    
     <div class="container">
 
-      
+
         <nav class="navbar navbar-inverse" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -52,29 +52,44 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">HUMBERTO <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li class="dropdown-header">Humberto</li>
-                                <li>@Html.ActionLink("Genero", "Index", "Genero")</li>
+                                <li>@Html.ActionLink("Perfiles", "Index", "Perfiles")</li>
                                 <li>@Html.ActionLink("Personas", "Index", "Personas")</li>
-                                <li>@Html.ActionLink("Sistemas", "Index", "Sistemas")</li>
+                                <li>@Html.ActionLink("Actividades", "Index", "Actividades")</li>
+                                <li>@Html.ActionLink("Baja", "Index", "Bajas")</li>
+                                <li>@Html.ActionLink("Menu", "Index", "")</li> @*------------------------------*@
+                                <li>@Html.ActionLink("Beneficio", "Index", "Beneficios")</li>
                                 <li class="divider"></li>
-                                <li><a href="#">Hola</a></li>
+                                <li>@Html.ActionLink("Contacto", "Index", "Contactos")</li>
+                                <li>@Html.ActionLink("Contacto(tipo)", "Index", "Contacto_tipo")</li>
+                                <li>@Html.ActionLink("Contacto(medio)", "Index", "Contacto_medio")</li>
+                                <li>@Html.ActionLink("Domicilio", "Index", "Domicilios")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Directorio", "Index", "Directorios")</li>
+                                <li>@Html.ActionLink("Equipos", "Index", "Equipos")</li>
+                                <li>@Html.ActionLink("Género", "Index", "Genero")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Municipios", "Index", "Municipios")</li>
+                                <li>@Html.ActionLink("Países", "Index", "Paises")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Sesiones", "Index", "")</li> @*------------------------------*@
+                                <li>@Html.ActionLink("Sistemas", "Index", "Sistemas")</li>
                             </ul>
                         </li>
                     </ul>
                     <!--
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
-                    <li><a href="../navbar-static-top/">Static top</a></li>
-                    <li><a href="../navbar-fixed-top/">Fixed top</a></li>
-                </ul>
-                    -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
+                        <li><a href="../navbar-static-top/">Static top</a></li>
+                        <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+                    </ul>
+                        -->
                 </div>
                 <!-- ================ NAVBAR ================ -->
 
             </div>
         </nav>
 
-        <div class="container body-content">
+        <div class="body-content">
             @RenderBody()
             <!-- ================ ALERTS ================= -->
             <hr />
@@ -87,12 +102,12 @@
         </div>
 
 
-        </div>
+    </div>
         <!-- ================ SCRIPTS ================ -->
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
-        @Scripts.Render("scripts/js/mike.js")
+        @*@Scripts.Render("scripts/js/mike.js")*@
 
 </body>
 </html>

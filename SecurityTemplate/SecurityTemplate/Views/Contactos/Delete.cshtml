@@ -5,11 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2 class="Titulo">Eliminar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3 class="Dialogos">¿Est&aacute; seguro de eliminar este registro?</h3>
 <div>
-    <h4>Contacto</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -37,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Contacto_medio.Nombre)
+            @Html.DisplayNameFor(model => model.Id_ContactoMedio)
         </dt>
 
         <dd>
@@ -45,7 +44,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Contacto_tipo.Nombre)
+            @Html.DisplayNameFor(model => model.Id_ContactoTipo)
         </dt>
 
         <dd>
@@ -54,12 +53,17 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" value="Delete" class="btn btn-danger ">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </button>
+                @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+            </div>
         </div>
     }
 </div>

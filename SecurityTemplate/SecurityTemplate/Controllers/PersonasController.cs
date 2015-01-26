@@ -138,6 +138,8 @@ namespace Security.Controllers
         {
             if (ModelState.IsValid)
             {
+                personas.FechaCreacion = DateTime.Now;
+
                 repo.Add(personas);
                 repo.Save();
                 return RedirectToAction("Index");
@@ -167,6 +169,8 @@ namespace Security.Controllers
         {
             if (ModelState.IsValid)
             {
+                personas.FechaCreacion = DateTime.Now;
+
                 repo.Update(personas);
                 repo.Save();
                 return RedirectToAction("Index");

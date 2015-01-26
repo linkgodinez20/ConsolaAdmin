@@ -5,90 +5,101 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<ol class="breadcrumb">
+    <li>Inicio</li>
+    <li><b>Equipos</b></li>
+    <li class="active">Lista</li>
+</ol>
+<hr />
+<table class="table table-bordered table-condensed table-hover">
     <tr>
-        <th>
+        <th class="alert-info">
             @Html.DisplayNameFor(model => model.Hostname)
         </th>
-        <th>
+        <th class="alert-info">
             @Html.DisplayNameFor(model => model.IP)
         </th>
-        <th>
+        <th class="alert-info">
             @Html.DisplayNameFor(model => model.MacAddress)
         </th>
-        <th>
+        <th class="alert-info">
             @Html.DisplayNameFor(model => model.Descripcion)
         </th>
-        <th>
+        <th class="alert-info">
             @Html.DisplayNameFor(model => model.Ubiacion)
         </th>
-        <th>
+        <th class="alert-info">
             @Html.DisplayNameFor(model => model.FechaAlta)
         </th>
-        <th>
+        <th class="alert-info">
             @Html.DisplayNameFor(model => model.FechaCaducidad)
         </th>
-        <th>
+        <th class="alert-info">
             @Html.DisplayNameFor(model => model.Estatus)
         </th>
-        <th>
+        <th class="alert-info">
             @Html.DisplayNameFor(model => model.Cuentas.Id_Cuenta)
         </th>
-        <th>
+        <th class="alert-info">
             @Html.DisplayNameFor(model => model.Equipos_tipo.Nombre)
         </th>
-        <th>
+        <th class="alert-info">
             @Html.DisplayNameFor(model => model.Sistemas.Nombre)
         </th>
-        <th></th>
+        <th class="alert-success">
+            <span class="glyphicon glyphicon-cog"> Acciones</span>
+        </th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hostname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MacAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ubiacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaAlta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCaducidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cuentas.Id_Cuenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Equipos_tipo.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sistemas.Nombre)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.Id_Equipo }, new { @class = "ButtonSettings Edit" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.Id_Equipo }, new { @class = "ButtonSettings Details" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.Id_Equipo }, new { @class = "ButtonSettings Delete" })
+            </td>
+        </tr>
+    }
+
+</table>
+<table>
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Hostname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MacAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ubiacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaAlta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaCaducidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estatus)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cuentas.Id_Cuenta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Equipos_tipo.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sistemas.Nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Equipo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_Equipo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Equipo })
+            @Html.ActionLink(" ", "Create", "Equipos", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
         </td>
     </tr>
-}
-
 </table>

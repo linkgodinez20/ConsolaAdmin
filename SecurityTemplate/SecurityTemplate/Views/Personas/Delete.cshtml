@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Eliminar</h2>
+<h2 class="Titulo">Eliminar</h2>
 
-<h3>¿Est&aacute; seguro que desea eliminar este registro?</h3>
+<h3 class="Dialogos">¿Est&aacute; seguro de eliminar este registro?</h3>
 <div>    
     <hr />
     <dl class="dl-horizontal">
@@ -108,13 +108,19 @@
         </dd>
 
     </dl>
-
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default" })
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" value="Delete" class="btn btn-danger ">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </button>
+                @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+            </div>
         </div>
     }
+
+
 </div>

@@ -202,7 +202,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SecurityModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="App.Config" />
     <None Include="Model\SecurityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SecurityModel.edmx</DependentUpon>

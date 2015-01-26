@@ -63,6 +63,10 @@ namespace Security.Core.Model
     public partial class Equipos_tipo
     {    }
 
+    [MetadataType(typeof(EquiposMetadata))]
+    public partial class Equipos
+    { }
+
     [MetadataType(typeof(Permisos_Cuentas_x_ActividadesMetadata))]
     public partial class Permisos_Cuentas_x_Actividades
     {    }

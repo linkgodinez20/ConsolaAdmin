@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Spatial;
 
 namespace Security.Core.Model
@@ -350,6 +351,7 @@ namespace Security.Core.Model
         [Display(Name = "Tipo de contacto")]
         public Byte Id_ContactoTipo;
 
+        [Display(Name = "Contacto")]
         [Required(ErrorMessage = "El campo [Contacto] es obligatorio.")]
         [StringLength(128)]
         public String Contacto1;
@@ -399,14 +401,17 @@ namespace Security.Core.Model
         [StringLength(10)]
         public String NumeroInterior;
 
+        [Column(Order = 0), Key, ForeignKey("Municipios")]
         [Required(ErrorMessage = "El campo [País] es obligatorio.")]
         [Display(Name = "País")]
         public Int16 Id_Pais;
 
+        [Column(Order = 1), Key, ForeignKey("Municipios")]
         [Required(ErrorMessage = "El campo [Entidad] es obligatorio.")]
         [Display(Name = "Entidad")]
         public Int16 Id_Entidad;
 
+        [Column(Order = 2), Key, ForeignKey("Municipios")]
         [Required(ErrorMessage = "El campo [Municipio] es obligatorio.")]
         [Display(Name = "Municipio")]
         public Int16? Id_Municipio;
@@ -528,20 +533,24 @@ namespace Security.Core.Model
 
     public class MunicipiosMetadata
     {
+        [Key, Column(Order = 0)]
         [Display(Name = "Id")]
         [ScaffoldColumn(false)]
         public Int16 Id_Pais;
 
+        [Key, Column(Order = 1)]
         [Required(ErrorMessage = "El campo [Entidad] es obligatorio.")]
         [Display(Name = "Entidad")]
         public Int16 Id_Entidad;
 
+        [Key, Column(Order = 2)]
         [Required(ErrorMessage = "El campo [Municipio] es obligatorio.")]
         [Display(Name = "Municipio")]
         public Int16 Id_Municipio;
 
         [Required(ErrorMessage = "El campo [Nombre] es obligatorio.")]
         [StringLength(64)]
+        [Display(Name = "Municipio")]
         public String Nombre;
 
         [StringLength(10)]
@@ -625,6 +634,7 @@ namespace Security.Core.Model
         [Required(ErrorMessage = "El campo [Género] es obligatorio.")]
         public Byte Id_Genero;
 
+        
         [Display(Name = "Fecha de nacimiento")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? FechaNacimiento;

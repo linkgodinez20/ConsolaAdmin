@@ -84,7 +84,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Contacto_tipo.Nombre)
+            @Html.DisplayNameFor(model => model.Id_ContactoTipo)
         </dt>
 
         <dd>
@@ -92,7 +92,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Municipios.Nombre)
+            @Html.DisplayNameFor(model => model.Id_Municipio)
         </dt>
 
         <dd>
@@ -101,7 +101,7 @@
 
     </dl>
 </div>
-<table class="btn-group">
+@*<table class="btn-group">
     <tr>
         <td>
             <div class="input-group">
@@ -120,4 +120,14 @@
             </div>
         </td>
     </tr>
-</table>
+</table>*@
+<p>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink(" ", "Edit", new { id = Model.Id_Domicilio }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
+            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+
+        </div>
+    </div>
+
+</p>

@@ -67,6 +67,7 @@ namespace Security.App_Start
         {
             kernel.Bind<IDbContextFactory>().To<DbContextFactory>();
             kernel.Bind(typeof(IRepo<>)).To(typeof(Repo<>));
+            
             //kernel.Bind<InitConfig>().ToSelf().InSingletonScope();
             
         }        

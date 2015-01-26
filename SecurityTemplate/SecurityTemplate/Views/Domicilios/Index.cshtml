@@ -26,33 +26,33 @@
 }
 <br />
 <br />
-<table class="table table-hover">
+<table class="table table-hover table-bordered table-condensed">
     <tr>
-        <th>
+        <th class="alert-info">
             @Html.ActionLink("Tipo", "Index", new { sortOrder = ViewBag.SortByTipo, currentFilter = ViewBag.CurrentFilter })
         </th>
-        <th>
+        <th class="alert-info">
             @Html.ActionLink("Colonia", "Index", new { sortOrder = ViewBag.SortByColonia, currentFilter = ViewBag.CurrentFilter })
         </th>
-        <th>
+        <th class="alert-info">
             Domicilio
         </th>
-        <th>
+        <th class="alert-info">
             No. Ext.
         </th>
-        <th>
+        <th class="alert-info">
             No. Int.
         </th>
-        <th>
+        <th class="alert-info">
             Notas
         </th>
-        <th>
+        <th class="alert-info">
             Estatus
         </th>
-        <th>
+        <th class="alert-info">
             @Html.ActionLink("Municipio", "Index", new { sortOrder = ViewBag.SortByMunicipio, currentFilter = ViewBag.CurrentFilter })
         </th>
-        <th>
+        <th class="alert-info">
             @Html.ActionLink("F. Modificación", "Index", new { sortOrder = ViewBag.SortByFechaModificacion, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th class="alert-success">
@@ -105,11 +105,7 @@
 <table class="btn-group">
     <tr>
         <td>
-            <div class="input-group">
-                <p>
-                    @Html.ActionLink("Agregar", "Create", "Domicilios", null, new { @class = "btn btn-info" })
-                </p>
-            </div>
+            @Html.ActionLink(" ", "Create", "Domicilios", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
         </td>
     </tr>
 </table>

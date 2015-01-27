@@ -12,15 +12,16 @@
             var idp = $(this).val();
 
             e.preventDefault();
-            
+
             $("#Id_Entidad").empty();
-            
+
             $("#Id_Municipio").empty();
             $.ajax({
                 type: 'POST',
-                url: '@Url.Action("GetEntidades", "Domicilios")',
+                url: 'api/Entidades")',
+                
                 dataType: 'json',
-                traditional: true,
+                //traditional: true,
                 contentType: "application/json; charset=utf-8",
                 data: "{'IdPais':" + idp + "}",
                 success: function (entidades) {

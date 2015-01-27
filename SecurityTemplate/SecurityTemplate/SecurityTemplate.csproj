@@ -168,6 +168,8 @@
     <Compile Include="Controllers\DirectoriosController.cs" />
     <Compile Include="Controllers\DomiciliosController.cs" />
     <Compile Include="Controllers\EntidadesController.cs" />
+    <Compile Include="Controllers\EntidadesSVCController.cs" />
+    <Compile Include="Controllers\EntidadesTESTController.cs" />
     <Compile Include="Controllers\EquiposController.cs" />
     <Compile Include="Controllers\Equipos_TipoController.cs" />
     <Compile Include="Controllers\GeneroController.cs" />
@@ -186,6 +188,7 @@
     <Compile Include="Controllers\PreguntasController.cs" />
     <Compile Include="Controllers\PreguntasXLoginController.cs" />
     <Compile Include="Controllers\SistemasController.cs" />
+    <Compile Include="Controllers\svc\GenerosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

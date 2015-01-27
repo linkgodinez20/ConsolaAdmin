@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Security.Core.Model;
 using Security.Core.Repository;
+using PagedList;
 
 namespace Security.Controllers
 {
@@ -22,10 +23,65 @@ namespace Security.Controllers
         }      
 
         // GET: /Paginas/
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var paginas = repo.GetAll().Include(p => p.Sistemas);
+        //    return View(paginas.ToList());
+        //}
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var paginas = repo.GetAll().Include(p => p.Sistemas);
-            return View(paginas.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.Pagina = String.IsNullOrEmpty(sortOrder) ? "Pagina_desc" : "";
+            ViewBag.Titulo = sortOrder == "Titulo" ? "Titulo" : "Titulo_desc";
+            ViewBag.Sistema = sortOrder == "Sistema" ? "Sistema" : "Sistema_desc";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            IOrderedQueryable<Paginas> pags = repo.GetAll().OrderBy(x => x.Nombre);
+
+            var modelo = from s in pags select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                modelo = modelo.Where(s => s.Nombre.Contains(searchString) || s.Titulo.Contains(searchString) || s.Sistemas.Nombre.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "Pagina":
+                    modelo = modelo.OrderBy(s => s.Nombre);
+                    break;
+                case "Pagina_desc":
+                    modelo = modelo.OrderByDescending(s => s.Nombre);
+                    break;
+                case "Titulo":
+                    modelo = modelo.OrderBy(s => s.Titulo);
+                    break;
+                case "Titulo_desc":
+                    modelo = modelo.OrderByDescending(s => s.Titulo);
+                    break;
+                case "Sistema":
+                    modelo = modelo.OrderBy(s => s.Sistemas.Nombre);
+                    break;
+                case "Sistema_desc":
+                    modelo = modelo.OrderByDescending(s => s.Sistemas.Nombre);
+                    break;
+                default:
+                    modelo = modelo.OrderBy(s => s.Nombre);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(modelo.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Paginas/Details/5

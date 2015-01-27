@@ -1,29 +1,41 @@
-﻿@model IEnumerable<Security.Core.Model.Directorios>
+﻿@model PagedList.IPagedList<Security.Core.Model.Directorios>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "Listado";
+    ViewBag.Title = "Directorios";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<ol class="breadcrumb">
-    <li>Inicio</li>
-    <li><b>Directorios</b></li>
-    <li class="active">Lista</li>
-</ol>
-<hr />
-<table class="table table-bordered table-condensed table-hover">
+<h2 align="center">Directorios</h2>
+
+@using (Html.BeginForm("Index", "Directorios", FormMethod.Get))
+{
+    <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5">
+        <div class="input-group">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+            <span class="input-group-btn">
+                <input type="submit" value="Buscar" placeholder="Valor de búsqueda" class="btn btn-default" />
+            </span>
+        </div>
+    </div>
+}
+
+<br /><br /><br />
+
+<table class="table table-bordered table-condensed table-striped table-hover">
     <tr>
         <th class="alert-info">
-            @Html.DisplayNameFor(model => model.Nombre)
+            @Html.ActionLink("Directorio", "Index", new { sortOrder = ViewBag.Directorio, currentFilter = ViewBag.CurrentFilter })            
         </th>
         <th class="alert-info">
-            @Html.DisplayNameFor(model => model.Estatus)
+            @Html.ActionLink("Estatus", "Index", new { sortOrder = ViewBag.Estatus, currentFilter = ViewBag.CurrentFilter })            
         </th>
         <th class="alert-info">
-            @Html.DisplayNameFor(model => model.Directorio_tipo.Nombre)
+            @Html.ActionLink("Tipo Directorio", "Index", new { sortOrder = ViewBag.TipoDir, currentFilter = ViewBag.CurrentFilter })            
         </th>
         <th class="alert-success">
-            <span class="glyphicon glyphicon-cog"> Acciones</span>
+            <span class="glyphicon glyphicon-cog"> <b>Acciones</b> </span>
         </th>
     </tr>
 
@@ -40,18 +52,24 @@
                 @Html.DisplayFor(modelItem => item.Directorio_tipo.Nombre)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id_Directorio }, new { @class = "ButtonSettings Edit" }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.Id_Directorio }, new { @class = "ButtonSettings Details" }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id_Directorio }, new { @class = "ButtonSettings Delete" })
+                @Html.ActionLink(" ", "Edit", new { id = item.Id_Directorio }, new { @class = "ButtonSettings Edit" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.Id_Directorio }, new { @class = "ButtonSettings Details" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.Id_Directorio }, new { @class = "ButtonSettings Delete" })
             </td>
         </tr>
     }
 
 </table>
-<table>
+@Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+<table class="btn-group">
     <tr>
         <td>
-            @Html.ActionLink(" ", "Create", "Directorios", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
+            <div class="input-group">
+                <p>
+                    @Html.ActionLink(" ", "Create", "Directorios", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
+                </p>
+            </div>
         </td>
     </tr>
 </table>

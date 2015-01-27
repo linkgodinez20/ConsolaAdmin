@@ -5,9 +5,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="Titulo">Eliminar</h2>
+<script type="text/javascript">
+    $(document).ready
+    (
+        function () {
+            $("button").click(function () {
+                if (document.getElementById('cbTodos').checked == true)
+                    eliminaNotificaciones();
+                else
+                    eliminaArea("logDanger");
+                var html;
+                html = "<div class='alert alert-danger' style='margin-bottom: 5px;'>" +
+                "<button type='button' class='close' data-dismiss='alert'>×</button>" +
+                "<strong>DANGER </strong>Daño en el sistema, explotarás en 5..4..3..2..1.. <strong>BOOM!!</strong>.</div>";
+                $("#logDanger").append(html);
+            });
+        }
+    );
 
-<h3 class="Dialogos">¿Est&aacute; seguro de eliminar este registro?</h3>
+</script>
+
+<h2>Directorios</h2>
+
+<h3>¿Está seguro que desea eliminar este elemento?</h3>
 <div>    
     <hr />
     <dl class="dl-horizontal">
@@ -28,7 +48,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Id_DirectorioTipo)
+            @Html.DisplayNameFor(model => model.Directorio_tipo.Nombre)
         </dt>
 
         <dd>
@@ -37,10 +57,10 @@
 
     </dl>
 
+
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <button type="submit" value="Delete" class="btn btn-danger ">
@@ -49,5 +69,13 @@
                 @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
             </div>
         </div>
-    }
+    }   
 </div>
+
+@ViewBag.Error
+
+@if (ViewBag.True == 1)
+{
+    <script type="text/javascript">danger();</script>
+    @*<script type="text/javascript">BootMessage("Error", ViewBag.Error, "danger",1);</script>*@    
+}

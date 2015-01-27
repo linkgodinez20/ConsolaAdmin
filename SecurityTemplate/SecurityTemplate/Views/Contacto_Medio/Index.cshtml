@@ -1,22 +1,35 @@
-﻿@model IEnumerable<Security.Core.Model.Contacto_medio>
+﻿@model PagedList.IPagedList<Security.Core.Model.Contacto_medio>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "Listado";
+    ViewBag.Title = "Contacto medio";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<ol class="breadcrumb">
-    <li>Inicio</li>
-    <li><b>Contacto (medio)</b></li>
-    <li class="active">Lista</li>
-</ol>
-<hr />
-<table class="table table-bordered table-condensed table-hover">
+
+<h2 align="center">Contacto medio</h2>
+
+@using (Html.BeginForm("Index", "Contacto_medio", FormMethod.Get))
+{
+    <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5">
+        <div class="input-group">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+            <span class="input-group-btn">
+                <input type="submit" value="Buscar" placeholder="Valor de búsqueda" class="btn btn-default" />
+            </span>
+        </div>
+    </div>
+}
+
+<br /><br /><br />
+
+<table class="table table-bordered table-condensed table-striped table-hover">
     <tr>
         <th class="alert-info">
-            @Html.DisplayNameFor(model => model.Nombre)
+            @Html.ActionLink("Contacto", "Index", new { sortOrder = ViewBag.Contacto, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th class="alert-success">
-            <span class="glyphicon glyphicon-cog"> Acciones</span>
+            <span class="glyphicon glyphicon-cog"> <b>Acciones</b> </span>
         </th>
     </tr>
 
@@ -27,18 +40,24 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.Id_ContactoMedio }, new { @class = "ButtonSettings Edit" }) |
-                @Html.ActionLink(" ", "Details", new { id = item.Id_ContactoMedio }, new { @class = "ButtonSettings Details" }) |
-                @Html.ActionLink(" ", "Delete", new { id = item.Id_ContactoMedio }, new { @class = "ButtonSettings Delete" })
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id_ContactoMedio }    , new { @class = "ButtonSettings Edit" }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Id_ContactoMedio }, new { @class = "ButtonSettings Details" }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id_ContactoMedio } , new { @class = "ButtonSettings Delete" })
             </td>
         </tr>
     }
 
 </table>
-<table>
+@Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+<table class="btn-group">
     <tr>
         <td>
-            @Html.ActionLink(" ", "Create", "Contacto_Medio", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
+            <div class="input-group">
+                <p>
+                    @Html.ActionLink(" ", "Create", "Contacto_medio", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
+                </p>
+            </div>
         </td>
     </tr>
 </table>

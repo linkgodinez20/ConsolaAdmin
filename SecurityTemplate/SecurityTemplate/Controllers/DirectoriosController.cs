@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Security.Core.Model;
 using Security.Core.Repository;
+using PagedList;
 
 namespace Security.Controllers
 {
@@ -22,11 +23,60 @@ namespace Security.Controllers
             this.dirTipo = DirTipo;
         }
 
-        // GET: /Directorios/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var directorios = repo.GetAll().Include(d => d.Directorio_tipo);
-            return View(directorios.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.Directorio = String.IsNullOrEmpty(sortOrder) ? "Directorio_desc" : "";
+            ViewBag.Estatus = sortOrder == "Estatus" ? "Estatus" : "Estatus_desc";
+            ViewBag.TipoDir = sortOrder == "TipoDir" ? "TipoDir" : "TipoDir_desc";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            IOrderedQueryable<Directorios> dirs = repo.GetAll().OrderBy(x => x.Nombre);
+
+            var modelo = from s in dirs select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                modelo = modelo.Where(s => s.Nombre.Contains(searchString) || s.Directorio_tipo.Nombre.Contains(searchString) );
+            }
+            switch (sortOrder)
+            {
+                case "Directorio":
+                    modelo = modelo.OrderBy(s => s.Nombre);
+                    break;
+                case "Directorio_desc":
+                    modelo = modelo.OrderByDescending(s => s.Nombre);
+                    break;
+                case "Estatus":
+                    modelo = modelo.OrderBy(s => s.Estatus);
+                    break;
+                case "Estatus_desc":
+                    modelo = modelo.OrderByDescending(s => s.Estatus);
+                    break;
+                case "TipoDir":
+                    modelo = modelo.OrderBy(s => s.Directorio_tipo.Nombre);
+                    break;
+                case "TipoDir_desc":
+                    modelo = modelo.OrderByDescending(s => s.Directorio_tipo.Nombre);
+                    break;
+                default:
+                    modelo = modelo.OrderBy(s => s.Nombre);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(modelo.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Directorios/Details/5
@@ -106,10 +156,18 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(byte id)
         {
-            Directorios directorios = repo.Get(id);
-            repo.Delete(directorios);
-            repo.Save();
-            return RedirectToAction("Index");
+            try
+            {
+                Directorios directorios = repo.Get(id);
+                repo.Delete(directorios);
+                repo.Save();
+                return RedirectToAction("Index");
+            }catch(Exception ex)
+            {
+                ViewBag.Error ="Error "+ ex.Message;
+                ViewBag.True = 1;
+                return View();
+            }
         }
 
         protected override void Dispose(bool disposing)

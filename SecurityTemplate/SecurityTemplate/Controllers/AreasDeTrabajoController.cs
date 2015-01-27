@@ -8,12 +8,12 @@ using System.Web;
 using System.Web.Mvc;
 using Security.Core.Model;
 using Security.Core.Repository;
+using PagedList;
 
 namespace Security.Controllers
 {
     public class AreasDeTrabajoController : Controller
     {
-
         private readonly IRepo<AreasDeTrabajo> repo;
         private readonly IRepo<Sistemas> sistemas;
        
@@ -24,10 +24,55 @@ namespace Security.Controllers
         }      
 
         // GET: /AreasDeTrabajo/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var areasdetrabajo = repo.GetAll();
-            return View(areasdetrabajo.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.AreasDeTrabajo = String.IsNullOrEmpty(sortOrder) ? "AreasDeTrabajo_desc" : "";
+            ViewBag.Sistema = sortOrder == "Sistema" ? "Sistema" : "Sistema_desc";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            IOrderedQueryable<AreasDeTrabajo> areas = repo.GetAll()
+                .OrderBy(x => x.Nombre);
+
+            var AreasTrabajo = from s in areas
+                            select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                AreasTrabajo = AreasTrabajo.Where(s => s.Nombre.Contains(searchString) || s.Sistemas.Nombre.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "AreasDeTrabajo":
+                    AreasTrabajo = AreasTrabajo.OrderBy(s => s.Nombre);
+                    break;
+                case "AreasDeTrabajo_desc":
+                    AreasTrabajo = AreasTrabajo.OrderByDescending(s => s.Nombre);
+                    break;
+                case "Sistema":
+                    AreasTrabajo = AreasTrabajo.OrderBy(s => s.Sistemas.Nombre);
+                    break;
+                case "Sistema_desc":
+                    AreasTrabajo = AreasTrabajo.OrderByDescending(s => s.Sistemas.Nombre);
+                    break;               
+                default:
+                    AreasTrabajo = AreasTrabajo.OrderBy(s => s.Nombre);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(AreasTrabajo.ToPagedList(pageNumber, pageSize));         
         }
 
         // GET: /AreasDeTrabajo/Details/5

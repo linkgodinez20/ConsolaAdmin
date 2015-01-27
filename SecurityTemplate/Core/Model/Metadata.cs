@@ -27,12 +27,12 @@ namespace Security.Core.Model
 
     public class AreasDeTrabajoMetadata
     {        
-        [Display(Name = "Area de trabajo")]
+        [Display(Name = "Id")]
         public short Id_AreaDeTrabajo;
 
         [Required()]
         [StringLength(64)]
-        [Display(Name = "Area de Trabajo")]
+        [Display(Name = "Área de Trabajo")]
         public string Nombre;
 
         [Required()]
@@ -42,7 +42,7 @@ namespace Security.Core.Model
 
     public class Baja_motivosMetadata
     {
-         [Display(Name = "Motivo Baja")]
+         [Display(Name = "Id")]
         public byte Id_MotivoBaja;
 
         [Required()]
@@ -55,7 +55,7 @@ namespace Security.Core.Model
     }
     public class Beneficio_tipoMetadata
     {
-        [Display(Name = "Tipo Beneficio")]
+        [Display(Name = "Id")]
         public byte Id_BeneficioTipo;
 
         [Display(Name = "Tipo Beneficio")]
@@ -73,7 +73,7 @@ namespace Security.Core.Model
     }
     public class CuentasMetadata
     {
-        [Display(Name = "Cuenta")]
+        [Display(Name = "Id")]
         public int Id_Cuenta;
 
         [Display(Name = "Login")]
@@ -151,7 +151,7 @@ namespace Security.Core.Model
     }
     public class Menu_categoriaMetadata
     {
-        [Display(Name = "Categoria Menu")]
+        [Display(Name = "Id")]
         public short Id_MenuCategoria;
         
         [Required()]
@@ -169,7 +169,9 @@ namespace Security.Core.Model
         [Required()]        
         public string Usuario;
 
+        [Display(Name = "Contraseña")]
         public string Senha;
+
         public string Salt;
         public bool UsoSalt;
 
@@ -179,7 +181,7 @@ namespace Security.Core.Model
     }
     public class PaginasMetadata
     {        
-        [Display(Name = "Página")]
+        [Display(Name = "Id")]
         public short Id_Pagina;
 
         [Required()]
@@ -195,7 +197,7 @@ namespace Security.Core.Model
     }
     public class PermisosMetadata
     {
-        [Display(Name = "Permiso")]
+        [Display(Name = "Id")]
         public byte Id_Permiso;
 
         [Required()]
@@ -208,7 +210,7 @@ namespace Security.Core.Model
     }
     public class LocationsMetadata
     {
-        [Display(Name = "Ubicación")]
+        [Display(Name = "Id")]
         public int LocationId;
 
         [Required()]
@@ -225,7 +227,7 @@ namespace Security.Core.Model
     }
     public class Equipos_tipoMetadata
     {
-        [Display(Name = "Tipo Equipo")]
+        [Display(Name = "Id")]
         public byte Id_EquipoTipo;
 
         [Required()]
@@ -234,7 +236,7 @@ namespace Security.Core.Model
     }
     public class Permisos_Cuentas_x_ActividadesMetadata
     {
-        [Display(Name = "Cuenta")]
+        [Display(Name = "Id")]
         public int Id_Cuenta;
 
         [Display(Name = "Actividad")]
@@ -256,7 +258,7 @@ namespace Security.Core.Model
     }
     public class Preguntas_x_LoginMetadata
     {
-        [Display(Name = "Login")]
+        [Display(Name = "Id")]
         public int Id_Login;
 
         [Display(Name = "Pregunta")]

@@ -1,58 +1,92 @@
-﻿@model IEnumerable<Security.Core.Model.LogIn>
+﻿@model PagedList.IPagedList<Security.Core.Model.LogIn>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
-    ViewBag.Title = "Listado";
+    ViewBag.Title = "LogIn";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Listado</h2>
+<h2 align="center">LogIns</h2>
 
-<p>
-    @Html.ActionLink("Nuevo", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Usuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Senha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Salt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UsoSalt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Personas.APaterno)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Senha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Salt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UsoSalt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Personas.APaterno)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id_Login }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.Id_Login }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.Id_Login })
-        </td>
-    </tr>
+@using (Html.BeginForm("Index", "LogIn", FormMethod.Get))
+{
+    <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5">
+        <div class="input-group">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+            <span class="input-group-btn">
+                <input type="submit" value="Buscar" placeholder="Valor de búsqueda" class="btn btn-default" />
+            </span>
+        </div>
+    </div>
 }
 
+<br /><br /><br />
+
+<table class="table table-bordered table-condensed table-striped table-hover">
+    <tr>
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.Usuario)*@
+            @Html.ActionLink("Usuario", "Index", new { sortOrder = ViewBag.Usuario, currentFilter = ViewBag.CurrentFilter })            
+        </th>
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.Senha)*@
+            <a>Senha</a>                                   
+        </th>
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.Salt)*@
+            <a>Salt</a>                        
+        </th>
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.UsoSalt)*@
+            <a>Uso Salt</a>                       
+        </th>
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.Personas.APaterno)*@
+            @Html.ActionLink("Persona", "Index", new { sortOrder = ViewBag.Persona, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th class="alert-success">
+            <span class="glyphicon glyphicon-cog"> <b>Acciones</b> </span>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Senha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsoSalt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Personas.APaterno)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.Id_Login }, new { @class = "ButtonSettings Edit" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.Id_Login }, new { @class = "ButtonSettings Details" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.Id_Login }, new { @class = "ButtonSettings Delete" })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+<table class="btn-group">
+    <tr>
+        <td>
+            <div class="input-group">
+                <p>
+                    @Html.ActionLink(" ", "Create", "LogIn", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
+                </p>
+            </div>
+        </td>
+    </tr>
 </table>

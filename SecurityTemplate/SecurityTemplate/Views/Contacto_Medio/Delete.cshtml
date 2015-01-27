@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="Titulo">Eliminar</h2>
+<h2>Contanto medio</h2>
 
-<h3 class="Dialogos">¿Est&aacute; seguro de eliminar este registro?</h3>
+<h3>¿Está seguro que desea eliminar este elemento?</h3>
 <div>    
     <hr />
     <dl class="dl-horizontal">
@@ -24,7 +24,6 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <button type="submit" value="Delete" class="btn btn-danger ">

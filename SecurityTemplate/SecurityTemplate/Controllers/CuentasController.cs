@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Security.Core.Model;
 using Security.Core.Repository;
+using PagedList;
 
 namespace Security.Controllers
 {
@@ -29,10 +30,88 @@ namespace Security.Controllers
         } 
 
         // GET: /Cuentas/
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var cuentas = repo.GetAll().Include(c => c.Baja).Include(c => c.LogIn).Include(c => c.Perfiles).Include(c => c.Sistemas);
+        //    return View(cuentas.ToList());
+        //}
+
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var cuentas = repo.GetAll().Include(c => c.Baja).Include(c => c.LogIn).Include(c => c.Perfiles).Include(c => c.Sistemas);
-            return View(cuentas.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.Ubicaciones = String.IsNullOrEmpty(sortOrder) ? "Motivo" : "Motivo_desc";
+            ViewBag.FechaCrea = sortOrder == "FechaCrea" ? "FechaCrea" : "FechaCrea_desc";
+            ViewBag.FechaMod = sortOrder == "FechaMod" ? "FechaMod" : "FechaMod_desc";
+            ViewBag.Intentos = sortOrder == "Intentos" ? "Intentos" : "Intentos_desc";
+            ViewBag.Nombre = sortOrder == "Nombre" ? "Nombre" : "Nombre_desc";
+            ViewBag.Usuario = sortOrder == "Usuario" ? "Usuario" : "Usuario_desc";
+            ViewBag.Perfil = sortOrder == "Perfil" ? "Perfil" : "Perfil_desc";
+            ViewBag.Sistema = sortOrder == "Sistema" ? "Sistema" : "Sistema_desc";
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            IOrderedQueryable<Cuentas> cuentas = repo.GetAll().OrderBy(x => x.Perfiles.Nombre);
+
+            var modelo = from s in cuentas select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                modelo = modelo.Where(s => s.Perfiles.Nombre.Contains(searchString) || s.Baja.Nombre.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "FechaCrea":
+                    modelo = modelo.OrderBy(s => s.Perfiles.Nombre);
+                    break;
+                case "FechaCrea_desc":
+                    modelo = modelo.OrderByDescending(s => s.Perfiles.Nombre);
+                    break;
+                case "FechaMod":
+                    modelo = modelo.OrderBy(s => s.Baja.Nombre);
+                    break;
+                case "FechaMod_desc":
+                    modelo = modelo.OrderByDescending(s => s.Baja.Nombre);
+                    break;
+                case "Intentos":
+                    modelo = modelo.OrderBy(s => s.Baja.Nombre);
+                    break;
+                case "Intentos_desc":
+                    modelo = modelo.OrderByDescending(s => s.Baja.Nombre);
+                    break;
+                case "Nombre":
+                    modelo = modelo.OrderBy(s => s.Baja.Nombre);
+                    break;
+                case "Nombre_desc":
+                    modelo = modelo.OrderByDescending(s => s.Baja.Nombre);
+                    break;
+                case "Perfil":
+                    modelo = modelo.OrderBy(s => s.Baja.Nombre);
+                    break;
+                case "Perfil_desc":
+                    modelo = modelo.OrderByDescending(s => s.Baja.Nombre);
+                    break;
+                case "Sistema":
+                    modelo = modelo.OrderBy(s => s.Baja.Nombre);
+                    break;
+                case "Sistema_desc":
+                    modelo = modelo.OrderByDescending(s => s.Baja.Nombre);
+                    break;
+                default:
+                    modelo = modelo.OrderBy(s => s.Perfiles.Nombre);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(modelo.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Cuentas/Details/5

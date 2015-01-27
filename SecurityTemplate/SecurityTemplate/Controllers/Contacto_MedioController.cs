@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Security.Core.Model;
 using Security.Core.Repository;
+using PagedList;
 
 namespace Security.Controllers
 {
@@ -21,9 +22,46 @@ namespace Security.Controllers
         }
 
         // GET: /Contacto_Medio/
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(repo.GetAll());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.Contacto = String.IsNullOrEmpty(sortOrder) ? "Contacto_desc" : "";            
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            IOrderedQueryable<Contacto_medio> contact_med = repo.GetAll().OrderBy(x => x.Nombre);
+
+            var modelo = from s in contact_med select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                modelo = modelo.Where(s => s.Nombre.Contains(searchString) );
+            }
+            switch (sortOrder)
+            {
+                case "Contacto":
+                    modelo = modelo.OrderBy(s => s.Nombre);
+                    break;
+                case "Contacto_desc":
+                    modelo = modelo.OrderByDescending(s => s.Nombre);
+                    break;
+                default:
+                    modelo = modelo.OrderBy(s => s.Nombre);
+                    break;
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(modelo.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /Contacto_Medio/Details/5

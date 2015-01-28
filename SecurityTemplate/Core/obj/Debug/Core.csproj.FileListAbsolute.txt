@@ -22,7 +22,6 @@ E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\Core\bin\Debug\Om
 E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\Core\obj\Debug\Core.dll
 E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\Core\obj\Debug\Core.pdb
 E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
-D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Core\bin\Debug\Core.dll.config
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Core\bin\Debug\Core.dll
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Core\bin\Debug\Core.pdb
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Core\bin\Debug\EntityFramework.dll
@@ -44,3 +43,4 @@ D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Core\bin\Debu
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Core\obj\Debug\Core.dll
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Core\obj\Debug\Core.pdb
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache

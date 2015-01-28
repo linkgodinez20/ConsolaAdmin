@@ -1,0 +1,39 @@
+﻿@model Security.Core.Model.Baja_motivos
+
+@{
+    ViewBag.Title = "Detalles Motivos Baja";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles de motivo de baja</h2>
+
+<div>    
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Baja.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Baja.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink(" ", "Edit", new { id = Model.Id_MotivoBaja }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
+            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+
+        </div>
+    </div>
+</p>

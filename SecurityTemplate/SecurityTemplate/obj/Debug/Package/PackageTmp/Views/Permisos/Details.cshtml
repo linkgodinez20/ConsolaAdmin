@@ -1,0 +1,41 @@
+﻿@model Security.Core.Model.Permisos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Permisos</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink(" ", "Edit", new { id = Model.Id_Permiso}, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
+            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+
+        </div>
+    </div>
+
+</p>

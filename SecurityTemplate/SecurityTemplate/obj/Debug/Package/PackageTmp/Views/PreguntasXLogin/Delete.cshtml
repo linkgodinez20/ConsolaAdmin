@@ -1,0 +1,52 @@
+﻿@model Security.Core.Model.Preguntas_x_Login
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Preguntas por login</h2>
+
+<h3>¿Está seguro que desea eliminar este elemento?</h3>
+<div>    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Respuesta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Respuesta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LogIn.Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogIn.Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Preguntas.Pregunta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Preguntas.Pregunta)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" value="Delete" class="btn btn-danger ">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </button>
+                @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+            </div>
+        </div>
+    }
+</div>

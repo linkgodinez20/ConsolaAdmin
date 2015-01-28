@@ -1,0 +1,50 @@
+﻿@model Security.Core.Model.Municipios
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="=Titulo">Detalle</h2>
+
+<div>
+    <h4>Municipios</h4>
+    <hr />
+    @Html.HiddenFor(model => model.Id_Pais)
+    @Html.HiddenFor(model => model.Id_Entidad)
+    @Html.HiddenFor(model => model.Id_Municipio)
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Abreviatura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Abreviatura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Entidades.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entidades.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink(" ", "Edit", new { id = Model.Id_Pais, id2 = Model.Id_Entidad, id3 = Model.Id_Municipio }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
+            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+        </div>
+    </div>
+</p>

@@ -1,0 +1,33 @@
+﻿@model Security.Core.Model.Preguntas
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Preguntas</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pregunta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pregunta)
+        </dd>
+
+    </dl>
+</div>
+<p>   
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink(" ", "Edit", new { id = Model.Id_Pregunta}, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
+            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+
+        </div>
+    </div>
+
+</p>

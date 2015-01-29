@@ -7,7 +7,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 align="center">LogIns</h2>
+<h2 class="Titulo" align="center">LogIns</h2>
 
 @using (Html.BeginForm("Index", "LogIn", FormMethod.Get))
 {
@@ -31,7 +31,7 @@
         </th>
         <th class="alert-info">
             @*@Html.DisplayNameFor(model => model.Senha)*@
-            <a>Senha</a>                                   
+            <a>Contraseña</a>                                   
         </th>
         <th class="alert-info">
             @*@Html.DisplayNameFor(model => model.Salt)*@

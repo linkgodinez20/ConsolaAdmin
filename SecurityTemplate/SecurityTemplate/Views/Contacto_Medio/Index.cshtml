@@ -7,7 +7,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 align="center">Contacto medio</h2>
+<h2 class="Titulo" align="center">Medio de contacto</h2>
 
 @using (Html.BeginForm("Index", "Contacto_medio", FormMethod.Get))
 {
@@ -26,7 +26,7 @@
 <table class="table table-bordered table-condensed table-striped table-hover">
     <tr>
         <th class="alert-info">
-            @Html.ActionLink("Contacto", "Index", new { sortOrder = ViewBag.Contacto, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Medio de Contacto", "Index", new { sortOrder = ViewBag.Contacto, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th class="alert-success">
             <span class="glyphicon glyphicon-cog"> <b>Acciones</b> </span>

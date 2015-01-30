@@ -464,9 +464,6 @@ namespace Security.Core.Model
         [StringLength(128)]
         public String Descripcion;
 
-        [Display(Name = "Ubicación")]
-        public DbGeography Ubiacion;
-
         [Display(Name = "Fecha de alta")]
         public DateTime FechaAlta;
 
@@ -681,9 +678,6 @@ namespace Security.Core.Model
 
         [Display(Name = "Último movimiento")]
         public Nullable<System.DateTime> UltimoMovimiento;
-
-        [Display(Name = "Ubicación")]
-        public DbGeography Ubiacion;
 
         [Required(ErrorMessage = "El campo [Sistema] es obligatorio.")]
         [Display(Name = "Sistema")]

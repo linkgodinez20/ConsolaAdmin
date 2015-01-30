@@ -7,7 +7,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 align="center">LogIns</h2>
+<h2 class="Titulo" align="center">LogIns</h2>
 
 @using (Html.BeginForm("Index", "LogIn", FormMethod.Get))
 {
@@ -15,7 +15,9 @@
         <div class="input-group">
             @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
             <span class="input-group-btn">
-                <input type="submit" value="Buscar" placeholder="Valor de búsqueda" class="btn btn-default" />
+                <button type="submit" value="create" class="btn btn-info">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
             </span>
         </div>
     </div>
@@ -31,7 +33,7 @@
         </th>
         <th class="alert-info">
             @*@Html.DisplayNameFor(model => model.Senha)*@
-            <a>Senha</a>                                   
+            <a>Contraseña</a>                                   
         </th>
         <th class="alert-info">
             @*@Html.DisplayNameFor(model => model.Salt)*@
@@ -69,9 +71,9 @@
                 @Html.DisplayFor(modelItem => item.Personas.APaterno)
             </td>
             <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.Id_Login }, new { @class = "ButtonSettings Edit" }) |
-                @Html.ActionLink(" ", "Details", new { id = item.Id_Login }, new { @class = "ButtonSettings Details" }) |
-                @Html.ActionLink(" ", "Delete", new { id = item.Id_Login }, new { @class = "ButtonSettings Delete" })
+                @Html.ActionLink(" ", "Edit", new { id = item.Id_Login }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.Id_Login }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.Id_Login }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
             </td>
         </tr>
     }

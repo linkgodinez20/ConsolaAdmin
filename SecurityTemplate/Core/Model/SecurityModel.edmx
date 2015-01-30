@@ -241,7 +241,6 @@
           <Property Name="MacAddress" Type="nvarchar" MaxLength="50" />
           <Property Name="Id_EquipoTipo" Type="tinyint" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="128" />
-          <Property Name="Ubiacion" Type="geography" />
           <Property Name="FechaAlta" Type="smalldatetime" Nullable="false" />
           <Property Name="FechaCaducidad" Type="smalldatetime" />
           <Property Name="Id_Cuenta" Type="int" Nullable="false" />
@@ -535,7 +534,6 @@
           <Property Name="OnLine" Type="bit" Nullable="false" />
           <Property Name="CierreSesion" Type="bit" Nullable="false" />
           <Property Name="UltimoMovimiento" Type="datetime" />
-          <Property Name="Ubiacion" Type="geography" />
           <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
           <Property Name="Estatus" Type="bit" Nullable="false" />
         </EntityType>
@@ -2425,7 +2423,6 @@
           <Property Name="MacAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Id_EquipoTipo" Type="Byte" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Ubiacion" Type="Geography" />
           <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="FechaCaducidad" Type="DateTime" Precision="0" />
           <Property Name="Id_Cuenta" Type="Int32" Nullable="false" />
@@ -2740,7 +2737,6 @@
           <Property Name="OnLine" Type="Boolean" Nullable="false" />
           <Property Name="CierreSesion" Type="Boolean" Nullable="false" />
           <Property Name="UltimoMovimiento" Type="DateTime" Precision="3" />
-          <Property Name="Ubiacion" Type="Geography" />
           <Property Name="Id_Sistema" Type="Byte" Nullable="false" />
           <Property Name="Estatus" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Cuentas" Relationship="TestModel.FK_Sesiones_Id_Cuenta" FromRole="Sesiones" ToRole="Cuentas" />
@@ -3638,7 +3634,6 @@
                 <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
                 <ScalarProperty Name="FechaCaducidad" ColumnName="FechaCaducidad" />
                 <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
-                <ScalarProperty Name="Ubiacion" ColumnName="Ubiacion" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Id_EquipoTipo" ColumnName="Id_EquipoTipo" />
                 <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
@@ -3903,7 +3898,6 @@
               <MappingFragment StoreEntitySet="Sesiones">
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
                 <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
-                <ScalarProperty Name="Ubiacion" ColumnName="Ubiacion" />
                 <ScalarProperty Name="UltimoMovimiento" ColumnName="UltimoMovimiento" />
                 <ScalarProperty Name="CierreSesion" ColumnName="CierreSesion" />
                 <ScalarProperty Name="OnLine" ColumnName="OnLine" />

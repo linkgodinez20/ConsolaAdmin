@@ -236,7 +236,6 @@
     <Property Name="MacAddress" Type="nvarchar" MaxLength="50" />
     <Property Name="Id_EquipoTipo" Type="tinyint" Nullable="false" />
     <Property Name="Descripcion" Type="nvarchar" MaxLength="128" />
-    <Property Name="Ubiacion" Type="geography" />
     <Property Name="FechaAlta" Type="smalldatetime" Nullable="false" />
     <Property Name="FechaCaducidad" Type="smalldatetime" />
     <Property Name="Id_Cuenta" Type="int" Nullable="false" />
@@ -530,7 +529,6 @@
     <Property Name="OnLine" Type="bit" Nullable="false" />
     <Property Name="CierreSesion" Type="bit" Nullable="false" />
     <Property Name="UltimoMovimiento" Type="datetime" />
-    <Property Name="Ubiacion" Type="geography" />
     <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
     <Property Name="Estatus" Type="bit" Nullable="false" />
   </EntityType>

@@ -49,9 +49,9 @@
             @Html.DisplayFor(modelItem => item.Permisos.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }     , new { @class = "ButtonSettings Edit" }) |
-            @Html.ActionLink("Detalles", "Details",new { /* id=item.PrimaryKey */ } , new { @class = "ButtonSettings Details" }) |
-            @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ } , new { @class = "ButtonSettings Delete" })
+            @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
+            @Html.ActionLink("Detalles", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
+            @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
         </td>
     </tr>
 }

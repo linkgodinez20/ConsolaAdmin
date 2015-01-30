@@ -25,8 +25,8 @@ namespace Security.Controllers
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.Ubicaciones = String.IsNullOrEmpty(sortOrder) ? "Beneficio" : "Beneficio_desc";
-            ViewBag.Latitude = sortOrder == "Beneficio" ? "Beneficio" : "Beneficio_desc";            
+            ViewBag.Beneficio = String.IsNullOrEmpty(sortOrder) ? "Beneficio_desc" : "";
+            ViewBag.Beneficio = sortOrder == "Beneficio" ? "Beneficio" : "Beneficio_desc";            
 
             if (searchString != null)
             {

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Editar</h2>
+<h2 class="Titulo">Editar</h2>
 
 
 @using (Html.BeginForm())
@@ -13,13 +13,13 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Contacto_medio</h4>
+        <h4>Medio de contacto</h4>
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.Id_ContactoMedio)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Nombre, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Nombre,"Medio", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })

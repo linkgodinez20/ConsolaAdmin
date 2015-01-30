@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2 class="Titulo">Nuevo</h2>
 
 
 @using (Html.BeginForm()) 
@@ -13,12 +13,12 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Preguntas_x_Login</h4>
+        <h4>Preguntas por login</h4>
         <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_Login, "Id_Login", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Id_Login, "Login", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Id_Login", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Id_Login, "", new { @class = "text-danger" })
@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_Pregunta, "Id_Pregunta", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Id_Pregunta, "Pregunta", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Id_Pregunta", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Id_Pregunta, "", new { @class = "text-danger" })

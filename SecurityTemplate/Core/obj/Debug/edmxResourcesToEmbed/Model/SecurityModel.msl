@@ -178,7 +178,6 @@
           <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
           <ScalarProperty Name="FechaCaducidad" ColumnName="FechaCaducidad" />
           <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
-          <ScalarProperty Name="Ubiacion" ColumnName="Ubiacion" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="Id_EquipoTipo" ColumnName="Id_EquipoTipo" />
           <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
@@ -443,7 +442,6 @@
         <MappingFragment StoreEntitySet="Sesiones">
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
           <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
-          <ScalarProperty Name="Ubiacion" ColumnName="Ubiacion" />
           <ScalarProperty Name="UltimoMovimiento" ColumnName="UltimoMovimiento" />
           <ScalarProperty Name="CierreSesion" ColumnName="CierreSesion" />
           <ScalarProperty Name="OnLine" ColumnName="OnLine" />

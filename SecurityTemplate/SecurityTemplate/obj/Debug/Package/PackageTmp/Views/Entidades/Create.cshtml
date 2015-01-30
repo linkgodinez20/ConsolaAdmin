@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2 class="Titulo">Nuevo</h2>
 
 
 @using (Html.BeginForm()) 
@@ -18,7 +18,7 @@
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_Pais, "Id_Pais", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Id_Pais, "Pais", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Id_Pais", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Id_Pais, "", new { @class = "text-danger" })

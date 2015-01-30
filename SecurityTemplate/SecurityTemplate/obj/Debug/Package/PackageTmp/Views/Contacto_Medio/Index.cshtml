@@ -7,7 +7,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 align="center">Contacto medio</h2>
+<h2 class="Titulo" align="center">Medio de contacto</h2>
 
 @using (Html.BeginForm("Index", "Contacto_medio", FormMethod.Get))
 {
@@ -15,7 +15,9 @@
         <div class="input-group">
             @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
             <span class="input-group-btn">
-                <input type="submit" value="Buscar" placeholder="Valor de búsqueda" class="btn btn-default" />
+                <button type="submit" value="create" class="btn btn-info">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
             </span>
         </div>
     </div>
@@ -26,7 +28,7 @@
 <table class="table table-bordered table-condensed table-striped table-hover">
     <tr>
         <th class="alert-info">
-            @Html.ActionLink("Contacto", "Index", new { sortOrder = ViewBag.Contacto, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Medio de Contacto", "Index", new { sortOrder = ViewBag.Contacto, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th class="alert-success">
             <span class="glyphicon glyphicon-cog"> <b>Acciones</b> </span>
@@ -40,9 +42,9 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id_ContactoMedio }    , new { @class = "ButtonSettings Edit" }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.Id_ContactoMedio }, new { @class = "ButtonSettings Details" }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id_ContactoMedio } , new { @class = "ButtonSettings Delete" })
+                @Html.ActionLink(" ", "Edit", new { id = item.Id_ContactoMedio }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.Id_ContactoMedio }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.Id_ContactoMedio }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
             </td>
         </tr>
     }

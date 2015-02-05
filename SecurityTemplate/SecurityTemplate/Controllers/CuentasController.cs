@@ -39,14 +39,13 @@ namespace Security.Controllers
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.Ubicaciones = String.IsNullOrEmpty(sortOrder) ? "Motivo" : "Motivo_desc";
-            ViewBag.FechaCrea = sortOrder == "FechaCrea" ? "FechaCrea" : "FechaCrea_desc";
-            ViewBag.FechaMod = sortOrder == "FechaMod" ? "FechaMod" : "FechaMod_desc";
-            ViewBag.Intentos = sortOrder == "Intentos" ? "Intentos" : "Intentos_desc";
-            ViewBag.Nombre = sortOrder == "Nombre" ? "Nombre" : "Nombre_desc";
-            ViewBag.Usuario = sortOrder == "Usuario" ? "Usuario" : "Usuario_desc";
+            ViewBag.Baja = String.IsNullOrEmpty(sortOrder) ? "Baja_desc" : "";
+            ViewBag.Login = sortOrder == "Login" ? "Login" : "Login_desc";
             ViewBag.Perfil = sortOrder == "Perfil" ? "Perfil" : "Perfil_desc";
             ViewBag.Sistema = sortOrder == "Sistema" ? "Sistema" : "Sistema_desc";
+            ViewBag.FechaCrea = sortOrder == "FechaCrea" ? "FechaCrea" : "FechaCrea_desc";
+            ViewBag.FechaMod = sortOrder == "FechaMod" ? "FechaMod" : "FechaMod_desc";
+            ViewBag.Intentos = sortOrder == "Intentos" ? "Intentos" : "Intentos_desc";            
             if (searchString != null)
             {
                 page = 1;
@@ -63,48 +62,54 @@ namespace Security.Controllers
             var modelo = from s in cuentas select s;
             if (!String.IsNullOrEmpty(searchString))
             {
-                modelo = modelo.Where(s => s.Perfiles.Nombre.Contains(searchString) || s.Baja.Nombre.Contains(searchString));
+                modelo = modelo.Where(s => s.Perfiles.Nombre.Contains(searchString) || s.Baja.Nombre.Contains(searchString) || s.LogIn.Usuario.Contains(searchString) || s.Sistemas.Nombre.Contains(searchString));
             }
             switch (sortOrder)
             {
-                case "FechaCrea":
-                    modelo = modelo.OrderBy(s => s.Perfiles.Nombre);
+                case "Login":
+                    modelo = modelo.OrderBy(s => s.LogIn.Usuario);
                     break;
-                case "FechaCrea_desc":
-                    modelo = modelo.OrderByDescending(s => s.Perfiles.Nombre);
-                    break;
-                case "FechaMod":
-                    modelo = modelo.OrderBy(s => s.Baja.Nombre);
-                    break;
-                case "FechaMod_desc":
-                    modelo = modelo.OrderByDescending(s => s.Baja.Nombre);
-                    break;
-                case "Intentos":
-                    modelo = modelo.OrderBy(s => s.Baja.Nombre);
-                    break;
-                case "Intentos_desc":
-                    modelo = modelo.OrderByDescending(s => s.Baja.Nombre);
-                    break;
-                case "Nombre":
-                    modelo = modelo.OrderBy(s => s.Baja.Nombre);
-                    break;
-                case "Nombre_desc":
-                    modelo = modelo.OrderByDescending(s => s.Baja.Nombre);
+                case "Login_desc":
+                    modelo = modelo.OrderByDescending(s => s.LogIn.Usuario);
                     break;
                 case "Perfil":
-                    modelo = modelo.OrderBy(s => s.Baja.Nombre);
+                    modelo = modelo.OrderBy(s => s.Perfiles.Nombre);
                     break;
                 case "Perfil_desc":
-                    modelo = modelo.OrderByDescending(s => s.Baja.Nombre);
+                    modelo = modelo.OrderByDescending(s => s.Perfiles.Nombre);
                     break;
                 case "Sistema":
-                    modelo = modelo.OrderBy(s => s.Baja.Nombre);
+                    modelo = modelo.OrderBy(s => s.Sistemas.Nombre);
                     break;
                 case "Sistema_desc":
-                    modelo = modelo.OrderByDescending(s => s.Baja.Nombre);
+                    modelo = modelo.OrderByDescending(s => s.Sistemas.Nombre);
                     break;
+                case "FechaCrea":
+                    modelo = modelo.OrderBy(s => s.FechaCreacion);
+                    break;
+                case "FechaCrea_desc":
+                    modelo = modelo.OrderByDescending(s => s.FechaCreacion);
+                    break;
+                case "FechaMod":
+                    modelo = modelo.OrderBy(s => s.FechaModificacion);
+                    break;
+                case "FechaMod_desc":
+                    modelo = modelo.OrderByDescending(s => s.FechaModificacion);
+                    break;
+                case "Intentos":
+                    modelo = modelo.OrderBy(s => s.IntentosCnn);
+                    break;
+                case "Intentos_desc":
+                    modelo = modelo.OrderByDescending(s => s.IntentosCnn);
+                    break;
+                case "Baja":
+                    modelo = modelo.OrderBy(s => s.Baja.Nombre);
+                    break;
+                case "Baja_desc":
+                    modelo = modelo.OrderByDescending(s => s.Baja.Nombre);
+                    break;               
                 default:
-                    modelo = modelo.OrderBy(s => s.Perfiles.Nombre);
+                    modelo = modelo.OrderBy(s => s.LogIn.Usuario);
                     break;
             }
 

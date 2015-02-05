@@ -5,26 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script type="text/javascript">
-    $(document).ready
-    (
-        function () {
-            $("button").click(function () {
-                if (document.getElementById('cbTodos').checked == true)
-                    eliminaNotificaciones();
-                else
-                    eliminaArea("logDanger");
-                var html;
-                html = "<div class='alert alert-danger' style='margin-bottom: 5px;'>" +
-                "<button type='button' class='close' data-dismiss='alert'>×</button>" +
-                "<strong>DANGER </strong>Daño en el sistema, explotarás en 5..4..3..2..1.. <strong>BOOM!!</strong>.</div>";
-                $("#logDanger").append(html);
-            });
-        }
-    );
-
-</script>
-
 <h2 class="Titulo">Directorios</h2>
 
 <h3>¿Está seguro que desea eliminar este elemento?</h3>
@@ -73,10 +53,14 @@
     }   
 </div>
 
-@ViewBag.Error
+<hr />
+<hr />
 
 @if (ViewBag.True == 1)
-{
-    <script type="text/javascript">danger();</script>
-    @*<script type="text/javascript">BootMessage("Error", ViewBag.Error, "danger",1);</script>*@    
+{            
+    <div class='alert alert-info' style='margin-bottom: 5px;'>
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+		<button type='button' class='close' data-dismiss='alert'>×</button>
+		<strong>INFO </strong> @ViewBag.Error.
+    </div>
 }

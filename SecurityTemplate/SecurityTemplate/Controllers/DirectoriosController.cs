@@ -114,12 +114,12 @@ namespace Security.Controllers
         }
 
         // GET: /Directorios/Edit/5
-        public ActionResult Edit(byte id)
+        public ActionResult Edit(byte id = 0)
         {
             Directorios directorios = repo.Get(id);
-            if (directorios == null)
+            if (directorios == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             ViewBag.Id_DirectorioTipo = new SelectList(dirTipo.GetAll(), "Id_DirectorioTipo", "Nombre", directorios.Id_DirectorioTipo);
             return View(directorios);
@@ -164,7 +164,8 @@ namespace Security.Controllers
                 return RedirectToAction("Index");
             }catch(Exception ex)
             {
-                ViewBag.Error ="Error "+ ex.Message;
+                //ViewBag.Error = ex.Message;
+                ViewBag.Error = "Este registro no se puede eliminar por estar referenciado con otro registro.";
                 ViewBag.True = 1;
                 return View();
             }

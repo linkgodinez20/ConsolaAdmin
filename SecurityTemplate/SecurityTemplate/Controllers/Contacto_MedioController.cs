@@ -148,11 +148,22 @@ namespace Security.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(byte id)
-        {
-            Contacto_medio contacto_medio = repo.Get(id);
-            repo.Delete(contacto_medio);
-            repo.Save();
-            return RedirectToAction("Index");
+        {           
+            try
+            {
+                Contacto_medio contacto_medio = repo.Get(id);
+                repo.Delete(contacto_medio);
+                repo.Save();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                //ViewBag.Error = ex.Message;
+                ViewBag.Error = "Este registro no se puede eliminar por estar referenciado con otro registro.";
+                ViewBag.True = 1;
+                return View();
+            }
+
         }
 
         protected override void Dispose(bool disposing)

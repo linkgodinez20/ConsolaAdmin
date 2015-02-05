@@ -28,6 +28,22 @@
 <table class="table table-bordered table-condensed table-striped table-hover">
     <tr>
         <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.Baja.Nombre)*@
+            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.LogIn.Usuario)*@
+            @Html.ActionLink("Login", "Index", new { sortOrder = ViewBag.Login, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.Perfiles.Nombre)*@
+            @Html.ActionLink("Perfil", "Index", new { sortOrder = ViewBag.Perfil, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th class="alert-info">
+            @*@Html.DisplayNameFor(model => model.Sistemas.Nombre)*@
+            @Html.ActionLink("Sistema", "Index", new { sortOrder = ViewBag.Sistema, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th class="alert-info">
             @*@Html.DisplayNameFor(model => model.FechaCreacion)*@
             @Html.ActionLink("Fecha Creación", "Index", new { sortOrder = ViewBag.FechaCrea, currentFilter = ViewBag.CurrentFilter })
         </th>
@@ -54,22 +70,7 @@
             @*@Html.ActionLink("RegistroCompleto", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })*@
             <a>RegistroCompleto</a>
         </th>
-        <th class="alert-info">
-            @*@Html.DisplayNameFor(model => model.Baja.Nombre)*@
-            @Html.ActionLink("Nombre", "Index", new { sortOrder = ViewBag.Nombre, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            @*@Html.DisplayNameFor(model => model.LogIn.Usuario)*@
-            @Html.ActionLink("Login Usuario", "Index", new { sortOrder = ViewBag.Usuario, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            @*@Html.DisplayNameFor(model => model.Perfiles.Nombre)*@
-            @Html.ActionLink("Perfil", "Index", new { sortOrder = ViewBag.Perfil, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            @*@Html.DisplayNameFor(model => model.Sistemas.Nombre)*@
-            @Html.ActionLink("Sistema", "Index", new { sortOrder = ViewBag.Sistema, currentFilter = ViewBag.CurrentFilter })
-        </th>
+        
         <th class="alert-success">
             <span class="glyphicon glyphicon-cog"> <b>Acciones</b> </span>
         </th>
@@ -78,6 +79,18 @@
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Baja.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LogIn.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Perfiles.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sistemas.Nombre)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FechaCreacion)
             </td>
@@ -95,18 +108,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.RegistroCompleto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Baja.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LogIn.Usuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Perfiles.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sistemas.Nombre)
             </td>
             <td>
                 @Html.ActionLink(" ", "Edit", new { id = item.Id_Cuenta }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |

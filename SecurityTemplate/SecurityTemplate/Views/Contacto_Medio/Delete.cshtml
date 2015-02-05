@@ -34,3 +34,15 @@
         </div>
     }
 </div>
+
+<hr />
+<hr />
+
+@if (ViewBag.True == 1)
+{
+    <div class='alert alert-info' style='margin-bottom: 5px;'>
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <button type='button' class='close' data-dismiss='alert'>×</button>
+        <strong>INFO </strong> @ViewBag.Error.
+    </div>
+}

@@ -85,16 +85,12 @@ namespace Security.Controllers
         }
 
         // GET: /Paginas/Details/5
-        public ActionResult Details(short id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+        public ActionResult Details(short id = 0)
+        {           
             Paginas paginas = repo.Get(id);
-            if (paginas == null)
+            if (paginas == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(paginas);
         }
@@ -123,16 +119,12 @@ namespace Security.Controllers
         }
 
         // GET: /Paginas/Edit/5
-        public ActionResult Edit(short id)
+        public ActionResult Edit(short id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Paginas paginas = repo.Get(id);
-            if (paginas == null)
+            if (paginas == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             ViewBag.Id_Sistema = new SelectList(sistemas.GetAll(), "Id_Sistema", "Nombre", paginas.Id_Sistema);
             return View(paginas);
@@ -156,14 +148,10 @@ namespace Security.Controllers
         // GET: /Paginas/Delete/5
         public ActionResult Delete(short id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Paginas paginas = repo.Get(id);
-            if (paginas == null)
+            if (paginas == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(paginas);
         }
@@ -173,10 +161,19 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(short id)
         {
-            Paginas paginas = repo.Get(id);
-            repo.Delete(paginas);
-            repo.Save();
-            return RedirectToAction("Index");
+            try
+            {
+                Paginas paginas = repo.Get(id);
+                repo.Delete(paginas);
+                repo.Save();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Este registro no se puede eliminar por estar referenciado con otro registro.";
+                ViewBag.True = 1;
+                return View();
+            }
         }
 
         protected override void Dispose(bool disposing)

@@ -64,8 +64,9 @@ new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilt
     <tr>
         <td>
             <div class="input-group">
-                <p>
-                    @Html.ActionLink(" ", "Create", "AreasDeTrabajo", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
+                <p>                    
+                    <a class="btn btn-success glyphicon glyphicon-plus" data-container="body" data-toggle="popover" data-placement="right"
+                       data-content="Nuevo" href="~/AreasDeTrabajo/Create"></a>
                 </p>
             </div>
         </td>

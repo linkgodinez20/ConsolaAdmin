@@ -1,4 +1,13 @@
 ﻿@model Security.Core.Model.Preguntas_x_Login
+<script src="~/Scripts/jquery-2.1.3.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('button').popover({ trigger: "hover" });
+        $('a').popover({ trigger: 'hover' });
+
+    });
+</script>
 
 @{
     ViewBag.Title = "Editar";
@@ -27,18 +36,22 @@
                 @Html.ValidationMessageFor(model => model.Respuesta, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        @{
+            var ControllerName = ViewContext.RouteData.Values["Controller"];
+            var referencia = "~/" + @ControllerName + "/Edit/" + Model.Id_Pregunta;
+        }
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <button type="submit" value="Save" class="btn btn-success" data-container="body" data-toggle="popover" data-placement="left"
+                        data-content="Guardar">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right"
+                   data-content="Volver" href="~/@ControllerName"></a>
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

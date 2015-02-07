@@ -1,6 +1,20 @@
 ﻿@model PagedList.IPagedList<Security.Core.Model.LogIn>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/jquery-2.1.3.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('button').popover({ trigger: "hover" });
+
+        $('a').popover({ trigger: 'hover' });
+
+        $('#btnFilter').click(function () {
+            $('#SearchString').val('');
+        });
+
+    });
+</script>
 
 @{
     ViewBag.Title = "LogIn";
@@ -86,7 +100,8 @@ new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilt
         <td>
             <div class="input-group">
                 <p>
-                    @Html.ActionLink(" ", "Create", "LogIn", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
+                    <a class="btn btn-success glyphicon glyphicon-plus" data-container="body" data-toggle="popover" data-placement="right"
+                       data-content="Nuevo" href="/LogIn/Create"></a>
                 </p>
             </div>
         </td>

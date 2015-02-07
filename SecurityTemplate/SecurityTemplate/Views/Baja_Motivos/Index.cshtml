@@ -1,6 +1,20 @@
 ﻿@model PagedList.IPagedList<Security.Core.Model.Baja_motivos>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/jquery-2.1.3.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('button').popover({ trigger: "hover" });
+
+        $('a').popover({ trigger: 'hover' });
+
+        $('#btnFilter').click(function () {
+            $('#SearchString').val('');
+        });
+
+    });
+</script>
 
 @{
     ViewBag.Title = "Motivos de baja";
@@ -62,8 +76,9 @@ new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilt
     <tr>
         <td>    
             <div class="input-group">
-                <p>
-                    @Html.ActionLink(" ", "Create", "Baja_motivos", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
+                <p>                    
+                    <a class="btn btn-success glyphicon glyphicon-plus" data-container="body" data-toggle="popover" data-placement="right"
+                       data-content="Nuevo" href="/Baja_motivos/Create"></a>
                 </p>
             </div>
         </td>

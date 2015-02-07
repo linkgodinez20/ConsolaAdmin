@@ -57,13 +57,19 @@
                 @Html.ValidationMessageFor(model => model.Id_Persona, "", new { @class = "text-danger" })
             </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="submit" value="Save" class="btn btn-success">
-                <i class="glyphicon glyphicon-ok"></i>
-            </button>
-            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+        @{
+            var ControllerName = ViewContext.RouteData.Values["Controller"];
+            var referencia = "~/" + @ControllerName + "/Edit/" + Model.Id_Login;
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" value="Save" class="btn btn-success" data-container="body" data-toggle="popover" data-placement="left"
+                        data-content="Guardar">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right"
+                   data-content="Volver" href="~/@ControllerName"></a>
+            </div>
         </div>
     </div>
 }

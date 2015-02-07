@@ -65,16 +65,12 @@ namespace Security.Controllers
         }
 
         // GET: /Preguntas/Details/5
-        public ActionResult Details(byte id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+        public ActionResult Details(byte id = 0)
+        {           
             Preguntas preguntas = repo.Get(id);
-            if (preguntas == null)
+            if (preguntas == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(preguntas);
         }
@@ -101,16 +97,12 @@ namespace Security.Controllers
         }
 
         // GET: /Preguntas/Edit/5
-        public ActionResult Edit(byte id)
+        public ActionResult Edit(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Preguntas preguntas = repo.Get(id);
-            if (preguntas == null)
+            if (preguntas == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(preguntas);
         }
@@ -130,16 +122,12 @@ namespace Security.Controllers
         }
 
         // GET: /Preguntas/Delete/5
-        public ActionResult Delete(byte id)
+        public ActionResult Delete(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Preguntas preguntas = repo.Get(id);
-            if (preguntas == null)
+            if (preguntas == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(preguntas);
         }
@@ -149,10 +137,19 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(byte id)
         {
-            Preguntas preguntas = repo.Get(id);
-            repo.Delete(preguntas);
-            repo.Save();
-            return RedirectToAction("Index");
+            try
+            {
+                Preguntas preguntas = repo.Get(id);
+                repo.Delete(preguntas);
+                repo.Save();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Este registro no se puede eliminar por estar referenciado con otro registro.";
+                ViewBag.True = 1;
+                return View();
+            }
         }
 
         protected override void Dispose(bool disposing)

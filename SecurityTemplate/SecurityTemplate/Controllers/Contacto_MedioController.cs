@@ -65,16 +65,12 @@ namespace Security.Controllers
         }
 
         // GET: /Contacto_Medio/Details/5
-        public ActionResult Details(byte id)
+        public ActionResult Details(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Contacto_medio contacto_medio = repo.Get(id);
-            if (contacto_medio == null)
+            if (contacto_medio == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(contacto_medio);
         }
@@ -101,16 +97,12 @@ namespace Security.Controllers
         }
 
         // GET: /Contacto_Medio/Edit/5
-        public ActionResult Edit(byte id)
+        public ActionResult Edit(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Contacto_medio contacto_medio = repo.Get(id);
-            if (contacto_medio == null)
+            if (contacto_medio == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(contacto_medio);
         }
@@ -132,14 +124,10 @@ namespace Security.Controllers
         // GET: /Contacto_Medio/Delete/5
         public ActionResult Delete(byte id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Contacto_medio contacto_medio = repo.Get(id);
-            if (contacto_medio == null)
+            if (contacto_medio == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(contacto_medio);
         }
@@ -158,12 +146,10 @@ namespace Security.Controllers
             }
             catch (Exception ex)
             {
-                //ViewBag.Error = ex.Message;
                 ViewBag.Error = "Este registro no se puede eliminar por estar referenciado con otro registro.";
                 ViewBag.True = 1;
                 return View();
             }
-
         }
 
         protected override void Dispose(bool disposing)

@@ -82,16 +82,12 @@ namespace Security.Controllers
         }
 
         // GET: /Locations/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Locations locations = repo.Get(id);
-            if (locations == null)
+            if (locations == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(locations);
         }
@@ -118,12 +114,12 @@ namespace Security.Controllers
         }
 
         // GET: /Locations/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id = 0)
         {
             Locations locations = repo.Get(id);
-            if (locations == null)
+            if (locations == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(locations);
         }
@@ -143,16 +139,12 @@ namespace Security.Controllers
         }
 
         // GET: /Locations/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Locations locations = repo.Get(id);
-            if (locations == null)
+            if (locations == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(locations);
         }
@@ -162,10 +154,19 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Locations locations = repo.Get(id);
-            repo.Delete(locations);
-            repo.Save();
-            return RedirectToAction("Index");
+            try
+            {
+                Locations locations = repo.Get(id);
+                repo.Delete(locations);
+                repo.Save();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Este registro no se puede eliminar por estar referenciado con otro registro.";
+                ViewBag.True = 1;
+                return View();
+            }
         }
 
         [HttpPost]

@@ -74,12 +74,12 @@ namespace Security.Controllers
         }
 
         // GET: /Baja_Motivos/Details/5
-        public ActionResult Details(int id)//byte
+        public ActionResult Details(int id = 0)//byte
         {
             Baja_motivos baja_motivos = repo.Get(id);
-            if (baja_motivos == null)
+            if (baja_motivos == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(baja_motivos);
         }
@@ -108,12 +108,12 @@ namespace Security.Controllers
         }
 
         // GET: /Baja_Motivos/Edit/5
-        public ActionResult Edit(byte id)
+        public ActionResult Edit(byte id = 0)
         {
             Baja_motivos baja_motivos = repo.Get(id);
-            if (baja_motivos == null)
+            if (baja_motivos == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
 
             ViewBag.Id_Baja = new SelectList(baja.GetAll(), "Id_Baja", "Nombre", baja_motivos.Id_Baja);
@@ -136,12 +136,12 @@ namespace Security.Controllers
         }
 
         // GET: /Baja_Motivos/Delete/5
-        public ActionResult Delete(byte id)
+        public ActionResult Delete(byte id = 0)
         {           
             Baja_motivos baja_motivos = repo.Get(id);
-            if (baja_motivos == null)
+            if (baja_motivos == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(baja_motivos);
         }
@@ -151,10 +151,20 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(byte id)
         {
-            Baja_motivos baja_motivos = repo.Get(id);
-            repo.Delete(baja_motivos);
-            repo.Save();
-            return RedirectToAction("Index");
+            try
+            {
+                Baja_motivos baja_motivos = repo.Get(id);
+                repo.Delete(baja_motivos);
+                repo.Save();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Este registro no se puede eliminar por estar referenciado con otro registro.";
+                ViewBag.True = 1;
+                return View();
+            }
+
         }
 
         protected override void Dispose(bool disposing)

@@ -120,16 +120,12 @@ namespace Security.Controllers
         }
 
         // GET: /Cuentas/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Cuentas cuentas = repo.Get(id);
-            if (cuentas == null)
+            if (cuentas == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(cuentas);
         }
@@ -164,16 +160,12 @@ namespace Security.Controllers
         }
 
         // GET: /Cuentas/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Cuentas cuentas =repo.Get(id);
-            if (cuentas == null)
+            if (cuentas == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             ViewBag.Id_Baja = new SelectList(baja.GetAll(), "Id_Baja", "Nombre", cuentas.Id_Baja);
             ViewBag.Id_Login = new SelectList(login.GetAll(), "Id_Login", "Usuario", cuentas.Id_Login);
@@ -201,16 +193,12 @@ namespace Security.Controllers
         }
 
         // GET: /Cuentas/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Cuentas cuentas = repo.Get(id);
-            if (cuentas == null)
+            if (cuentas == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(cuentas);
         }
@@ -220,10 +208,19 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cuentas cuentas = repo.Get(id);
-            repo.Delete(cuentas);
-            repo.Save();
-            return RedirectToAction("Index");
+            try
+            {
+                Cuentas cuentas = repo.Get(id);
+                repo.Delete(cuentas);
+                repo.Save();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Este registro no se puede eliminar por estar referenciado con otro registro.";
+                ViewBag.True = 1;
+                return View();
+            }
         }
 
         protected override void Dispose(bool disposing)

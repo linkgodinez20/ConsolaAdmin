@@ -79,12 +79,12 @@ namespace Security.Controllers
         }
 
         // GET: /Login/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int id = 0)
         {
             LogIn login = repo.Get(id);
-            if (login == null)
+            if (login == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(login);
         }
@@ -113,16 +113,12 @@ namespace Security.Controllers
         }
 
         // GET: /Login/Edit/5
-        public ActionResult Edit(int id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+        public ActionResult Edit(int id = 0)
+        {            
             LogIn login = repo.Get(id);
-            if (login == null)
+            if (login == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             ViewBag.Id_Persona = new SelectList(personas.GetAll(), "Id_Persona", "APaterno", login.Id_Persona);
             return View(login);
@@ -144,16 +140,12 @@ namespace Security.Controllers
         }
 
         // GET: /Login/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             LogIn login = repo.Get(id);
-            if (login == null)
+            if (login == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(login);
         }
@@ -163,10 +155,20 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            LogIn login = repo.Get(id);
-            repo.Delete(login);
-            repo.Save();
-            return RedirectToAction("Index");
+            try
+            {
+                LogIn login = repo.Get(id);
+                repo.Delete(login);
+                repo.Save();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Este registro no se puede eliminar por estar referenciado con otro registro.";
+                ViewBag.True = 1;
+                return View();
+            }
+         
         }
 
         protected override void Dispose(bool disposing)

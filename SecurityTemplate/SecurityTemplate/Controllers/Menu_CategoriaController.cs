@@ -72,12 +72,12 @@ namespace Security.Controllers
         }
 
         // GET: /MenuCategoria/Details/5
-        public ActionResult Details(short id)
+        public ActionResult Details(short id = 0)
         {
             Menu_categoria menu_categoria = repo.Get(id);
-            if (menu_categoria == null)
+            if (menu_categoria == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(menu_categoria);
         }
@@ -104,16 +104,12 @@ namespace Security.Controllers
         }
 
         // GET: /MenuCategoria/Edit/5
-        public ActionResult Edit(short id)
+        public ActionResult Edit(short id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Menu_categoria menu_categoria = repo.Get(id);
-            if (menu_categoria == null)
+            if (menu_categoria == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(menu_categoria);
         }
@@ -133,12 +129,12 @@ namespace Security.Controllers
         }
 
         // GET: /MenuCategoria/Delete/5
-        public ActionResult Delete(short id)
+        public ActionResult Delete(short id = 0)
         {
             Menu_categoria menu_categoria = repo.Get(id);
-            if (menu_categoria == null)
+            if (menu_categoria == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(menu_categoria);
         }
@@ -148,10 +144,19 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(short id)
         {
-            Menu_categoria menu_categoria = repo.Get(id);
-            repo.Delete(menu_categoria);
-            repo.Save();
-            return RedirectToAction("Index");
+            try
+            {
+                Menu_categoria menu_categoria = repo.Get(id);
+                repo.Delete(menu_categoria);
+                repo.Save();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Este registro no se puede eliminar por estar referenciado con otro registro.";
+                ViewBag.True = 1;
+                return View();
+            }
         }
 
         protected override void Dispose(bool disposing)

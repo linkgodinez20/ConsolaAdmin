@@ -22,12 +22,18 @@
     </dl>
 </div>
 <p>
+    @{
+        var ControllerName = ViewContext.RouteData.Values["Controller"];
+    }
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            @Html.ActionLink(" ", "Edit", new { id = Model.Id_EquipoTipo}, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
-            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
-
+            <a class="btn btn-warning glyphicon glyphicon-pencil" data-container="body" data-toggle="popover" data-placement="left"
+               data-content="Editar" href="~/@ControllerName/Edit/@Model.Id_EquipoTipo"></a>
+            <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right"
+               data-content="Volver" href="~/@ControllerName"></a>
         </div>
     </div>
-
+    <hr />
+    <hr />
 </p>
+

@@ -72,16 +72,12 @@ namespace Security.Controllers
         }
 
         // GET: /Permisos/Details/5
-        public ActionResult Details(byte id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+        public ActionResult Details(byte id = 0)
+        {           
             Permisos permisos = repo.Get(id);
-            if (permisos == null)
+            if (permisos == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(permisos);
         }
@@ -108,16 +104,12 @@ namespace Security.Controllers
         }
 
         // GET: /Permisos/Edit/5
-        public ActionResult Edit(byte id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+        public ActionResult Edit(byte id = 0)
+        {           
             Permisos permisos = repo.Get(id);
-            if (permisos == null)
+            if (permisos == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(permisos);
         }
@@ -137,16 +129,12 @@ namespace Security.Controllers
         }
 
         // GET: /Permisos/Delete/5
-        public ActionResult Delete(byte id)
+        public ActionResult Delete(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Permisos permisos = repo.Get(id);
-            if (permisos == null)
+            if (permisos == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(permisos);
         }
@@ -156,10 +144,19 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(byte id)
         {
-            Permisos permisos = repo.Get(id);
-            repo.Delete(permisos);
-            repo.Save();
-            return RedirectToAction("Index");
+            try
+            {
+                Permisos permisos = repo.Get(id);
+                repo.Delete(permisos);
+                repo.Save();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Este registro no se puede eliminar por estar referenciado con otro registro.";
+                ViewBag.True = 1;
+                return View();
+            }
         }
 
         protected override void Dispose(bool disposing)

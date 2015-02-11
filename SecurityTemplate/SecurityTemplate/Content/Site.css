@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 15px;
     padding-bottom: 0px;
+    width:auto;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -86,6 +87,7 @@ textarea {
 .Gray {
     color:#9D9D7E;
 }
+<<<<<<< HEAD
 
 .Edit_actions {
     position: fixed;
@@ -96,3 +98,19 @@ textarea {
     height: 40px;
     background-color:#505050;
 }
+=======
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  height: 60px;
+}	
+>>>>>>> origin/HumbertoTest

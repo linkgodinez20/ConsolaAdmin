@@ -173,6 +173,19 @@
     <EntitySetMapping Name="Equipos">
       <EntityTypeMapping TypeName="SecurityModel.Equipos">
         <MappingFragment StoreEntitySet="Equipos">
+<<<<<<< HEAD
+=======
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+          <ScalarProperty Name="FechaCaducidad" ColumnName="FechaCaducidad" />
+          <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Id_EquipoTipo" ColumnName="Id_EquipoTipo" />
+          <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="Hostname" ColumnName="Hostname" />
+>>>>>>> origin/HumbertoTest
           <ScalarProperty Name="Id_Equipo" ColumnName="Id_Equipo" />
           <ScalarProperty Name="Hostname" ColumnName="Hostname" />
           <ScalarProperty Name="IP" ColumnName="IP" />
@@ -440,6 +453,17 @@
     <EntitySetMapping Name="Sesiones">
       <EntityTypeMapping TypeName="SecurityModel.Sesiones">
         <MappingFragment StoreEntitySet="Sesiones">
+<<<<<<< HEAD
+=======
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+          <ScalarProperty Name="UltimoMovimiento" ColumnName="UltimoMovimiento" />
+          <ScalarProperty Name="CierreSesion" ColumnName="CierreSesion" />
+          <ScalarProperty Name="OnLine" ColumnName="OnLine" />
+          <ScalarProperty Name="FechaHoraInicio" ColumnName="FechaHoraInicio" />
+          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+          <ScalarProperty Name="Identificador" ColumnName="Identificador" />
+>>>>>>> origin/HumbertoTest
           <ScalarProperty Name="Id_Sesion" ColumnName="Id_Sesion" />
           <ScalarProperty Name="Identificador" ColumnName="Identificador" />
           <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />

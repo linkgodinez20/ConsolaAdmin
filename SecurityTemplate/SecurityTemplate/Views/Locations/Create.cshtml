@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2 class="Titulo">Nuevo</h2>
 
 
 @using (Html.BeginForm()) 
@@ -13,9 +13,9 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Locations</h4>
+        <h4>Ubicaciones</h4>
         <hr />
-        @Html.ValidationSummary(true)
+        @Html.ValidationSummary(true)   
 
         <div class="form-group">
             @Html.LabelFor(model => model.LocationName, new { @class = "control-label col-md-2" })
@@ -39,14 +39,18 @@
                 @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
             </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="submit" value="create" class="btn btn-success">
-                <i class="glyphicon glyphicon-ok"></i>
-            </button>
-            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
-        </div>
+            @{
+            var ControllerName = ViewContext.RouteData.Values["Controller"];
+            }
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" value="create" class="btn btn-success" data-container="body" data-toggle="popover" data-placement="left" data-content="Guardar">
+                        <i class="glyphicon glyphicon-ok"></i>
+                    </button>
+                    <a class="btn btn-info glyphicon glyphicon-chevron-left" href="~/@ControllerName" data-container="body" data-toggle="popover" data-placement="right"
+                       data-content="Volver"></a>
+                </div>
+            </div>
     </div>
 }
 

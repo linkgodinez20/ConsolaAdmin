@@ -65,16 +65,12 @@ namespace Security.Controllers
         }
 
         // GET: /Equipos_Tipo/Details/5
-        public ActionResult Details(byte id)
+        public ActionResult Details(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Equipos_tipo equipos_tipo = repo.Get(id);
-            if (equipos_tipo == null)
+            if (equipos_tipo == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(equipos_tipo);
         }
@@ -101,12 +97,12 @@ namespace Security.Controllers
         }
 
         // GET: /Equipos_Tipo/Edit/5
-        public ActionResult Edit(byte id)
+        public ActionResult Edit(byte id = 0)
         {
             Equipos_tipo equipos_tipo = repo.Get(id);
-            if (equipos_tipo == null)
+            if (equipos_tipo == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(equipos_tipo);
         }
@@ -126,12 +122,12 @@ namespace Security.Controllers
         }
 
         // GET: /Equipos_Tipo/Delete/5
-        public ActionResult Delete(byte id)
+        public ActionResult Delete(byte id = 0)
         {
             Equipos_tipo equipos_tipo = repo.Get(id);
-            if (equipos_tipo == null)
+            if (equipos_tipo == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(equipos_tipo);
         }
@@ -141,10 +137,19 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(byte id)
         {
-            Equipos_tipo equipos_tipo = repo.Get(id);
-            repo.Delete(equipos_tipo);
-            repo.Save();
-            return RedirectToAction("Index");
+            try
+            {
+                Equipos_tipo equipos_tipo = repo.Get(id);
+                repo.Delete(equipos_tipo);
+                repo.Save();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Este registro no se puede eliminar por estar referenciado con otro registro.";
+                ViewBag.True = 1;
+                return View();
+            }
         }
 
         protected override void Dispose(bool disposing)

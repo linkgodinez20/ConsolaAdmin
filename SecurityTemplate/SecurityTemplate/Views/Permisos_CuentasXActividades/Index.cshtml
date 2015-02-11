@@ -11,7 +11,7 @@
 
 @using (Html.BeginForm("Index", "Permisos_Cuentas_x_Actividades", FormMethod.Get))
 {
-    <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5">
+    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
         <div class="input-group">
             @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
             <span class="input-group-btn">
@@ -49,9 +49,9 @@
             @Html.DisplayFor(modelItem => item.Permisos.Nombre)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }     , new { @class = "ButtonSettings Edit" }) |
-            @Html.ActionLink("Detalles", "Details",new { /* id=item.PrimaryKey */ } , new { @class = "ButtonSettings Details" }) |
-            @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ } , new { @class = "ButtonSettings Delete" })
+            @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
+            @Html.ActionLink("Detalles", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
+            @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
         </td>
     </tr>
 }

@@ -3144,6 +3144,7 @@
           <End Role="Parametros_grupo" Type="Self.Parametros_grupo" Multiplicity="*" />
           <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="*" />
         </Association>
+<<<<<<< HEAD
         <EntityContainer Name="SecurityEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Actividades" EntityType="Self.Actividades" />
           <EntitySet Name="AreasDeTrabajo" EntityType="Self.AreasDeTrabajo" />
@@ -3453,10 +3454,14 @@
           </AssociationSet>
         </EntityContainer>
       </Schema>
+=======
+        </Schema>
+>>>>>>> origin/HumbertoTest
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+<<<<<<< HEAD
         <EntityContainerMapping StorageEntityContainer="SecurityModelStoreContainer" CdmEntityContainer="SecurityEntities">
           <EntitySetMapping Name="Actividades">
             <EntityTypeMapping TypeName="SecurityModel.Actividades">
@@ -3466,74 +3471,143 @@
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
                 <ScalarProperty Name="Id_Directorio" ColumnName="Id_Directorio" />
                 <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+=======
+        <EntityContainerMapping StorageEntityContainer="TestModelStoreContainer" CdmEntityContainer="SecurityEntities">
+          <EntitySetMapping Name="Actividades">
+            <EntityTypeMapping TypeName="TestModel.Actividades">
+              <MappingFragment StoreEntitySet="Actividades">
+                <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+                <ScalarProperty Name="Id_Directorio" ColumnName="Id_Directorio" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_Actividad" ColumnName="Id_Actividad" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AreasDeTrabajo">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.AreasDeTrabajo">
               <MappingFragment StoreEntitySet="AreasDeTrabajo">
                 <ScalarProperty Name="Id_AreaDeTrabajo" ColumnName="Id_AreaDeTrabajo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+=======
+            <EntityTypeMapping TypeName="TestModel.AreasDeTrabajo">
+              <MappingFragment StoreEntitySet="AreasDeTrabajo">
+                <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_AreaDeTrabajo" ColumnName="Id_AreaDeTrabajo" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Baja">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.Baja">
               <MappingFragment StoreEntitySet="Baja">
                 <ScalarProperty Name="Id_Baja" ColumnName="Id_Baja" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+=======
+            <EntityTypeMapping TypeName="TestModel.Baja">
+              <MappingFragment StoreEntitySet="Baja">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_Baja" ColumnName="Id_Baja" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Baja_motivos">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.Baja_motivos">
               <MappingFragment StoreEntitySet="Baja_motivos">
                 <ScalarProperty Name="Id_MotivoBaja" ColumnName="Id_MotivoBaja" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Id_Baja" ColumnName="Id_Baja" />
+=======
+            <EntityTypeMapping TypeName="TestModel.Baja_motivos">
+              <MappingFragment StoreEntitySet="Baja_motivos">
+                <ScalarProperty Name="Id_Baja" ColumnName="Id_Baja" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id_MotivoBaja" ColumnName="Id_MotivoBaja" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Beneficio">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.Beneficio">
               <MappingFragment StoreEntitySet="Beneficio">
                 <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Id_BeneficioTipo" ColumnName="Id_BeneficioTipo" />
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+=======
+            <EntityTypeMapping TypeName="TestModel.Beneficio">
+              <MappingFragment StoreEntitySet="Beneficio">
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="Id_BeneficioTipo" ColumnName="Id_BeneficioTipo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Beneficio_tipo">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.Beneficio_tipo">
               <MappingFragment StoreEntitySet="Beneficio_tipo">
                 <ScalarProperty Name="Id_BeneficioTipo" ColumnName="Id_BeneficioTipo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+=======
+            <EntityTypeMapping TypeName="TestModel.Beneficio_tipo">
+              <MappingFragment StoreEntitySet="Beneficio_tipo">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_BeneficioTipo" ColumnName="Id_BeneficioTipo" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Beneficio_x_Perfiles">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.Beneficio_x_Perfiles">
               <MappingFragment StoreEntitySet="Beneficio_x_Perfiles">
                 <ScalarProperty Name="Id_PerfilBeneficio" ColumnName="Id_PerfilBeneficio" />
                 <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
                 <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+=======
+            <EntityTypeMapping TypeName="TestModel.Beneficio_x_Perfiles">
+              <MappingFragment StoreEntitySet="Beneficio_x_Perfiles">
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
+                <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
+                <ScalarProperty Name="Id_PerfilBeneficio" ColumnName="Id_PerfilBeneficio" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Benficio_x_Cuenta">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.Benficio_x_Cuenta">
               <MappingFragment StoreEntitySet="Benficio_x_Cuenta">
                 <ScalarProperty Name="Id_BeneficioCuenta" ColumnName="Id_BeneficioCuenta" />
                 <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
                 <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+=======
+            <EntityTypeMapping TypeName="TestModel.Benficio_x_Cuenta">
+              <MappingFragment StoreEntitySet="Benficio_x_Cuenta">
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
+                <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+                <ScalarProperty Name="Id_BeneficioCuenta" ColumnName="Id_BeneficioCuenta" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Contacto">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.Contacto">
               <MappingFragment StoreEntitySet="Contacto">
                 <ScalarProperty Name="Id_Contacto" ColumnName="Id_Contacto" />
@@ -3542,26 +3616,51 @@
                 <ScalarProperty Name="Id_ContactoMedio" ColumnName="Id_ContactoMedio" />
                 <ScalarProperty Name="Notas" ColumnName="Notas" />
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+=======
+            <EntityTypeMapping TypeName="TestModel.Contacto">
+              <MappingFragment StoreEntitySet="Contacto">
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="Notas" ColumnName="Notas" />
+                <ScalarProperty Name="Id_ContactoMedio" ColumnName="Id_ContactoMedio" />
+                <ScalarProperty Name="Contacto1" ColumnName="Contacto" />
+                <ScalarProperty Name="Id_ContactoTipo" ColumnName="Id_ContactoTipo" />
+                <ScalarProperty Name="Id_Contacto" ColumnName="Id_Contacto" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Contacto_medio">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.Contacto_medio">
               <MappingFragment StoreEntitySet="Contacto_medio">
                 <ScalarProperty Name="Id_ContactoMedio" ColumnName="Id_ContactoMedio" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+=======
+            <EntityTypeMapping TypeName="TestModel.Contacto_medio">
+              <MappingFragment StoreEntitySet="Contacto_medio">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_ContactoMedio" ColumnName="Id_ContactoMedio" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Contacto_tipo">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.Contacto_tipo">
               <MappingFragment StoreEntitySet="Contacto_tipo">
                 <ScalarProperty Name="Id_ContactoTipo" ColumnName="Id_ContactoTipo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+=======
+            <EntityTypeMapping TypeName="TestModel.Contacto_tipo">
+              <MappingFragment StoreEntitySet="Contacto_tipo">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_ContactoTipo" ColumnName="Id_ContactoTipo" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cuentas">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.Cuentas">
               <MappingFragment StoreEntitySet="Cuentas">
                 <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
@@ -3575,29 +3674,62 @@
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
                 <ScalarProperty Name="Id_Baja" ColumnName="Id_Baja" />
                 <ScalarProperty Name="RegistroCompleto" ColumnName="RegistroCompleto" />
+=======
+            <EntityTypeMapping TypeName="TestModel.Cuentas">
+              <MappingFragment StoreEntitySet="Cuentas">
+                <ScalarProperty Name="RegistroCompleto" ColumnName="RegistroCompleto" />
+                <ScalarProperty Name="Id_Baja" ColumnName="Id_Baja" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+                <ScalarProperty Name="InicioBloqueo" ColumnName="InicioBloqueo" />
+                <ScalarProperty Name="IntentosCnn" ColumnName="IntentosCnn" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
+                <ScalarProperty Name="Id_Login" ColumnName="Id_Login" />
+                <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Directorio_tipo">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.Directorio_tipo">
               <MappingFragment StoreEntitySet="Directorio_tipo">
                 <ScalarProperty Name="Id_DirectorioTipo" ColumnName="Id_DirectorioTipo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+=======
+            <EntityTypeMapping TypeName="TestModel.Directorio_tipo">
+              <MappingFragment StoreEntitySet="Directorio_tipo">
+                <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_DirectorioTipo" ColumnName="Id_DirectorioTipo" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Directorios">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.Directorios">
               <MappingFragment StoreEntitySet="Directorios">
                 <ScalarProperty Name="Id_Directorio" ColumnName="Id_Directorio" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Id_DirectorioTipo" ColumnName="Id_DirectorioTipo" />
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+=======
+            <EntityTypeMapping TypeName="TestModel.Directorios">
+              <MappingFragment StoreEntitySet="Directorios">
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="Id_DirectorioTipo" ColumnName="Id_DirectorioTipo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_Directorio" ColumnName="Id_Directorio" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Domicilios">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.Domicilios">
               <MappingFragment StoreEntitySet="Domicilios">
                 <ScalarProperty Name="Id_Domicilio" ColumnName="Id_Domicilio" />
@@ -3614,20 +3746,48 @@
                 <ScalarProperty Name="Notas" ColumnName="Notas" />
                 <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+=======
+            <EntityTypeMapping TypeName="TestModel.Domicilios">
+              <MappingFragment StoreEntitySet="Domicilios">
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="Notas" ColumnName="Notas" />
+                <ScalarProperty Name="YCalle" ColumnName="YCalle" />
+                <ScalarProperty Name="EntreCalle" ColumnName="EntreCalle" />
+                <ScalarProperty Name="Colonia" ColumnName="Colonia" />
+                <ScalarProperty Name="Id_Municipio" ColumnName="Id_Municipio" />
+                <ScalarProperty Name="Id_Entidad" ColumnName="Id_Entidad" />
+                <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+                <ScalarProperty Name="NumeroInterior" ColumnName="NumeroInterior" />
+                <ScalarProperty Name="NumeroExterior" ColumnName="NumeroExterior" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="Id_ContactoTipo" ColumnName="Id_ContactoTipo" />
+                <ScalarProperty Name="Id_Domicilio" ColumnName="Id_Domicilio" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Entidades">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.Entidades">
               <MappingFragment StoreEntitySet="Entidades">
                 <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
                 <ScalarProperty Name="Id_Entidad" ColumnName="Id_Entidad" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+=======
+            <EntityTypeMapping TypeName="TestModel.Entidades">
+              <MappingFragment StoreEntitySet="Entidades">
+                <ScalarProperty Name="Abreviatura" ColumnName="Abreviatura" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_Entidad" ColumnName="Id_Entidad" />
+                <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Equipos">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.Equipos">
               <MappingFragment StoreEntitySet="Equipos">
                 <ScalarProperty Name="Id_Equipo" ColumnName="Id_Equipo" />
@@ -3641,19 +3801,45 @@
                 <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
                 <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+=======
+            <EntityTypeMapping TypeName="TestModel.Equipos">
+              <MappingFragment StoreEntitySet="Equipos">
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+                <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+                <ScalarProperty Name="FechaCaducidad" ColumnName="FechaCaducidad" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id_EquipoTipo" ColumnName="Id_EquipoTipo" />
+                <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Hostname" ColumnName="Hostname" />
+                <ScalarProperty Name="Id_Equipo" ColumnName="Id_Equipo" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Equipos_tipo">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.Equipos_tipo">
               <MappingFragment StoreEntitySet="Equipos_tipo">
                 <ScalarProperty Name="Id_EquipoTipo" ColumnName="Id_EquipoTipo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+=======
+            <EntityTypeMapping TypeName="TestModel.Equipos_tipo">
+              <MappingFragment StoreEntitySet="Equipos_tipo">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id_EquipoTipo" ColumnName="Id_EquipoTipo" />
+>>>>>>> origin/HumbertoTest
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Events">
+<<<<<<< HEAD
             <EntityTypeMapping TypeName="SecurityModel.Events">
+=======
+            <EntityTypeMapping TypeName="TestModel.Events">
+>>>>>>> origin/HumbertoTest
               <MappingFragment StoreEntitySet="Events">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="text" ColumnName="text" />
@@ -3897,6 +4083,17 @@
           <EntitySetMapping Name="Sesiones">
             <EntityTypeMapping TypeName="SecurityModel.Sesiones">
               <MappingFragment StoreEntitySet="Sesiones">
+<<<<<<< HEAD
+=======
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
+                <ScalarProperty Name="UltimoMovimiento" ColumnName="UltimoMovimiento" />
+                <ScalarProperty Name="CierreSesion" ColumnName="CierreSesion" />
+                <ScalarProperty Name="OnLine" ColumnName="OnLine" />
+                <ScalarProperty Name="FechaHoraInicio" ColumnName="FechaHoraInicio" />
+                <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
+                <ScalarProperty Name="Identificador" ColumnName="Identificador" />
+>>>>>>> origin/HumbertoTest
                 <ScalarProperty Name="Id_Sesion" ColumnName="Id_Sesion" />
                 <ScalarProperty Name="Identificador" ColumnName="Identificador" />
                 <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />

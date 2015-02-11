@@ -76,16 +76,12 @@ namespace Security.Controllers
         }
 
         // GET: /AreasDeTrabajo/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             AreasDeTrabajo areasdetrabajo = repo.Get(id);
-            if (areasdetrabajo == null)
+            if (areasdetrabajo == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");            
             }
             return View(areasdetrabajo);
         }
@@ -114,12 +110,12 @@ namespace Security.Controllers
         }
 
         // GET: /AreasDeTrabajo/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id = 0)
         {
             AreasDeTrabajo areasdetrabajo = repo.Get(id);
-            if (areasdetrabajo == null)
+            if (areasdetrabajo == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
 
             ViewBag.Id_Sistema = new SelectList(sistemas.GetAll(), "Id_Sistema", "Nombre", areasdetrabajo.Id_Sistema);
@@ -142,16 +138,12 @@ namespace Security.Controllers
         }
 
         // GET: /AreasDeTrabajo/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             AreasDeTrabajo areasdetrabajo = repo.Get(id);
-            if (areasdetrabajo == null)
+            if (areasdetrabajo == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(areasdetrabajo);
         }
@@ -161,10 +153,19 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(short id)
         {
-            AreasDeTrabajo areasdetrabajo = repo.Get(id);
-            repo.Delete(areasdetrabajo);            
-            repo.Save();
-            return RedirectToAction("Index");
+            try
+            {
+                AreasDeTrabajo areasdetrabajo = repo.Get(id);
+                repo.Delete(areasdetrabajo);
+                repo.Save();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Este registro no se puede eliminar por estar referenciado con otro registro.";
+                ViewBag.True = 1;
+                return View();
+            }
         }
 
         protected override void Dispose(bool disposing)

@@ -87,16 +87,12 @@ namespace Security.Controllers
         }
 
         // GET: /PreguntasXLogin/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Preguntas_x_Login preguntas_x_login = repo.Get(id);
-            if (preguntas_x_login == null)
+            if (preguntas_x_login == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(preguntas_x_login);
         }
@@ -127,12 +123,12 @@ namespace Security.Controllers
         }
 
         // GET: /PreguntasXLogin/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id = 0)
         {
             Preguntas_x_Login preguntas_x_login = repo.Get(id);
-            if (preguntas_x_login == null)
+            if (preguntas_x_login == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             ViewBag.Id_Login = new SelectList(login.GetAll(), "Id_Login", "Usuario", preguntas_x_login.Id_Login);
             ViewBag.Id_Pregunta = new SelectList(preguntas.GetAll(), "Id_Pregunta", "Pregunta", preguntas_x_login.Id_Pregunta);
@@ -156,16 +152,12 @@ namespace Security.Controllers
         }
 
         // GET: /PreguntasXLogin/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Preguntas_x_Login preguntas_x_login = repo.Get(id);
-            if (preguntas_x_login == null)
+            if (preguntas_x_login == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(preguntas_x_login);
         }
@@ -175,10 +167,19 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Preguntas_x_Login preguntas_x_login = repo.Get(id);
-            repo.Delete(preguntas_x_login);
-            repo.Save();
-            return RedirectToAction("Index");
+            try
+            {
+                Preguntas_x_Login preguntas_x_login = repo.Get(id);
+                repo.Delete(preguntas_x_login);
+                repo.Save();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Este registro no se puede eliminar por estar referenciado con otro registro.";
+                ViewBag.True = 1;
+                return View();
+            }
         }
 
         protected override void Dispose(bool disposing)

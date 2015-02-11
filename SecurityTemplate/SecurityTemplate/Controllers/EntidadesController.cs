@@ -87,12 +87,12 @@ namespace Security.Controllers
         }
 
         // GET: /Entidades/Details/5
-        public ActionResult Details(short id)
+        public ActionResult Details(short id = 0, short id2 = 0)
         {
-            Entidades entidades = repo.Get(id);
-            if (entidades == null)
+            Entidades entidades = repo.Get(id,id2);
+            if (entidades == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(entidades);
         }
@@ -121,16 +121,12 @@ namespace Security.Controllers
         }
 
         // GET: /Entidades/Edit/5
-        public ActionResult Edit(short id)
+        public ActionResult Edit(short id = 0, short id2 = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Entidades entidades = repo.Get(id);
-            if (entidades == null)
+            if (entidades == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             ViewBag.Id_Pais = new SelectList(paises.GetAll(), "Id_Pais", "FIPS", entidades.Id_Pais);
             return View(entidades);
@@ -152,16 +148,12 @@ namespace Security.Controllers
         }
 
         // GET: /Entidades/Delete/5
-        public ActionResult Delete(short id)
+        public ActionResult Delete(short id = 0, short id2 = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Entidades entidades = repo.Get(id);
-            if (entidades == null)
+            if (entidades == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(entidades);
         }
@@ -171,10 +163,19 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Int16 id)
         {
-            Entidades entidades = repo.Get(id);
-            repo.Delete(entidades);
-            repo.Save();
-            return RedirectToAction("Index");
+            try
+            {
+                Entidades entidades = repo.Get(id);
+                repo.Delete(entidades);
+                repo.Save();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Este registro no se puede eliminar por estar referenciado con otro registro.";
+                ViewBag.True = 1;
+                return View();
+            }
         }
 
         protected override void Dispose(bool disposing)

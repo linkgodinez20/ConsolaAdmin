@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 class="Titulo">Detalles</h2>
 
 <div>
     <h4>Directorios</h4>
@@ -28,7 +28,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Directorio_tipo.Nombre)
+            @*@Html.DisplayNameFor(model => model.Directorio_tipo.Nombre)*@
+            Tipo de directorio
         </dt>
 
         <dd>
@@ -41,6 +42,9 @@
     var ControllerName = ViewContext.RouteData.Values["Controller"];
 }
 <p>
+    @{
+        var ControllerName = ViewContext.RouteData.Values["Controller"];
+    }
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <a class="btn btn-warning glyphicon glyphicon-pencil" data-container="body" data-toggle="popover" data-placement="left"
@@ -50,4 +54,9 @@
         </div>
     </div>
     <hr />
+<<<<<<< HEAD
+=======
+    <hr />
+>>>>>>> origin/HumbertoTest
 </p>
+

@@ -5,13 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Editar area de trabajo</h2>
+<h2 class="Titulo">Editar area de trabajo</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">        
+
+    <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.Id_AreaDeTrabajo)
@@ -30,16 +30,23 @@
                 @Html.DropDownList("Id_Sistema", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Id_Sistema, "", new { @class = "text-danger" })
             </div>
-        </div>        
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">            
-            <button type="submit" value="Save" class="btn btn-success">
-                <i class="glyphicon glyphicon-ok"></i>
-            </button>            
-            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
         </div>
-    </div>
+
+        @{
+            var ControllerName = ViewContext.RouteData.Values["Controller"];
+            var referencia = "~/" + @ControllerName + "/Edit/" + Model.Id_AreaDeTrabajo;
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" value="Save" class="btn btn-success" data-container="body" data-toggle="popover" data-placement="left"
+                        data-content="Guardar">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right"
+                   data-content="Volver" href="~/@ControllerName"></a>
+            </div>
+        </div>
+    </div>  
 }
 
 @section Scripts {

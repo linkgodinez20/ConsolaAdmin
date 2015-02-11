@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Entidades</h2>
+<h2 class="Titulo">Entidades</h2>
 
 <h3>¿Está seguro que desea eliminar este elemento?</h3>
 <div>
@@ -40,12 +40,15 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
+        var ControllerName = ViewContext.RouteData.Values["Controller"];
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button type="submit" value="Delete" class="btn btn-danger ">
+                <button type="submit" value="Delete" class="btn btn-danger " data-container="body" data-toggle="popover" data-placement="left"
+                        data-content="Eliminar">
                     <i class="glyphicon glyphicon-remove"></i>
                 </button>
-                @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right"
+                   data-content="Volver" href="~/@ControllerName"></a>
             </div>
         </div>
     }

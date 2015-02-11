@@ -25,8 +25,8 @@ namespace Security.Controllers
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.Ubicaciones = String.IsNullOrEmpty(sortOrder) ? "Beneficio" : "Beneficio_desc";
-            ViewBag.Latitude = sortOrder == "Beneficio" ? "Beneficio" : "Beneficio_desc";            
+            ViewBag.Beneficio = String.IsNullOrEmpty(sortOrder) ? "Beneficio_desc" : "";
+            ViewBag.Beneficio = sortOrder == "Beneficio" ? "Beneficio" : "Beneficio_desc";            
 
             if (searchString != null)
             {
@@ -66,12 +66,12 @@ namespace Security.Controllers
         }
 
         // GET: /Beneficio_Tipo/Details/5
-        public ActionResult Details(int id)//Byte
+        public ActionResult Details(int id = 0)//Byte
         {
             Beneficio_tipo beneficio_tipo = repo.Get(id);
-            if (beneficio_tipo == null)
+            if (beneficio_tipo == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(beneficio_tipo);
         }
@@ -98,12 +98,12 @@ namespace Security.Controllers
         }
 
         // GET: /Beneficio_Tipo/Edit/5
-        public ActionResult Edit(int id)//Byte
+        public ActionResult Edit(int id = 0)//Byte
         {
             Beneficio_tipo beneficio_tipo = repo.Get(id);
-            if (beneficio_tipo == null)
+            if (beneficio_tipo == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
 
             return View(beneficio_tipo);
@@ -124,12 +124,12 @@ namespace Security.Controllers
         }
 
         // GET: /Beneficio_Tipo/Delete/5
-        public ActionResult Delete(int id)//Byte
+        public ActionResult Delete(int id = 0)//Byte
         {
             Beneficio_tipo beneficio_tipo = repo.Get(id);
-            if (beneficio_tipo == null)
+            if (beneficio_tipo == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(beneficio_tipo);
         }
@@ -139,10 +139,19 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(byte id)
         {
-            Beneficio_tipo beneficio_tipo = repo.Get(id);
-            repo.Delete(beneficio_tipo);
-            repo.Save();
-            return RedirectToAction("Index");
+            try
+            {
+                Beneficio_tipo beneficio_tipo = repo.Get(id);
+                repo.Delete(beneficio_tipo);
+                repo.Save();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Este registro no se puede eliminar por estar referenciado con otro registro.";
+                ViewBag.True = 1;
+                return View();
+            }
         }
 
         protected override void Dispose(bool disposing)

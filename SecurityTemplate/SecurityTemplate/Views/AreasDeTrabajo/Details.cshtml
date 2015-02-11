@@ -5,9 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Detalles de area de trabajo</h2>
+<h2 class="Titulo">Detalles</h2>
 
 <div>   	
+    <h4>Area de trabajo</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -29,12 +30,17 @@
     </dl>
 </div>
 <p>    
+    @{
+        var ControllerName = ViewContext.RouteData.Values["Controller"];
+    }
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">           
-            @Html.ActionLink(" ", "Edit", new { id = Model.Id_AreaDeTrabajo }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })                            
-            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
-            
+            <a class="btn btn-warning glyphicon glyphicon-pencil" data-container="body" data-toggle="popover" data-placement="left"
+               data-content="Editar" href="~/@ControllerName/Edit/@Model.Id_AreaDeTrabajo"></a>
+            <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right"
+               data-content="Volver" href="~/@ControllerName"></a>
         </div>
     </div>
-
+    <hr />
+    <hr />
 </p>

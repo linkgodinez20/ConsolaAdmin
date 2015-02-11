@@ -80,12 +80,12 @@ namespace Security.Controllers
         }
 
         // GET: /Directorios/Details/5
-        public ActionResult Details(byte id)
+        public ActionResult Details(byte id = 0)
         {
             Directorios directorios = repo.Get(id);
-            if (directorios == null)
+            if (directorios == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(directorios);
         }
@@ -114,12 +114,12 @@ namespace Security.Controllers
         }
 
         // GET: /Directorios/Edit/5
-        public ActionResult Edit(byte id)
+        public ActionResult Edit(byte id = 0)
         {
             Directorios directorios = repo.Get(id);
-            if (directorios == null)
+            if (directorios == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             ViewBag.Id_DirectorioTipo = new SelectList(dirTipo.GetAll(), "Id_DirectorioTipo", "Nombre", directorios.Id_DirectorioTipo);
             return View(directorios);
@@ -144,9 +144,9 @@ namespace Security.Controllers
         public ActionResult Delete(byte id)
         {
             Directorios directorios = repo.Get(id);
-            if (directorios == null)
+            if (directorios == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(directorios);
         }
@@ -154,7 +154,7 @@ namespace Security.Controllers
         // POST: /Directorios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(byte id)
+        public ActionResult DeleteConfirmed(byte id = 0)
         {
             try
             {
@@ -162,9 +162,10 @@ namespace Security.Controllers
                 repo.Delete(directorios);
                 repo.Save();
                 return RedirectToAction("Index");
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
-                ViewBag.Error ="Error "+ ex.Message;
+                ViewBag.Error = "Este registro no se puede eliminar por estar referenciado con otro registro.";
                 ViewBag.True = 1;
                 return View();
             }

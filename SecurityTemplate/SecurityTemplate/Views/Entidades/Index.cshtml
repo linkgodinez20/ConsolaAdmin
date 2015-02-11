@@ -71,9 +71,9 @@
                 @Html.DisplayFor(modelItem => item.Paises.FIPS)
             </td>
             <td>
-                @Html.ActionLink(" ", "Edit", new {  id=item.Id_Entidad  }   , new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
-                @Html.ActionLink(" ", "Details", new { id = item.Id_Entidad },  new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
-                @Html.ActionLink(" ", "Delete", new { id = item.Id_Entidad }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
+                @Html.ActionLink(" ", "Edit", new {  id = item.Id_Entidad, id2 = item.Id_Pais  }   , new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.Id_Entidad, id2 = item.Id_Pais }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.Id_Entidad, id2 = item.Id_Pais }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
             </td>
         </tr>
     }

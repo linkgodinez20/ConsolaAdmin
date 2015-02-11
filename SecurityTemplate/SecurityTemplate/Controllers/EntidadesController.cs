@@ -87,9 +87,9 @@ namespace Security.Controllers
         }
 
         // GET: /Entidades/Details/5
-        public ActionResult Details(short id = 0)
+        public ActionResult Details(short id = 0, short id2 = 0)
         {
-            Entidades entidades = repo.Get(id);
+            Entidades entidades = repo.Get(id,id2);
             if (entidades == null || id == 0)
             {
                 return RedirectToAction("Index");
@@ -121,7 +121,7 @@ namespace Security.Controllers
         }
 
         // GET: /Entidades/Edit/5
-        public ActionResult Edit(short id = 0)
+        public ActionResult Edit(short id = 0, short id2 = 0)
         {
             Entidades entidades = repo.Get(id);
             if (entidades == null || id == 0)
@@ -148,7 +148,7 @@ namespace Security.Controllers
         }
 
         // GET: /Entidades/Delete/5
-        public ActionResult Delete(short id = 0)
+        public ActionResult Delete(short id = 0, short id2 = 0)
         {
             Entidades entidades = repo.Get(id);
             if (entidades == null || id == 0)

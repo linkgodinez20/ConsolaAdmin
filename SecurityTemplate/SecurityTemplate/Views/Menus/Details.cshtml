@@ -1,0 +1,93 @@
+﻿@model Security.Core.Model.Menu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="Titulo">Detalle</h2>
+
+<div>
+    <h4>Menu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tooltip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tooltip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Orden)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Orden)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Habilitado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Habilitado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_MenuCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Menu_categoria.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Pagina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paginas.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Sistema)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sistemas.Nombre)
+        </dd>
+
+    </dl>
+</div>
+@{
+    var ControllerName = ViewContext.RouteData.Values["Controller"];
+}
+<p>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a class="btn btn-warning glyphicon glyphicon-pencil" data-container="body" data-toggle="popover" data-placement="left"
+               data-content="Editar" href="~/@ControllerName/Edit/@Model.Id_Menu"></a>
+            <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right"
+               data-content="Volver" href="~/@ControllerName"></a>
+        </div>
+    </div>
+    <hr />
+</p>

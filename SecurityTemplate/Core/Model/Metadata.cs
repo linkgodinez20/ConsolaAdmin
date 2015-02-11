@@ -464,9 +464,6 @@ namespace Security.Core.Model
         [StringLength(128)]
         public String Descripcion;
 
-        [Display(Name = "Ubicación")]
-        public DbGeography Ubiacion;
-
         [Display(Name = "Fecha de alta")]
         public DateTime FechaAlta;
 
@@ -536,7 +533,8 @@ namespace Security.Core.Model
     public class MunicipiosMetadata
     {
         [Key, Column(Order = 0)]
-        [Display(Name = "Id")]
+        [Required(ErrorMessage = "El campo [País] es obligatorio.")]
+        [Display(Name = "País")]
         [ScaffoldColumn(false)]
         public Int16 Id_Pais;
 
@@ -546,13 +544,13 @@ namespace Security.Core.Model
         public Int16 Id_Entidad;
 
         [Key, Column(Order = 2)]
-        [Required(ErrorMessage = "El campo [Municipio] es obligatorio.")]
-        [Display(Name = "Municipio")]
+        [Required(ErrorMessage = "El campo [ID] es obligatorio.")]
+        [Display(Name = "Id Nvo. Municipio")]
         public Int16 Id_Municipio;
 
         [Required(ErrorMessage = "El campo [Nombre] es obligatorio.")]
         [StringLength(64)]
-        [Display(Name = "Municipio")]
+        [Display(Name = "Nombre")]
         public String Nombre;
 
         [StringLength(10)]
@@ -681,9 +679,6 @@ namespace Security.Core.Model
 
         [Display(Name = "Último movimiento")]
         public Nullable<System.DateTime> UltimoMovimiento;
-
-        [Display(Name = "Ubicación")]
-        public DbGeography Ubiacion;
 
         [Required(ErrorMessage = "El campo [Sistema] es obligatorio.")]
         [Display(Name = "Sistema")]

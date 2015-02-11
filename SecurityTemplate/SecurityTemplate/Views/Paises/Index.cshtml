@@ -1,46 +1,82 @@
-﻿@model IEnumerable<Security.Core.Model.Paises>
+﻿﻿@model PagedList.IPagedList<Security.Core.Model.Paises>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<ol class="breadcrumb">
+    <li>Inicio</li>
+    <li><b>Paises</b></li>
+    <li class="active">Lista</li>
+</ol>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FIPS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Prioridad)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FIPS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Prioridad)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_Pais }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_Pais }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_Pais })
-        </td>
-    </tr>
+@using (Html.BeginForm("Index", "Paises", FormMethod.Get))
+{
+    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
+        <div class="input-group">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+            <div class="input-group-btn">
+                <button name="btnSearch" id="btnSearch" type="submit" value="create" class="btn btn-info" data-container="body" data-toggle="popover" data-placement="top" data-content="Buscar">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+                <button name="btnFilter" id="btnFilter" type="submit" value="index" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Quitar filtro">
+                    <i class="glyphicon glyphicon-filter"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br />
 }
+<br />
+<br />
+<table class="table table-bordered table-condensed table-hover">
+    <tr>
+        <th class="alert-info">
+            FIPS
+        </th>
+        <th class="alert-info">
+            @Html.ActionLink("Nombre", "Index", new { sortOrder = ViewBag.SortByName, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th class="alert-info">
+            Prioridad
+        </th>
+        <th class="alert-success">
+            <span class="glyphicon glyphicon-cog"> Acciones</span>
+        </th>
+    </tr>
 
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FIPS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prioridad)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.Id_Pais }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.Id_Pais }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.Id_Pais }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+@{
+    var ControllerName = ViewContext.RouteData.Values["controller"];
+}
+<table>
+    <tr>
+        <td>
+            <a class="btn btn-success glyphicon glyphicon-plus" data-container="body" data-toggle="popover" data-placement="right" data-content="Agregar" href="~/@ControllerName/Create"></a>
+        </td>
+    </tr>
 </table>

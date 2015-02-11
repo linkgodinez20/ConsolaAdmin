@@ -1,0 +1,65 @@
+﻿@model Security.Core.Model.LogIn
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LogIn</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Senha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Senha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsoSalt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsoSalt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Personas.APaterno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Personas.APaterno)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink(" ", "Edit", new { id = Model.Id_Login}, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
+            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+
+        </div>
+    </div>
+
+</p>

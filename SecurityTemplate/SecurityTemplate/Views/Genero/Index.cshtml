@@ -28,18 +28,21 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.Id_Genero }, new { @class = "ButtonSettings Edit" }) |
-                @Html.ActionLink(" ", "Details", new { id = item.Id_Genero }, new { @class = "ButtonSettings Details" }) |
-                @Html.ActionLink(" ", "Delete", new { id = item.Id_Genero }, new { @class = "ButtonSettings Delete" })
+                @Html.ActionLink(" ", "Edit", new { id = item.Id_Genero }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.Id_Genero }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.Id_Genero }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
             </td>
         </tr>
     }
 
 </table>
+@{
+    var ControllerName = ViewContext.RouteData.Values["controller"];
+}
 <table>
     <tr>
         <td>
-            @Html.ActionLink(" ", "Create", "Genero", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
+            <a class="btn btn-success glyphicon glyphicon-plus" data-container="body" data-toggle="popover" data-placement="right" data-content="Agregar" href="~/@ControllerName/Create"></a>
         </td>
     </tr>
 </table>

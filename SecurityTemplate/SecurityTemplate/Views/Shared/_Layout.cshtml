@@ -10,7 +10,6 @@
 <body>    
     <div class="container">
 
-
         <nav class="navbar navbar-inverse" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -57,12 +56,11 @@
                                 <li>@Html.ActionLink("Personas", "Index", "Personas")</li>
                                 <li>@Html.ActionLink("Actividades", "Index", "Actividades")</li>
                                 <li>@Html.ActionLink("Baja", "Index", "Bajas")</li>
-                                <li>@Html.ActionLink("Menu", "Index", "")</li> @*------------------------------*@
+                                <li>@Html.ActionLink("Menu", "Index", "Menus")
                                 <li>@Html.ActionLink("Beneficio", "Index", "Beneficios")</li>
                                 <li class="divider"></li>
                                 <li>@Html.ActionLink("Contacto", "Index", "Contactos")</li>
                                 <li>@Html.ActionLink("Contacto(tipo)", "Index", "Contacto_tipo")</li>
-                                <li>@Html.ActionLink("Contacto(medio)", "Index", "Contacto_medio")</li>
                                 <li>@Html.ActionLink("Domicilio", "Index", "Domicilios")</li>
                                 <li class="divider"></li>
                                 <li>@Html.ActionLink("Directorio", "Index", "Directorios")</li>
@@ -72,7 +70,7 @@
                                 <li>@Html.ActionLink("Municipios", "Index", "Municipios")</li>
                                 <li>@Html.ActionLink("Países", "Index", "Paises")</li>
                                 <li class="divider"></li>
-                                <li>@Html.ActionLink("Sesiones", "Index", "")</li> @*------------------------------*@
+                                <li>@Html.ActionLink("Sesiones", "Index", "Sesiones")</li>
                                 <li>@Html.ActionLink("Sistemas", "Index", "Sistemas")</li>
                             </ul>
                         </li>
@@ -84,6 +82,7 @@
                         <li><a href="../navbar-fixed-top/">Fixed top</a></li>
                     </ul>
                         -->
+
                 </div>
                 <!-- ================ NAVBAR ================ -->
 
@@ -112,10 +111,12 @@
 
     </div>
         <!-- ================ SCRIPTS ================ -->
+        
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
-        @Scripts.Render("scripts/js/mike.js")
-
+        @*@Scripts.Render("scripts/js/mike.js")*@
+        @*@Scripts.Render("~/bundles/MijeJS")*@
+        @Scripts.Render("~/bundles/Miscelaneous")
 </body>
 </html>

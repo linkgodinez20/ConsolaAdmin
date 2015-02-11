@@ -10,6 +10,9 @@ using Security.Core.Model;
 using Security.Core.Repository;
 using Ninject;
 using PagedList;
+using System.IO;
+
+using Security.Data;
 
 namespace Security.Controllers
 {
@@ -134,10 +137,23 @@ namespace Security.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id_Persona,APaterno,AMaterno,Nombre,FechaCreacion,Email,Id_Genero,FechaNacimiento,RFC,Homoclave,CURP,Foto,Estatus")] Personas personas)
+        public ActionResult Create([Bind(Include = "Id_Persona,APaterno,AMaterno,Nombre,FechaCreacion,Email,Id_Genero,FechaNacimiento,RFC,Homoclave,CURP,Foto,Estatus")] Personas personas, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                if (file.ContentLength > 0)
+                {
+                    
+                    var fileName = Path.GetFileName(file.FileName);
+                    String ArchivoFoto = "Media/" + fileName;
+
+                    personas.Foto = ArchivoFoto;
+
+                    var path = Path.Combine(Server.MapPath("~/Media/Images/Productos"), fileName);
+                    //file.SaveAs(path);
+                    var i = "";
+                }
+
                 personas.FechaCreacion = DateTime.Now;
 
                 repo.Add(personas);
@@ -165,11 +181,26 @@ namespace Security.Controllers
         // POST: Personas/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id_Persona,APaterno,AMaterno,Nombre,FechaCreacion,Email,Id_Genero,FechaNacimiento,RFC,Homoclave,CURP,Foto,Estatus")] Personas personas)
+        public ActionResult Edit([Bind(Include = "Id_Persona,APaterno,AMaterno,Nombre,FechaCreacion,Email,Id_Genero,FechaNacimiento,RFC,Homoclave,CURP,Foto,Estatus")] Personas personas, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
                 personas.FechaCreacion = DateTime.Now;
+
+                if (file.ContentLength > 0)
+                {
+
+                    var fileName = Path.GetFileName(file.FileName);
+                    String ArchivoFoto = "Media/" + fileName;
+
+                    personas.Foto = ArchivoFoto;
+
+                    var path = Path.Combine(Server.MapPath("~/Media"), fileName);
+                    
+
+                    //file.SaveAs(path);
+                    var i = "";
+                }
 
                 repo.Update(personas);
                 repo.Save();

@@ -92,14 +92,35 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Foto, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Foto, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Foto, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
 
+
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <div class="panel panel-info">
+                        <div class="panel-body">
+                            <img id="img_Foto" style="Height:130px;Width:180px" src="holder.js/180x130" />
+                            <div style="text-align:center">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <input id="file" type="file" accept=".jpg, .png, .bmp, .gif"
+                           class="form-control alert-success" name="file" onchange="previewFile()" lang="es-mx" />
+                </div>
+
+                @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
+            </div>
+        </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Estatus, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -111,27 +132,54 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button type="submit" value="create" class="btn btn-success">
+                <button type="submit" value="create" class="btn btn-success" data-container="body" data-toggle="popover" data-placement="left" data-content="Guardar">
                     <i class="glyphicon glyphicon-ok"></i>
                 </button>
-                @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+                @{
+                    var ControllerName = ViewContext.RouteData.Values["controller"];
+                }
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" href="/@ControllerName" data-container="body" data-toggle="popover" data-placement="right" data-content="Volver"></a>
             </div>
         </div>
-
-        @*<div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                
-                <input type="submit" value="" class="btn btn-success glyphicon-align-plus" />
-            </div>
-            @Html.ActionLink("volver", "Index", null, new { @class = "btn btn-default" })
-        </div>*@
     </div>
 }
-
+<script src="~/Scripts/jquery-2.1.3.js"></script>
+<script src="~/Scripts/jquery-ui-1.11.2.js"></script>
+<link href="~/Content/themes/base/all.css" rel="stylesheet" />
 @section Scripts {
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/MX-calendar")
+
+    <script>
+        $(document).ready(function () {
+            $.datepicker.setDefaults($.datepicker.regional['es-MX']);
+            $('#FechaNacimiento').datepicker({ dateFormat: "yy-mm-dd" });
+        });
+    </script>
+    <script>
+
+        function previewFile() {
+            var preview = document.querySelector('#img_Foto');
+            var file = document.querySelector('#file').files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
+            }
+        }
+    </script>
+
+<script>
+    $(document).ready(function () {
+        $('#APaterno').focus();
+    });
+</script>
 }
 @*<script type="text/javascript">
         function pageLoad(sender, args) {
@@ -143,14 +191,10 @@
 
         }
 </script>*@
-<script src="~/Scripts/jquery-2.1.3.js"></script>
+
+
+@*<script src="~/Scripts/jquery-2.1.3.js"></script>
 <script src="~/Scripts/jquery-ui-1.11.2.js"></script>
-<link href="~/Content/themes/base/all.css" rel="stylesheet" />
+<link href="~/Content/themes/base/all.css" rel="stylesheet" />*@
 @*<link href="~/Content/themes/base/datepicker.css" rel="stylesheet" />*@
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $.datepicker.setDefaults($.datepicker.regional['es-MX']);
-        $('#FechaNacimiento').datepicker({ dateFormat: "yy-mm-dd" });
-    });
-</script>

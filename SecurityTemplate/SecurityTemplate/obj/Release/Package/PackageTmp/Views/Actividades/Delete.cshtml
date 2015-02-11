@@ -1,0 +1,67 @@
+﻿@model Security.Core.Model.Actividades
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="Titulo">Eliminar</h2>
+
+<h3 class="Dialogos">¿Est&aacute; seguro de eliminar este registro?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Directorio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Directorios.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Sistema)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sistemas.Nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" value="Delete" class="btn btn-danger " data-container="body" data-toggle="popover" data-placement="left" data-content="Eliminar">
+                <i class="glyphicon glyphicon-remove"></i>
+            </button>
+
+            @{
+                var ControllerName = ViewContext.RouteData.Values["Controller"];
+            }
+
+            <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right" data-content="Volver" href="/@ControllerName"></a>
+
+        </div>
+    </div>
+    }
+</div>

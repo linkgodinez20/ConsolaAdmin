@@ -8,32 +8,38 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+
+        var options = [[]];
+
+        $.getJSON("/api/Paises", function (result) {
+            for (var i = 0; i < result.length; i++) {
+                options.push('<option value="',
+                  result[i].Id_Pais, '">',
+                  result[i].Nombre, '</option>');
+            }
+            $("#Id_Pais").html(options.join(''));
+        });
+
+
         $("#Id_Pais").on('change', function (e) {
             var idp = $(this).val();
-            alert('idp: ' + idp);
+            
             e.preventDefault();
 
             $("#Id_Entidad").empty();
             $("#Id_Municipio").empty();
+            
+            var options = [[]];
 
-            $.ajax({
-                type: 'GET',
-                url: 'http://localhost:3285/api/Entidades',
-                dataType: 'json',
-                traditional: true, //true
-                contentType: "application/json; charset=utf-8",
-                data: "{'IdPais':" + idp + "}",
-                success: function (entidades) {
-                    alert('ok');
-                    $.each(entidades, function (i, entidad) {
-                        $("#Id_Entidad").append('<option value="' + entidad.Text + '">' +
-                         entidad.Text + '</option>');
-                    });
-                },
-                error: function (ex) {
-                    alert('Falla al cargar las entidades.' + ex);
+            $.getJSON("/api/Entidades/?IdPais=" + idp, function (result) {
+                for (var i = 0; i < result.length; i++) {
+                    options.push('<option value="',
+                      result[i].Id_Entidad, '">',
+                      result[i].Nombre, '</option>');
                 }
+                $("#Id_Entidad").html(options.join(''));
             });
+
             return false;
         })
     });
@@ -41,29 +47,22 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#Id_Entidad").on('change', function (e) {
-            var idEnt = $(this).val();
-            alert(idEnt);
+            var ide = $(this).val();
+
             e.preventDefault();
             $("#Id_Municipio").empty();
 
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("GetMunicipios", "Domicilios")',
-                dataType: 'json',
-                traditional: true,
-                contentType: "application/json; charset=utf-8",
-                data: "{'IdEntidad':" + idEnt + "}",
+            var options = [[]];
 
-                success: function (municipios) {
-
-                    $.each(municipios, function (i, municipio) {
-                        $("#Id_Municipio").append('<option value="' + municipio.Value + '">' + municipio.Text + '</option>');
-                    });
-                },
-                error: function (ex) {
-                    alert('Falla al cargar los municipios.' + ex);
+            $.getJSON("/api/Municipios/?IdEntidad=" + ide, function (result) {
+                for (var i = 0; i < result.length; i++) {
+                    options.push('<option value="',
+                      result[i].Id_Municipio, '">',
+                      result[i].Nombre, '</option>');
                 }
+                $("#Id_Municipio").html(options.join(''));
             });
+
             return false;
         })
     });
@@ -115,7 +114,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Id_Pais, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Id_Pais", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("Id_Pais", new SelectList(string.Empty, "Id_Pais", "Nombre"), htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Id_Pais, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -182,20 +181,18 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button type="submit" value="create" class="btn btn-success">
+                <button type="submit" value="create" class="btn btn-success" data-container="body" data-toggle="popover" data-placement="left" data-content="Guardar">
                     <i class="glyphicon glyphicon-ok"></i>
                 </button>
-                @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+                @{
+                    var ControllerName = ViewContext.RouteData.Values["controller"];
+                }
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" href="/@ControllerName" data-container="body" data-toggle="popover" data-placement="right" data-content="Volver"></a>
             </div>
         </div>
+
     </div>
 }
-
-@*<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/jquery")
 }

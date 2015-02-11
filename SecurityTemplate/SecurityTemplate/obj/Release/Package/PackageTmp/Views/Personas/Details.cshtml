@@ -1,0 +1,141 @@
+﻿@model Security.Core.Model.Personas
+
+@{
+    ViewBag.Title = "Persona/Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="=Titulo">Detalle</h2>
+
+<div>
+    <h4>Personas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.APaterno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APaterno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AMaterno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AMaterno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaNacimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RFC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RFC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Homoclave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Homoclave)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CURP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CURP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Foto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Genero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genero.Nombre)
+        </dd>
+
+    </dl>
+</div>
+@*<table class="btn-group">
+    <tr>
+        <td>
+            <div class="input-group">
+                <p>
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.Id_Persona }, new { @class = "btn btn-warning" })
+                    
+                </p>
+            </div>
+        </td>
+        <td class="Space_h"></td>
+        <td>
+            <div class="input-group">
+                <p>
+                    @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default" })
+                </p>
+            </div>
+        </td>
+    </tr>
+</table>*@
+<p>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink(" ", "Edit", new { id = Model.Id_Persona }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
+            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+
+        </div>
+    </div>
+
+</p>

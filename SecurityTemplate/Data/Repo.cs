@@ -7,11 +7,9 @@ using Omu.ValueInjecter;
 
 namespace Security.Data
 {
-    public class Repo<T> : IRepo<T> where T : class//, new()
+    public class Repo<T> : IRepo<T> where T : class
     {
         protected readonly DbContext dbContext;
-        
-        //protected readonly RepoHelper<T> repoHelper = new RepoHelper<T>();
 
         public Repo(IDbContextFactory f)
         {
@@ -36,7 +34,7 @@ namespace Security.Data
             dbContext.Set<T>().Remove(o);
         }
 
-        public virtual void Update(T o)//, params String[] pkey)
+        public virtual void Update(T o)
         {
             dbContext.Entry(o).State = EntityState.Modified;
         }

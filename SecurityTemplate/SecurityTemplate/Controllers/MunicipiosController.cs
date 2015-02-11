@@ -30,20 +30,25 @@ namespace Security.Controllers
         }
 
         // GET: Municipios
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page, string EntidadSeleccionada)
+        public ActionResult Index(string sortOrder, string currentFilter, string Entidades_ddl, string searchString, int? page)
         {
             // Inicio entidad
-            ViewBag.Entidades_ddl = new SelectList(Repo_Entidad.GetAll(), "Id_Entidad", "Nombre");
 
-            Int16 entidadSeleccionada = 1;
+            //ViewBag.Entidades_ddl = new SelectList(Repo_Entidad.GetAll(), "Id_Entidad", "Nombre");
+            
+            
 
-            if (!String.IsNullOrEmpty(EntidadSeleccionada))
+            Int16 entidadSeleccionada = 1;            
+
+            if (!String.IsNullOrEmpty(Entidades_ddl))
             {
-                entidadSeleccionada = Convert.ToInt16(EntidadSeleccionada);                
+                entidadSeleccionada = Convert.ToInt16(Entidades_ddl);
+                Session["EntidadSelect"] = Convert.ToString(entidadSeleccionada);
             }
 
-            // fin entiadd
+            ViewBag.Entidades_ddl = new SelectList(Repo_Entidad.GetAll(), "Id_Entidad", "Nombre", Session["EntidadSelect"]);
 
+            // fin entiadd
 
             ViewBag.CurrentSort = sortOrder;            
 
@@ -64,12 +69,12 @@ namespace Security.Controllers
             IOrderedQueryable<Municipios> ordena_municipios = repo.GetAll()
                 .OrderBy(x => x.Id_Pais).OrderBy(y => y.Id_Entidad).OrderBy(z => z.Id_Municipio);
 
+
+            entidadSeleccionada = Convert.ToInt16(Session["EntidadSelect"]);
+
             var municipios = from s in ordena_municipios
                              where s.Id_Entidad == entidadSeleccionada
                            select s;
-
-     
-            
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -105,13 +110,13 @@ namespace Security.Controllers
         }
 
         // GET: Municipios/Details/5
-        public ActionResult Details(short id, short id2, short id3)
+        public ActionResult Details(short id = 0, short id2 = 0, short id3 = 0)
         {
 
             Municipios municipios = repo.Get(id,id2,id3);
-            if (municipios == null)
+            if (municipios == null || id == 0 || id2 == 0 || id3 == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(municipios);
         }
@@ -120,9 +125,9 @@ namespace Security.Controllers
         public ActionResult Create()
         {
             //ViewBag.Id_Pais = new SelectList(db.Entidades, "Id_Pais", "Nombre"); //Original
-            ViewBag.Id_Pais = new SelectList(Repo_Pais.GetAll(), "Id_Pais", "Nombre");
-            ViewBag.Id_Entidad = new SelectList(Repo_Entidad.GetAll(), "Id_Entidad", "Nombre");
-            ViewBag.Id_Municipio = new SelectList(repo.GetAll(), "Id_Municipio", "Nombre");
+            //ViewBag.Id_Pais = new SelectList(Repo_Pais.GetAll(), "Id_Pais", "Nombre");
+            //ViewBag.Id_Entidad = new SelectList(Repo_Entidad.GetAll(), "Id_Entidad", "Nombre");
+            //ViewBag.Id_Municipio = new SelectList(repo.GetAll(), "Id_Municipio", "Nombre");
             return View();
         }
 
@@ -140,9 +145,10 @@ namespace Security.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id_Pais = new SelectList(Repo_Pais.GetAll(), "Id_Pais", "Nombre");
-            ViewBag.Id_Entidad = new SelectList(Repo_Entidad.GetAll(), "Id_Entidad", "Nombre", municipios.Id_Pais);
-            ViewBag.Id_Municipio = new SelectList(repo.GetAll(), "Id_Municipio", "Nombre", municipios.Id_Entidad);
+            //ViewBag.Id_Pais = new SelectList(Repo_Pais.GetAll(), "Id_Pais", "Nombre");
+            //ViewBag.Id_Entidad = new SelectList(Repo_Entidad.GetAll(), "Id_Entidad", "Nombre", municipios.Id_Pais);
+            //ViewBag.Id_Municipio = new SelectList(repo.GetAll(), "Id_Municipio", "Nombre", municipios.Id_Entidad);
+
             //ViewBag.Id_Entidad = new SelectList(Repo_Entidad.GetAll(), "Id_Entidad", "Nombre", municipios.Id_Pais);
             //ViewBag.Id_Municipio = new SelectList(repo.GetAll(), "Id_Municipio", "Nombre", municipios.Id_Entidad);
 
@@ -150,13 +156,13 @@ namespace Security.Controllers
         }
 
         // GET: Municipios/Edit/5
-        public ActionResult Edit(short id, short id2, short id3)
+        public ActionResult Edit(short id = 0, short id2 = 0, short id3 = 0)
         {
             Municipios municipios = repo.Get(id,id2,id3);
 
-            if (municipios == null)
+            if (municipios == null || id == 0 || id2 == 0 || id3 == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
 
             ViewBag.Id_Pais = new SelectList(Repo_Pais.GetAll(), "Id_Pais", "Nombre", municipios.Id_Pais);
@@ -195,12 +201,12 @@ namespace Security.Controllers
         }
 
         // GET: Municipios/Delete/5
-        public ActionResult Delete(short id, short id2, short id3)
+        public ActionResult Delete(short id = 0, short id2 = 0, short id3 = 0)
         {
             Municipios municipios = repo.Get(id,id2,id3);
-            if (municipios == null)
+            if (municipios == null || id == 0 || id2 == 0 || id3 == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(municipios);
         }

@@ -1,0 +1,136 @@
+﻿﻿@model PagedList.IPagedList<Security.Core.Model.Domicilios>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<ol class="breadcrumb">
+    <li>Inicio</li>
+    <li><b>Domicilio</b></li>
+    <li class="active">Lista</li>
+</ol>
+
+@using (Html.BeginForm("Index", "Domicilios", FormMethod.Get))
+{
+    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
+        <div class="input-group">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+            <div class="input-group-btn">
+                <button name="btnSearch" id="btnSearch" type="submit" value="create" class="btn btn-info" data-container="body" data-toggle="popover" data-placement="top" data-content="Buscar">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+                <button name="btnFilter" id="btnFilter" type="submit" value="index" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Quitar filtro">
+                    <i class="glyphicon glyphicon-filter"></i>                    
+                </button>
+            </div>
+        </div>
+    </div>
+    <br />
+}
+<br />
+<br />
+<table class="table table-hover table-bordered table-condensed">
+    <tr>
+        <th class="alert-info">
+            @Html.ActionLink("Tipo", "Index", new { sortOrder = ViewBag.SortByTipo, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th class="alert-info">
+            @Html.ActionLink("Colonia", "Index", new { sortOrder = ViewBag.SortByColonia, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th class="alert-info">
+            Domicilio
+        </th>
+        <th class="alert-info">
+            No. Ext.
+        </th>
+        <th class="alert-info">
+            No. Int.
+        </th>
+        <th class="alert-info">
+            Notas
+        </th>
+        <th class="alert-info">
+            Estatus
+        </th>
+        <th class="alert-info">
+            @Html.ActionLink("Municipio", "Index", new { sortOrder = ViewBag.SortByMunicipio, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th class="alert-info">
+            @Html.ActionLink("F. Modificación", "Index", new { sortOrder = ViewBag.SortByFechaModificacion, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th class="alert-success">
+            <span class="glyphicon glyphicon-cog"> Acciones</span>
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contacto_tipo.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Colonia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Domicilio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroExterior)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroInterior)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notas)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Estatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Municipios.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaModificacion)
+        </td>
+        <td>
+            @Html.ActionLink(" ", "Edit", new { id = item.Id_Domicilio }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
+            @Html.ActionLink(" ", "Details", new { id = item.Id_Domicilio }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
+            @Html.ActionLink(" ", "Delete", new { id = item.Id_Domicilio }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })            
+        </td>
+    </tr>
+}
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+<table class="btn-group">
+    <tr>
+        <td>
+            @*@Html.ActionLink(" ", "Create", "Domicilios", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })*@
+            <a class="btn btn-success glyphicon glyphicon-plus" data-container="body" data-toggle="popover" data-placement="right" data-content="Agregar" href="/Domicilios/Create"></a>
+        </td>
+    </tr>
+</table>
+
+<script src="~/Scripts/jquery-2.1.3.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('button').popover({ trigger: "hover" });
+
+        $('a').popover({ trigger: 'hover' });
+
+        $('#btnSearch').click(function () {            
+            $('#btnFilter').removeClass('disabled');
+        });
+
+        $('#btnFilter').click(function () {
+            $('#SearchString').val('');
+
+            $('#btnFilter').addClass('disabled');
+        });
+    });
+</script>

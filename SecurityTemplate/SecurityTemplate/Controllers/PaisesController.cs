@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Security.Core.Model;
 using Security.Core.Repository;
+using PagedList;
 
 namespace Security.Controllers
 {
@@ -21,17 +22,63 @@ namespace Security.Controllers
         }
 
         // GET: Paises
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(repo.GetAll().ToList());
+            ViewBag.CurrentSort = sortOrder;
+
+            ViewBag.SortByName = sortOrder == "Name_desc" ? "Name_desc" : "Name";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            IOrderedQueryable<Paises> ordena_paises = repo.GetAll()
+                .OrderBy(x => x.Nombre);
+
+            var paises = from s in ordena_paises
+                             select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                paises = paises.Where(d => d.Nombre.Contains(searchString)
+                                       || d.FIPS.Contains(searchString)
+                                       );
+            }
+
+            switch (sortOrder)
+            {
+                case "Name_desc":
+                    paises = paises.OrderByDescending(p => p.Nombre);
+                    break;
+                case "Name":
+                    paises = paises.OrderBy(p => p.Nombre);
+                    break;
+                default:
+                    paises = paises.OrderBy(p => p.Nombre);
+                    break;
+            }
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+
+            return View(paises.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Paises/Details/5
-        public ActionResult Details(short id)
+        public ActionResult Details(short id = 0)
         {
-            if (id == null)
+            if (id == 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("index");
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Paises paises = repo.Get(id);
             if (paises == null)
@@ -65,11 +112,12 @@ namespace Security.Controllers
         }
 
         // GET: Paises/Edit/5
-        public ActionResult Edit(short id)
+        public ActionResult Edit(short id = 0)
         {
-            if (id == null)
+            if (id == 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("index");
+                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Paises paises = repo.Get(id);
             if (paises == null)

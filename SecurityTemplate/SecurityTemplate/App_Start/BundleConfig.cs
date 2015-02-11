@@ -10,8 +10,15 @@ namespace Security
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/jquery-ui-{version}.js",
+                        "~/Scripts/jquery-ui-{version}.js"
+                        ));
+
+            bundles.Add(new ScriptBundle("~/bundles/MikeJS").Include(
                         "~/Scripts/mike.js"
+                        ));
+
+            bundles.Add(new ScriptBundle("~/bundles/Miscelaneous").Include(
+                        "~/Scripts/Miscelaneous.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -30,7 +37,8 @@ namespace Security
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/PagedList.css",
-                      "~/Content/themes/base/datepicker.css"
+                      "~/Content/themes/base/all.css"
+                      
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/MX-calendar").Include(

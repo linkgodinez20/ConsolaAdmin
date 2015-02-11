@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="TestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="SecurityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Actividades">
     <Key>
       <PropertyRef Name="Id_Actividad" />
@@ -220,7 +220,6 @@
     <Property Name="MacAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Id_EquipoTipo" Type="Byte" Nullable="false" />
     <Property Name="Descripcion" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="Ubiacion" Type="Geography" />
     <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="FechaCaducidad" Type="DateTime" Precision="0" />
     <Property Name="Id_Cuenta" Type="Int32" Nullable="false" />
@@ -535,7 +534,6 @@
     <Property Name="OnLine" Type="Boolean" Nullable="false" />
     <Property Name="CierreSesion" Type="Boolean" Nullable="false" />
     <Property Name="UltimoMovimiento" Type="DateTime" Precision="3" />
-    <Property Name="Ubiacion" Type="Geography" />
     <Property Name="Id_Sistema" Type="Byte" Nullable="false" />
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Cuentas" Relationship="Self.FK_Sesiones_Id_Cuenta" FromRole="Sesiones" ToRole="Cuentas" />

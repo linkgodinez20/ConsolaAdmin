@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDefaultSettings.cs" />
     <Compile Include="Model\Actividades.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
@@ -202,6 +203,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SecurityModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="Model\SecurityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SecurityModel.edmx</DependentUpon>

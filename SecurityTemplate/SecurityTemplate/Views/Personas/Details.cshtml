@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="=Titulo">Detalle</h2>
+<h2 class="Titulo">Detalle</h2>
 
 <div>
     <h4>Personas</h4>
@@ -100,7 +100,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Genero.Nombre)
+            @Html.DisplayNameFor(model => model.Id_Genero)
         </dt>
 
         <dd>
@@ -109,33 +109,17 @@
 
     </dl>
 </div>
-@*<table class="btn-group">
-    <tr>
-        <td>
-            <div class="input-group">
-                <p>
-                    @Html.ActionLink("Editar", "Edit", new { id = Model.Id_Persona }, new { @class = "btn btn-warning" })
-                    
-                </p>
-            </div>
-        </td>
-        <td class="Space_h"></td>
-        <td>
-            <div class="input-group">
-                <p>
-                    @Html.ActionLink("Volver", "Index", null, new { @class = "btn btn-default" })
-                </p>
-            </div>
-        </td>
-    </tr>
-</table>*@
+@{
+    var ControllerName = ViewContext.RouteData.Values["Controller"];
+}
 <p>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            @Html.ActionLink(" ", "Edit", new { id = Model.Id_Persona }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
-            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
-
+            <a class="btn btn-warning glyphicon glyphicon-pencil" data-container="body" data-toggle="popover" data-placement="left"
+               data-content="Editar" href="~/@ControllerName/Edit/@Model.Id_Persona"></a>
+            <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right"
+               data-content="Volver" href="~/@ControllerName"></a>
         </div>
     </div>
-
+    <hr />
 </p>

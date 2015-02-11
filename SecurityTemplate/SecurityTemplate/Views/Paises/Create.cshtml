@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2 class="Titulo">Nuevo</h2>
 
 
 @using (Html.BeginForm()) 
@@ -19,7 +19,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Id_Pais, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Id_Pais, new { htmlAttributes = new { @class = "form-control" } })
+                @{
+                    string mensaje = "Por favor consulte el catálogo oficial de paises (ISO-3166 numeric) para elegir correctamente el id y el FIPS";
+                }
+                
+                   @*@Html.EditorFor(model => model.Id_Pais, new { htmlAttributes = new { @class = "form-control" } })*@
+                <input class="form-control text-box single-line" data-val="true" data-val-number="The field Id must be a number." data-val-required="El campo Id es obligatorio." id="Id_Pais" name="Id_Pais" type="text" value="" data-container="body" data-toggle="popover" data-placement="right" data-content="@mensaje" />
                 @Html.ValidationMessageFor(model => model.Id_Pais, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -50,16 +55,28 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button type="submit" value="create" class="btn btn-success" data-container="body" data-toggle="popover" data-placement="left" data-content="Guardar">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                @{
+                    var ControllerName = ViewContext.RouteData.Values["controller"];
+                }
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" href="/@ControllerName" data-container="body" data-toggle="popover" data-placement="right" data-content="Volver"></a>
             </div>
         </div>
+
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $('#Id_Pais').focus();
+
+        $(document).ready(function () {
+            $('input').popover({ trigger: 'focus' }).popover("show");            
+        });
+        
+    </script>
 }

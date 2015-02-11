@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="=Titulo">Detalle</h2>
+<h2 class="Titulo">Detalle</h2>
 
 <div>
     <h4>Baja</h4>
@@ -21,11 +21,18 @@
 
     </dl>
 </div>
+@{
+    var ControllerName = ViewContext.RouteData.Values["Controller"];
+}
+<p>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            @Html.ActionLink(" ", "Edit", new { id = Model.Id_Baja }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
-            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
-
+            <a class="btn btn-warning glyphicon glyphicon-pencil" data-container="body" data-toggle="popover" data-placement="left"
+               data-content="Editar" href="~/@ControllerName/Edit/@Model.Id_Baja"></a>
+            <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right"
+               data-content="Volver" href="~/@ControllerName"></a>
         </div>
     </div>
+    <hr />
 </p>
+<hr />

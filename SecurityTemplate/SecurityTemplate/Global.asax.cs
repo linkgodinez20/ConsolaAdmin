@@ -26,8 +26,8 @@ namespace Security
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
-            json.UseDataContractJsonSerializer = true;
+            //var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
+            //json.UseDataContractJsonSerializer = true;
 
             //Agregando estas líneas se cambia a que web api regrese por default JSON, para regresar XML se agregará un QueryString al final de la ruta
             // /api/GetEntitdades?xml=true

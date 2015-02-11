@@ -9,7 +9,6 @@
 
 <h3 class="Dialogos">¿Est&aacute; seguro de eliminar este registro?</h3>
 <div>
-    <h4>Municipios</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -44,10 +43,13 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button type="submit" value="Delete" class="btn btn-danger ">
+                <button type="submit" value="Delete" class="btn btn-danger " data-container="body" data-toggle="popover" data-placement="left" data-content="Eliminar">
                     <i class="glyphicon glyphicon-remove"></i>
                 </button>
-                @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+                @{
+                    var ControllerName = ViewContext.RouteData.Values["Controller"];
+                }
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right" data-content="Volver" href="/@ControllerName"></a>
             </div>
         </div>
     }

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="TestModelStoreContainer" CdmEntityContainer="SecurityEntities">
+  <EntityContainerMapping StorageEntityContainer="SecurityModelStoreContainer" CdmEntityContainer="SecurityEntities">
     <EntitySetMapping Name="Actividades">
-      <EntityTypeMapping TypeName="TestModel.Actividades">
+      <EntityTypeMapping TypeName="SecurityModel.Actividades">
         <MappingFragment StoreEntitySet="Actividades">
           <ScalarProperty Name="Id_Actividad" ColumnName="Id_Actividad" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -13,7 +13,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AreasDeTrabajo">
-      <EntityTypeMapping TypeName="TestModel.AreasDeTrabajo">
+      <EntityTypeMapping TypeName="SecurityModel.AreasDeTrabajo">
         <MappingFragment StoreEntitySet="AreasDeTrabajo">
           <ScalarProperty Name="Id_AreaDeTrabajo" ColumnName="Id_AreaDeTrabajo" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -22,7 +22,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Baja">
-      <EntityTypeMapping TypeName="TestModel.Baja">
+      <EntityTypeMapping TypeName="SecurityModel.Baja">
         <MappingFragment StoreEntitySet="Baja">
           <ScalarProperty Name="Id_Baja" ColumnName="Id_Baja" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -30,7 +30,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Baja_motivos">
-      <EntityTypeMapping TypeName="TestModel.Baja_motivos">
+      <EntityTypeMapping TypeName="SecurityModel.Baja_motivos">
         <MappingFragment StoreEntitySet="Baja_motivos">
           <ScalarProperty Name="Id_MotivoBaja" ColumnName="Id_MotivoBaja" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -39,7 +39,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Beneficio">
-      <EntityTypeMapping TypeName="TestModel.Beneficio">
+      <EntityTypeMapping TypeName="SecurityModel.Beneficio">
         <MappingFragment StoreEntitySet="Beneficio">
           <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -49,7 +49,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Beneficio_tipo">
-      <EntityTypeMapping TypeName="TestModel.Beneficio_tipo">
+      <EntityTypeMapping TypeName="SecurityModel.Beneficio_tipo">
         <MappingFragment StoreEntitySet="Beneficio_tipo">
           <ScalarProperty Name="Id_BeneficioTipo" ColumnName="Id_BeneficioTipo" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -57,7 +57,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Beneficio_x_Perfiles">
-      <EntityTypeMapping TypeName="TestModel.Beneficio_x_Perfiles">
+      <EntityTypeMapping TypeName="SecurityModel.Beneficio_x_Perfiles">
         <MappingFragment StoreEntitySet="Beneficio_x_Perfiles">
           <ScalarProperty Name="Id_PerfilBeneficio" ColumnName="Id_PerfilBeneficio" />
           <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
@@ -67,7 +67,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Benficio_x_Cuenta">
-      <EntityTypeMapping TypeName="TestModel.Benficio_x_Cuenta">
+      <EntityTypeMapping TypeName="SecurityModel.Benficio_x_Cuenta">
         <MappingFragment StoreEntitySet="Benficio_x_Cuenta">
           <ScalarProperty Name="Id_BeneficioCuenta" ColumnName="Id_BeneficioCuenta" />
           <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
@@ -77,7 +77,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Contacto">
-      <EntityTypeMapping TypeName="TestModel.Contacto">
+      <EntityTypeMapping TypeName="SecurityModel.Contacto">
         <MappingFragment StoreEntitySet="Contacto">
           <ScalarProperty Name="Id_Contacto" ColumnName="Id_Contacto" />
           <ScalarProperty Name="Id_ContactoTipo" ColumnName="Id_ContactoTipo" />
@@ -89,7 +89,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Contacto_medio">
-      <EntityTypeMapping TypeName="TestModel.Contacto_medio">
+      <EntityTypeMapping TypeName="SecurityModel.Contacto_medio">
         <MappingFragment StoreEntitySet="Contacto_medio">
           <ScalarProperty Name="Id_ContactoMedio" ColumnName="Id_ContactoMedio" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -97,7 +97,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Contacto_tipo">
-      <EntityTypeMapping TypeName="TestModel.Contacto_tipo">
+      <EntityTypeMapping TypeName="SecurityModel.Contacto_tipo">
         <MappingFragment StoreEntitySet="Contacto_tipo">
           <ScalarProperty Name="Id_ContactoTipo" ColumnName="Id_ContactoTipo" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -105,7 +105,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Cuentas">
-      <EntityTypeMapping TypeName="TestModel.Cuentas">
+      <EntityTypeMapping TypeName="SecurityModel.Cuentas">
         <MappingFragment StoreEntitySet="Cuentas">
           <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
           <ScalarProperty Name="Id_Login" ColumnName="Id_Login" />
@@ -122,7 +122,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Directorio_tipo">
-      <EntityTypeMapping TypeName="TestModel.Directorio_tipo">
+      <EntityTypeMapping TypeName="SecurityModel.Directorio_tipo">
         <MappingFragment StoreEntitySet="Directorio_tipo">
           <ScalarProperty Name="Id_DirectorioTipo" ColumnName="Id_DirectorioTipo" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -131,7 +131,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Directorios">
-      <EntityTypeMapping TypeName="TestModel.Directorios">
+      <EntityTypeMapping TypeName="SecurityModel.Directorios">
         <MappingFragment StoreEntitySet="Directorios">
           <ScalarProperty Name="Id_Directorio" ColumnName="Id_Directorio" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -141,7 +141,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Domicilios">
-      <EntityTypeMapping TypeName="TestModel.Domicilios">
+      <EntityTypeMapping TypeName="SecurityModel.Domicilios">
         <MappingFragment StoreEntitySet="Domicilios">
           <ScalarProperty Name="Id_Domicilio" ColumnName="Id_Domicilio" />
           <ScalarProperty Name="Id_ContactoTipo" ColumnName="Id_ContactoTipo" />
@@ -161,7 +161,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Entidades">
-      <EntityTypeMapping TypeName="TestModel.Entidades">
+      <EntityTypeMapping TypeName="SecurityModel.Entidades">
         <MappingFragment StoreEntitySet="Entidades">
           <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
           <ScalarProperty Name="Id_Entidad" ColumnName="Id_Entidad" />
@@ -171,7 +171,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Equipos">
-      <EntityTypeMapping TypeName="TestModel.Equipos">
+      <EntityTypeMapping TypeName="SecurityModel.Equipos">
         <MappingFragment StoreEntitySet="Equipos">
           <ScalarProperty Name="Id_Equipo" ColumnName="Id_Equipo" />
           <ScalarProperty Name="Hostname" ColumnName="Hostname" />
@@ -179,7 +179,6 @@
           <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
           <ScalarProperty Name="Id_EquipoTipo" ColumnName="Id_EquipoTipo" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="Ubiacion" ColumnName="Ubiacion" />
           <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
           <ScalarProperty Name="FechaCaducidad" ColumnName="FechaCaducidad" />
           <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
@@ -189,7 +188,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Equipos_tipo">
-      <EntityTypeMapping TypeName="TestModel.Equipos_tipo">
+      <EntityTypeMapping TypeName="SecurityModel.Equipos_tipo">
         <MappingFragment StoreEntitySet="Equipos_tipo">
           <ScalarProperty Name="Id_EquipoTipo" ColumnName="Id_EquipoTipo" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -197,7 +196,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Events">
-      <EntityTypeMapping TypeName="TestModel.Events">
+      <EntityTypeMapping TypeName="SecurityModel.Events">
         <MappingFragment StoreEntitySet="Events">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="text" ColumnName="text" />
@@ -207,7 +206,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Genero">
-      <EntityTypeMapping TypeName="TestModel.Genero">
+      <EntityTypeMapping TypeName="SecurityModel.Genero">
         <MappingFragment StoreEntitySet="Genero">
           <ScalarProperty Name="Id_Genero" ColumnName="Id_Genero" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -215,7 +214,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Locations">
-      <EntityTypeMapping TypeName="TestModel.Locations">
+      <EntityTypeMapping TypeName="SecurityModel.Locations">
         <MappingFragment StoreEntitySet="Locations">
           <ScalarProperty Name="LocationId" ColumnName="LocationId" />
           <ScalarProperty Name="LocationName" ColumnName="LocationName" />
@@ -225,7 +224,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="LogIn">
-      <EntityTypeMapping TypeName="TestModel.LogIn">
+      <EntityTypeMapping TypeName="SecurityModel.LogIn">
         <MappingFragment StoreEntitySet="LogIn">
           <ScalarProperty Name="Id_Login" ColumnName="Id_Login" />
           <ScalarProperty Name="Usuario" ColumnName="Usuario" />
@@ -237,7 +236,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Menu">
-      <EntityTypeMapping TypeName="TestModel.Menu">
+      <EntityTypeMapping TypeName="SecurityModel.Menu">
         <MappingFragment StoreEntitySet="Menu">
           <ScalarProperty Name="Id_Menu" ColumnName="Id_Menu" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -252,7 +251,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Menu_categoria">
-      <EntityTypeMapping TypeName="TestModel.Menu_categoria">
+      <EntityTypeMapping TypeName="SecurityModel.Menu_categoria">
         <MappingFragment StoreEntitySet="Menu_categoria">
           <ScalarProperty Name="Id_MenuCategoria" ColumnName="Id_MenuCategoria" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -261,7 +260,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Municipios">
-      <EntityTypeMapping TypeName="TestModel.Municipios">
+      <EntityTypeMapping TypeName="SecurityModel.Municipios">
         <MappingFragment StoreEntitySet="Municipios">
           <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
           <ScalarProperty Name="Id_Entidad" ColumnName="Id_Entidad" />
@@ -272,7 +271,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Paginas">
-      <EntityTypeMapping TypeName="TestModel.Paginas">
+      <EntityTypeMapping TypeName="SecurityModel.Paginas">
         <MappingFragment StoreEntitySet="Paginas">
           <ScalarProperty Name="Id_Pagina" ColumnName="Id_Pagina" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -282,7 +281,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Paises">
-      <EntityTypeMapping TypeName="TestModel.Paises">
+      <EntityTypeMapping TypeName="SecurityModel.Paises">
         <MappingFragment StoreEntitySet="Paises">
           <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
           <ScalarProperty Name="FIPS" ColumnName="FIPS" />
@@ -292,7 +291,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Parametros">
-      <EntityTypeMapping TypeName="TestModel.Parametros">
+      <EntityTypeMapping TypeName="SecurityModel.Parametros">
         <MappingFragment StoreEntitySet="Parametros">
           <ScalarProperty Name="Id_Parametro" ColumnName="Id_Parametro" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -303,7 +302,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Parametros_configuracion">
-      <EntityTypeMapping TypeName="TestModel.Parametros_configuracion">
+      <EntityTypeMapping TypeName="SecurityModel.Parametros_configuracion">
         <MappingFragment StoreEntitySet="Parametros_configuracion">
           <ScalarProperty Name="Id_ParametroGral" ColumnName="Id_ParametroGral" />
           <ScalarProperty Name="Id_Parametro" ColumnName="Id_Parametro" />
@@ -329,7 +328,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Parametros_grupo">
-      <EntityTypeMapping TypeName="TestModel.Parametros_grupo">
+      <EntityTypeMapping TypeName="SecurityModel.Parametros_grupo">
         <MappingFragment StoreEntitySet="Parametros_grupo">
           <ScalarProperty Name="Id_GpoParametro" ColumnName="Id_GpoParametro" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -338,7 +337,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Parametros_mensaje">
-      <EntityTypeMapping TypeName="TestModel.Parametros_mensaje">
+      <EntityTypeMapping TypeName="SecurityModel.Parametros_mensaje">
         <MappingFragment StoreEntitySet="Parametros_mensaje">
           <ScalarProperty Name="Id_ParametroMsg" ColumnName="Id_ParametroMsg" />
           <ScalarProperty Name="Id_Parametro" ColumnName="Id_Parametro" />
@@ -347,7 +346,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Parametros_tipoDato">
-      <EntityTypeMapping TypeName="TestModel.Parametros_tipoDato">
+      <EntityTypeMapping TypeName="SecurityModel.Parametros_tipoDato">
         <MappingFragment StoreEntitySet="Parametros_tipoDato">
           <ScalarProperty Name="Id_ParametroTipoDato" ColumnName="Id_ParametroTipoDato" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -355,7 +354,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Perfiles">
-      <EntityTypeMapping TypeName="TestModel.Perfiles">
+      <EntityTypeMapping TypeName="SecurityModel.Perfiles">
         <MappingFragment StoreEntitySet="Perfiles">
           <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -367,7 +366,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Permisos">
-      <EntityTypeMapping TypeName="TestModel.Permisos">
+      <EntityTypeMapping TypeName="SecurityModel.Permisos">
         <MappingFragment StoreEntitySet="Permisos">
           <ScalarProperty Name="Id_Permiso" ColumnName="Id_Permiso" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -376,7 +375,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Permisos_AreaDeTrabajo_x_Cuenta">
-      <EntityTypeMapping TypeName="TestModel.Permisos_AreaDeTrabajo_x_Cuenta">
+      <EntityTypeMapping TypeName="SecurityModel.Permisos_AreaDeTrabajo_x_Cuenta">
         <MappingFragment StoreEntitySet="Permisos_AreaDeTrabajo_x_Cuenta">
           <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
           <ScalarProperty Name="Id_AreaDeTrabajo" ColumnName="Id_AreaDeTrabajo" />
@@ -385,7 +384,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Permisos_Cuentas_x_Actividades">
-      <EntityTypeMapping TypeName="TestModel.Permisos_Cuentas_x_Actividades">
+      <EntityTypeMapping TypeName="SecurityModel.Permisos_Cuentas_x_Actividades">
         <MappingFragment StoreEntitySet="Permisos_Cuentas_x_Actividades">
           <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
           <ScalarProperty Name="Id_Actividad" ColumnName="Id_Actividad" />
@@ -394,7 +393,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Permisos_Perfiles_x_Actividades">
-      <EntityTypeMapping TypeName="TestModel.Permisos_Perfiles_x_Actividades">
+      <EntityTypeMapping TypeName="SecurityModel.Permisos_Perfiles_x_Actividades">
         <MappingFragment StoreEntitySet="Permisos_Perfiles_x_Actividades">
           <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
           <ScalarProperty Name="Id_Actividad" ColumnName="Id_Actividad" />
@@ -403,7 +402,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Personas">
-      <EntityTypeMapping TypeName="TestModel.Personas">
+      <EntityTypeMapping TypeName="SecurityModel.Personas">
         <MappingFragment StoreEntitySet="Personas">
           <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
           <ScalarProperty Name="APaterno" ColumnName="APaterno" />
@@ -422,7 +421,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Preguntas">
-      <EntityTypeMapping TypeName="TestModel.Preguntas">
+      <EntityTypeMapping TypeName="SecurityModel.Preguntas">
         <MappingFragment StoreEntitySet="Preguntas">
           <ScalarProperty Name="Id_Pregunta" ColumnName="Id_Pregunta" />
           <ScalarProperty Name="Pregunta" ColumnName="Pregunta" />
@@ -430,7 +429,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Preguntas_x_Login">
-      <EntityTypeMapping TypeName="TestModel.Preguntas_x_Login">
+      <EntityTypeMapping TypeName="SecurityModel.Preguntas_x_Login">
         <MappingFragment StoreEntitySet="Preguntas_x_Login">
           <ScalarProperty Name="Id_Login" ColumnName="Id_Login" />
           <ScalarProperty Name="Id_Pregunta" ColumnName="Id_Pregunta" />
@@ -439,7 +438,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Sesiones">
-      <EntityTypeMapping TypeName="TestModel.Sesiones">
+      <EntityTypeMapping TypeName="SecurityModel.Sesiones">
         <MappingFragment StoreEntitySet="Sesiones">
           <ScalarProperty Name="Id_Sesion" ColumnName="Id_Sesion" />
           <ScalarProperty Name="Identificador" ColumnName="Identificador" />
@@ -448,14 +447,13 @@
           <ScalarProperty Name="OnLine" ColumnName="OnLine" />
           <ScalarProperty Name="CierreSesion" ColumnName="CierreSesion" />
           <ScalarProperty Name="UltimoMovimiento" ColumnName="UltimoMovimiento" />
-          <ScalarProperty Name="Ubiacion" ColumnName="Ubiacion" />
           <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Sistemas">
-      <EntityTypeMapping TypeName="TestModel.Sistemas">
+      <EntityTypeMapping TypeName="SecurityModel.Sistemas">
         <MappingFragment StoreEntitySet="Sistemas">
           <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -465,7 +463,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="Actividades_x_AreasDeTrabajo" TypeName="TestModel.Actividades_x_AreasDeTrabajo" StoreEntitySet="Actividades_x_AreasDeTrabajo">
+    <AssociationSetMapping Name="Actividades_x_AreasDeTrabajo" TypeName="SecurityModel.Actividades_x_AreasDeTrabajo" StoreEntitySet="Actividades_x_AreasDeTrabajo">
       <EndProperty Name="Actividades">
         <ScalarProperty Name="Id_Actividad" ColumnName="Id_Actividad" />
       </EndProperty>
@@ -473,7 +471,7 @@
         <ScalarProperty Name="Id_AreaDeTrabajo" ColumnName="Id_AreaDeTrabajo" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="AreasDeTrabajo_x_Perfiles" TypeName="TestModel.AreasDeTrabajo_x_Perfiles" StoreEntitySet="AreasDeTrabajo_x_Perfiles">
+    <AssociationSetMapping Name="AreasDeTrabajo_x_Perfiles" TypeName="SecurityModel.AreasDeTrabajo_x_Perfiles" StoreEntitySet="AreasDeTrabajo_x_Perfiles">
       <EndProperty Name="AreasDeTrabajo">
         <ScalarProperty Name="Id_AreaDeTrabajo" ColumnName="Id_AreaDeTrabajo" />
       </EndProperty>
@@ -481,7 +479,7 @@
         <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="Beneficio_x_AreaDeTrabajo" TypeName="TestModel.Beneficio_x_AreaDeTrabajo" StoreEntitySet="Beneficio_x_AreaDeTrabajo">
+    <AssociationSetMapping Name="Beneficio_x_AreaDeTrabajo" TypeName="SecurityModel.Beneficio_x_AreaDeTrabajo" StoreEntitySet="Beneficio_x_AreaDeTrabajo">
       <EndProperty Name="AreasDeTrabajo">
         <ScalarProperty Name="Id_AreaDeTrabajo" ColumnName="Id_AreaDeTrabajo" />
       </EndProperty>
@@ -489,7 +487,7 @@
         <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="Contacto_x_Domicilio" TypeName="TestModel.Contacto_x_Domicilio" StoreEntitySet="Contacto_x_Domicilio">
+    <AssociationSetMapping Name="Contacto_x_Domicilio" TypeName="SecurityModel.Contacto_x_Domicilio" StoreEntitySet="Contacto_x_Domicilio">
       <EndProperty Name="Contacto">
         <ScalarProperty Name="Id_Contacto" ColumnName="Id_Contacto" />
       </EndProperty>
@@ -497,7 +495,7 @@
         <ScalarProperty Name="Id_Domicilio" ColumnName="Id_Domicilio" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="Contacto_x_Persona" TypeName="TestModel.Contacto_x_Persona" StoreEntitySet="Contacto_x_Persona">
+    <AssociationSetMapping Name="Contacto_x_Persona" TypeName="SecurityModel.Contacto_x_Persona" StoreEntitySet="Contacto_x_Persona">
       <EndProperty Name="Contacto">
         <ScalarProperty Name="Id_Contacto" ColumnName="Id_Contacto" />
       </EndProperty>
@@ -505,7 +503,7 @@
         <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="Cuentas_x_Personas" TypeName="TestModel.Cuentas_x_Personas" StoreEntitySet="Cuentas_x_Personas">
+    <AssociationSetMapping Name="Cuentas_x_Personas" TypeName="SecurityModel.Cuentas_x_Personas" StoreEntitySet="Cuentas_x_Personas">
       <EndProperty Name="Cuentas">
         <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
       </EndProperty>
@@ -513,7 +511,7 @@
         <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="Directorios_x_Perfiles" TypeName="TestModel.Directorios_x_Perfiles" StoreEntitySet="Directorios_x_Perfiles">
+    <AssociationSetMapping Name="Directorios_x_Perfiles" TypeName="SecurityModel.Directorios_x_Perfiles" StoreEntitySet="Directorios_x_Perfiles">
       <EndProperty Name="Directorios">
         <ScalarProperty Name="Id_Directorio" ColumnName="Id_Directorio" />
       </EndProperty>
@@ -521,7 +519,7 @@
         <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="Directorios_x_Sistemas" TypeName="TestModel.Directorios_x_Sistemas" StoreEntitySet="Directorios_x_Sistemas">
+    <AssociationSetMapping Name="Directorios_x_Sistemas" TypeName="SecurityModel.Directorios_x_Sistemas" StoreEntitySet="Directorios_x_Sistemas">
       <EndProperty Name="Directorios">
         <ScalarProperty Name="Id_Directorio" ColumnName="Id_Directorio" />
       </EndProperty>
@@ -529,7 +527,7 @@
         <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="Domicilio_x_Personas" TypeName="TestModel.Domicilio_x_Personas" StoreEntitySet="Domicilio_x_Personas">
+    <AssociationSetMapping Name="Domicilio_x_Personas" TypeName="SecurityModel.Domicilio_x_Personas" StoreEntitySet="Domicilio_x_Personas">
       <EndProperty Name="Domicilios">
         <ScalarProperty Name="Id_Domicilio" ColumnName="Id_Domicilio" />
       </EndProperty>
@@ -537,7 +535,7 @@
         <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="MotivoBaja_x_Cuenta" TypeName="TestModel.MotivoBaja_x_Cuenta" StoreEntitySet="MotivoBaja_x_Cuenta">
+    <AssociationSetMapping Name="MotivoBaja_x_Cuenta" TypeName="SecurityModel.MotivoBaja_x_Cuenta" StoreEntitySet="MotivoBaja_x_Cuenta">
       <EndProperty Name="Cuentas">
         <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
       </EndProperty>
@@ -545,7 +543,7 @@
         <ScalarProperty Name="Id_MotivoBaja" ColumnName="Id_MotivoBaja" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="Paginas_x_Actividades" TypeName="TestModel.Paginas_x_Actividades" StoreEntitySet="Paginas_x_Actividades">
+    <AssociationSetMapping Name="Paginas_x_Actividades" TypeName="SecurityModel.Paginas_x_Actividades" StoreEntitySet="Paginas_x_Actividades">
       <EndProperty Name="Actividades">
         <ScalarProperty Name="Id_Actividad" ColumnName="Id_Actividad" />
       </EndProperty>
@@ -553,7 +551,7 @@
         <ScalarProperty Name="Id_Pagina" ColumnName="Id_Pagina" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="Parametros_x_Beneficio" TypeName="TestModel.Parametros_x_Beneficio" StoreEntitySet="Parametros_x_Beneficio">
+    <AssociationSetMapping Name="Parametros_x_Beneficio" TypeName="SecurityModel.Parametros_x_Beneficio" StoreEntitySet="Parametros_x_Beneficio">
       <EndProperty Name="Beneficio">
         <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
       </EndProperty>
@@ -561,7 +559,7 @@
         <ScalarProperty Name="Id_Parametro" ColumnName="Id_Parametro" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="ParametrosGpo_x_Beneficio" TypeName="TestModel.ParametrosGpo_x_Beneficio" StoreEntitySet="ParametrosGpo_x_Beneficio">
+    <AssociationSetMapping Name="ParametrosGpo_x_Beneficio" TypeName="SecurityModel.ParametrosGpo_x_Beneficio" StoreEntitySet="ParametrosGpo_x_Beneficio">
       <EndProperty Name="Beneficio">
         <ScalarProperty Name="Id_Beneficio" ColumnName="Id_Beneficio" />
       </EndProperty>
@@ -569,7 +567,7 @@
         <ScalarProperty Name="Id_GpoParametro" ColumnName="Id_GpoParametro" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="ParametrosGpo_x_Perfiles" TypeName="TestModel.ParametrosGpo_x_Perfiles" StoreEntitySet="ParametrosGpo_x_Perfiles">
+    <AssociationSetMapping Name="ParametrosGpo_x_Perfiles" TypeName="SecurityModel.ParametrosGpo_x_Perfiles" StoreEntitySet="ParametrosGpo_x_Perfiles">
       <EndProperty Name="Parametros_grupo">
         <ScalarProperty Name="Id_GpoParametro" ColumnName="Id_GpoParametro" />
       </EndProperty>

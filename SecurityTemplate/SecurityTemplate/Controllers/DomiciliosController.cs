@@ -61,7 +61,8 @@ namespace Security.Controllers
                 domicilios = domicilios.Where(d => d.Municipios.Nombre.Contains(searchString)
                                        || d.Colonia.Contains(searchString)
                                        || d.Contacto_tipo.Nombre.Contains(searchString)
-                                       || String.Format("{0:mm/dd/yyyy}", d.FechaModificacion).Equals(searchString)
+                                       || d.Domicilio.Contains(searchString)
+                                       || d.FechaModificacion.Value.ToString().Contains(searchString)
                                        );
             }
 
@@ -100,12 +101,13 @@ namespace Security.Controllers
         }
 
         // GET: Domicilios/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int id = 0)
         {
             Domicilios domicilios = repo.Get(id);
-            if (domicilios == null)
+            if (domicilios == null || id == 0)
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return RedirectToAction("index");
             }
             return View(domicilios);
         }
@@ -115,7 +117,7 @@ namespace Security.Controllers
         {
             ViewBag.Id_ContactoTipo = new SelectList(Repo_Contacto_tipo.GetAll(), "Id_ContactoTipo", "Nombre");
 
-            ViewBag.Id_Pais = new SelectList(Repo_Paises.GetAll(), "Id_Pais", "Nombre");
+            //ViewBag.Id_Pais = new SelectList(Repo_Paises.GetAll(), "Id_Pais", "Nombre");
             //ViewBag.Id_Entidad = new SelectList(Repo_Entidades.GetAll(), "Id_Entidad", "Nombre");
             //ViewBag.Id_Municipio = new SelectList(Repo_Municipios.GetAll(), "Id_Municipio", "Nombre");
 
@@ -146,21 +148,27 @@ namespace Security.Controllers
         }
 
         // GET: Domicilios/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Domicilios domicilios = repo.Get(id);
-            if (domicilios == null)
+            if (domicilios == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
+
+            var getEntidad = from e in Repo_Entidades.GetAll()
+                             where e.Id_Pais == domicilios.Id_Pais
+                             select e;
+
+            var getMunicipio = from m in Repo_Municipios.GetAll()
+                               where m.Id_Entidad == domicilios.Id_Entidad && m.Id_Pais == domicilios.Id_Pais
+                               select m;
+
             ViewBag.Id_ContactoTipo = new SelectList(Repo_Contacto_tipo.GetAll(), "Id_ContactoTipo", "Nombre", domicilios.Id_ContactoTipo);
+
             ViewBag.Id_Pais = new SelectList(Repo_Paises.GetAll(), "Id_Pais", "Nombre", domicilios.Id_Pais);
-            ViewBag.Id_Entidad = new SelectList(Repo_Entidades.GetAll(), "Id_Entidad", "Nombre", domicilios.Id_Entidad);
-            ViewBag.Id_Municipio = new SelectList(Repo_Municipios.GetAll(), "Id_Municipio", "Nombre", domicilios.Id_Municipio);
+            ViewBag.Id_Entidad = new SelectList(getEntidad, "Id_Entidad", "Nombre", domicilios.Id_Entidad);
+            ViewBag.Id_Municipio = new SelectList(getMunicipio, "Id_Municipio", "Nombre", domicilios.Id_Municipio);
 
             return View(domicilios);
         }
@@ -172,6 +180,20 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id_Domicilio,Id_ContactoTipo,Domicilio,NumeroExterior,NumeroInterior,Id_Pais,Id_Entidad,Id_Municipio,Colonia,EntreCalle,YCalle,Notas,FechaModificacion,Estatus")] Domicilios domicilios)
         {
+            var getEntidad = from e in Repo_Entidades.GetAll()
+                             where e.Id_Pais == domicilios.Id_Pais
+                             select e;
+
+            var getMunicipio = from m in Repo_Municipios.GetAll()
+                               where m.Id_Entidad == domicilios.Id_Entidad && m.Id_Pais == domicilios.Id_Pais
+                               select m;
+
+            ViewBag.Id_ContactoTipo = new SelectList(Repo_Contacto_tipo.GetAll(), "Id_ContactoTipo", "Nombre", domicilios.Id_ContactoTipo);
+
+            ViewBag.Id_Pais = new SelectList(Repo_Paises.GetAll(), "Id_Pais", "Nombre", domicilios.Id_Pais);
+            ViewBag.Id_Entidad = new SelectList(getEntidad, "Id_Entidad", "Nombre", domicilios.Id_Entidad);
+            ViewBag.Id_Municipio = new SelectList(getMunicipio, "Id_Municipio", "Nombre", domicilios.Id_Municipio);
+
             if (ModelState.IsValid)
             {
                 domicilios.FechaModificacion = DateTime.Now;
@@ -180,25 +202,20 @@ namespace Security.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id_ContactoTipo = new SelectList(Repo_Contacto_tipo.GetAll(), "Id_ContactoTipo", "Nombre", domicilios.Id_ContactoTipo);
-            ViewBag.Id_Pais = new SelectList(Repo_Paises.GetAll(), "Id_Pais", "Nombre", domicilios.Id_Pais);
-            ViewBag.Id_Entidad = new SelectList(Repo_Entidades.GetAll(), "Id_Entidad", "Nombre", domicilios.Id_Entidad);
-            ViewBag.Id_Municipio = new SelectList(Repo_Municipios.GetAll(), "Id_Municipio", "Nombre", domicilios.Id_Municipio);
+            //ViewBag.Id_Pais = new SelectList(Repo_Paises.GetAll(), "Id_Pais", "Nombre", domicilios.Id_Pais);
+            //ViewBag.Id_Entidad = new SelectList(Repo_Entidades.GetAll(), "Id_Entidad", "Nombre", domicilios.Id_Entidad);
+            //ViewBag.Id_Municipio = new SelectList(Repo_Municipios.GetAll(), "Id_Municipio", "Nombre", domicilios.Id_Municipio);
 
             return View(domicilios);
         }
 
         // GET: Domicilios/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Domicilios domicilios = repo.Get(id);
-            if (domicilios == null)
+            if (domicilios == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             return View(domicilios);
         }
@@ -227,43 +244,42 @@ namespace Security.Controllers
             base.Dispose(disposing);
         }
 
-        [HttpPost]
-        public JsonResult GetEntidades(String idPais)
-        {
-            List<SelectListItem> entidades = new List<SelectListItem>();
+        //[HttpPost]
+        //public JsonResult GetEntidades(String idPais)
+        //{
+        //    List<SelectListItem> entidades = new List<SelectListItem>();
 
-            Int16 id_pais = Convert.ToInt16(idPais);
+        //    Int16 id_pais = Convert.ToInt16(idPais);
 
-            var entities = from e in Repo_Entidades.GetAll()
-                           where e.Id_Pais == id_pais
-                            select e;
+        //    var entities = from e in Repo_Entidades.GetAll()
+        //                   where e.Id_Pais == id_pais
+        //                    select e;
 
-            foreach (var p in entities)
-            {
-                entidades.Add(new SelectListItem { Text = p.Nombre, Value = Convert.ToString(p.Id_Entidad) });
-            }
+        //    foreach (var p in entities)
+        //    {
+        //        entidades.Add(new SelectListItem { Text = p.Nombre, Value = Convert.ToString(p.Id_Entidad) });
+        //    }
 
-            return Json(new SelectList(entidades, "Value", "Text"), JsonRequestBehavior.AllowGet);
-        }
-        [HttpPost]
-        public JsonResult GetMunicipios(String IdEntidad)
-        {
-            List<SelectListItem> municipios = new List<SelectListItem>();
+        //    return Json(new SelectList(entidades, "Value", "Text"), JsonRequestBehavior.AllowGet);
+        //}
+        //[HttpPost]
+        //public JsonResult GetMunicipios(String IdEntidad)
+        //{
+        //    List<SelectListItem> municipios = new List<SelectListItem>();
 
-            Int16 id_entidad = Convert.ToInt16(IdEntidad);
+        //    Int16 id_entidad = Convert.ToInt16(IdEntidad);
 
-            var mun = from e in Repo_Municipios.GetAll()
-                      where e.Id_Entidad == id_entidad
-                           select e;
+        //    var mun = from e in Repo_Municipios.GetAll()
+        //              where e.Id_Entidad == id_entidad
+        //                   select e;
 
-            foreach (var p in mun)
-            {
-                municipios.Add(new SelectListItem { Text = p.Nombre, Value = Convert.ToString(p.Id_Municipio) });
-            }
+        //    foreach (var p in mun)
+        //    {
+        //        municipios.Add(new SelectListItem { Text = p.Nombre, Value = Convert.ToString(p.Id_Municipio) });
+        //    }
 
-            return Json(new SelectList(municipios, "Value", "Text"), JsonRequestBehavior.AllowGet);
-        }
-
+        //    return Json(new SelectList(municipios, "Value", "Text"), JsonRequestBehavior.AllowGet);
+        //}
 
     }
 }

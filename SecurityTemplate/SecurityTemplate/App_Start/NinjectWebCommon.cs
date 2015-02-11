@@ -14,6 +14,7 @@ namespace Security.App_Start
     using Security.Core.Repository;
     using Security.Data;
     using Security;
+    using Security.Core.DefaultSettings;
 
     public static class NinjectWebCommon 
     {
@@ -65,8 +66,9 @@ namespace Security.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IDbContextFactory>().To<DbContextFactory>();
+            kernel.Bind<IDbContextFactory>().To<DbContextFactory>();            
             kernel.Bind(typeof(IRepo<>)).To(typeof(Repo<>));
+            kernel.Bind<IDefaultSettings>().To<DefaultSettings>().InSingletonScope();
             
             //kernel.Bind<InitConfig>().ToSelf().InSingletonScope();
             

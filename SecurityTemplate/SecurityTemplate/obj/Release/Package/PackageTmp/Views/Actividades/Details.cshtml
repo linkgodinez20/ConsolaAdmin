@@ -1,0 +1,94 @@
+﻿@model Security.Core.Model.Actividades
+
+@{
+    ViewBag.Title = "Actividades/Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="=Titulo">Detalle</h2>
+
+<div>
+    <h4>Actividades</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Directorio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Directorios.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Sistema)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sistemas.Nombre)
+        </dd>
+
+    </dl>
+</div>
+@*@{
+    var ControllerName = ViewContext.RouteData.Values["Controller"];
+}
+<p>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @{
+                
+                var autoridad = Request.Url.Authority;
+
+                //http://172.16.1.31/CONADUS/AreasDeTrabajo/Details/AreasDeTrabajo/Edit/2
+
+                var sss = @Url.Action("Edit", @ControllerName.ToString());
+
+                var referencia = autoridad + @sss + "/" + Model.Id_Actividad;
+
+                //var referencia2 = Server.MapPath(referencia);
+                //var re = Request.ServerVariables["LOCAL_ADDR"];
+                ////string partOfUrl = HttpContext.Request.Url.AbsolutePath.ToLower();
+                //var c = Request.Url.AbsoluteUri;
+                
+                //var sss = Url.RouteUrl("Default").ToString();
+                
+                var i = "";
+            }
+
+            <a class="btn btn-warning glyphicon glyphicon-pencil" data-container="body" data-toggle="popover" data-placement="left" data-content="Editar" href=@referencia></a>
+
+            <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right" data-content="Volver" href="/@ControllerName"></a>
+
+        </div>
+    </div>
+</p>*@
+<p>
+    @{
+        var ControllerName = ViewContext.RouteData.Values["Controller"];
+    }
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a class="btn btn-warning glyphicon glyphicon-pencil" data-container="body" data-toggle="popover" data-placement="left"
+               data-content="Editar" href="~/@ControllerName/Edit/@Model.Id_Actividad"></a>
+            <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right"
+               data-content="Volver" href="~/@ControllerName"></a>
+        </div>
+    </div>
+    <hr />
+</p>

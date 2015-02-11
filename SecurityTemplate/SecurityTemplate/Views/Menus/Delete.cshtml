@@ -1,0 +1,96 @@
+﻿@model Security.Core.Model.Menu
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="Titulo">Eliminar</h2>
+
+<h3 class="Dialogos">¿Est&aacute; seguro de eliminar este registro?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tooltip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tooltip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Orden)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Orden)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Habilitado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Habilitado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_MenuCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Menu_categoria.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Pagina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paginas.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_Sistema)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sistemas.Nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" value="Delete" class="btn btn-danger " data-container="body" data-toggle="popover" data-placement="left" data-content="Eliminar">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </button>
+                @{
+                    var ControllerName = ViewContext.RouteData.Values["Controller"];
+                }
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right" data-content="Volver" href="/@ControllerName"></a>
+            </div>
+        </div>
+    }
+</div>

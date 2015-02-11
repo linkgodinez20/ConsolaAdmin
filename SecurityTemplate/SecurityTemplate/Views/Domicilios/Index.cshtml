@@ -13,13 +13,17 @@
 
 @using (Html.BeginForm("Index", "Domicilios", FormMethod.Get))
 {
-    <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5">
-
+    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
         <div class="input-group">
             @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
-            <span class="input-group-btn">
-                <input type="submit" value="Buscar" placeholder="Valor de búsqueda" class="btn btn-default" />
-            </span>
+            <div class="input-group-btn">
+                <button name="btnSearch" id="btnSearch" type="submit" value="create" class="btn btn-info" data-container="body" data-toggle="popover" data-placement="top" data-content="Buscar">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+                <button name="btnFilter" id="btnFilter" type="submit" value="index" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Quitar filtro">
+                    <i class="glyphicon glyphicon-filter"></i>                    
+                </button>
+            </div>
         </div>
     </div>
     <br />
@@ -91,9 +95,9 @@
             @Html.DisplayFor(modelItem => item.FechaModificacion)
         </td>
         <td>
-            @Html.ActionLink(" ", "Edit", new { id = item.Id_Domicilio }, new { @class = "ButtonSettings Edit" }) |
-            @Html.ActionLink(" ", "Details", new { id = item.Id_Domicilio }, new { @class = "ButtonSettings Details" }) |
-            @Html.ActionLink(" ", "Delete", new { id = item.Id_Domicilio }, new { @class = "ButtonSettings Delete" })            
+            @Html.ActionLink(" ", "Edit", new { id = item.Id_Domicilio }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
+            @Html.ActionLink(" ", "Details", new { id = item.Id_Domicilio }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
+            @Html.ActionLink(" ", "Delete", new { id = item.Id_Domicilio }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })            
         </td>
     </tr>
 }
@@ -102,10 +106,13 @@
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
-<table class="btn-group">
+@{
+    var ControllerName = ViewContext.RouteData.Values["controller"];
+}
+<table>
     <tr>
         <td>
-            @Html.ActionLink(" ", "Create", "Domicilios", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
+            <a class="btn btn-success glyphicon glyphicon-plus" data-container="body" data-toggle="popover" data-placement="right" data-content="Agregar" href="~/@ControllerName/Create"></a>
         </td>
     </tr>
 </table>

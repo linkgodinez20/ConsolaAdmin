@@ -27,16 +27,13 @@ namespace Security.Controllers
         }
 
         // GET: Bajas/Details/5
-        public ActionResult Details(byte id)
+        public ActionResult Details(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Baja baja = repo.Get(id);
-            if (baja == null)
+
+            if (baja == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(baja);
         }
@@ -65,16 +62,13 @@ namespace Security.Controllers
         }
 
         // GET: Bajas/Edit/5
-        public ActionResult Edit(byte id)
+        public ActionResult Edit(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Baja baja = repo.Get(id);
-            if (baja == null)
+
+            if (baja == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(baja);
         }
@@ -96,16 +90,12 @@ namespace Security.Controllers
         }
 
         // GET: Bajas/Delete/5
-        public ActionResult Delete(byte id)
+        public ActionResult Delete(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Baja baja = repo.Get(id);
-            if (baja == null)
+            if (baja == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(baja);
         }

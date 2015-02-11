@@ -176,8 +176,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MenusController.cs" />
     <Compile Include="Controllers\Menu_CategoriaController.cs" />
-    <Compile Include="Controllers\Municipios1Controller.cs" />
     <Compile Include="Controllers\MunicipiosController.cs" />
     <Compile Include="Controllers\PaginasController.cs" />
     <Compile Include="Controllers\PaisesController.cs" />
@@ -187,9 +187,13 @@
     <Compile Include="Controllers\PersonasController.cs" />
     <Compile Include="Controllers\PreguntasController.cs" />
     <Compile Include="Controllers\PreguntasXLoginController.cs" />
+    <Compile Include="Controllers\SesionesController.cs" />
     <Compile Include="Controllers\SistemasController.cs" />
+    <Compile Include="Controllers\svc\CuentasController.cs" />
     <Compile Include="Controllers\svc\EntidadesController.cs" />
     <Compile Include="Controllers\svc\GenerosController.cs" />
+    <Compile Include="Controllers\svc\MunicipiosController.cs" />
+    <Compile Include="Controllers\svc\PaisesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -264,6 +268,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\mike.js" />
+    <Content Include="Scripts\Miscelaneous.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\respond.js" />
@@ -433,9 +438,20 @@
     <Content Include="Views\Equipos\Details.cshtml" />
     <Content Include="Views\Equipos\Edit.cshtml" />
     <Content Include="Views\Equipos\Index.cshtml" />
+    <Content Include="Views\Menus\Create.cshtml" />
+    <Content Include="Views\Menus\Delete.cshtml" />
+    <Content Include="Views\Menus\Details.cshtml" />
+    <Content Include="Views\Menus\Edit.cshtml" />
+    <Content Include="Views\Menus\Index.cshtml" />
+    <Content Include="Views\Sesiones\Create.cshtml" />
+    <Content Include="Views\Sesiones\Delete.cshtml" />
+    <Content Include="Views\Sesiones\Details.cshtml" />
+    <Content Include="Views\Sesiones\Edit.cshtml" />
+    <Content Include="Views\Sesiones\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Media\thumbnail\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

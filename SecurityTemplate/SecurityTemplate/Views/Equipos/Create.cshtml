@@ -4,14 +4,32 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="~/Scripts/jquery-2.1.3.js"></script>
 
-<h2>Create</h2>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var options = [[]];
+
+        $.getJSON("/api/Cuentas", function (result) {
+            for (var i = 0; i < result.length; i++) {
+                options.push('<option value="',
+                  result[i].Id_Cuenta, '">',
+                  result[i].Login, '</option>');
+            }
+            $("#Id_Cuenta").html(options.join(''));
+        });
+        return false;
+    });
+    </script>
+
+<h2 class="Titulo">Nuevo</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Equipos</h4>
         <hr />
@@ -57,14 +75,6 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Ubiacion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Ubiacion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Ubiacion, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.FechaAlta, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FechaAlta, new { htmlAttributes = new { @class = "form-control" } })
@@ -83,7 +93,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Id_Cuenta, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Id_Cuenta", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("Id_Cuenta", new SelectList(String.Empty, "Id_Cuenta", "Login"), htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Id_Cuenta, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -108,15 +118,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button type="submit" value="create" class="btn btn-success">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

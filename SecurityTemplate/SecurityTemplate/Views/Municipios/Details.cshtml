@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="=Titulo">Detalle</h2>
+<h2 class="Titulo">Detalle</h2>
 
 <div>
-    <h4>Municipios</h4>
+    <h4>Municipios / <b>@Html.DisplayFor(model => model.Entidades.Nombre, new { htmlAttributes = new { @class = "form-control" } })</b></h4>
     <hr />
     @Html.HiddenFor(model => model.Id_Pais)
     @Html.HiddenFor(model => model.Id_Entidad)
@@ -40,11 +40,17 @@
 
     </dl>
 </div>
+@{
+    var ControllerName = ViewContext.RouteData.Values["Controller"];
+}
 <p>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            @Html.ActionLink(" ", "Edit", new { id = Model.Id_Pais, id2 = Model.Id_Entidad, id3 = Model.Id_Municipio }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
-            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+            <a class="btn btn-warning glyphicon glyphicon-pencil" data-container="body" data-toggle="popover" data-placement="left"
+               data-content="Editar" href="~/@ControllerName/Edit/@Model.Id_Pais/@Model.Id_Entidad/@Model.Id_Municipio"></a>
+            <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right"
+               data-content="Volver" href="~/@ControllerName"></a>
         </div>
     </div>
+    <hr />
 </p>

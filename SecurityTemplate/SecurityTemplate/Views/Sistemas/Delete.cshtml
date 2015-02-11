@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Sistemas</h2>
+<h2 class="Titulo">Eliminar</h2>
 
-<h3>¿Está seguro que desea eliminar este elemento?</h3>
+<h3 class="Dialogos">¿Est&aacute; seguro de eliminar este registro?</h3>
 <div>    
     <hr />
     <dl class="dl-horizontal">
@@ -45,12 +45,29 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" value="Delete" class="btn btn-danger " data-container="body" data-toggle="popover" data-placement="left" data-content="Eliminar">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </button>
+
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right" data-content="Volver" href="/Sistemas"></a>
+
+            </div>
         </div>
     }
 </div>
+<script src="~/Scripts/jquery-2.1.3.js"></script>
+<script type="text/javascript">
+   $(document).ready(function () {
+
+       $('button').popover({ trigger: "hover" });
+
+       $('a').popover({ trigger: 'hover' });
+
+   });
+</script>

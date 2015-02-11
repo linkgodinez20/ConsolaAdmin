@@ -4,48 +4,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<script src="~/Scripts/jquery-2.1.3.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#Entidades_ddl").on('change', function (e) {
-
-            var EntidadSeleccionadas = $("#Entidades_ddl").val();
-
-            alert(EntidadSeleccionadas);
-
-            e.preventDefault();
-
-            var param = {
-                sortOrder: '',
-                currentFilter: '',
-                searchString: '',
-                page: 1,
-                EntidadSeleccionada: $("#Entidades_ddl").val(),
-            };
-
-            var url_Action = '@Url.Action("Index", "Municipios")';
-            alert(url_Action);
-
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("Index", "Domicilios")',
-                dataType: 'json',
-                traditional: true,
-                contentType: "application/json; charset=utf-8",
-                data: param,
-                success: function () {
-                    $.post('@Url.Action("Index", "Municipios")');
-                    alert('success');
-                },
-                error: function (ex) {
-                    alert('Se encontró un problema.' + ex);
-                }
-            });
-            return false;
-        })
-    });
-</script>
 
 <ol class="breadcrumb">
     <li>Inicio</li>
@@ -55,27 +13,32 @@
 <hr />
 @using (Html.BeginForm("Index", "Municipios", FormMethod.Get))
 {
-    <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5">
+    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
         <div class="input-group">
-            @Html.DropDownList("Entidades_ddl", null, "Elija una opción", new { @class = "form-control" })
+            @Html.DropDownList("Entidades_ddl", (SelectList)ViewBag.Entidades_ddl, "Elija una opción", new { @class = "form-control" })
+
             <span class="input-group-btn">
-                <button type="submit" value="create" class="btn btn-info">
+                <button type="submit" value="create" class="btn btn-info" data-container="body" data-toggle="popover" data-placement="top" data-content="Buscar">
                     <i class="glyphicon glyphicon-search"></i>
                 </button>
             </span>
         </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5">
-
-            <div class="input-group">
-                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
-                <span class="input-group-btn">
-                    <input type="submit" value="Buscar" placeholder="Valor de búsqueda" class="btn btn-default" />
-                </span>
+    </div>
+    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
+        <div class="input-group">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+            <div class="input-group-btn">
+                <button name="btnSearch" id="btnSearch" type="submit" value="create" class="btn btn-info" data-container="body" data-toggle="popover" data-placement="top" data-content="Buscar">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+                <button name="btnFilter" id="btnFilter" type="submit" value="index" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Quitar filtro">
+                    <i class="glyphicon glyphicon-filter"></i>
+                </button>
             </div>
         </div>
-        <br />
-        }
+    </div>
+                <br />
+}
         <br />
         <br />
         <table class="table table-bordered table-condensed table-hover">
@@ -107,9 +70,9 @@
                         @Html.DisplayFor(modelItem => item.Abreviatura)
                     </td>
                     <td>
-                        @Html.ActionLink(" ", "Edit", new { id = item.Id_Pais, id2 = item.Id_Entidad, id3 = item.Id_Municipio }, new { @class = "ButtonSettings Edit" }) |
-                        @Html.ActionLink(" ", "Details", new { id = item.Id_Pais, id2 = item.Id_Entidad, id3 = item.Id_Municipio }, new { @class = "ButtonSettings Details" }) |
-                        @Html.ActionLink(" ", "Delete", new { id = item.Id_Pais, id2 = item.Id_Entidad, id3 = item.Id_Municipio }, new { @class = "ButtonSettings Delete" })
+                        @Html.ActionLink(" ", "Edit", new { id = item.Id_Pais, id2 = item.Id_Entidad, id3 = item.Id_Municipio }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
+                        @Html.ActionLink(" ", "Details", new { id = item.Id_Pais, id2 = item.Id_Entidad, id3 = item.Id_Municipio }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
+                        @Html.ActionLink(" ", "Delete", new { id = item.Id_Pais, id2 = item.Id_Entidad, id3 = item.Id_Municipio }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
                     </td>
                 </tr>
     }
@@ -117,10 +80,14 @@
         </table>
         @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-        <table>
-            <tr>
-                <td>
-                    @Html.ActionLink(" ", "Create", "Municipios", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
-                </td>
-            </tr>
-        </table>
+    P&aacute;gina <b>@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)</b> de <b>@Model.PageCount</b>
+@{
+    var ControllerName = ViewContext.RouteData.Values["controller"];
+}
+<table>
+    <tr>
+        <td>
+            <a class="btn btn-success glyphicon glyphicon-plus" data-container="body" data-toggle="popover" data-placement="right" data-content="Agregar" href="~/@ControllerName/Create"></a>
+        </td>
+    </tr>
+</table>

@@ -53,7 +53,7 @@ namespace Security.Controllers
         // GET: Equipos/Create
         public ActionResult Create()
         {
-            ViewBag.Id_Cuenta = new SelectList(Repo_Cuentas.GetAll(), "Id_Cuenta", "Id_Cuenta");
+            //ViewBag.Id_Cuenta = new SelectList(Repo_Cuentas.GetAll(), "Id_Cuenta", "Id_Cuenta");
             ViewBag.Id_EquipoTipo = new SelectList(Repo_EquiposTipo.GetAll(), "Id_EquipoTipo", "Nombre");
             ViewBag.Id_Sistema = new SelectList(Repo_Sistemas.GetAll(), "Id_Sistema", "Nombre");
             return View();

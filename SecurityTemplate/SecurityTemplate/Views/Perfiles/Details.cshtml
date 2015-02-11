@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 class="Titulo">Detalle</h2>
 
 <div>
     <h4>Perfiles</h4>
@@ -44,7 +44,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Sistemas.Nombre)
+            @Html.DisplayNameFor(model => model.Id_Sistema)
         </dt>
 
         <dd>
@@ -53,7 +53,21 @@
 
     </dl>
 </div>
+@{
+    var ControllerName = ViewContext.RouteData.Values["Controller"];
+}
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Perfil }) |
-    @Html.ActionLink("Back to List", "Index")
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a class="btn btn-warning glyphicon glyphicon-pencil" data-container="body" data-toggle="popover" data-placement="left"
+               data-content="Editar" href="~/@ControllerName/Edit/@Model.Id_Perfil"></a>
+            <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right"
+               data-content="Volver" href="~/@ControllerName"></a>
+
+
+            @*@Html.ActionLink(" ", "Edit", new { id = Model.Id_Perfil }, new { @class = "btn btn-warning glyphicon glyphicon-pencil", data_container = "body", data_toggle = "popover", data_placement = "bottom", data_content = "Editar" })
+            @Html.ActionLink(" ", "Index", null, htmlAttributes: new { @class = "btn btn-info glyphicon glyphicon-chevron-left",  data_container="body", data_toggle="popover", data_placement="top", data_content="Voler" } )*@
+        </div>
+    </div>
+    <hr />
 </p>

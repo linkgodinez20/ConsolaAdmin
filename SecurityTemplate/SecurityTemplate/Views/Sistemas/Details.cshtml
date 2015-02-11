@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2 class="Titulo">Detalle</h2>
 
 <div>
     <h4>Sistemas</h4>
@@ -46,6 +46,23 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id_Sistema }) |
-    @Html.ActionLink("Back to List", "Index")
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @{
+                var referencia = "/Sistemas/Edit/" + Model.Id_Sistema;
+            }
+
+            <a class="btn btn-warning glyphicon glyphicon-pencil" data-container="body" data-toggle="popover" data-placement="left" data-content="Editar" href=@referencia></a>
+
+            <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right" data-content="Volver" href="/Sistemas"></a>
+
+        </div>
+    </div>
 </p>
+<script src="~/Scripts/jquery-2.1.3.js"></script>
+<script type="text/javascript">
+   $(document).ready(function () {
+       $('button').popover({ trigger: "hover" });
+       $('a').popover({ trigger: 'hover' });
+   });
+</script>

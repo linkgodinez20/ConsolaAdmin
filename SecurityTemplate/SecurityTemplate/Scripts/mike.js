@@ -138,3 +138,13 @@
 		}
 		document.getElementById("demo").innerHTML = text;
 	}
+
+	$(document).ready(function () {
+
+	    $('button').popover({ trigger: "hover" });
+	    $('a').popover({ trigger: 'hover' });
+
+	    //$('#btnFilter').click(function () {
+	    //    $('#SearchString').val('');
+	    //});
+	});

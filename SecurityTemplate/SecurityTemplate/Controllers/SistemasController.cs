@@ -21,12 +21,13 @@ namespace Security.Controllers
         }
 
         // GET: /Sistemas/Details/5
-        public ActionResult Details(byte id)
+        public ActionResult Details(byte id = 0)
         {
             Sistemas sistemas = repo.Get(id);
-            if (sistemas == null)
+
+            if (sistemas == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(sistemas);
         }
@@ -55,12 +56,13 @@ namespace Security.Controllers
         }
 
         // GET: /Sistemas/Edit/5
-        public ActionResult Edit(byte id)
+        public ActionResult Edit(byte id = 0)
         {
             Sistemas sistemas = repo.Get(id);
-            if (sistemas == null)
+
+            if (sistemas == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(sistemas);
         }
@@ -82,12 +84,13 @@ namespace Security.Controllers
         }
 
         // GET: /Sistemas/Delete/5
-        public ActionResult Delete(byte id)
+        public ActionResult Delete(byte id = 0)
         {
             Sistemas sistemas = repo.Get(id);
-            if (sistemas == null)
+
+            if (sistemas == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(sistemas);
         }

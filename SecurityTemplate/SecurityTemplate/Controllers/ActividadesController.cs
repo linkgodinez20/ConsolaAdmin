@@ -84,12 +84,12 @@ namespace Security.Controllers
         }
 
         // GET: Actividades/Details/5
-        public ActionResult Details(short id)
+        public ActionResult Details(short id = 0)
         {
             Actividades actividades = repo.Get(id);
-            if (actividades == null)
+            if (actividades == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(actividades);
         }
@@ -122,16 +122,12 @@ namespace Security.Controllers
         }
 
         // GET: Actividades/Edit/5
-        public ActionResult Edit(short id)
+        public ActionResult Edit(short id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Actividades actividades = repo.Get(id);
-            if (actividades == null)
+            if (actividades == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             ViewBag.Id_Directorio = new SelectList(Repo_Directorios.GetAll(), "Id_Directorio", "Nombre", actividades.Id_Directorio);
             ViewBag.Id_Sistema = new SelectList(Repo_Sistemas.GetAll(), "Id_Sistema", "Nombre", actividades.Id_Sistema);
@@ -157,16 +153,12 @@ namespace Security.Controllers
         }
 
         // GET: Actividades/Delete/5
-        public ActionResult Delete(short id)
+        public ActionResult Delete(short id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Actividades actividades = repo.Get(id);
-            if (actividades == null)
+            if (actividades == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(actividades);
         }
@@ -176,10 +168,10 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(short id)
         {
-            Actividades actividades = repo.Get(id);
-            repo.Delete(actividades);
-            repo.Save();
-            return RedirectToAction("Index");
+                Actividades actividades = repo.Get(id);
+                repo.Delete(actividades);
+                repo.Save();
+                return RedirectToAction("Index");            
         }
 
         protected override void Dispose(bool disposing)

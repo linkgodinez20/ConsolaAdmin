@@ -1,0 +1,63 @@
+﻿@model PagedList.IPagedList<Security.Core.Model.Preguntas>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Preguntas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 align="center">Preguntas</h2>
+
+@using (Html.BeginForm("Index", "Preguntas", FormMethod.Get))
+{
+    <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5">
+        <div class="input-group">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+            <span class="input-group-btn">
+                <input type="submit" value="Buscar" placeholder="Valor de búsqueda" class="btn btn-default" />
+            </span>
+        </div>
+    </div>
+}
+
+<br /><br /><br />
+
+<table class="table table-bordered table-condensed table-striped table-hover">
+    <tr>
+        <th class="alert-info">
+            @Html.ActionLink("Pregunta", "Index", new { sortOrder = ViewBag.Directorio, currentFilter = ViewBag.CurrentFilter })            
+        </th>
+        <th class="alert-success">
+            <span class="glyphicon glyphicon-cog"> <b>Acciones</b> </span>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pregunta)
+            </td>
+            <td>
+                @Html.ActionLink(" ", "Edit", new { id = item.Id_Pregunta }     , new { @class = "ButtonSettings Edit" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.Id_Pregunta } , new { @class = "ButtonSettings Details" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.Id_Pregunta }  , new { @class = "ButtonSettings Delete" })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+<table class="btn-group">
+    <tr>
+        <td>
+            <div class="input-group">
+                <p>                    
+                    @Html.ActionLink(" ", "Create", "Preguntas", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
+                </p>
+            </div>
+        </td>
+    </tr>
+</table>

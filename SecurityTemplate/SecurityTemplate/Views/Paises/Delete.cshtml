@@ -5,11 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2 class="Titulo">Eliminar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3 class="Dialogos">¿Est&aacute; seguro de eliminar este registro?</h3>
 <div>
-    <h4>Paises</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -37,13 +36,20 @@
         </dd>
 
     </dl>
-
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" value="Delete" class="btn btn-danger " data-container="body" data-toggle="popover" data-placement="left" data-content="Eliminar">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </button>
+                @{
+        var ControllerName = ViewContext.RouteData.Values["Controller"];
+                }
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right" data-content="Volver" href="/@ControllerName"></a>
+            </div>
         </div>
     }
 </div>

@@ -35,7 +35,7 @@ namespace Security.Controllers
             ViewBag.SortByContactoMedio = sortOrder == "Medio_desc" ? "Medio_desc" : "Medio";
 
             //Default
-            ViewBag.SortByNombre = String.IsNullOrEmpty(sortOrder) ? "Contacto_desc" : "Contacto";
+            ViewBag.SortByContacto = String.IsNullOrEmpty(sortOrder) ? "Contacto_desc" : "Contacto";
 
             if (searchString != null)
             {

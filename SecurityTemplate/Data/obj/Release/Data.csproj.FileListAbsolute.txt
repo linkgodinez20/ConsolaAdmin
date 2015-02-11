@@ -12,3 +12,17 @@ D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\Sec
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Data\obj\Release\Data.csprojResolveAssemblyReference.cache
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Data\obj\Release\Data.dll
 D:\Mike\Dropbox\Solutia Inteligence\Git Desarrollo\ConsolaAdmin\ConsolaAdmin\SecurityTemplate\Data\obj\Release\Data.pdb
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Release\Data.dll.config
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Release\Data.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Release\Data.pdb
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Release\Core.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Release\EntityFramework.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Release\EntityFramework.SqlServer.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Release\Omu.ValueInjecter.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Release\Core.pdb
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Release\EntityFramework.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Release\EntityFramework.SqlServer.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Release\Omu.ValueInjecter.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\obj\Release\Data.csprojResolveAssemblyReference.cache
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\obj\Release\Data.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\obj\Release\Data.pdb

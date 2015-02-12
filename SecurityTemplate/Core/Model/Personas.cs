@@ -16,10 +16,10 @@ namespace Security.Core.Model
     {
         public Personas()
         {
+            this.Contacto_x_Persona = new HashSet<Contacto_x_Persona>();
+            this.Cuentas_x_Personas = new HashSet<Cuentas_x_Personas>();
+            this.Domicilio_x_Personas = new HashSet<Domicilio_x_Personas>();
             this.LogIn = new HashSet<LogIn>();
-            this.Contacto = new HashSet<Contacto>();
-            this.Cuentas = new HashSet<Cuentas>();
-            this.Domicilios = new HashSet<Domicilios>();
         }
     
         public int Id_Persona { get; set; }
@@ -36,10 +36,10 @@ namespace Security.Core.Model
         public string Foto { get; set; }
         public bool Estatus { get; set; }
     
+        public virtual ICollection<Contacto_x_Persona> Contacto_x_Persona { get; set; }
+        public virtual ICollection<Cuentas_x_Personas> Cuentas_x_Personas { get; set; }
+        public virtual ICollection<Domicilio_x_Personas> Domicilio_x_Personas { get; set; }
         public virtual Genero Genero { get; set; }
         public virtual ICollection<LogIn> LogIn { get; set; }
-        public virtual ICollection<Contacto> Contacto { get; set; }
-        public virtual ICollection<Cuentas> Cuentas { get; set; }
-        public virtual ICollection<Domicilios> Domicilios { get; set; }
     }
 }

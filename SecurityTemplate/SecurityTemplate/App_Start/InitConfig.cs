@@ -79,9 +79,9 @@ namespace Security
             {
                 var dirTipo = "Media";
 
-                var dirMedia = from d in repo_directorioTipo.GetAll()                               
-                               where d.Id_Sistema == this.sistema_iD
-                               select d.Nombre;
+                //var dirMedia = from d in repo_directorioTipo.GetAll()                               
+                //               where d.Id_Sistema == this.sistema_iD
+                //               select d.Nombre;
                                
                          
                                

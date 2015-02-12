@@ -16,12 +16,12 @@ namespace Security.Core.Model
     {
         public Perfiles()
         {
+            this.AreasDeTrabajo_x_Perfiles = new HashSet<AreasDeTrabajo_x_Perfiles>();
             this.Beneficio_x_Perfiles = new HashSet<Beneficio_x_Perfiles>();
             this.Cuentas = new HashSet<Cuentas>();
-            this.Permisos_Perfiles_x_Actividades = new HashSet<Permisos_Perfiles_x_Actividades>();
-            this.AreasDeTrabajo = new HashSet<AreasDeTrabajo>();
-            this.Directorios = new HashSet<Directorios>();
-            this.Parametros_grupo = new HashSet<Parametros_grupo>();
+            this.Directorios_x_Perfiles = new HashSet<Directorios_x_Perfiles>();
+            this.ParametrosGpo_x_Perfiles = new HashSet<ParametrosGpo_x_Perfiles>();
+            this.Perfil_x_Controlador_x_Accion = new HashSet<Perfil_x_Controlador_x_Accion>();
         }
     
         public short Id_Perfil { get; set; }
@@ -31,12 +31,12 @@ namespace Security.Core.Model
         public string Nivel { get; set; }
         public byte Id_Sistema { get; set; }
     
+        public virtual ICollection<AreasDeTrabajo_x_Perfiles> AreasDeTrabajo_x_Perfiles { get; set; }
         public virtual ICollection<Beneficio_x_Perfiles> Beneficio_x_Perfiles { get; set; }
         public virtual ICollection<Cuentas> Cuentas { get; set; }
+        public virtual ICollection<Directorios_x_Perfiles> Directorios_x_Perfiles { get; set; }
+        public virtual ICollection<ParametrosGpo_x_Perfiles> ParametrosGpo_x_Perfiles { get; set; }
+        public virtual ICollection<Perfil_x_Controlador_x_Accion> Perfil_x_Controlador_x_Accion { get; set; }
         public virtual Sistemas Sistemas { get; set; }
-        public virtual ICollection<Permisos_Perfiles_x_Actividades> Permisos_Perfiles_x_Actividades { get; set; }
-        public virtual ICollection<AreasDeTrabajo> AreasDeTrabajo { get; set; }
-        public virtual ICollection<Directorios> Directorios { get; set; }
-        public virtual ICollection<Parametros_grupo> Parametros_grupo { get; set; }
     }
 }

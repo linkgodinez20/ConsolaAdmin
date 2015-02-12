@@ -30,17 +30,6 @@ namespace Security
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-
-            routes.MapRoute(
-                name: "Entidades",
-                url: "{controller}/{action}/{id}/{id2}",
-                defaults: new { controller = "Entidades", action = "Index", id = UrlParameter.Optional, id2 = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
-                name: "Action 3 param",
-                url: "{controller}/{action}/{id}/{id2}/{id3}"                
-            );
         }
     }
 }

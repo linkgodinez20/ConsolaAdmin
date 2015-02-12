@@ -39,20 +39,8 @@ namespace Security.Core.Model
     public partial class Entidades
     {    }
 
-    [MetadataType(typeof(Menu_categoriaMetadata))]
-    public partial class Menu_categoria
-    {    }
-
     [MetadataType(typeof(LogInMetadata))]
     public partial class LogIn
-    {    }
-
-    [MetadataType(typeof(PaginasMetadata))]
-    public partial class Paginas
-    {    }
-
-    [MetadataType(typeof(PermisosMetadata))]
-    public partial class Permisos
     {    }
 
     [MetadataType(typeof(LocationsMetadata))]
@@ -66,10 +54,6 @@ namespace Security.Core.Model
     [MetadataType(typeof(EquiposMetadata))]
     public partial class Equipos
     { }
-
-    [MetadataType(typeof(Permisos_Cuentas_x_ActividadesMetadata))]
-    public partial class Permisos_Cuentas_x_Actividades
-    {    }
 
     [MetadataType(typeof(PreguntasMetadata))]
     public partial class Pregntas
@@ -87,16 +71,13 @@ namespace Security.Core.Model
     public partial class Personas
     { }
 
-    [MetadataType(typeof(ActividadesMetadata))]
-    public partial class Actividades { }
-
     [MetadataType(typeof(BajaMetadata))]
     public partial class Baja { }
 
     [MetadataType(typeof(BeneficioMetadata))]
     public partial class Beneficio { }
 
-    [MetadataType(typeof(ContactoMetadata))]
+    [MetadataType(typeof(ContactosMetadata))]
     public partial class Contacto { }
 
     [MetadataType(typeof(Contacto_tipoMetadata))]
@@ -107,9 +88,6 @@ namespace Security.Core.Model
 
     [MetadataType(typeof(GeneroMetadata))]
     public partial class Genero { }
-
-    [MetadataType(typeof(MenuMetadata))]
-    public partial class Menu { }
 
     [MetadataType(typeof(MunicipiosMetadata))]
     public partial class Municipios { }
@@ -125,5 +103,11 @@ namespace Security.Core.Model
 
     [MetadataType(typeof(SesionesMetadata))]
     public partial class Sesiones { }
+
+    [MetadataType(typeof(ControladoresMetadata))]
+    public partial class Controladores { }
+
+    [MetadataType(typeof(AccionesMetadata))]
+    public partial class Acciones { }
 
 }

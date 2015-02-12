@@ -210,3 +210,7 @@ D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTempl
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate\obj\Debug\SecurityTemplate.csprojResolveAssemblyReference.cache
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate\obj\Debug\SecurityTemplate.dll
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate\obj\Debug\SecurityTemplate.pdb
+D:\Humberto Flores\Documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate\bin\PagedList.dll
+D:\Humberto Flores\Documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate\bin\PagedList.Mvc.dll
+D:\Humberto Flores\Documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate\bin\PagedList.xml
+D:\Humberto Flores\Documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate\bin\PagedList.Mvc.xml

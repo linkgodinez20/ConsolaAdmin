@@ -21,9 +21,7 @@ namespace Security.Core.Model
     
         public byte Id_DirectorioTipo { get; set; }
         public string Nombre { get; set; }
-        public byte Id_Sistema { get; set; }
     
-        public virtual Sistemas Sistemas { get; set; }
         public virtual ICollection<Directorios> Directorios { get; set; }
     }
 }

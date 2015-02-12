@@ -17,12 +17,12 @@ namespace Security.Core.Model
         public Cuentas()
         {
             this.Benficio_x_Cuenta = new HashSet<Benficio_x_Cuenta>();
+            this.Cuenta_x_AreasDeTrabajo_x_Accion = new HashSet<Cuenta_x_AreasDeTrabajo_x_Accion>();
+            this.Cuenta_x_Controlador_x_Accion = new HashSet<Cuenta_x_Controlador_x_Accion>();
+            this.Cuentas_x_Personas = new HashSet<Cuentas_x_Personas>();
             this.Equipos = new HashSet<Equipos>();
-            this.Permisos_AreaDeTrabajo_x_Cuenta = new HashSet<Permisos_AreaDeTrabajo_x_Cuenta>();
-            this.Permisos_Cuentas_x_Actividades = new HashSet<Permisos_Cuentas_x_Actividades>();
+            this.MotivoBaja_x_Cuenta = new HashSet<MotivoBaja_x_Cuenta>();
             this.Sesiones = new HashSet<Sesiones>();
-            this.Personas = new HashSet<Personas>();
-            this.Baja_motivos = new HashSet<Baja_motivos>();
         }
     
         public int Id_Cuenta { get; set; }
@@ -39,14 +39,14 @@ namespace Security.Core.Model
     
         public virtual Baja Baja { get; set; }
         public virtual ICollection<Benficio_x_Cuenta> Benficio_x_Cuenta { get; set; }
+        public virtual ICollection<Cuenta_x_AreasDeTrabajo_x_Accion> Cuenta_x_AreasDeTrabajo_x_Accion { get; set; }
+        public virtual ICollection<Cuenta_x_Controlador_x_Accion> Cuenta_x_Controlador_x_Accion { get; set; }
         public virtual LogIn LogIn { get; set; }
         public virtual Perfiles Perfiles { get; set; }
         public virtual Sistemas Sistemas { get; set; }
+        public virtual ICollection<Cuentas_x_Personas> Cuentas_x_Personas { get; set; }
         public virtual ICollection<Equipos> Equipos { get; set; }
-        public virtual ICollection<Permisos_AreaDeTrabajo_x_Cuenta> Permisos_AreaDeTrabajo_x_Cuenta { get; set; }
-        public virtual ICollection<Permisos_Cuentas_x_Actividades> Permisos_Cuentas_x_Actividades { get; set; }
+        public virtual ICollection<MotivoBaja_x_Cuenta> MotivoBaja_x_Cuenta { get; set; }
         public virtual ICollection<Sesiones> Sesiones { get; set; }
-        public virtual ICollection<Personas> Personas { get; set; }
-        public virtual ICollection<Baja_motivos> Baja_motivos { get; set; }
     }
 }

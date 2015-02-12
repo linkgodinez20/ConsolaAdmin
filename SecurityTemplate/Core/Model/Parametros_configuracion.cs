@@ -16,16 +16,7 @@ namespace Security.Core.Model
     {
         public short Id_ParametroGral { get; set; }
         public short Id_Parametro { get; set; }
-        public Nullable<bool> Bit_v { get; set; }
-        public Nullable<byte> TinyInt_v { get; set; }
-        public Nullable<short> SmallInt_v { get; set; }
-        public Nullable<int> Int_v { get; set; }
-        public Nullable<decimal> Decimal_v { get; set; }
-        public Nullable<System.DateTime> DateTime_v { get; set; }
-        public Nullable<System.DateTime> SmallDateTime_v { get; set; }
-        public string VarChar64_v { get; set; }
-        public string VarChar128_v { get; set; }
-        public System.Data.Entity.Spatial.DbGeography Geography_v { get; set; }
+        public string Valor { get; set; }
         public bool Estatus { get; set; }
         public byte Id_ParametroTipoDato { get; set; }
         public System.DateTime FechaCreacion { get; set; }

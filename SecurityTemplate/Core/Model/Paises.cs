@@ -23,6 +23,7 @@ namespace Security.Core.Model
         public string FIPS { get; set; }
         public string Nombre { get; set; }
         public byte Prioridad { get; set; }
+        public string Bandera { get; set; }
     
         public virtual ICollection<Entidades> Entidades { get; set; }
     }

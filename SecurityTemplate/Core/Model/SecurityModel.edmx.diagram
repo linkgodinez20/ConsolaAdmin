@@ -4,227 +4,140 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-<<<<<<< HEAD
-      <Diagram DiagramId="d2a058dab4d6425daea65673108a6389" Name="Diagram1">
-        <EntityTypeShape EntityType="SecurityModel.Actividades" Width="1.5" PointX="7.5" PointY="27.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.AreasDeTrabajo" Width="1.5" PointX="9.75" PointY="27.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Baja" Width="1.5" PointX="21" PointY="21.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Baja_motivos" Width="1.5" PointX="25.5" PointY="32" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Beneficio" Width="1.5" PointX="15" PointY="26.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Beneficio_tipo" Width="1.5" PointX="12.75" PointY="21.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Beneficio_x_Perfiles" Width="1.5" PointX="20.25" PointY="30.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Benficio_x_Cuenta" Width="1.5" PointX="28.5" PointY="28.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Contacto" Width="1.5" PointX="26.25" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Contacto_medio" Width="1.5" PointX="24" PointY="20.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Contacto_tipo" Width="1.5" PointX="24" PointY="22.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Cuentas" Width="1.5" PointX="23.25" PointY="27.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Directorio_tipo" Width="1.5" PointX="3" PointY="30.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Directorios" Width="1.5" PointX="5.25" PointY="30.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Domicilios" Width="1.5" PointX="26.25" PointY="37" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Entidades" Width="1.5" PointX="21.75" PointY="38.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Equipos" Width="1.5" PointX="28.5" PointY="23.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Equipos_tipo" Width="1.5" PointX="26.25" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Events" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Genero" Width="1.5" PointX="26.25" PointY="42.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Locations" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.LogIn" Width="1.5" PointX="30.75" PointY="32.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Menu" Width="1.5" PointX="18" PointY="26.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Menu_categoria" Width="1.5" PointX="15.75" PointY="24.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Municipios" Width="1.5" PointX="24" PointY="38.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Paginas" Width="1.5" PointX="12.75" PointY="27.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Paises" Width="1.5" PointX="19.5" PointY="38.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Parametros" Width="1.5" PointX="20.25" PointY="26.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Parametros_configuracion" Width="1.5" PointX="25.5" PointY="25.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Parametros_grupo" Width="1.5" PointX="17.25" PointY="30.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Parametros_mensaje" Width="1.5" PointX="22.5" PointY="34.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Parametros_tipoDato" Width="1.5" PointX="18" PointY="23.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Perfiles" Width="1.5" PointX="15" PointY="30.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Permisos" Width="1.5" PointX="9.75" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Permisos_AreaDeTrabajo_x_Cuenta" Width="1.5" PointX="12" PointY="24.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Permisos_Cuentas_x_Actividades" Width="1.5" PointX="9.75" PointY="31.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Permisos_Perfiles_x_Actividades" Width="1.5" PointX="12.75" PointY="30.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Personas" Width="1.5" PointX="28.5" PointY="31.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Preguntas" Width="1.5" PointX="30.75" PointY="36.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Preguntas_x_Login" Width="1.5" PointX="33" PointY="33" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Sesiones" Width="1.5" PointX="31.5" PointY="27.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityModel.Sistemas" Width="1.5" PointX="0.75" PointY="25.75" IsExpanded="true" />
-        <AssociationConnector Association="SecurityModel.FK_Actividades_Id_Directorio" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Actividades_Id_Sistema" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Permisos_Cuentas_x_Actividades_Id_Actividad" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Permisos_Perfiles_x_Actividades_Id_Actividad" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_AreasDeTrabajo_Id_Sistema" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_AreaDeTrabajo" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Baja_motivos_Id_Baja" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Cuentas_Id_Baja" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Beneficio_Id_BeneficioTipo" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Beneficio_x_Perfiles_Id_Beneficio" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Benficio_x_Cuenta_Id_Beneficio" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Beneficio_x_Perfiles_Id_Perfil" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Benficio_x_Cuenta_Id_Cuenta" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Contacto_Id_ContactoMedio" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Contacto_Id_ContactoTipo" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Domicilios_Id_ContactoTipo" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Cuentas_Id_Login" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Cuentas_Id_Perfil" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Cuentas_Id_Sistema" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Equipos_Id_Cuenta" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Cuenta" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Permisos_Cuentas_x_Actividades_Id_Cuenta" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Sesiones_Id_Cuenta" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Directorio_tipo_Id_Sistema" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Directorios_Id_DirectorioTipo" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Domicilios_Id_Pais_Id_Entidad_Id_Municipio" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Entidades_Id_Pais" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Municipios_Id_Pais_Id_Entidad" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Equipos_Id_EquipoTipo" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Equipos_Id_Sistema" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Personas_Id_Genero" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_LogIn_Id_Persona" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Preguntas_x_Login_Id_Login" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Menu_Id_MenuCategoria" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Menu_Id_Pagina" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Menu_Id_Sistema" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Paginas_Id_Sistema" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Parametros_configuracion_Id_Parametro" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Parametros_Id_GpoParametro" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Parametros_Id_ParametroTipoDato" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Parametros_Id_Sistema" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Parametros_mensaje_Id_Parametro" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Parametros_configuracion_Id_ParametroTipoDato" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Parametros_configuracion_Id_Sistema" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Parametros_grupo_Id_Sistema" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Perfiles_Id_Sistema" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Permisos_Perfiles_x_Actividades_Id_Perfil" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Permiso" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Permisos_Cuentas_x_Actividades_Id_Permiso" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Permisos_Perfiles_x_Actividades_Id_Permiso" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Preguntas_x_Login_Id_Cuenta" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.FK_Sesiones_Id_Sistema" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.Actividades_x_AreasDeTrabajo" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.AreasDeTrabajo_x_Perfiles" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.Beneficio_x_AreaDeTrabajo" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.Contacto_x_Domicilio" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.Contacto_x_Persona" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.Cuentas_x_Personas" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.Directorios_x_Perfiles" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.Directorios_x_Sistemas" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.Domicilio_x_Personas" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.MotivoBaja_x_Cuenta" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.Paginas_x_Actividades" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.Parametros_x_Beneficio" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.ParametrosGpo_x_Beneficio" ManuallyRouted="false" />
-        <AssociationConnector Association="SecurityModel.ParametrosGpo_x_Perfiles" ManuallyRouted="false" />
-=======
-      <Diagram DiagramId="69a552b8342845f1bf265b15dd6829dc" Name="Diagram1" ZoomLevel="10">
-        <EntityTypeShape EntityType="TestModel.Actividades" Width="1.5" PointX="7.5" PointY="27.875" />
-        <EntityTypeShape EntityType="TestModel.AreasDeTrabajo" Width="1.5" PointX="12.75" PointY="27.125" />
-        <EntityTypeShape EntityType="TestModel.Baja" Width="1.5" PointX="15" PointY="21.125" />
-        <EntityTypeShape EntityType="TestModel.Baja_motivos" Width="1.5" PointX="22.5" PointY="34.5" />
-        <EntityTypeShape EntityType="TestModel.Beneficio" Width="1.5" PointX="18" PointY="26.875" />
-        <EntityTypeShape EntityType="TestModel.Beneficio_tipo" Width="1.5" PointX="15.75" PointY="18.625" />
-        <EntityTypeShape EntityType="TestModel.Beneficio_x_Perfiles" Width="1.5" PointX="20.25" PointY="30" />
-        <EntityTypeShape EntityType="TestModel.Benficio_x_Cuenta" Width="1.5" PointX="25.25" PointY="36.375" />
-        <EntityTypeShape EntityType="TestModel.Contacto" Width="1.5" PointX="17.25" PointY="45.75" />
-        <EntityTypeShape EntityType="TestModel.Contacto_medio" Width="1.5" PointX="15" PointY="47.75" />
-        <EntityTypeShape EntityType="TestModel.Contacto_tipo" Width="1.5" PointX="15" PointY="45.25" />
-        <EntityTypeShape EntityType="TestModel.Cuentas" Width="1.5" PointX="17.25" PointY="30.875" />
-        <EntityTypeShape EntityType="TestModel.Directorio_tipo" Width="1.5" PointX="3" PointY="30.875" />
-        <EntityTypeShape EntityType="TestModel.Directorios" Width="1.5" PointX="5.25" PointY="30.625" />
-        <EntityTypeShape EntityType="TestModel.Domicilios" Width="1.5" PointX="17.25" PointY="37.625" />
-        <EntityTypeShape EntityType="TestModel.Entidades" Width="1.5" PointX="12.75" PointY="38.75" />
-        <EntityTypeShape EntityType="TestModel.Equipos" Width="1.5" PointX="19.5" PointY="22.125" />
-        <EntityTypeShape EntityType="TestModel.Equipos_tipo" Width="1.5" PointX="17.25" PointY="23.125" />
-        <EntityTypeShape EntityType="TestModel.Events" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TestModel.Genero" Width="1.5" PointX="17.25" PointY="42.875" />
-        <EntityTypeShape EntityType="TestModel.Locations" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="TestModel.LogIn" Width="1.5" PointX="21.75" PointY="38.125" />
-        <EntityTypeShape EntityType="TestModel.Menu" Width="1.5" PointX="12" PointY="23" />
-        <EntityTypeShape EntityType="TestModel.Menu_categoria" Width="1.5" PointX="9.75" PointY="21.875" />
-        <EntityTypeShape EntityType="TestModel.Municipios" Width="1.5" PointX="15" PointY="38.625" />
-        <EntityTypeShape EntityType="TestModel.Paginas" Width="1.5" PointX="9.75" PointY="25.25" />
-        <EntityTypeShape EntityType="TestModel.Paises" Width="1.5" PointX="10.5" PointY="38.875" />
-        <EntityTypeShape EntityType="TestModel.Parametros" Width="1.5" PointX="22.5" PointY="26.375" />
-        <EntityTypeShape EntityType="TestModel.Parametros_configuracion" Width="1.5" PointX="24.75" PointY="25.25" />
-        <EntityTypeShape EntityType="TestModel.Parametros_grupo" Width="1.5" PointX="20.25" PointY="26.75" />
-        <EntityTypeShape EntityType="TestModel.Parametros_mensaje" Width="1.5" PointX="24.75" PointY="33.25" />
-        <EntityTypeShape EntityType="TestModel.Parametros_tipoDato" Width="1.5" PointX="20.25" PointY="19.125" />
-        <EntityTypeShape EntityType="TestModel.Perfiles" Width="1.5" PointX="15" PointY="27.75" />
-        <EntityTypeShape EntityType="TestModel.Permisos" Width="1.5" PointX="12.75" PointY="15.625" />
-        <EntityTypeShape EntityType="TestModel.Permisos_AreaDeTrabajo_x_Cuenta" Width="1.5" PointX="15" PointY="24.25" />
-        <EntityTypeShape EntityType="TestModel.Permisos_Cuentas_x_Actividades" Width="1.5" PointX="9.75" PointY="28.375" />
-        <EntityTypeShape EntityType="TestModel.Permisos_Perfiles_x_Actividades" Width="1.5" PointX="9.75" PointY="31.375" />
-        <EntityTypeShape EntityType="TestModel.Personas" Width="1.5" PointX="19.5" PointY="33.25" />
-        <EntityTypeShape EntityType="TestModel.Preguntas" Width="1.5" PointX="21.75" PointY="41.625" />
-        <EntityTypeShape EntityType="TestModel.Preguntas_x_Login" Width="1.5" PointX="24" PointY="39.5" />
-        <EntityTypeShape EntityType="TestModel.Sesiones" Width="1.5" PointX="22.5" PointY="30.375" />
-        <EntityTypeShape EntityType="TestModel.Sistemas" Width="1.5" PointX="0.75" PointY="25.75" />
-        <AssociationConnector Association="TestModel.FK_Actividades_Id_Directorio" />
-        <AssociationConnector Association="TestModel.FK_Actividades_Id_Sistema" />
-        <AssociationConnector Association="TestModel.FK_Permisos_Cuentas_x_Actividades_Id_Actividad" />
-        <AssociationConnector Association="TestModel.FK_Permisos_Perfiles_x_Actividades_Id_Actividad" />
-        <AssociationConnector Association="TestModel.FK_AreasDeTrabajo_Id_Sistema" />
-        <AssociationConnector Association="TestModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_AreaDeTrabajo" />
-        <AssociationConnector Association="TestModel.FK_Baja_motivos_Id_Baja" />
-        <AssociationConnector Association="TestModel.FK_Cuentas_Id_Baja" />
-        <AssociationConnector Association="TestModel.FK_Beneficio_Id_BeneficioTipo" />
-        <AssociationConnector Association="TestModel.FK_Beneficio_x_Perfiles_Id_Beneficio" />
-        <AssociationConnector Association="TestModel.FK_Benficio_x_Cuenta_Id_Beneficio" />
-        <AssociationConnector Association="TestModel.FK_Beneficio_x_Perfiles_Id_Perfil" />
-        <AssociationConnector Association="TestModel.FK_Benficio_x_Cuenta_Id_Cuenta" />
-        <AssociationConnector Association="TestModel.FK_Contacto_Id_ContactoMedio" />
-        <AssociationConnector Association="TestModel.FK_Contacto_Id_ContactoTipo" />
-        <AssociationConnector Association="TestModel.FK_Domicilios_Id_ContactoTipo" />
-        <AssociationConnector Association="TestModel.FK_Cuentas_Id_Login" />
-        <AssociationConnector Association="TestModel.FK_Cuentas_Id_Perfil" />
-        <AssociationConnector Association="TestModel.FK_Cuentas_Id_Sistema" />
-        <AssociationConnector Association="TestModel.FK_Equipos_Id_Cuenta" />
-        <AssociationConnector Association="TestModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Cuenta" />
-        <AssociationConnector Association="TestModel.FK_Permisos_Cuentas_x_Actividades_Id_Cuenta" />
-        <AssociationConnector Association="TestModel.FK_Sesiones_Id_Cuenta" />
-        <AssociationConnector Association="TestModel.FK_Directorio_tipo_Id_Sistema" />
-        <AssociationConnector Association="TestModel.FK_Directorios_Id_DirectorioTipo" />
-        <AssociationConnector Association="TestModel.FK_Domicilios_Id_Pais_Id_Entidad_Id_Municipio" />
-        <AssociationConnector Association="TestModel.FK_Entidades_Id_Pais" />
-        <AssociationConnector Association="TestModel.FK_Municipios_Id_Pais_Id_Entidad" />
-        <AssociationConnector Association="TestModel.FK_Equipos_Id_EquipoTipo" />
-        <AssociationConnector Association="TestModel.FK_Equipos_Id_Sistema" />
-        <AssociationConnector Association="TestModel.FK_Personas_Id_Genero" />
-        <AssociationConnector Association="TestModel.FK_LogIn_Id_Persona" />
-        <AssociationConnector Association="TestModel.FK_Preguntas_x_Login_Id_Login" />
-        <AssociationConnector Association="TestModel.FK_Menu_Id_MenuCategoria" />
-        <AssociationConnector Association="TestModel.FK_Menu_Id_Pagina" />
-        <AssociationConnector Association="TestModel.FK_Menu_Id_Sistema" />
-        <AssociationConnector Association="TestModel.FK_Paginas_Id_Sistema" />
-        <AssociationConnector Association="TestModel.FK_Parametros_configuracion_Id_Parametro" />
-        <AssociationConnector Association="TestModel.FK_Parametros_Id_GpoParametro" />
-        <AssociationConnector Association="TestModel.FK_Parametros_Id_ParametroTipoDato" />
-        <AssociationConnector Association="TestModel.FK_Parametros_Id_Sistema" />
-        <AssociationConnector Association="TestModel.FK_Parametros_mensaje_Id_Parametro" />
-        <AssociationConnector Association="TestModel.FK_Parametros_configuracion_Id_ParametroTipoDato" />
-        <AssociationConnector Association="TestModel.FK_Parametros_configuracion_Id_Sistema" />
-        <AssociationConnector Association="TestModel.FK_Parametros_grupo_Id_Sistema" />
-        <AssociationConnector Association="TestModel.FK_Perfiles_Id_Sistema" />
-        <AssociationConnector Association="TestModel.FK_Permisos_Perfiles_x_Actividades_Id_Perfil" />
-        <AssociationConnector Association="TestModel.FK_Permisos_AreaDeTrabajo_x_Cuenta_Id_Permiso" />
-        <AssociationConnector Association="TestModel.FK_Permisos_Cuentas_x_Actividades_Id_Permiso" />
-        <AssociationConnector Association="TestModel.FK_Permisos_Perfiles_x_Actividades_Id_Permiso" />
-        <AssociationConnector Association="TestModel.FK_Preguntas_x_Login_Id_Cuenta" />
-        <AssociationConnector Association="TestModel.FK_Sesiones_Id_Sistema" />
-        <AssociationConnector Association="TestModel.Actividades_x_AreasDeTrabajo" />
-        <AssociationConnector Association="TestModel.AreasDeTrabajo_x_Perfiles" />
-        <AssociationConnector Association="TestModel.Beneficio_x_AreaDeTrabajo" />
-        <AssociationConnector Association="TestModel.Contacto_x_Domicilio" />
-        <AssociationConnector Association="TestModel.Contacto_x_Persona" />
-        <AssociationConnector Association="TestModel.Cuentas_x_Personas" />
-        <AssociationConnector Association="TestModel.Directorios_x_Perfiles" />
-        <AssociationConnector Association="TestModel.Directorios_x_Sistemas" />
-        <AssociationConnector Association="TestModel.Domicilio_x_Personas" />
-        <AssociationConnector Association="TestModel.MotivoBaja_x_Cuenta" />
-        <AssociationConnector Association="TestModel.Paginas_x_Actividades" />
-        <AssociationConnector Association="TestModel.Parametros_x_Beneficio" />
-        <AssociationConnector Association="TestModel.ParametrosGpo_x_Beneficio" />
-        <AssociationConnector Association="TestModel.ParametrosGpo_x_Perfiles" />
->>>>>>> origin/HumbertoTest
+      <Diagram DiagramId="0e542ad0a40f4cad8c35ffc98b7d867c" Name="Diagram1">
+        <EntityTypeShape EntityType="SecurityModel.Accion_x_Controlador" Width="1.5" PointX="8.25" PointY="54.375" />
+        <EntityTypeShape EntityType="SecurityModel.Acciones" Width="1.5" PointX="3" PointY="22.75" />
+        <EntityTypeShape EntityType="SecurityModel.AreasDeTrabajo" Width="1.5" PointX="3" PointY="29.5" />
+        <EntityTypeShape EntityType="SecurityModel.AreasDeTrabajo_x_Perfiles" Width="1.5" PointX="5.25" PointY="39.375" />
+        <EntityTypeShape EntityType="SecurityModel.Baja" Width="1.5" PointX="6" PointY="58.25" />
+        <EntityTypeShape EntityType="SecurityModel.Baja_motivos" Width="1.5" PointX="11.25" PointY="55.75" />
+        <EntityTypeShape EntityType="SecurityModel.Beneficio" Width="1.5" PointX="3" PointY="39.375" />
+        <EntityTypeShape EntityType="SecurityModel.Beneficio_tipo" Width="1.5" PointX="0.75" PointY="40" />
+        <EntityTypeShape EntityType="SecurityModel.Beneficio_x_AreaDeTrabajo" Width="1.5" PointX="5.25" PointY="29.875" />
+        <EntityTypeShape EntityType="SecurityModel.Beneficio_x_Perfiles" Width="1.5" PointX="8.25" PointY="50.375" />
+        <EntityTypeShape EntityType="SecurityModel.Benficio_x_Cuenta" Width="1.5" PointX="13.5" PointY="45.625" />
+        <EntityTypeShape EntityType="SecurityModel.Contacto_medio" Width="1.5" PointX="3.75" PointY="1.5" />
+        <EntityTypeShape EntityType="SecurityModel.Contacto_tipo" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="SecurityModel.Contacto_x_Domicilio" Width="1.5" PointX="8.25" PointY="5.25" />
+        <EntityTypeShape EntityType="SecurityModel.Contacto_x_Persona" Width="1.5" PointX="8.25" PointY="34" />
+        <EntityTypeShape EntityType="SecurityModel.Contactos" Width="1.5" PointX="6" PointY="4.875" />
+        <EntityTypeShape EntityType="SecurityModel.Controlador_x_AreasDeTrabajo" Width="1.5" PointX="5.25" PointY="45.125" />
+        <EntityTypeShape EntityType="SecurityModel.Controladores" Width="1.5" PointX="3" PointY="53.875" />
+        <EntityTypeShape EntityType="SecurityModel.Controladores_x_AreasDeTrabajo" Width="1.5" PointX="5.25" PointY="42.125" />
+        <EntityTypeShape EntityType="SecurityModel.Cuenta_x_AreasDeTrabajo_x_Accion" Width="1.5" PointX="5.25" PointY="26.625" />
+        <EntityTypeShape EntityType="SecurityModel.Cuenta_x_Controlador_x_Accion" Width="1.5" PointX="10.5" PointY="49.375" />
+        <EntityTypeShape EntityType="SecurityModel.Cuentas" Width="1.5" PointX="8.25" PointY="44.125" />
+        <EntityTypeShape EntityType="SecurityModel.Cuentas_x_Personas" Width="1.5" PointX="16.5" PointY="45.75" />
+        <EntityTypeShape EntityType="SecurityModel.Directorio_tipo" Width="1.5" PointX="0.75" PointY="31.625" />
+        <EntityTypeShape EntityType="SecurityModel.Directorios" Width="1.5" PointX="3" PointY="34.875" />
+        <EntityTypeShape EntityType="SecurityModel.Directorios_x_Perfiles" Width="1.5" PointX="8.25" PointY="37" />
+        <EntityTypeShape EntityType="SecurityModel.Directorios_x_Sistemas" Width="1.5" PointX="5.25" PointY="35.375" />
+        <EntityTypeShape EntityType="SecurityModel.Dispositivos_tipo" Width="1.5" PointX="11.25" PointY="32.875" />
+        <EntityTypeShape EntityType="SecurityModel.Domicilio_x_Personas" Width="1.5" PointX="9" PointY="30.625" />
+        <EntityTypeShape EntityType="SecurityModel.Domicilios" Width="1.5" PointX="3" PointY="4" />
+        <EntityTypeShape EntityType="SecurityModel.Entidades" Width="1.5" PointX="1.5" PointY="10.25" />
+        <EntityTypeShape EntityType="SecurityModel.Equipos" Width="1.5" PointX="13.5" PointY="39.75" />
+        <EntityTypeShape EntityType="SecurityModel.Equipos_tipo" Width="1.5" PointX="11.25" PointY="53.25" />
+        <EntityTypeShape EntityType="SecurityModel.Events" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SecurityModel.Genero" Width="1.5" PointX="1.5" PointY="62.25" />
+        <EntityTypeShape EntityType="SecurityModel.Locations" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SecurityModel.LogIn" Width="1.5" PointX="6" PointY="61.625" />
+        <EntityTypeShape EntityType="SecurityModel.MotivoBaja_x_Cuenta" Width="1.5" PointX="13.5" PointY="48.75" />
+        <EntityTypeShape EntityType="SecurityModel.Municipios" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="SecurityModel.Paises" Width="1.5" PointX="1.5" PointY="13.25" />
+        <EntityTypeShape EntityType="SecurityModel.Parametros" Width="1.5" PointX="8.25" PointY="40" />
+        <EntityTypeShape EntityType="SecurityModel.Parametros_configuracion" Width="1.5" PointX="10.5" PointY="35.875" />
+        <EntityTypeShape EntityType="SecurityModel.Parametros_grupo" Width="1.5" PointX="3" PointY="46.5" />
+        <EntityTypeShape EntityType="SecurityModel.Parametros_mensaje" Width="1.5" PointX="10.5" PointY="45.875" />
+        <EntityTypeShape EntityType="SecurityModel.Parametros_tipoDato" Width="1.5" PointX="6" PointY="32.75" />
+        <EntityTypeShape EntityType="SecurityModel.Parametros_x_Beneficio" Width="1.5" PointX="10.5" PointY="40.625" />
+        <EntityTypeShape EntityType="SecurityModel.ParametrosGpo_x_Beneficio" Width="1.5" PointX="5.25" PointY="48.75" />
+        <EntityTypeShape EntityType="SecurityModel.ParametrosGpo_x_Perfiles" Width="1.5" PointX="5.25" PointY="51.875" />
+        <EntityTypeShape EntityType="SecurityModel.Perfil_x_Controlador_x_Accion" Width="1.5" PointX="5.25" PointY="55.125" />
+        <EntityTypeShape EntityType="SecurityModel.Perfiles" Width="1.5" PointX="3" PointY="49.625" />
+        <EntityTypeShape EntityType="SecurityModel.Personas" Width="1.5" PointX="3.75" PointY="60.75" />
+        <EntityTypeShape EntityType="SecurityModel.Preguntas" Width="1.5" PointX="6" PointY="65.25" />
+        <EntityTypeShape EntityType="SecurityModel.Preguntas_x_Login" Width="1.5" PointX="8.25" PointY="62" />
+        <EntityTypeShape EntityType="SecurityModel.Sesiones" Width="1.5" PointX="13.5" PointY="35.25" />
+        <EntityTypeShape EntityType="SecurityModel.Sistemas" Width="1.5" PointX="0.75" PointY="34.375" />
+        <AssociationConnector Association="SecurityModel.FK_Accion_x_Controlador_Id_Accion" />
+        <AssociationConnector Association="SecurityModel.FK_Accion_x_Controlador_Id_Controlador" />
+        <AssociationConnector Association="SecurityModel.FK_Cuenta_x_AreasDeTrabajo_x_Accion_Id_Accion" />
+        <AssociationConnector Association="SecurityModel.FK_Cuenta_x_Controlador_x_Accion_Id_Accion" />
+        <AssociationConnector Association="SecurityModel.FK_Perfil_x_Controlador_x_Accion_Id_Accion" />
+        <AssociationConnector Association="SecurityModel.FK_AreasDeTrabajo_Id_Sistema" />
+        <AssociationConnector Association="SecurityModel.FK_AreasDeTrabajo_x_Perfiles_Id_AreaDeTrabajo" />
+        <AssociationConnector Association="SecurityModel.FK_Beneficio_x_AreaDeTrabajo_Id_AreaDeTrabajo" />
+        <AssociationConnector Association="SecurityModel.FK_Controlador_x_AreasDeTrabajo_Id_AreaDeTrabajo" />
+        <AssociationConnector Association="SecurityModel.FK_Controladores_x_AreasDeTrabajo_Id_AreaDeTrabajo" />
+        <AssociationConnector Association="SecurityModel.FK_Cuenta_x_AreasDeTrabajo_x_Accion_Id_AreaDeTrabajo" />
+        <AssociationConnector Association="SecurityModel.FK_AreasDeTrabajo_x_Perfiles_Id_Perfil" />
+        <AssociationConnector Association="SecurityModel.FK_Baja_motivos_Id_Baja" />
+        <AssociationConnector Association="SecurityModel.FK_Cuentas_Id_Baja" />
+        <AssociationConnector Association="SecurityModel.FK_MotivoBaja_x_Cuenta_Id_MotivoBaja" />
+        <AssociationConnector Association="SecurityModel.FK_Beneficio_Id_BeneficioTipo" />
+        <AssociationConnector Association="SecurityModel.FK_Beneficio_x_AreaDeTrabajo_Id_Beneficio" />
+        <AssociationConnector Association="SecurityModel.FK_Beneficio_x_Perfiles_Id_Beneficio" />
+        <AssociationConnector Association="SecurityModel.FK_Benficio_x_Cuenta_Id_Beneficio" />
+        <AssociationConnector Association="SecurityModel.FK_Parametros_x_Beneficio_Id_Beneficio" />
+        <AssociationConnector Association="SecurityModel.FK_ParametrosGpo_x_Beneficio_Id_Beneficio" />
+        <AssociationConnector Association="SecurityModel.FK_Beneficio_x_Perfiles_Id_Perfil" />
+        <AssociationConnector Association="SecurityModel.FK_Benficio_x_Cuenta_Id_Cuenta" />
+        <AssociationConnector Association="SecurityModel.FK_Contacto_Id_ContactoMedio" />
+        <AssociationConnector Association="SecurityModel.FK_Contacto_Id_ContactoTipo" />
+        <AssociationConnector Association="SecurityModel.FK_Domicilios_Id_ContactoTipo" />
+        <AssociationConnector Association="SecurityModel.FK_Contacto_x_Domicilio_Id_Contacto" />
+        <AssociationConnector Association="SecurityModel.FK_Contacto_x_Domicilio_Id_Domicilio" />
+        <AssociationConnector Association="SecurityModel.FK_Contacto_x_Persona_Id_Contacto" />
+        <AssociationConnector Association="SecurityModel.FK_Contacto_x_Persona_Id_Persona" />
+        <AssociationConnector Association="SecurityModel.FK_Controlador_x_AreasDeTrabajo_Id_Controlador" />
+        <AssociationConnector Association="SecurityModel.FK_Controladores_Id_Sistema" />
+        <AssociationConnector Association="SecurityModel.FK_Controladores_x_AreasDeTrabajo_Id_Controlador" />
+        <AssociationConnector Association="SecurityModel.FK_Cuenta_x_Controlador_x_Accion_Id_Controlador" />
+        <AssociationConnector Association="SecurityModel.FK_Perfil_x_Controlador_x_Accion_Id_Controlador" />
+        <AssociationConnector Association="SecurityModel.FK_Cuenta_x_AreasDeTrabajo_x_Accion_Id_Cuenta" />
+        <AssociationConnector Association="SecurityModel.FK_Cuenta_x_Controlador_x_Accion_Id_Cuenta" />
+        <AssociationConnector Association="SecurityModel.FK_Cuentas_Id_Login" />
+        <AssociationConnector Association="SecurityModel.FK_Cuentas_Id_Perfil" />
+        <AssociationConnector Association="SecurityModel.FK_Cuentas_Id_Sistema" />
+        <AssociationConnector Association="SecurityModel.FK_Cuentas_x_Personas_Id_Cuenta" />
+        <AssociationConnector Association="SecurityModel.FK_Equipos_Id_Cuenta" />
+        <AssociationConnector Association="SecurityModel.FK_MotivoBaja_x_Cuenta_Id_Cuenta" />
+        <AssociationConnector Association="SecurityModel.FK_Sesiones_Id_Cuenta" />
+        <AssociationConnector Association="SecurityModel.FK_Cuentas_x_Personas_Id_Persona" />
+        <AssociationConnector Association="SecurityModel.FK_Directorios_Id_DirectorioTipo" />
+        <AssociationConnector Association="SecurityModel.FK_Directorios_Id_Sistema" />
+        <AssociationConnector Association="SecurityModel.FK_Directorios_x_Perfiles_Id_Directorio" />
+        <AssociationConnector Association="SecurityModel.FK_Directorios_x_Sistemas_Id_Directorio" />
+        <AssociationConnector Association="SecurityModel.FK_Directorios_x_Perfiles_Id_Perfil" />
+        <AssociationConnector Association="SecurityModel.FK_Directorios_x_Sistemas_Id_Sistema" />
+        <AssociationConnector Association="SecurityModel.FK_Equipos_Id_DispositivoTipo" />
+        <AssociationConnector Association="SecurityModel.FK_Domicilio_x_Personas_Id_Domicilio" />
+        <AssociationConnector Association="SecurityModel.FK_Domicilio_x_Personas_Id_Persona" />
+        <AssociationConnector Association="SecurityModel.FK_Domicilios_Id_Pais_Id_Entidad_Id_Municipio" />
+        <AssociationConnector Association="SecurityModel.FK_Entidades_Id_Pais" />
+        <AssociationConnector Association="SecurityModel.FK_Municipios_Id_Pais_Id_Entidad" />
+        <AssociationConnector Association="SecurityModel.FK_Equipos_Id_EquipoTipo" />
+        <AssociationConnector Association="SecurityModel.FK_Equipos_Id_Sistema" />
+        <AssociationConnector Association="SecurityModel.FK_Personas_Id_Genero" />
+        <AssociationConnector Association="SecurityModel.FK_LogIn_Id_Persona" />
+        <AssociationConnector Association="SecurityModel.FK_Preguntas_x_Login_Id_Login" />
+        <AssociationConnector Association="SecurityModel.FK_Parametros_configuracion_Id_Parametro" />
+        <AssociationConnector Association="SecurityModel.FK_Parametros_Id_GpoParametro" />
+        <AssociationConnector Association="SecurityModel.FK_Parametros_Id_ParametroTipoDato" />
+        <AssociationConnector Association="SecurityModel.FK_Parametros_Id_Sistema" />
+        <AssociationConnector Association="SecurityModel.FK_Parametros_mensaje_Id_Parametro" />
+        <AssociationConnector Association="SecurityModel.FK_Parametros_x_Beneficio_Id_Parametro" />
+        <AssociationConnector Association="SecurityModel.FK_Parametros_configuracion_Id_ParametroTipoDato" />
+        <AssociationConnector Association="SecurityModel.FK_Parametros_configuracion_Id_Sistema" />
+        <AssociationConnector Association="SecurityModel.FK_Parametros_grupo_Id_Sistema" />
+        <AssociationConnector Association="SecurityModel.FK_ParametrosGpo_x_Beneficio_Id_GpoParametro" />
+        <AssociationConnector Association="SecurityModel.FK_ParametrosGpo_x_Perfiles_Id_GpoParametro" />
+        <AssociationConnector Association="SecurityModel.FK_ParametrosGpo_x_Perfiles_Id_Perfil" />
+        <AssociationConnector Association="SecurityModel.FK_Perfil_x_Controlador_x_Accion_Id_Perfil" />
+        <AssociationConnector Association="SecurityModel.FK_Perfiles_Id_Sistema" />
+        <AssociationConnector Association="SecurityModel.FK_Preguntas_x_Login_Id_Cuenta" />
+        <AssociationConnector Association="SecurityModel.FK_Sesiones_Id_Sistema" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

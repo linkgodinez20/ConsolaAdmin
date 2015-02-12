@@ -14,11 +14,11 @@ namespace Security.Controllers
 {
     public class ContactosController : Controller
     {
-        private readonly IRepo<Contacto> repo;
+        private readonly IRepo<Contactos> repo;
         private readonly IRepo<Contacto_tipo> Repo_ContactoTipo;
         private readonly IRepo<Contacto_medio> Repo_ContactoMedio;
 
-        public ContactosController(IRepo<Contacto> repo, IRepo<Contacto_tipo> Repo_ContactoTipo, IRepo<Contacto_medio> Repo_ContactoMedio)
+        public ContactosController(IRepo<Contactos> repo, IRepo<Contacto_tipo> Repo_ContactoTipo, IRepo<Contacto_medio> Repo_ContactoMedio)
         {
             this.repo = repo;
             this.Repo_ContactoTipo = Repo_ContactoTipo;
@@ -48,8 +48,8 @@ namespace Security.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            IOrderedQueryable<Contacto> ordena_contactos = repo.GetAll()
-                .OrderBy(x => x.Contacto_tipo.Nombre).OrderBy(y => y.Contacto_medio.Nombre).OrderBy(z => z.Contacto1);
+            IOrderedQueryable<Contactos> ordena_contactos = repo.GetAll()
+                .OrderBy(x => x.Contacto_tipo.Nombre).OrderBy(y => y.Contacto_medio.Nombre).OrderBy(z => z.Contacto);
 
             var actividades = from s in ordena_contactos
                               select s;
@@ -58,7 +58,7 @@ namespace Security.Controllers
             {
                 actividades = actividades.Where(s => s.Contacto_tipo.Nombre.Contains(searchString)
                                        || s.Contacto_medio.Nombre.Contains(searchString)
-                                       || s.Contacto1.Contains(searchString)
+                                       || s.Contacto.Contains(searchString)
                                        );
             }
 
@@ -77,13 +77,13 @@ namespace Security.Controllers
                     actividades = actividades.OrderByDescending(p => p.Contacto_tipo.Nombre);
                     break;
                 case "Contacto":
-                    actividades = actividades.OrderBy(p => p.Contacto1);
+                    actividades = actividades.OrderBy(p => p.Contacto);
                     break;
                 case "Contacto_desc":
-                    actividades = actividades.OrderByDescending(p => p.Contacto1);
+                    actividades = actividades.OrderByDescending(p => p.Contacto);
                     break;
                 default:
-                    actividades = actividades.OrderBy(ct => ct.Contacto_tipo.Nombre).OrderBy(cm => cm.Contacto_medio.Nombre).OrderBy(c => c.Contacto1);
+                    actividades = actividades.OrderBy(ct => ct.Contacto_tipo.Nombre).OrderBy(cm => cm.Contacto_medio.Nombre).OrderBy(c => c.Contacto);
                     break;
             }
 
@@ -105,7 +105,7 @@ namespace Security.Controllers
             //{
             //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             //}
-            Contacto contacto = repo.Get(id);
+            Contactos contacto = repo.Get(id);
             if (contacto == null)
             {
                 return HttpNotFound();
@@ -124,7 +124,7 @@ namespace Security.Controllers
         // POST: Contactos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id_Contacto,Id_ContactoTipo,Contacto1,Id_ContactoMedio,Notas,Estatus")] Contacto contacto)
+        public ActionResult Create([Bind(Include = "Id_Contacto,Id_ContactoTipo,Contacto1,Id_ContactoMedio,Notas,Estatus")] Contactos contacto)
         {
             if (ModelState.IsValid)
             {
@@ -145,7 +145,7 @@ namespace Security.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contacto contacto = repo.Get(id);
+            Contactos contacto = repo.Get(id);
             if (contacto == null)
             {
                 return HttpNotFound();
@@ -160,7 +160,7 @@ namespace Security.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id_Contacto,Id_ContactoTipo,Contacto1,Id_ContactoMedio,Notas,Estatus")] Contacto contacto)
+        public ActionResult Edit([Bind(Include = "Id_Contacto,Id_ContactoTipo,Contacto1,Id_ContactoMedio,Notas,Estatus")] Contactos contacto)
         {
             if (ModelState.IsValid)
             {
@@ -180,7 +180,7 @@ namespace Security.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contacto contacto = repo.Get(id);
+            Contactos contacto = repo.Get(id);
             if (contacto == null)
             {
                 return HttpNotFound();
@@ -193,7 +193,7 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Contacto contacto = repo.Get(id);
+            Contactos contacto = repo.Get(id);
             repo.Delete(contacto);
             repo.Save();
             return RedirectToAction("Index");

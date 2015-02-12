@@ -52,3 +52,5 @@ D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\bin\
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\obj\Debug\Services.dll
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\obj\Debug\Services.pdb
+D:\Humberto Flores\Documentos\Visual Studio 2013\Projects\SecurityTemplate\Services\bin\Debug\Core.dll
+D:\Humberto Flores\Documentos\Visual Studio 2013\Projects\SecurityTemplate\Services\bin\Debug\Core.pdb

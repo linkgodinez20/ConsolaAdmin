@@ -16,8 +16,8 @@ namespace Security.Core.Model
     {
         public Domicilios()
         {
-            this.Contacto = new HashSet<Contacto>();
-            this.Personas = new HashSet<Personas>();
+            this.Contacto_x_Domicilio = new HashSet<Contacto_x_Domicilio>();
+            this.Domicilio_x_Personas = new HashSet<Domicilio_x_Personas>();
         }
     
         public int Id_Domicilio { get; set; }
@@ -36,8 +36,8 @@ namespace Security.Core.Model
         public bool Estatus { get; set; }
     
         public virtual Contacto_tipo Contacto_tipo { get; set; }
+        public virtual ICollection<Contacto_x_Domicilio> Contacto_x_Domicilio { get; set; }
+        public virtual ICollection<Domicilio_x_Personas> Domicilio_x_Personas { get; set; }
         public virtual Municipios Municipios { get; set; }
-        public virtual ICollection<Contacto> Contacto { get; set; }
-        public virtual ICollection<Personas> Personas { get; set; }
     }
 }

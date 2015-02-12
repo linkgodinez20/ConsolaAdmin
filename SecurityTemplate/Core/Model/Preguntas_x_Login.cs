@@ -14,6 +14,7 @@ namespace Security.Core.Model
     
     public partial class Preguntas_x_Login
     {
+        public int Id { get; set; }
         public int Id_Login { get; set; }
         public byte Id_Pregunta { get; set; }
         public string Respuesta { get; set; }

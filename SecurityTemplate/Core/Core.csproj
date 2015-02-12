@@ -52,10 +52,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IDefaultSettings.cs" />
-    <Compile Include="Model\Actividades.cs">
+    <Compile Include="Model\Acciones.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Accion_x_Controlador.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\AreasDeTrabajo.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AreasDeTrabajo_x_Perfiles.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Baja.cs">
@@ -70,13 +76,16 @@
     <Compile Include="Model\Beneficio_tipo.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Beneficio_x_AreaDeTrabajo.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Beneficio_x_Perfiles.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Benficio_x_Cuenta.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Contacto.cs">
+    <Compile Include="Model\Contactos.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Contacto_medio.cs">
@@ -85,16 +94,52 @@
     <Compile Include="Model\Contacto_tipo.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Contacto_x_Domicilio.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Contacto_x_Persona.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Controladores.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Controladores_x_AreasDeTrabajo.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Controlador_x_AreasDeTrabajo.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Cuentas.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Cuentas_x_Personas.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Cuenta_x_AreasDeTrabajo_x_Accion.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Cuenta_x_Controlador_x_Accion.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Directorios.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Directorios_x_Perfiles.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Directorios_x_Sistemas.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Directorio_tipo.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Dispositivos_tipo.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Domicilios.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Domicilio_x_Personas.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Entidades.cs">
@@ -118,24 +163,24 @@
     <Compile Include="Model\LogIn.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Menu.cs">
-      <DependentUpon>SecurityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Menu_categoria.cs">
-      <DependentUpon>SecurityModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Metadata.cs" />
     <Compile Include="Model\MetadataLinker.cs" />
-    <Compile Include="Model\Municipios.cs">
+    <Compile Include="Model\MotivoBaja_x_Cuenta.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Paginas.cs">
+    <Compile Include="Model\Municipios.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Paises.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Parametros.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ParametrosGpo_x_Beneficio.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ParametrosGpo_x_Perfiles.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Parametros_configuracion.cs">
@@ -150,19 +195,13 @@
     <Compile Include="Model\Parametros_tipoDato.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Parametros_x_Beneficio.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Perfiles.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Permisos.cs">
-      <DependentUpon>SecurityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Permisos_AreaDeTrabajo_x_Cuenta.cs">
-      <DependentUpon>SecurityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Permisos_Cuentas_x_Actividades.cs">
-      <DependentUpon>SecurityModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Permisos_Perfiles_x_Actividades.cs">
+    <Compile Include="Model\Perfil_x_Controlador_x_Accion.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Personas.cs">

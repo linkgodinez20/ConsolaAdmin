@@ -17,8 +17,8 @@ namespace Security.Core.Model
         public Parametros_grupo()
         {
             this.Parametros = new HashSet<Parametros>();
-            this.Beneficio = new HashSet<Beneficio>();
-            this.Perfiles = new HashSet<Perfiles>();
+            this.ParametrosGpo_x_Beneficio = new HashSet<ParametrosGpo_x_Beneficio>();
+            this.ParametrosGpo_x_Perfiles = new HashSet<ParametrosGpo_x_Perfiles>();
         }
     
         public short Id_GpoParametro { get; set; }
@@ -27,7 +27,7 @@ namespace Security.Core.Model
     
         public virtual ICollection<Parametros> Parametros { get; set; }
         public virtual Sistemas Sistemas { get; set; }
-        public virtual ICollection<Beneficio> Beneficio { get; set; }
-        public virtual ICollection<Perfiles> Perfiles { get; set; }
+        public virtual ICollection<ParametrosGpo_x_Beneficio> ParametrosGpo_x_Beneficio { get; set; }
+        public virtual ICollection<ParametrosGpo_x_Perfiles> ParametrosGpo_x_Perfiles { get; set; }
     }
 }

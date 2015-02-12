@@ -16,10 +16,11 @@ namespace Security.Core.Model
     {
         public AreasDeTrabajo()
         {
-            this.Permisos_AreaDeTrabajo_x_Cuenta = new HashSet<Permisos_AreaDeTrabajo_x_Cuenta>();
-            this.Actividades = new HashSet<Actividades>();
-            this.Perfiles = new HashSet<Perfiles>();
-            this.Beneficio = new HashSet<Beneficio>();
+            this.AreasDeTrabajo_x_Perfiles = new HashSet<AreasDeTrabajo_x_Perfiles>();
+            this.Beneficio_x_AreaDeTrabajo = new HashSet<Beneficio_x_AreaDeTrabajo>();
+            this.Controlador_x_AreasDeTrabajo = new HashSet<Controlador_x_AreasDeTrabajo>();
+            this.Controladores_x_AreasDeTrabajo = new HashSet<Controladores_x_AreasDeTrabajo>();
+            this.Cuenta_x_AreasDeTrabajo_x_Accion = new HashSet<Cuenta_x_AreasDeTrabajo_x_Accion>();
         }
     
         public short Id_AreaDeTrabajo { get; set; }
@@ -27,9 +28,10 @@ namespace Security.Core.Model
         public byte Id_Sistema { get; set; }
     
         public virtual Sistemas Sistemas { get; set; }
-        public virtual ICollection<Permisos_AreaDeTrabajo_x_Cuenta> Permisos_AreaDeTrabajo_x_Cuenta { get; set; }
-        public virtual ICollection<Actividades> Actividades { get; set; }
-        public virtual ICollection<Perfiles> Perfiles { get; set; }
-        public virtual ICollection<Beneficio> Beneficio { get; set; }
+        public virtual ICollection<AreasDeTrabajo_x_Perfiles> AreasDeTrabajo_x_Perfiles { get; set; }
+        public virtual ICollection<Beneficio_x_AreaDeTrabajo> Beneficio_x_AreaDeTrabajo { get; set; }
+        public virtual ICollection<Controlador_x_AreasDeTrabajo> Controlador_x_AreasDeTrabajo { get; set; }
+        public virtual ICollection<Controladores_x_AreasDeTrabajo> Controladores_x_AreasDeTrabajo { get; set; }
+        public virtual ICollection<Cuenta_x_AreasDeTrabajo_x_Accion> Cuenta_x_AreasDeTrabajo_x_Accion { get; set; }
     }
 }

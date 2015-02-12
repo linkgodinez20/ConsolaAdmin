@@ -16,7 +16,7 @@ namespace Security.Core.Model
     {
         public Baja_motivos()
         {
-            this.Cuentas = new HashSet<Cuentas>();
+            this.MotivoBaja_x_Cuenta = new HashSet<MotivoBaja_x_Cuenta>();
         }
     
         public byte Id_MotivoBaja { get; set; }
@@ -24,6 +24,6 @@ namespace Security.Core.Model
         public byte Id_Baja { get; set; }
     
         public virtual Baja Baja { get; set; }
-        public virtual ICollection<Cuentas> Cuentas { get; set; }
+        public virtual ICollection<MotivoBaja_x_Cuenta> MotivoBaja_x_Cuenta { get; set; }
     }
 }

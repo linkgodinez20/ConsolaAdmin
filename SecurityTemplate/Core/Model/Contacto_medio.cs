@@ -16,12 +16,12 @@ namespace Security.Core.Model
     {
         public Contacto_medio()
         {
-            this.Contacto = new HashSet<Contacto>();
+            this.Contactos = new HashSet<Contactos>();
         }
     
         public byte Id_ContactoMedio { get; set; }
         public string Nombre { get; set; }
     
-        public virtual ICollection<Contacto> Contacto { get; set; }
+        public virtual ICollection<Contactos> Contactos { get; set; }
     }
 }

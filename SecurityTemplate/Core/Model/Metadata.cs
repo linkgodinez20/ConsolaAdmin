@@ -139,7 +139,7 @@ namespace Security.Core.Model
         [Display(Name = "Pais")]
         public short Id_Pais;
 
-        [Display(Name = "Id")]
+        [Display(Name = "Entidad (Id)")]
         public short Id_Entidad;
         
         [Required()]
@@ -148,18 +148,6 @@ namespace Security.Core.Model
         
         [Required()]
         public string Abreviatura;    
-    }
-    public class Menu_categoriaMetadata
-    {
-        [Display(Name = "Id")]
-        public short Id_MenuCategoria;
-        
-        [Required()]
-        [Display(Name = "Categoria Menu")]
-        public string Nombre;
-
-        [Required()]
-        public byte Orden;
     }
     public class LogInMetadata
     {
@@ -178,35 +166,6 @@ namespace Security.Core.Model
         [Required()]
         [Display(Name = "Persona")]
         public int Id_Persona;
-    }
-    public class PaginasMetadata
-    {        
-        [Display(Name = "Id")]
-        public short Id_Pagina;
-
-        [Required()]
-        [Display(Name = "Página")]
-        public string Nombre;
-
-        [Required()]
-        public string Titulo;
-
-        [Required()]
-        [Display(Name = "Sistema")]
-        public byte Id_Sistema;
-    }
-    public class PermisosMetadata
-    {
-        [Display(Name = "Id")]
-        public byte Id_Permiso;
-
-        [Required()]
-        [Display(Name = "Permiso")]
-        public string Nombre;
-
-        [Required()]
-        [Display(Name = "Activo")]
-        public bool Estatus;
     }
     public class LocationsMetadata
     {
@@ -233,17 +192,6 @@ namespace Security.Core.Model
         [Required()]
         [Display(Name = "Tipo Equipo")]
         public string Nombre;
-    }
-    public class Permisos_Cuentas_x_ActividadesMetadata
-    {
-        [Display(Name = "Id")]
-        public int Id_Cuenta;
-
-        [Display(Name = "Actividad")]
-        public short Id_Actividad;
-        
-        [Display(Name = "Permiso")]
-        public byte Id_Permiso;
     }
 
     public class PreguntasMetadata
@@ -289,31 +237,6 @@ namespace Security.Core.Model
         [DataType(DataType.DateTime)]
         public Nullable<System.DateTime> end_date;
     }
-
-    
-
-    public class ActividadesMetadata
-    {
-        [Display(Name = "Id")]
-        [ScaffoldColumn(false)]
-        public Int16 Id_Actividad;
-
-        [Required(ErrorMessage = "El campo [Nombre] es obligatorio.")]
-        [StringLength(128)]
-        public String Nombre;
-
-        [Required(ErrorMessage = "El campo [Estatus] es obligatorio.")]
-        public Boolean Estatus;
-
-        [Required(ErrorMessage = "El campo [Directorio] es obligatorio.")]
-        [Display(Name = "Directorio")]
-        public Byte Id_Directorio;
-
-        [Required(ErrorMessage = "El campo [Sistema] es obligatorio.")]
-        [Display(Name = "Sistema")]
-        public Byte Id_Sistema;
-    }
-
     public class BajaMetadata
     {
         [Display(Name = "Id")]
@@ -343,9 +266,9 @@ namespace Security.Core.Model
         public Boolean Estatus;
     }
 
-    public class ContactoMetadata
+    public class ContactosMetadata
     {
-        [Display(Name = "Id")]
+        [Display(Name = "Contacto (Id)")]
         [ScaffoldColumn(false)]
         public Int32 Id_Contacto;
 
@@ -356,7 +279,7 @@ namespace Security.Core.Model
         [Display(Name = "Contacto")]
         [Required(ErrorMessage = "El campo [Contacto] es obligatorio.")]
         [StringLength(128)]
-        public String Contacto1;
+        public String Contacto;
 
         [Required(ErrorMessage = "El campo [Medio de contacto] es obligatorio.")]
         [Display(Name = "Medio de contacto")]
@@ -460,6 +383,10 @@ namespace Security.Core.Model
         [Display(Name = "Tipo de equipo")]
         public Byte Id_EquipoTipo;
 
+        [Required(ErrorMessage = "El campo [Tipo de dispositivo] es obligatorio.")]
+        [Display(Name = "Tipo de dispositivo")]
+        public byte Id_DispositivoTipo;
+
         [Display(Name = "Descripción")]
         [StringLength(128)]
         public String Descripcion;
@@ -491,45 +418,6 @@ namespace Security.Core.Model
         [Required(ErrorMessage = "El campo [Nombre] es obligatorio.")]
         public String Nombre;
     }
-
-    public class MenuMetadata
-    {
-        [Display(Name = "Id")]
-        [ScaffoldColumn(false)]
-        public Int16 Id_Menu;
-
-        [Required(ErrorMessage = "El campo [Nombre] es obligatorio.")]
-        [StringLength(50)]
-        public String Nombre;
-
-        [Required(ErrorMessage = "El campo [Padre] es obligatorio.")]
-        [Display(Name = "Padre")]
-        public Int16 Parent;
-
-        [StringLength(64)]
-        public String Tooltip;
-
-        [Required(ErrorMessage = "El campo [Página] es obligatorio.")]
-        [Display(Name = "Página")]
-        public Int16 Id_Pagina;
-
-        [Required(ErrorMessage = "El campo [Orden] es obligatorio.")]
-        [Display(Name = "Orden")]
-        public Byte Orden;
-
-        [Required(ErrorMessage = "El campo [Habilitado] es obligatorio.")]
-        [Display(Name = "Habilitado")]
-        public Boolean Habilitado;
-
-        [Required(ErrorMessage = "El campo [Categoría] es obligatorio.")]
-        [Display(Name = "Categoría")]
-        public Int16 Id_MenuCategoria;
-
-        [Required(ErrorMessage = "El campo [Sistema] es obligatorio.")]
-        [Display(Name = "Sistema")]
-        public Byte Id_Sistema;
-    }
-
     public class MunicipiosMetadata
     {
         [Key, Column(Order = 0)]
@@ -559,7 +447,7 @@ namespace Security.Core.Model
 
     public class PaisesMetadata
     {
-        [Display(Name = "Id")]
+        [Display(Name = "País (Id)")]
         [ScaffoldColumn(false)]
         public Int16 Id_Pais;
 
@@ -687,5 +575,35 @@ namespace Security.Core.Model
         [Required(ErrorMessage = "El campo [Estatus] es obligatorio.")]
         public Boolean Estatus;
     }
-         
+
+    public class AccionesMetadata {
+        
+        [Display(Name = "Acción (Id)")]
+        public int Id_Accion;
+
+        [Required(ErrorMessage = "El campo [Nombre] es obligatorio.")]
+        [Display(Name = "Nombre")]
+        public string Nombre;
+
+        [Required(ErrorMessage = "El campo [Estatus] es obligatorio.")]
+        public bool Estatus;
+    }
+
+    public class ControladoresMetadata {
+        [Display(Name = "Controlador (Id)")]
+        public short Id_Controlador;
+
+        [Required(ErrorMessage = "El campo [Nombre] es obligatorio.")]
+        [Display(Name = "Nombre")]
+        public string Nombre;
+
+        [Required(ErrorMessage = "El campo [Estatus] es obligatorio.")]
+        public bool Estatus;
+
+        [Required(ErrorMessage = "El campo [Sistema] es obligatorio.")]
+        [Display(Name = "Sistema")]
+        public byte Id_Sistema;
+    }
+
+
 }

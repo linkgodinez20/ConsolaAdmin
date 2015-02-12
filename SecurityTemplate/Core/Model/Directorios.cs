@@ -16,19 +16,20 @@ namespace Security.Core.Model
     {
         public Directorios()
         {
-            this.Actividades = new HashSet<Actividades>();
-            this.Perfiles = new HashSet<Perfiles>();
-            this.Sistemas = new HashSet<Sistemas>();
+            this.Directorios_x_Perfiles = new HashSet<Directorios_x_Perfiles>();
+            this.Directorios_x_Sistemas = new HashSet<Directorios_x_Sistemas>();
         }
     
         public byte Id_Directorio { get; set; }
         public string Nombre { get; set; }
+        public string Ruta { get; set; }
         public byte Id_DirectorioTipo { get; set; }
         public bool Estatus { get; set; }
+        public byte Id_Sistema { get; set; }
     
-        public virtual ICollection<Actividades> Actividades { get; set; }
         public virtual Directorio_tipo Directorio_tipo { get; set; }
-        public virtual ICollection<Perfiles> Perfiles { get; set; }
-        public virtual ICollection<Sistemas> Sistemas { get; set; }
+        public virtual Sistemas Sistemas { get; set; }
+        public virtual ICollection<Directorios_x_Perfiles> Directorios_x_Perfiles { get; set; }
+        public virtual ICollection<Directorios_x_Sistemas> Directorios_x_Sistemas { get; set; }
     }
 }

@@ -16,19 +16,17 @@ namespace Security.Core.Model
     {
         public Sistemas()
         {
-            this.Actividades = new HashSet<Actividades>();
             this.AreasDeTrabajo = new HashSet<AreasDeTrabajo>();
+            this.Controladores = new HashSet<Controladores>();
             this.Cuentas = new HashSet<Cuentas>();
-            this.Directorio_tipo = new HashSet<Directorio_tipo>();
+            this.Directorios = new HashSet<Directorios>();
+            this.Directorios_x_Sistemas = new HashSet<Directorios_x_Sistemas>();
             this.Equipos = new HashSet<Equipos>();
-            this.Menu = new HashSet<Menu>();
-            this.Paginas = new HashSet<Paginas>();
             this.Parametros = new HashSet<Parametros>();
             this.Parametros_configuracion = new HashSet<Parametros_configuracion>();
             this.Parametros_grupo = new HashSet<Parametros_grupo>();
             this.Perfiles = new HashSet<Perfiles>();
             this.Sesiones = new HashSet<Sesiones>();
-            this.Directorios = new HashSet<Directorios>();
         }
     
         public byte Id_Sistema { get; set; }
@@ -37,18 +35,16 @@ namespace Security.Core.Model
         public string Descripcion { get; set; }
         public bool Estatus { get; set; }
     
-        public virtual ICollection<Actividades> Actividades { get; set; }
         public virtual ICollection<AreasDeTrabajo> AreasDeTrabajo { get; set; }
+        public virtual ICollection<Controladores> Controladores { get; set; }
         public virtual ICollection<Cuentas> Cuentas { get; set; }
-        public virtual ICollection<Directorio_tipo> Directorio_tipo { get; set; }
+        public virtual ICollection<Directorios> Directorios { get; set; }
+        public virtual ICollection<Directorios_x_Sistemas> Directorios_x_Sistemas { get; set; }
         public virtual ICollection<Equipos> Equipos { get; set; }
-        public virtual ICollection<Menu> Menu { get; set; }
-        public virtual ICollection<Paginas> Paginas { get; set; }
         public virtual ICollection<Parametros> Parametros { get; set; }
         public virtual ICollection<Parametros_configuracion> Parametros_configuracion { get; set; }
         public virtual ICollection<Parametros_grupo> Parametros_grupo { get; set; }
         public virtual ICollection<Perfiles> Perfiles { get; set; }
         public virtual ICollection<Sesiones> Sesiones { get; set; }
-        public virtual ICollection<Directorios> Directorios { get; set; }
     }
 }

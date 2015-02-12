@@ -16,11 +16,11 @@ namespace Security.Core.Model
     {
         public Beneficio()
         {
+            this.Beneficio_x_AreaDeTrabajo = new HashSet<Beneficio_x_AreaDeTrabajo>();
             this.Beneficio_x_Perfiles = new HashSet<Beneficio_x_Perfiles>();
             this.Benficio_x_Cuenta = new HashSet<Benficio_x_Cuenta>();
-            this.AreasDeTrabajo = new HashSet<AreasDeTrabajo>();
-            this.Parametros = new HashSet<Parametros>();
-            this.Parametros_grupo = new HashSet<Parametros_grupo>();
+            this.Parametros_x_Beneficio = new HashSet<Parametros_x_Beneficio>();
+            this.ParametrosGpo_x_Beneficio = new HashSet<ParametrosGpo_x_Beneficio>();
         }
     
         public byte Id_Beneficio { get; set; }
@@ -29,10 +29,10 @@ namespace Security.Core.Model
         public bool Estatus { get; set; }
     
         public virtual Beneficio_tipo Beneficio_tipo { get; set; }
+        public virtual ICollection<Beneficio_x_AreaDeTrabajo> Beneficio_x_AreaDeTrabajo { get; set; }
         public virtual ICollection<Beneficio_x_Perfiles> Beneficio_x_Perfiles { get; set; }
         public virtual ICollection<Benficio_x_Cuenta> Benficio_x_Cuenta { get; set; }
-        public virtual ICollection<AreasDeTrabajo> AreasDeTrabajo { get; set; }
-        public virtual ICollection<Parametros> Parametros { get; set; }
-        public virtual ICollection<Parametros_grupo> Parametros_grupo { get; set; }
+        public virtual ICollection<Parametros_x_Beneficio> Parametros_x_Beneficio { get; set; }
+        public virtual ICollection<ParametrosGpo_x_Beneficio> ParametrosGpo_x_Beneficio { get; set; }
     }
 }

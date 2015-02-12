@@ -18,7 +18,7 @@ namespace Security.Core.Model
         {
             this.Parametros_configuracion = new HashSet<Parametros_configuracion>();
             this.Parametros_mensaje = new HashSet<Parametros_mensaje>();
-            this.Beneficio = new HashSet<Beneficio>();
+            this.Parametros_x_Beneficio = new HashSet<Parametros_x_Beneficio>();
         }
     
         public short Id_Parametro { get; set; }
@@ -32,6 +32,6 @@ namespace Security.Core.Model
         public virtual Parametros_tipoDato Parametros_tipoDato { get; set; }
         public virtual Sistemas Sistemas { get; set; }
         public virtual ICollection<Parametros_mensaje> Parametros_mensaje { get; set; }
-        public virtual ICollection<Beneficio> Beneficio { get; set; }
+        public virtual ICollection<Parametros_x_Beneficio> Parametros_x_Beneficio { get; set; }
     }
 }

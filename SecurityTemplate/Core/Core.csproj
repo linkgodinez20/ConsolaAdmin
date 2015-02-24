@@ -174,6 +174,7 @@
     <Compile Include="Model\Paises.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Parameters.cs" />
     <Compile Include="Model\Parametros.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>

@@ -1,12 +1,13 @@
 ﻿﻿@model PagedList.IPagedList<Security.Core.Model.Personas>
 @using PagedList.Mvc;
-@*<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />*@
+
 @{
-    ViewBag.Title = "Persona/Lista";    
+    ViewBag.Title = "Persona / Lista";    
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2 class="redTitle" align="center">Personas</h2>
 <ol class="breadcrumb">
-    <li>Inicio</li>
+    <li><span class="glyphicon glyphicon-home"></span> @Html.ActionLink("Inicio", "Index", "Home")</li>
     <li><b>Personas</b></li>
     <li class="active">Lista</li>
 </ol>
@@ -16,7 +17,7 @@
         <div class="input-group">
             @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
             <div class="input-group-btn">
-                <button name="btnSearch" id="btnSearch" type="submit" value="create" class="btn btn-info" data-container="body" data-toggle="popover" data-placement="top" data-content="Buscar">
+                <button name="btnSearch" id="btnSearch" type="submit" value="create" class="btn btn-danger" data-container="body" data-toggle="popover" data-placement="top" data-content="Buscar">
                     <i class="glyphicon glyphicon-search"></i>
                 </button>
                 <button name="btnFilter" id="btnFilter" type="submit" value="index" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Quitar filtro">
@@ -29,78 +30,114 @@
 }
 <br />
 <br />
-<table class="table table-bordered table-condensed table-responsive table-hover">
-    <tr>
-        <th class="alert-info">
-            @Html.ActionLink("Ap. Paterno", "Index", new { sortOrder = ViewBag.SortByAPaterno, currentFilter = ViewBag.CurrentFilter })
-            
-        </th>
-        <th class="alert-info">
-            @Html.ActionLink("Ap. Materno", "Index", new { sortOrder = ViewBag.SortByAMaterno, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            @Html.ActionLink("Nombre", "Index", new { sortOrder = ViewBag.SortByNombre, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.SortByEmail, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            @Html.ActionLink("RFC", "Index", new { sortOrder = ViewBag.SortByRFC, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            Homoclave
-        </th>
-        <th class="alert-info">
-            @Html.ActionLink("Estatus", "Index", new { sortOrder = ViewBag.SortByEstatus, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-success">
-            <span class="glyphicon glyphicon-cog"> Acciones</span>
-        </th>
-    </tr>
-
-
-    @foreach (var item in Model)
-    {
+<div class="table-responsive">
+    <table class="table table-bordered table-condensed table-responsive table-hover Box TaGo">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.APaterno)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AMaterno)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RFC)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Homoclave)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estatus)
-            </td>
-            <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.Id_Persona }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
-                @Html.ActionLink(" ", "Details", new { id = item.Id_Persona }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
-                @Html.ActionLink(" ", "Delete", new { id = item.Id_Persona }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
-            </td>
+            <th class="headers">
+                @Html.ActionLink("Ap. Paterno", "Index", new { sortOrder = ViewBag.SortByAPaterno, currentFilter = ViewBag.CurrentFilter })
+
+            </th>
+            <th class="headers">
+                @Html.ActionLink("Ap. Materno", "Index", new { sortOrder = ViewBag.SortByAMaterno, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="headers">
+                @Html.ActionLink("Nombre", "Index", new { sortOrder = ViewBag.SortByNombre, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="headers">
+                @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.SortByEmail, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="headers">
+                @Html.ActionLink("RFC", "Index", new { sortOrder = ViewBag.SortByRFC, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="headers">
+                Homoclave
+            </th>
+            <th class="headers">
+                @Html.ActionLink("Estatus", "Index", new { sortOrder = ViewBag.SortByEstatus, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="headers">
+                <span class="glyphicon glyphicon-cog"></span><b> Acciones</b>
+            </th>
         </tr>
-    }
-</table>
-@Html.PagedListPager(Model, page => Url.Action("Index",
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.APaterno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AMaterno)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RFC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Homoclave)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estatus)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.Id_Persona }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil", data_toggle = "modal", data_target = "#EditModal" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.Id_Persona }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list", data_toggle = "modal", data_target = "#DetailsModal" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.Id_Persona }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove", data_toggle = "modal", data_target = "#DelModal" })
+                </td>
+            </tr>
+        }
+    </table>
+    </div>
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
-@{
-    var ControllerName = ViewContext.RouteData.Values["controller"];
-}
-<table>
-    <tr>
-        <td>
-            <a class="btn btn-success glyphicon glyphicon-plus" data-container="body" data-toggle="popover" data-placement="right" data-content="Agregar" href="~/@ControllerName/Create"></a>
-        </td>
-    </tr>
-</table>
+        @{
+            var ControllerName = ViewContext.RouteData.Values["controller"];
+        }
+        <table>
+            <tr>
+                <td>
+                    <a class="btn btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#CreateModal" id="Agregar" href="~/@ControllerName/Create"></a>
+                </td>
+            </tr>
+        </table>
+        <!-- Modal -->
+        <div class="modal fade" id="DelModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Modal -->
+        <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                </div>
+            </div>
+        </div>
+        <!-- Detalles Modal -->
+        <div class="modal fade" id="DetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                </div>
+            </div>
+        </div>
+        <!-- Create Modal -->
+        <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                </div>
+            </div>
+        </div>

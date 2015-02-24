@@ -1,13 +1,13 @@
-﻿﻿@model PagedList.IPagedList<Security.Core.Model.Contacto>
+﻿﻿@model PagedList.IPagedList<Security.Core.Model.Contactos>
 @using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Contactos / Lista";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<h2 class="Titulo" align="center">Contactos</h2>
 <ol class="breadcrumb">
-    <li>Inicio</li>
+    <li><span class="glyphicon glyphicon-home"></span> @Html.ActionLink("Inicio", "Index", "Home")</li>
     <li><b>Contacto</b></li>
     <li class="active">Lista</li>
 </ol>
@@ -31,67 +31,101 @@
 }
 <br />
 <br />
-<table class="table table-bordered table-condensed table-hover">
-    <tr>
-        <th class="alert-info">
-            @Html.ActionLink("Medio", "Index", new { sortOrder = ViewBag.SortByContactoMedio, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            @Html.ActionLink("Tipo", "Index", new { sortOrder = ViewBag.SortByContactoTipo, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            @Html.ActionLink("Contacto", "Index", new { sortOrder = ViewBag.SortByContacto, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            Notas
-        </th>
-        <th class="alert-info">
-            Estatus
-        </th>
-
-        <th class="alert-success">
-            <span class="glyphicon glyphicon-cog"> Acciones</span>
-        </th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<div class="table-responsive">
+    <table class="table table-bordered table-condensed table-hover Box">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Contacto_medio.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Contacto_tipo.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Contacto1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Notas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estatus)
-            </td>
+            <th class="alert-info">
+                @Html.ActionLink("Medio", "Index", new { sortOrder = ViewBag.SortByContactoMedio, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="alert-info">
+                @Html.ActionLink("Tipo", "Index", new { sortOrder = ViewBag.SortByContactoTipo, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="alert-info">
+                @Html.ActionLink("Contacto", "Index", new { sortOrder = ViewBag.SortByContacto, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="alert-info">
+                Notas
+            </th>
+            <th class="alert-info">
+                Estatus
+            </th>
 
-            <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.Id_Contacto }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
-                @Html.ActionLink(" ", "Details", new { id = item.Id_Contacto }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
-                @Html.ActionLink(" ", "Delete", new { id = item.Id_Contacto }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
-            </td>
+            <th class="alert-success">
+                <span class="glyphicon glyphicon-cog"></span> Acciones
+            </th>
         </tr>
-    }
 
-</table>
-@Html.PagedListPager(Model, page => Url.Action("Index",
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contacto_medio.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contacto_tipo.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contacto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estatus)
+                </td>
+
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.Id_Contacto }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil", data_toggle = "modal", data_target = "#EditModal" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.Id_Contacto }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list", data_toggle = "modal", data_target = "#DetailsModal" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.Id_Contacto }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove", data_toggle = "modal", data_target = "#DelModal" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>
+    @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
-@{
-    var ControllerName = ViewContext.RouteData.Values["controller"];
-}
-<table>
-    <tr>
-        <td>
-            <a class="btn btn-success glyphicon glyphicon-plus" data-container="body" data-toggle="popover" data-placement="right" data-content="Agregar" href="~/@ControllerName/Create"></a>
-        </td>
-    </tr>
-</table>
+    @{
+        var ControllerName = ViewContext.RouteData.Values["controller"];
+    }
+    <table>
+        <tr>
+            <td>
+                <a class="btn btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#CreateModal" id="Agregar" href="~/@ControllerName/Create"></a>
+            </td>
+        </tr>
+    </table>
+    <!-- Modal -->
+    <div class="modal fade" id="DelModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+    <!-- Edit Modal -->
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+    <!-- Detalles Modal -->
+    <div class="modal fade" id="DetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+    <!-- Create Modal -->
+    <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>

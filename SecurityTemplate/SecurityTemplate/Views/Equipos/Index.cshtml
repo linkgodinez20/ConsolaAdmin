@@ -1,100 +1,155 @@
-﻿@model IEnumerable<Security.Core.Model.Equipos>
-
+﻿﻿@model PagedList.IPagedList<Security.Core.Model.Equipos>
+@using PagedList.Mvc;
+@*<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Equipos / Lista";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2 class="Titulo" align="center">Equipos</h2>
 
 <ol class="breadcrumb">
-    <li>Inicio</li>
+    <li><span class="glyphicon glyphicon-home"></span> @Html.ActionLink("Inicio", "Index", "Home")</li>
     <li><b>Equipos</b></li>
     <li class="active">Lista</li>
 </ol>
 <hr />
 
-<table class="table table-bordered table-condensed table-hover">
-    <tr>
-        <th class="alert-info">
-            @Html.DisplayNameFor(model => model.Hostname)
-        </th>
-        <th class="alert-info">
-            @Html.DisplayNameFor(model => model.IP)
-        </th>
-        <th class="alert-info">
-            @Html.DisplayNameFor(model => model.MacAddress)
-        </th>
-        <th class="alert-info">
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th class="alert-info">
-            @Html.DisplayNameFor(model => model.FechaAlta)
-        </th>
-        <th class="alert-info">
-            @Html.DisplayNameFor(model => model.FechaCaducidad)
-        </th>
-        <th class="alert-info">
-            @Html.DisplayNameFor(model => model.Estatus)
-        </th>
-        <th class="alert-info">
-            @Html.DisplayNameFor(model => model.Cuentas.Id_Cuenta)
-        </th>
-        <th class="alert-info">
-            @Html.DisplayNameFor(model => model.Equipos_tipo.Nombre)
-        </th>
-        <th class="alert-info">
-            @Html.DisplayNameFor(model => model.Sistemas.Nombre)
-        </th>
-        <th class="alert-success">
-            <span class="glyphicon glyphicon-cog"> Acciones</span>
-        </th>
-    </tr>
+<!-- -Search Button -->
+@using (Html.BeginForm("Index", "Equipos", FormMethod.Get))
+{
+    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
+        <div class="input-group">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+            <div class="input-group-btn">
+                <button name="btnSearch" id="btnSearch" type="submit" value="create" class="btn btn-info" data-container="body" data-toggle="popover" data-placement="top" data-content="Buscar">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+                <button name="btnFilter" id="btnFilter" type="submit" value="index" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Quitar filtro">
+                    <i class="glyphicon glyphicon-filter"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br />
+}
+<br />
+<br />
+<div class="table-responsive">
+    <table class="table table-bordered table-condensed table-hover table-responsive">
+        <tr>
+            <th class="alert-info">
+                @Html.ActionLink("Equipo", "Index", new { sortOrder = ViewBag.SortByHostName, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="alert-info hidden-xs">
+                IP
+            </th>
+            <th class="alert-info hidden-xs">
+                @Html.ActionLink("MacAddress", "Index", new { sortOrder = ViewBag.SortByMacAddress, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="alert-info hidden-xs hidden-sm">
+                Descripci&oacute;n
+            </th>
+            <th class="alert-info hidden-xs hidden-sm">
+                F. Alta
+            </th>
+            <th class="alert-info hidden-xs hidden-sm">
+                F. Caducidad
+            </th>
+            <th class="alert-info hidden-xs">
+                Estatus
+            </th>
+            <th class="alert-info">
+                @Html.ActionLink("Cuenta", "Index", new { sortOrder = ViewBag.SortByCuenta, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="alert-info">
+                Equipo (Tipo)
+            </th>
+            <th class="alert-success">
+                <span class="glyphicon glyphicon-cog"></span><b> Acciones</b>
+            </th>
+        </tr>
 
-    @foreach (var item in Model)
-    {
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hostname)
+                </td>
+                <td class="hidden-xs">
+                    @Html.DisplayFor(modelItem => item.IP)
+                </td>
+                <td class="hidden-xs">
+                    @Html.DisplayFor(modelItem => item.MacAddress)
+                </td>
+                <td class="hidden-xs hidden-sm">
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td class="hidden-xs hidden-sm">
+                    @Html.DisplayFor(modelItem => item.FechaAlta)
+                </td>
+                <td class="hidden-xs hidden-sm">
+                    @Html.DisplayFor(modelItem => item.FechaCaducidad)
+                </td>
+                <td class="hidden-xs">
+                    @Html.DisplayFor(modelItem => item.Estatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cuentas.Id_Cuenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Equipos_tipo.Nombre)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.Id_Equipo }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil", data_toggle = "modal", data_target = "#EditModal" })
+                    @Html.ActionLink(" ", "Details", new { id = item.Id_Equipo }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list", data_toggle = "modal", data_target = "#DetailsModal" })
+                    @Html.ActionLink(" ", "Delete", new { id = item.Id_Equipo }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove", data_toggle = "modal", data_target = "#DelModal" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    @{
+        var ControllerName = ViewContext.RouteData.Values["controller"];
+    }
+    <table>
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Hostname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MacAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaAlta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaCaducidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cuentas.Id_Cuenta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Equipos_tipo.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sistemas.Nombre)
-            </td>
-            <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.Id_Equipo }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
-                @Html.ActionLink(" ", "Details", new { id = item.Id_Equipo }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
-                @Html.ActionLink(" ", "Delete", new { id = item.Id_Equipo }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
+                <a class="btn btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#CreateModal" id="Agregar" href="~/@ControllerName/Create"></a>
             </td>
         </tr>
-    }
+    </table>
+    <!-- Modal -->
+    <div class="modal fade" id="DelModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-</table>
-<table>
-    <tr>
-        <td>
-            @Html.ActionLink(" ", "Create", "Equipos", null, new { @class = "btn btn-success glyphicon glyphicon-plus" })
-        </td>
-    </tr>
-</table>
+            </div>
+        </div>
+    </div>
+    <!-- Edit Modal -->
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+    <!-- Detalles Modal -->
+    <div class="modal fade" id="DetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+    <!-- Create Modal -->
+    <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>

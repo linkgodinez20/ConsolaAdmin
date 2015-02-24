@@ -186,3 +186,5 @@ D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTempl
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\PagedList.xml
 D:\Humberto Flores\Documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\PagedList.dll
 D:\Humberto Flores\Documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\PagedList.xml
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\PagedList.dll
+E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\PagedList.xml

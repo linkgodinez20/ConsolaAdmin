@@ -16,7 +16,7 @@ namespace Security.Core.DefaultSettings
 
         String Sistema_ConnectionString { get; }
 
-        String Directorio_Media { get; }
+        String Directorio_PersonasFoto { get; }
 
         String Directorio_Imagenes { get; }
 

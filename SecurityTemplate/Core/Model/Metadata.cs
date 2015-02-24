@@ -73,7 +73,7 @@ namespace Security.Core.Model
     }
     public class CuentasMetadata
     {
-        [Display(Name = "Id")]
+        [Display(Name = "Cuenta (Id)")]
         public int Id_Cuenta;
 
         [Display(Name = "Login")]
@@ -366,11 +366,12 @@ namespace Security.Core.Model
 
     public class EquiposMetadata
     {
-        [Display(Name = "Id")]
+        [Display(Name = "Equipos (Id)")]
         [ScaffoldColumn(false)]
         public Int16 Id_Equipo;
 
-        [Display(Name = "Nombre del equipo")]
+        [Display(Name = "Equipo")]
+        [Required(ErrorMessage = "El campo [Equipo] es obligatorio.")]
         public String Hostname;
 
         [StringLength(50)]
@@ -380,21 +381,21 @@ namespace Security.Core.Model
         public String MacAddress;
 
         [Required(ErrorMessage = "El campo [Tipo de equipo] es obligatorio.")]
-        [Display(Name = "Tipo de equipo")]
+        [Display(Name = "Tipo")]
         public Byte Id_EquipoTipo;
 
         [Required(ErrorMessage = "El campo [Tipo de dispositivo] es obligatorio.")]
-        [Display(Name = "Tipo de dispositivo")]
+        [Display(Name = "Dispositivo")]
         public byte Id_DispositivoTipo;
 
         [Display(Name = "Descripción")]
         [StringLength(128)]
         public String Descripcion;
 
-        [Display(Name = "Fecha de alta")]
+        [Display(Name = "Alta")]
         public DateTime FechaAlta;
 
-        [Display(Name = "Fecha de caducidad")]
+        [Display(Name = "Caducidad")]
         public DateTime? FechaCaducidad;
 
         [Required(ErrorMessage = "El campo [Cuenta] es obligatorio.")]
@@ -497,15 +498,15 @@ namespace Security.Core.Model
 
         [Required(ErrorMessage = "El campo [Ap. Paterno] es obligatorio.")]
         [Display(Name = "Ap. Paterno")]
-        [StringLength(50)]
+        [StringLength(50, ErrorMessage = "El número máximo de caracteres es de 50")]
         public String APaterno;
 
         [Display(Name = "Ap. Materno")]
-        [StringLength(50)]
+        [StringLength(50, ErrorMessage = "El número máximo de caracteres es de 50")]
         public String AMaterno;
 
         [Required(ErrorMessage = "El campo [Nombre] es obligatorio.")]
-        [StringLength(50)]
+        [StringLength(50, ErrorMessage = "El número máximo de caracteres es de 50")]        
         public String Nombre;
 
         [Display(Name = "Fecha de creación")]
@@ -515,7 +516,7 @@ namespace Security.Core.Model
 
         [Required(ErrorMessage = "El campo [E-mail] es obligatorio.")]
         [Display(Name = "E-mail")]
-        [StringLength(64)]
+        [StringLength(64, ErrorMessage="El número máximo de caracteres es de 64")]        
         public String Email;
 
         [Display(Name = "Género")]
@@ -527,10 +528,11 @@ namespace Security.Core.Model
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? FechaNacimiento;
 
-        [StringLength(10)]
+        [StringLength(10, ErrorMessage="El número máximo de caracteres es de 10")]
+        //[RegularExpression(pattern: "^[a-zA-Z]{1}[aeiouAEIOU]{1}[a-zA-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])$", ErrorMessage="Ingrese un RFC válido")]
         public String RFC;
 
-        [StringLength(3)]
+        [StringLength(3, ErrorMessage="El número máximo de caracteres es de 3")]        
         public String Homoclave;
 
         [StringLength(18)]

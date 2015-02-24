@@ -1,23 +1,23 @@
 ﻿@model IEnumerable<Security.Core.Model.Genero>
 
 @{
-    ViewBag.Title = "Listado";
+    ViewBag.Title = "Género / Lista";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<h2 class="Titulo" align="center">G&eacute;nero</h2>
 <ol class="breadcrumb">
-    <li>Inicio</li>
+    <li><span class="glyphicon glyphicon-home"></span> @Html.ActionLink("Inicio", "Index", "Home")</li>
     <li><b>G&eacute;nero</b></li>
     <li class="active">Lista</li>
 </ol>
 <hr />
-<table class="table table-bordered table-condensed table-hover">
+<table class="table table-bordered table-condensed table-hover Box">
     <tr>
         <th class="alert-info">
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
         <th class="alert-success">
-            <span class="glyphicon glyphicon-cog"> Acciones</span>
+            <span class="glyphicon glyphicon-cog"></span><b> Acciones</b>
         </th>
     </tr>
 
@@ -28,21 +28,54 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.Id_Genero }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
-                @Html.ActionLink(" ", "Details", new { id = item.Id_Genero }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
-                @Html.ActionLink(" ", "Delete", new { id = item.Id_Genero }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
+                @Html.ActionLink(" ", "Edit", new { id = item.Id_Genero }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil", data_toggle = "modal", data_target = "#EditModal" }) |
+                @Html.ActionLink(" ", "Details", new { id = item.Id_Genero }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list", data_toggle = "modal", data_target = "#DetailsModal" }) |
+                @Html.ActionLink(" ", "Delete", new { id = item.Id_Genero }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove", data_toggle = "modal", data_target = "#DelModal" })
             </td>
         </tr>
     }
 
 </table>
+
 @{
     var ControllerName = ViewContext.RouteData.Values["controller"];
 }
 <table>
     <tr>
         <td>
-            <a class="btn btn-success glyphicon glyphicon-plus" data-container="body" data-toggle="popover" data-placement="right" data-content="Agregar" href="~/@ControllerName/Create"></a>
+            <a class="btn btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#CreateModal" id="Agregar" href="~/@ControllerName/Create"></a>
         </td>
     </tr>
 </table>
+<!-- Modal -->
+<div class="modal fade" id="DelModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
+<!-- Edit Modal -->
+<div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
+<!-- Detalles Modal -->
+<div class="modal fade" id="DetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
+<!-- Create Modal -->
+<div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>

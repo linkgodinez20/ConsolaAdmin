@@ -11,7 +11,7 @@
 
 @{
     ViewBag.Title = "Editar";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
 <h2 class="Titulo">Editar</h2>
@@ -19,26 +19,30 @@
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Preguntas_x_Login</h4>
-        <hr />
-        @Html.ValidationSummary(true)
-        @Html.HiddenFor(model => model.Id_Login)
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
 
-        @Html.HiddenFor(model => model.Id_Pregunta)
+        <div class="form-horizontal">
+            <h4>Preguntas_x_Login</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.Id_Login)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Respuesta, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Respuesta, new { htmlAttributes = new { @class = "form-control" } }) 
-                @Html.ValidationMessageFor(model => model.Respuesta, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id_Pregunta)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Respuesta, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Respuesta, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Respuesta, "", new { @class = "text-danger" })
+                </div>
             </div>
         </div>
+    </div>
+    <div class="modal-footer">
         @{
-            var ControllerName = ViewContext.RouteData.Values["Controller"];
-            var referencia = "~/" + @ControllerName + "/Edit/" + Model.Id_Pregunta;
+        var ControllerName = ViewContext.RouteData.Values["Controller"];
+        var referencia = "~/" + @ControllerName + "/Edit/" + Model.Id;
         }
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

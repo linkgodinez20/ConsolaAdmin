@@ -14,24 +14,27 @@ using System.IO;
 
 using Security.Data;
 
+
 namespace Security.Controllers
 {
     public class PersonasController : Controller
     {
         private readonly IRepo<Personas> repo;
         private readonly IRepo<Genero> genero;
+        private readonly DefaultSettings config;
 
-        public PersonasController(IRepo<Personas> repo, IRepo<Genero> genero)
+        public PersonasController(IRepo<Personas> repo, IRepo<Genero> genero, DefaultSettings config)
         {
             this.repo = repo;
             this.genero = genero;
+            this.config = config;
         }
 
         // GET: Personas
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
-
+            
             //ViewBag.SortByAFullName = String.IsNullOrEmpty(sortOrder) ? "FullName" : "";
 
             ViewBag.SortByAPaterno = sortOrder == "APaterno_desc" ? "APaterno_desc" : "APaterno";
@@ -114,12 +117,12 @@ namespace Security.Controllers
         }
 
         // GET: Personas/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int id = 0)
         {
             Personas personas = repo.Get(id);
-            if (personas == null)
+            if (personas == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             return View(personas);
         }
@@ -141,23 +144,36 @@ namespace Security.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (file.ContentLength > 0)
-                {
-                    
-                    var fileName = Path.GetFileName(file.FileName);
-                    String ArchivoFoto = "Media/" + fileName;
-
-                    personas.Foto = ArchivoFoto;
-
-                    var path = Path.Combine(Server.MapPath("~/Media/Images/Productos"), fileName);
-                    //file.SaveAs(path);
-                    var i = "";
-                }
-
                 personas.FechaCreacion = DateTime.Now;
 
-                repo.Add(personas);
-                repo.Save();
+                if ((file != null) && (file.ContentLength > 0) && (!string.IsNullOrEmpty(file.FileName)))
+                {
+                    String OriginalfileName = Path.GetFileName(file.FileName);
+
+                    String sis_id = config.Sistema_iD.ToString("00");
+                    String middle = sis_id + "-" + personas.Id_Persona.ToString("000000");
+                    String FileExtension = System.IO.Path.GetExtension(file.FileName);
+
+                    String filename = middle + FileExtension;
+
+                    personas.Foto = filename;
+
+                    var path = Path.Combine(Server.MapPath(config.Directorio_PersonasFoto), filename);
+
+                    try
+                    {
+                        file.SaveAs(path);
+                        repo.Add(personas);
+                        repo.Save();
+                    }
+                    catch (Exception e) { 
+                        
+                    }
+
+                }
+
+                //repo.Add(personas);
+                //repo.Save();
                 return RedirectToAction("Index");
             }
 
@@ -166,15 +182,18 @@ namespace Security.Controllers
         }
 
         // GET: Personas/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id = 0)
         {
             Personas personas = repo.Get(id);
-            if (personas == null)
+            if (personas == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
 
             ViewBag.Id_Genero = new SelectList(genero.GetAll(), "Id_Genero", "Nombre", personas.Id_Genero);
+            ViewBag.Dir_PersonasFoto = config.Directorio_PersonasFoto;
+
+
             return View(personas);
         }
 
@@ -187,19 +206,31 @@ namespace Security.Controllers
             {
                 personas.FechaCreacion = DateTime.Now;
 
-                if (file.ContentLength > 0)
+                if ((file != null) && (file.ContentLength > 0) && (!string.IsNullOrEmpty(file.FileName)))
                 {
+                    String OriginalfileName = Path.GetFileName(file.FileName);
 
-                    var fileName = Path.GetFileName(file.FileName);
-                    String ArchivoFoto = "Media/" + fileName;
+                    String sis_id = config.Sistema_iD.ToString("00");
+                    String middle = sis_id + "-" + personas.Id_Persona.ToString("000000");
+                    String FileExtension = System.IO.Path.GetExtension(file.FileName);
 
-                    personas.Foto = ArchivoFoto;
+                    String filename = middle + FileExtension;
 
-                    var path = Path.Combine(Server.MapPath("~/Media"), fileName);
-                    
+                    personas.Foto = filename;
 
-                    //file.SaveAs(path);
-                    var i = "";
+                    var path = Path.Combine(Server.MapPath(config.Directorio_PersonasFoto), filename);
+
+                    //if (System.IO.File.Exists(path))
+                    //{
+                    //    System.IO.File.Delete(path);
+                    //}
+
+                    file.SaveAs(path);
+
+
+                }
+                else {
+                    ModelState.AddModelError("", "No ha seleccionado archivos");
                 }
 
                 repo.Update(personas);
@@ -212,12 +243,12 @@ namespace Security.Controllers
         }
 
         // GET: Personas/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id = 0)
         {
             Personas personas = repo.Get(id);
-            if (personas == null)
+            if (personas == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             return View(personas);
         }

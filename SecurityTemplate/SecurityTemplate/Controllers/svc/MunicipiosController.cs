@@ -19,6 +19,7 @@ namespace Security.Controllers.svc
         }
 
         // GET: api/Municipios
+        // GET: api/Municipios?IdEntidad=14
         public IQueryable GetMunicipios([FromUri]string IdEntidad)
         {
             Int16 idEntidad = Convert.ToInt16(IdEntidad);
@@ -34,6 +35,7 @@ namespace Security.Controllers.svc
             return municipios;
         }
 
+        // GET: api/Municipios/CountMunicipio?IdEntidad=14
         [HttpGet]
         public int CountMunicipio([FromUri]string IdEntidad)
         {
@@ -55,87 +57,6 @@ namespace Security.Controllers.svc
             {
                 return NotFound();
             }
-
-            return Ok(municipios);
-        }
-
-        // PUT: api/Municipios/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutMunicipios(short id, Municipios municipios)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != municipios.Id_Pais)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(municipios).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!MunicipiosExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/Municipios
-        [ResponseType(typeof(Municipios))]
-        public IHttpActionResult PostMunicipios(Municipios municipios)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Municipios.Add(municipios);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (MunicipiosExists(municipios.Id_Pais))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = municipios.Id_Pais }, municipios);
-        }
-
-        // DELETE: api/Municipios/5
-        [ResponseType(typeof(Municipios))]
-        public IHttpActionResult DeleteMunicipios(short id)
-        {
-            Municipios municipios = db.Municipios.Find(id);
-            if (municipios == null)
-            {
-                return NotFound();
-            }
-
-            db.Municipios.Remove(municipios);
-            db.SaveChanges();
 
             return Ok(municipios);
         }

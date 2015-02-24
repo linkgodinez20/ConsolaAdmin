@@ -9,22 +9,26 @@ using System.Web.Mvc;
 using Security.Core.Model;
 using Security.Core.Repository;
 using PagedList;
+using System.IO;
 
 namespace Security.Controllers
 {
     public class PaisesController : Controller
     {
         private readonly IRepo<Paises> repo;
+        private readonly DefaultSettings config;
 
-        public PaisesController(IRepo<Paises> repo)
+        public PaisesController(IRepo<Paises> repo, DefaultSettings config)
         {
             this.repo = repo;
+            this.config = config;
         }
 
         // GET: Paises
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
+            ViewBag.Dir_PaisesBandera = config.Directorio_PaisesBanera;
 
             ViewBag.SortByName = sortOrder == "Name_desc" ? "Name_desc" : "Name";
 
@@ -75,15 +79,10 @@ namespace Security.Controllers
         // GET: Paises/Details/5
         public ActionResult Details(short id = 0)
         {
-            if (id == 0)
+            Paises paises = repo.Get(id);
+            if (paises == null || id == 0)
             {
                 return RedirectToAction("index");
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Paises paises = repo.Get(id);
-            if (paises == null)
-            {
-                return HttpNotFound();
             }
             return View(paises);
         }
@@ -99,10 +98,13 @@ namespace Security.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id_Pais,FIPS,Nombre,Prioridad")] Paises paises)
+        public ActionResult Create([Bind(Include = "Id_Pais,FIPS,Nombre,Prioridad,Bandera")] Paises paises)
         {
             if (ModelState.IsValid)
             {
+
+                paises.Bandera = paises.FIPS.ToString().ToLower() + ".png";
+
                 repo.Add(paises);
                 repo.Save();
                 return RedirectToAction("Index");
@@ -114,15 +116,10 @@ namespace Security.Controllers
         // GET: Paises/Edit/5
         public ActionResult Edit(short id = 0)
         {
-            if (id == 0)
+            Paises paises = repo.Get(id);
+            if (paises == null || id == 0)
             {
                 return RedirectToAction("index");
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Paises paises = repo.Get(id);
-            if (paises == null)
-            {
-                return HttpNotFound();
             }
             return View(paises);
         }
@@ -132,7 +129,7 @@ namespace Security.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id_Pais,FIPS,Nombre,Prioridad")] Paises paises)
+        public ActionResult Edit([Bind(Include = "Id_Pais,FIPS,Nombre,Prioridad,Bandera")] Paises paises)
         {
             if (ModelState.IsValid)
             {
@@ -144,16 +141,12 @@ namespace Security.Controllers
         }
 
         // GET: Paises/Delete/5
-        public ActionResult Delete(short id)
+        public ActionResult Delete(short id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Paises paises = repo.Get(id);
-            if (paises == null)
+            if (paises == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             return View(paises);
         }

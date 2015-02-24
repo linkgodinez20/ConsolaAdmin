@@ -1,105 +1,132 @@
 ﻿@model Security.Core.Model.Equipos
 
 @{
-    ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Equipos / Eliminar";
+    Layout = "";
 }
+@Scripts.Render("~/bundles/Miscelaneous")
 
-<h2 class="Titulo">Eliminar</h2>
+<div class="modal-header label-danger">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hitden="true">&times;</span></button>
 
-<h3 class="Dialogos">¿Est&aacute; seguro de eliminar este registro?</h3>
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Hostname)
-        </dt>
+    <h2 class="modal-title">Eliminar</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.Hostname)
-        </dd>
+    <h4 class="Fuente_blanca">¿Est&aacute; seguro de eliminar este registro?</h4>
+</div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IP)
-        </dt>
+<div class="modal-body">
+    <table class="table table-striped table-bordered table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Hostname)
+                </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.IP)
-        </dd>
+                <td>
+                    @Html.DisplayFor(model => model.Hostname)
+                </td>
+            </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IP)
+            </th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MacAddress)
-        </dt>
+            <td>
+                @Html.DisplayFor(model => model.IP)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MacAddress)
+            </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.MacAddress)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.MacAddress)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
+            <td>
+                @Html.DisplayFor(model => model.Descripcion)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ubiacion)
+            </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.Ubiacion)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaAlta)
+            </th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ubiacion)
-        </dt>
+            <td>
+                @Html.DisplayFor(model => model.FechaAlta)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCaducidad)
+            </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ubiacion)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.FechaCaducidad)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Estatus)
+            </th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaAlta)
-        </dt>
+            <td>
+                @Html.DisplayFor(model => model.Estatus)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cuentas.Id_Cuenta)
+            </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.FechaAlta)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.Cuentas.Id_Cuenta)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Equipos_tipo.Nombre)
+            </th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaCaducidad)
-        </dt>
+            <td>
+                @Html.DisplayFor(model => model.Equipos_tipo.Nombre)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_DispositivoTipo)
+            </th>
 
-        <dd>
-            @Html.DisplayFor(model => model.FechaCaducidad)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.Dispositivos_tipo.Nombre)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sistemas.Nombre)
+            </th>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Estatus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Estatus)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cuentas.Id_Cuenta)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cuentas.Id_Cuenta)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Equipos_tipo.Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Equipos_tipo.Nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Sistemas.Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sistemas.Nombre)
-        </dd>
-
-    </dl>
+            <td>
+                @Html.DisplayFor(model => model.Sistemas.Nombre)
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
 
     @using (Html.BeginForm())
     {
@@ -107,11 +134,15 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button type="submit" value="Delete" class="btn btn-danger ">
+                <button type="submit" value="Delete" class="btn btn-danger " data-container="body" data-toggle="popover" data-placement="left" data-content="Eliminar">
                     <i class="glyphicon glyphicon-remove"></i>
                 </button>
-                @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+                @{
+                    var ControllerName = ViewContext.RouteData.Values["Controller"];
+                }
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right" data-content="Volver" href="/@ControllerName"></a>
             </div>
         </div>
     }
 </div>
+

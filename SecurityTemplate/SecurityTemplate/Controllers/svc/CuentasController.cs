@@ -22,22 +22,36 @@ namespace Security.Controllers.svc
         }
 
         // GET: api/Cuentas
-        public IQueryable GetCuentas()
-        {            
-            var personas = from p in db.Personas
+        public IQueryable GetCuentas([FromUri] string idCuenta = "")
+        {
+            var cuentas = from p in db.Cuentas
                            select new {
-                                Nombre = p.APaterno + p.AMaterno + p.Nombre,
-                                Id_Persona = p.Id_Persona,
-                                d = p.CURP
+                                Cuenta = p.LogIn.Usuario,
+                                Id_Cuenta = p.Id_Cuenta
                            };
 
-            var cuentas = from c in db.Cuentas
-                          select new {                             
-                            Id_Cuenta = c.Id_Cuenta,
-                            cc = c
-                          };
+            if (idCuenta != "") { 
+                int id_cuenta = Convert.ToInt32(idCuenta);
+
+                cuentas.Where(p => p.Id_Cuenta == id_cuenta);
+            }
 
             return cuentas;
+        }
+
+        [HttpGet]
+        public IQueryable getPropietario_x_Cuenta()
+        {
+            var propietario = from c in db.Cuentas
+                              select new
+                              {
+                                  Id_Cuenta = c.Id_Cuenta,
+                                  Propietario = c.LogIn.Personas.Nombre + " " + c.LogIn.Personas.APaterno + " " + c.LogIn.Personas.AMaterno
+                              };
+
+
+
+            return propietario;
         }
 
         // GET: api/Cuentas/5

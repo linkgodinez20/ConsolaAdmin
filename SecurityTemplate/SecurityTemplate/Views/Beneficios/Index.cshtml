@@ -4,57 +4,91 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <ol class="breadcrumb">
-    <li>Inicio</li>
+    <li><span class="glyphicon glyphicon-home"></span> @Html.ActionLink("Inicio", "Index", "Home")</li>
     <li><b>Beneficios</b></li>
     <li class="active">Lista</li>
 </ol>
+<h2 class="Titulo" align="center">Beneficios</h2>
 <hr />
-<table class="table table-bordered table-condensed table-hover">
-    <tr>
-        <th class="alert-info">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th class="alert-info">
-            @Html.DisplayNameFor(model => model.Estatus)
-        </th>
-        <th class="alert-info">
-            @Html.DisplayNameFor(model => model.Beneficio_tipo.Nombre)
-        </th>
-        <th class="alert-success">
-            <span class="glyphicon glyphicon-cog"> Acciones</span>
-        </th>
-    </tr>
+<div class="table-responsive">
+    <table class="table table-bordered table-condensed table-hover Box">
+        <tr>
+            <th class="alert-info">
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th class="alert-info">
+                @Html.DisplayNameFor(model => model.Estatus)
+            </th>
+            <th class="alert-info">
+                @Html.DisplayNameFor(model => model.Beneficio_tipo.Nombre)
+            </th>
+            <th class="alert-success">
+                <span class="glyphicon glyphicon-cog"></span><b> Acciones</b>
+            </th>
+        </tr>
 
-    @foreach (var item in Model)
-    {
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Beneficio_tipo.Nombre)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.Id_Beneficio }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil", data_toggle = "modal", data_target = "#EditModal" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.Id_Beneficio }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list", data_toggle = "modal", data_target = "#DetailsModal" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.Id_Beneficio }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove", data_toggle = "modal", data_target = "#DelModal" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>
+    @{
+        var ControllerName = ViewContext.RouteData.Values["controller"];
+    }
+    <table>
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Beneficio_tipo.Nombre)
-            </td>
-            <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.Id_Beneficio }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
-                @Html.ActionLink(" ", "Details", new { id = item.Id_Beneficio }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
-                @Html.ActionLink(" ", "Delete", new { id = item.Id_Beneficio }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
+                <a class="btn btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#CreateModal" id="Agregar" href="~/@ControllerName/Create"></a>
             </td>
         </tr>
-    }
+    </table>
+    <!-- Modal -->
+    <div class="modal fade" id="DelModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-</table>
-@{
-    var ControllerName = ViewContext.RouteData.Values["controller"];
-}
-<table>
-    <tr>
-        <td>
-            <a class="btn btn-success glyphicon glyphicon-plus" data-container="body" data-toggle="popover" data-placement="right" data-content="Agregar" href="~/@ControllerName/Create"></a>
-        </td>
-    </tr>
-</table>
+            </div>
+        </div>
+    </div>
+    <!-- Edit Modal -->
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+    <!-- Detalles Modal -->
+    <div class="modal fade" id="DetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+    <!-- Create Modal -->
+    <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>

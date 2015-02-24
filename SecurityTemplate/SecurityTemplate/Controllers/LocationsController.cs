@@ -22,7 +22,7 @@ namespace Security.Controllers
         }
 
         // GET: /Locations/
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index2(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.Ubicaciones = String.IsNullOrEmpty(sortOrder) ? "Ubicaciones" : "Ubicaciones_desc";
@@ -169,6 +169,12 @@ namespace Security.Controllers
             }
         }
 
+        public ActionResult Index()
+        {
+            IOrderedQueryable<Locations> modelos = repo.GetAll()
+              .OrderBy(x => x.LocationName);
+            return View(modelos.ToList());
+        }
         [HttpPost]
         public ActionResult Search(string Location)
         {
@@ -185,5 +191,7 @@ namespace Security.Controllers
             }
             base.Dispose(disposing);
         }
+
+       
     }
 }

@@ -1,79 +1,96 @@
 ﻿@model Security.Core.Model.Sesiones
 
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Sesión / Detalle";
+    Layout = "";
 }
+@Scripts.Render("~/bundles/Miscelaneous")
+<div class="modal-header label-info">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hitden="true">&times;</span></button>
 
-<h2 class="Titulo">Detalle</h2>
+    <h2 class="modal-title">Detalle</h2>
 
-<div>
-    <h4>Sesiones</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaHoraInicio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FechaHoraInicio)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OnLine)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OnLine)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CierreSesion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CierreSesion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UltimoMovimiento)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UltimoMovimiento)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Estatus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Estatus)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cuentas.Id_Cuenta)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cuentas.Id_Cuenta)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Id_Sistema)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sistemas.Nombre)
-        </dd>
-
-    </dl>
+    <h4 class="Fuente_blanca">Sesiones</h4>
 </div>
-<p>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            @Html.ActionLink(" ", "Edit", new { id = Model.Id_Sesion }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
-            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+
+<div class="modal-body">
+    <table class="table table-striped table-bordered table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaHoraInicio)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.FechaHoraInicio)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OnLine)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.OnLine)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CierreSesion)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.CierreSesion)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UltimoMovimiento)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.UltimoMovimiento)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Estatus)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Estatus)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cuentas.Id_Cuenta)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Cuentas.Id_Cuenta)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sistemas.Nombre)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Sistemas.Nombre)
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    @{
+        var ControllerName = ViewContext.RouteData.Values["Controller"];
+    }
+    <p>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right"
+                   data-content="Volver" href="~/@ControllerName"></a>
+            </div>
         </div>
-    </div>
-</p>
+        <hr />
+    </p>
+</div>

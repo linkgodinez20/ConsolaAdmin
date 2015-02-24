@@ -37,7 +37,7 @@
         </div>
         @{
             var ControllerName = ViewContext.RouteData.Values["Controller"];
-            var referencia = "~/" + @ControllerName + "/Edit/" + Model.Id_AreaDeTrabajo;
+            var referencia = "~/" + @ControllerName + "/Edit/" + Model.Id_Pais + Model.Id_Entidad;
         }
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -50,6 +50,8 @@
             </div>
         </div>
     </div>
+
+
 }
 
 @section Scripts {

@@ -1,111 +1,143 @@
 ﻿@model Security.Core.Model.Equipos
 
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Equipos / Detalle";
+    Layout = "";
 }
+@Scripts.Render("~/bundles/Miscelaneous")
+<div class="modal-header label-info">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hitden="true">&times;</span></button>
 
-<h2 class="=Titulo">Detalle</h2>
+    <h2 class="modal-title">Detalle</h2>
 
-<div>
-    <h4>Equipos</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Hostname)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Hostname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IP)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IP)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MacAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MacAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ubiacion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ubiacion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaAlta)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FechaAlta)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaCaducidad)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FechaCaducidad)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Estatus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Estatus)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cuentas.Id_Cuenta)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cuentas.Id_Cuenta)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Equipos_tipo.Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Equipos_tipo.Nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Sistemas.Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sistemas.Nombre)
-        </dd>
-
-    </dl>
+    <h4 class="Fuente_blanca">Equipos</h4>
 </div>
-<p>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            @Html.ActionLink(" ", "Edit", new { id = Model.Id_Equipo }, new { @class = "btn btn-warning glyphicon glyphicon-pencil" })
-            @Html.ActionLink(" ", "Index", null, new { @class = "btn btn-info glyphicon glyphicon-chevron-left" })
+
+<div class="modal-body">
+    <table class="table table-striped table-bordered table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Hostname)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Hostname)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IP)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.IP)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MacAddress)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.MacAddress)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Descripcion)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ubiacion)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Ubiacion)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaAlta)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.FechaAlta)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCaducidad)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.FechaCaducidad)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Estatus)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Estatus)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cuentas.Id_Cuenta)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Cuentas.Id_Cuenta)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Equipos_tipo.Nombre)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Equipos_tipo.Nombre)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_DispositivoTipo)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Dispositivos_tipo.Nombre)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sistemas.Nombre)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Sistemas.Nombre)
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    @{
+        var ControllerName = ViewContext.RouteData.Values["Controller"];
+    }
+    <p>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a class="btn btn-warning glyphicon glyphicon-pencil" data-container="body" data-toggle="popover" data-placement="left"
+                   data-content="Editar" href="~/@ControllerName/Edit/@Model.Id_Equipo"></a>
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right"
+                   data-content="Volver" href="~/@ControllerName"></a>
+            </div>
         </div>
-    </div>
-</p>
+        <hr />
+    </p>
+</div>

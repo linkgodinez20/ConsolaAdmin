@@ -1,84 +1,85 @@
 ﻿@model PagedList.IPagedList<Security.Core.Model.Entidades>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
-<script src="~/Scripts/jquery-2.1.3.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        $('button').popover({ trigger: "hover" });
-
-        $('a').popover({ trigger: 'hover' });
-
-        $('#btnFilter').click(function () {
-            $('#SearchString').val('');
-        });
-
-    });
-</script>
 
 @{
-    ViewBag.Title = "Entidades";
+    ViewBag.Title = "Entidades / Lista";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2 class="Titulo" align="center">Entidades</h2>
+<ol class="breadcrumb">
+    <li><span class="glyphicon glyphicon-home"></span> @Html.ActionLink("Inicio", "Index", "Home")</li>
+    <li>@Html.ActionLink("Países", "index", "Paises", null, null)</li>
+    <li><b>Entidades</b></li>
+    <li class="active">Lista</li>
+</ol>
+<hr />
 
 @using (Html.BeginForm("Index", "Entidades", FormMethod.Get))
 {
     <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
         <div class="input-group">
             @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
-            <span class="input-group-btn">
-                <button type="submit" value="create" class="btn btn-info">
+            <div class="input-group-btn">
+                <button name="btnSearch" id="btnSearch" type="submit" value="create" class="btn btn-info" data-container="body" data-toggle="popover" data-placement="top" data-content="Buscar">
                     <i class="glyphicon glyphicon-search"></i>
                 </button>
-            </span>
+                <button name="btnFilter" id="btnFilter" type="submit" value="index" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Quitar filtro">
+                    <i class="glyphicon glyphicon-filter"></i>
+                </button>
+            </div>
         </div>
     </div>
+    <br />
 }
+<br /><br />
+@{
+    var NombrePais = Session["Entidades_Index_Id_PaisNombre"];
+}
+<div>
+    <div class="lead bg-success">@NombrePais</div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-condensed table-striped table-hover Box">
+            <tr>
+                <th class="alert-info">
+                    @Html.ActionLink("Entidad", "Index", new { sortOrder = ViewBag.SortByEntidad, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th class="alert-info">
+                    Abreviatura
+                </th>
+                <th class="alert-info">
+                    País
+                </th>
+                <th class="alert-success">
+                    <span class="glyphicon glyphicon-cog"></span> <b>Acciones</b> 
+                </th>
+            </tr>
 
-<br /><br /><br />
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Abreviatura)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Paises.FIPS)
+                    </td>
+                    <td>
+                        @*@Html.ActionLink(" ", "index", "Paises", null, new { @class = "btn-xs btn-success fa fa-reply fa-fw" }) |*@
+                        @Html.ActionLink(" ", "index", "Municipios", new { Pais = item.Id_Pais, Entidad = item.Id_Entidad }, new { @class = "btn-xs btn-primary glyphicon glyphicon-cog" }) |
+                        @Html.ActionLink(" ", "Edit", new { id = item.Id_Pais, id2 = item.Id_Entidad }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
+                        @Html.ActionLink(" ", "Details", new { id = item.Id_Pais, id2 = item.Id_Entidad }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
+                        @Html.ActionLink(" ", "Delete", new { id = item.Id_Pais, id2 = item.Id_Entidad }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
+                    </td>
+                </tr>
+            }
 
-<table class="table table-bordered table-condensed table-striped table-hover">
-    <tr>
-        <th class="alert-info">
-            @*@Html.DisplayNameFor(model => model.Nombre)*@
-            @Html.ActionLink("Entidad", "Index", new { sortOrder = ViewBag.Entidad, currentFilter = ViewBag.CurrentFilter })            
-        </th>
-        <th class="alert-info">
-            @*@Html.DisplayNameFor(model => model.Abreviatura)*@
-            @Html.ActionLink("Abreviatura", "Index", new { sortOrder = ViewBag.Abreviatura, currentFilter = ViewBag.CurrentFilter })            
-        </th>
-        <th class="alert-info">
-            @*@Html.DisplayNameFor(model => model.Paises.FIPS)*@
-            @Html.ActionLink("Pais", "Index", new { sortOrder = ViewBag.Pais, currentFilter = ViewBag.CurrentFilter })            
-        </th>
-        <th class="alert-success">
-            <span class="glyphicon glyphicon-cog"> <b>Acciones</b> </span>
-        </th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Abreviatura)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Paises.FIPS)
-            </td>
-            <td>
-                @Html.ActionLink(" ", "Edit", new {  id = item.Id_Entidad, id2 = item.Id_Pais  }   , new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
-                @Html.ActionLink(" ", "Details", new { id = item.Id_Entidad, id2 = item.Id_Pais }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
-                @Html.ActionLink(" ", "Delete", new { id = item.Id_Entidad, id2 = item.Id_Pais }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
-            </td>
-        </tr>
-    }
-
-</table>
+        </table>
+        </div>
+    </div>
 @Html.PagedListPager(Model, page => Url.Action("Index",
 new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 <table class="btn-group">

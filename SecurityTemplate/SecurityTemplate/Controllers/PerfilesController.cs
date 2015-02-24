@@ -31,16 +31,12 @@ namespace Security.Controllers
         }
 
         // GET: Perfiles/Details/5
-        public ActionResult Details(short id)
+        public ActionResult Details(short id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Perfiles perfiles = repo.Get(id);
-            if (perfiles == null)
+            if (perfiles == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             return View(perfiles);
         }
@@ -71,16 +67,12 @@ namespace Security.Controllers
         }
 
         // GET: Perfiles/Edit/5
-        public ActionResult Edit(short id)
+        public ActionResult Edit(short id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Perfiles perfiles = repo.Get(id);
-            if (perfiles == null)
+            if (perfiles == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             ViewBag.Id_Sistema = new SelectList(Repo_Sistemas.GetAll(), "Id_Sistema", "Nombre", perfiles.Id_Sistema);
             return View(perfiles);
@@ -104,16 +96,12 @@ namespace Security.Controllers
         }
 
         // GET: Perfiles/Delete/5
-        public ActionResult Delete(short id)
+        public ActionResult Delete(short id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Perfiles perfiles = repo.Get(id);
-            if (perfiles == null)
+            if (perfiles == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             return View(perfiles);
         }

@@ -78,7 +78,7 @@ namespace Security.Core.Model
     public partial class Beneficio { }
 
     [MetadataType(typeof(ContactosMetadata))]
-    public partial class Contacto { }
+    public partial class Contactos { }
 
     [MetadataType(typeof(Contacto_tipoMetadata))]
     public partial class Contacto_tipo { }

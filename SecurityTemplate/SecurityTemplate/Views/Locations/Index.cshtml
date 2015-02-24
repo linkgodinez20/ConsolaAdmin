@@ -1,92 +1,93 @@
-﻿@model PagedList.IPagedList<Security.Core.Model.Locations>
-@using PagedList.Mvc;
-<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
-<script src="~/Scripts/jquery-2.1.3.js"></script>
+﻿@model IEnumerable<Security.Core.Model.Locations>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false"></script>
+
 <script type="text/javascript">
     $(document).ready(function () {
+        var gmarkers = [];
+        var map;
 
-        $('button').popover({ trigger: "hover" });
+        function initialize() {
 
-        $('a').popover({ trigger: 'hover' });
+            var mapProp = {
+                center: new google.maps.LatLng(20.593684, 78.96288),
+                zoom: 2,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        }
 
-        $('#btnFilter').click(function () {
-            $('#SearchString').val('');
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+        $("#txtSearch").keyup(function ()
+        {
+            var x = $("#txtSearch").val();
+
+            for (i = 0; i < gmarkers.length; i++)
+            {
+                gmarkers[i].setMap(null);
+            }
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Search", "Map")', //"../Map/Search"
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({ "Location": x }),
+                    dataType: "json",
+                    success: function (data)
+                    {
+                        var table = "<table class='table'>";
+                        $.each(data, function (Listado, value)
+                        {
+                            table += "<tr><td>" + value.LocationName + "</td></tr>";
+                            var latlng = new google.maps.LatLng(value.Latitude, value.Longitude);
+                            var marker = new google.maps.Marker({
+                                position: latlng,
+                                icon: "../content/pinkball.png",
+                                map: map
+                            });
+                            gmarkers.push(marker);
+                        });
+                        table += "</table>";
+                        $("#myData").html(table);
+
+                        if (x == "")
+                        {
+                            for (j = 0; j < gmarkers.length; j++)
+                            {
+                                gmarkers[j].setMap(null);
+                            }
+                        }
+                    }
+                });
         });
-
     });
 </script>
-
-@{
-    ViewBag.Title = "Ubicaciones";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2 class="Titulo" align="center">UBICACIONES</h2>
-
-@using (Html.BeginForm("Index", "Locations", FormMethod.Get))
-{
-    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
-        <div class="input-group">
-            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
-            <span class="input-group-btn">
-                <button type="submit" value="create" class="btn btn-info">
-                    <i class="glyphicon glyphicon-search"></i>
-                </button>
-            </span>
-        </div>
-    </div>
-}
-
-<br /><br /><br />
-
-<table class="table table-bordered table-condensed table-striped table-hover">
+<table>
     <tr>
-        <th class="alert-info">
-            @Html.ActionLink("Ubicacion", "Index", new { sortOrder = ViewBag.Ubicaciones, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            @Html.ActionLink("Latitud", "Index", new { sortOrder = ViewBag.Latitud, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            @Html.ActionLink("Longitud", "Index", new { sortOrder = ViewBag.Longitud, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class ="alert-success">
-            <span class="glyphicon glyphicon-cog"> <b>Acciones</b> </span>
-        </th>
-    </tr>
+        <td valign="top">
+            @Html.TextBox("txtSearch", null, new { @placeholder = "Search A Country" })
+            <div id="myData">
+                <table class="table">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.LocationName
+                            </td>
+                        </tr>
+                    }
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.LocationName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Latitude)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Longitude)
-            </td>
-            <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.LocationId }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
-                @Html.ActionLink(" ", "Details", new { id = item.LocationId }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
-                @Html.ActionLink(" ", "Delete", new { id = item.LocationId }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
-            </td>
-        </tr>
-    }
-</table>
-@Html.PagedListPager(Model, page => Url.Action("Index",
-new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-<table class="btn-group">
-    <tr>
-        <td>
-            <div class="input-group">
-                <p>
-                    <a class="btn btn-success glyphicon glyphicon-plus" data-container="body" data-toggle="popover" data-placement="right"
-                       data-content="Nuevo" href="/Locations/Create"></a>
-                </p>
+                </table>
             </div>
+        </td>
+        <td valign="top">
+            <div id="googleMap" style="width:1000px;height:600px;"></div>
         </td>
     </tr>
 </table>
+
+
 

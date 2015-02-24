@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - CONADUS</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/sticky-footer.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/favicon.ico" type="image/icon">
+    <link rel="icon" href="~/favicon.ico" type="image/icon">
+
+</head>
+
+<body>
+        <nav class="navbar navbar-default Box" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">CONADUS</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        @*<li class="active"><a href="#">Home</a></li>*@
+                        <li>@Html.ActionLink("HOME", "Index", "Home")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">MIKE <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="dropdown-header">Creados Mike</li>
+                                <li>@Html.ActionLink(" 1. AreasTrabajo", "Index", "AreasDeTrabajo")</li>
+                                <li>@Html.ActionLink(" 2. Baja_Motivos", "Index", "Baja_Motivos")</li>
+                                <li>@Html.ActionLink(" 3. Beneficio_Tipo", "Index", "Beneficio_Tipo")</li>
+                                <li>@Html.ActionLink(" 4. Contacto_Medio", "Index", "Contacto_Medio")</li>
+                                <li>@Html.ActionLink(" 5. Cuentas", "Index", "Cuentas")</li>
+                                <li>@Html.ActionLink(" 6. Equipos_Tipo", "Index", "Equipos_Tipo")</li>
+                                <li>@Html.ActionLink(" 7. Login", "Index", "LogIn")</li>
+                                <li>@Html.ActionLink(" 8. Acciones", "Index", "Acciones")</li>
+                                <li>@Html.ActionLink(" 9. Preguntas", "Index", "Preguntas")</li>
+                                <li>@Html.ActionLink("10. Dispositivos_tipo", "Index", "DispositivosTipo")</li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Faltan</li>
+                                <li>@Html.ActionLink("11. Events", "Index", "Events")</li>
+                                <li>@Html.ActionLink("12. Locations", "Index", "Locations")</li>
+                                <li>@Html.ActionLink("13. PreguntasXLogin", "Index", "PreguntasXLogin")</li>
+                                <li>@Html.ActionLink("14. Directorios", "Index", "Directorios")</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">HUMBERTO <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Perfiles", "Index", "Perfiles")</li>
+                                <li>@Html.ActionLink("Personas", "Index", "Personas")</li>
+                                <li>@Html.ActionLink("Actividades", "Index", "Actividades")</li>
+                                <li>@Html.ActionLink("Baja", "Index", "Bajas")</li>
+                                <li>@Html.ActionLink("Menu", "Index", "Menus")
+                                <li>@Html.ActionLink("Beneficio", "Index", "Beneficios")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Contacto", "Index", "Contactos")</li>
+                                <li>@Html.ActionLink("Contacto(tipo)", "Index", "Contacto_tipo")</li>
+                                <li>@Html.ActionLink("Domicilio", "Index", "Domicilios")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Equipos", "Index", "Equipos")</li>
+                                <li>@Html.ActionLink("Género", "Index", "Genero")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Municipios", "Index", "Municipios")</li>
+                                <li>@Html.ActionLink("Países", "Index", "Paises")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Sesiones", "Index", "Sesiones")</li>
+                                <li>@Html.ActionLink("Sistemas", "Index", "Sistemas")</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- Begin login area -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <form class="navbar-form navbar-right">
+                            <div class="form-group">
+                                <input type="text" placeholder="Login" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Password" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-success">Ingresar</button>
+                        </form>
+                    </ul>
+
+                    @*<ul class="nav navbar-nav navbar-right">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Miguel Flores
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/user/preferences"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Preferences</a></li>
+                                    <li><a href="/help/support"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Contact Support</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="/auth/logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Logout</a></li>
+                        </ul>*@
+                </div>
+            </div>
+        </nav>
+        <!-- Begin page content -->
+        <div class="container bk">
+            @RenderBody()
+            @*<div align="justify" style="alignment-adjust:central">
+                    <div id="logSuccess" runat="server" style=" margin-bottom:5px;">  </div>
+                    <div id="logInfo" runat="server" style=" margin-bottom:5px;">  </div>
+                    <div id="logWarning" runat="server" style=" margin-bottom:5px;">  </div>
+                    <div id="logDanger" runat="server" style=" margin-bottom:5px;">  </div>
+            </div>*@
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p class="pull-right"><a href="#">Regresar inicio</a></p>
+                <p>&copy; @DateTime.Now.Year  &middot; <a href="http://www.tago.com.mx/">Solutia Intelligence</a></p>
+            </div>
+        </footer>
+
+    <!-- ================ SCRIPTS ================ -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/MikeJS")
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/Miscelaneous")
+
+</body>
+</html>

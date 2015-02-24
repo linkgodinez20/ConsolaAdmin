@@ -13,17 +13,28 @@ namespace Security
     /// </summary>
     public class DefaultSettings: IDefaultSettings
     {
+        // propiedades
+
         private string sistema_Nombre;
         private byte sistema_iD = 1;
         private string sistema_HashKey;
         private string sistema_ConnectionString;
-        private string directorio_Media;
+
+        private string directorio_PersonasFoto;
+        private string directorio_PaisesBanera;
         private string directorio_Imagenes;
         private string directorio_Iconos;
+
+        private string parametros_caducidadEquipoPrincipal;
+        private string parametros_caducidadEquipoSecundario;
+        private string parametros_caducidadEquipoTemporal;
+
+        // Inyección de componentes
 
         private readonly IRepo<Sistemas> repo_sistemas;
         private readonly IRepo<Directorio_tipo> repo_directorioTipo;
         private readonly IRepo<Directorios> repo_directorios;
+        private readonly IRepo<Parametros_configuracion> repo_parametrosConfig;
 
         public DefaultSettings(IRepo<Sistemas> repo_sistemas, IRepo<Directorio_tipo> repo_directorioTipo, IRepo<Directorios> repo_directorios)
         {
@@ -73,22 +84,34 @@ namespace Security
             }
         }
 
-        public string Directorio_Media
+        public string Directorio_PersonasFoto
         {
             get
             {
-                var dirTipo = "Media";
+                //var dirTipo = "Media";
 
                 //var dirMedia = from d in repo_directorioTipo.GetAll()                               
                 //               where d.Id_Sistema == this.sistema_iD
                 //               select d.Nombre;
-                               
-                         
-                               
-                               
 
+                return this.directorio_PersonasFoto = "~/Media/Personas/Foto";
 
-                throw new NotImplementedException();
+            }
+
+        }
+
+        public string Directorio_PaisesBanera
+        {
+            get
+            {
+                //var dirTipo = "Media";
+
+                //var dirMedia = from d in repo_directorioTipo.GetAll()                               
+                //               where d.Id_Sistema == this.sistema_iD
+                //               select d.Nombre;
+
+                return this.directorio_PaisesBanera = "~/Media/Paises/Banderas";
+
             }
 
         }

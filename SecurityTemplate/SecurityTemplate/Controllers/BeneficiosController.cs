@@ -31,16 +31,12 @@ namespace Security.Controllers
         }
 
         // GET: Beneficios/Details/5
-        public ActionResult Details(byte id)
+        public ActionResult Details(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Beneficio beneficio = repo.Get(id);
-            if (beneficio == null)
+            if (beneficio == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             return View(beneficio);
         }
@@ -71,16 +67,12 @@ namespace Security.Controllers
         }
 
         // GET: Beneficios/Edit/5
-        public ActionResult Edit(byte id)
+        public ActionResult Edit(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Beneficio beneficio = repo.Get(id);
-            if (beneficio == null)
+            if (beneficio == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             ViewBag.Id_BeneficioTipo = new SelectList(Repo_BeneficioTipo.GetAll(), "Id_BeneficioTipo", "Nombre", beneficio.Id_BeneficioTipo);
             return View(beneficio);
@@ -104,16 +96,12 @@ namespace Security.Controllers
         }
 
         // GET: Beneficios/Delete/5
-        public ActionResult Delete(byte id)
+        public ActionResult Delete(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Beneficio beneficio = repo.Get(id);
-            if (beneficio == null)
+            if (beneficio == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             return View(beneficio);
         }

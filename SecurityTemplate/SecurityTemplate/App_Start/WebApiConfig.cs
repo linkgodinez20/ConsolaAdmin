@@ -21,6 +21,12 @@ namespace Security
             );
 
             config.Routes.MapHttpRoute(
+                name: "api3params",
+                routeTemplate: "api/{controller}/{id}/{id2}/{id3}",
+                defaults: new { controller = "Municipios", action = "Index", id = RouteParameter.Optional, id2 = RouteParameter.Optional, id3 = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

@@ -66,7 +66,7 @@ namespace Security.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IDbContextFactory>().To<DbContextFactory>();            
+            kernel.Bind<IDbContextFactory>().To<DbContextFactory>().InRequestScope();            
             kernel.Bind(typeof(IRepo<>)).To(typeof(Repo<>));
             kernel.Bind<IDefaultSettings>().To<DefaultSettings>().InSingletonScope();
             

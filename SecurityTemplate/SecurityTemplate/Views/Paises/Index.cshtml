@@ -1,14 +1,13 @@
 ﻿﻿@model PagedList.IPagedList<Security.Core.Model.Paises>
 @using PagedList.Mvc;
-
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Países / Lista";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<h2 class="Titulo" align="center">Pa&iacute;ses</h2>
 <ol class="breadcrumb">
-    <li>Inicio</li>
-    <li><b>Paises</b></li>
+    <li><span class="glyphicon glyphicon-home"></span> @Html.ActionLink("Inicio", "Index", "Home")</li>
+    <li><b>Pa&iacute;ses</b></li>
     <li class="active">Lista</li>
 </ol>
 
@@ -31,52 +30,100 @@
 }
 <br />
 <br />
-<table class="table table-bordered table-condensed table-hover">
-    <tr>
-        <th class="alert-info">
-            FIPS
-        </th>
-        <th class="alert-info">
-            @Html.ActionLink("Nombre", "Index", new { sortOrder = ViewBag.SortByName, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            Prioridad
-        </th>
-        <th class="alert-success">
-            <span class="glyphicon glyphicon-cog"> Acciones</span>
-        </th>
-    </tr>
+<div class="table-responsive">
+    <table class="table table-bordered table-condensed table-hover Box">
+        <tr>
+            <th class="alert-info">
+                FIPS
+            </th>
+            <th class="alert-info">
+                @Html.ActionLink("Nombre", "Index", new { sortOrder = ViewBag.SortByName, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="alert-info">
+                Bandera
+            </th>
+            <th class="alert-info">
+                Prioridad
+            </th>
+            <th class="alert-success">
+                <span class="glyphicon glyphicon-cog"></span><b> Acciones</b>
+            </th>
+        </tr>
 
-    @foreach (var item in Model)
-    {
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FIPS)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @{
+            var config = ViewBag.Dir_PaisesBandera + "/" + item.Bandera;
+                    }
+
+                    <img id="img_Foto" style="Height:11px;Width:16px" src="@Url.Content(@config)" />
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prioridad)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "index", "Entidades", new { Pais = item.Id_Pais }, new { @class = "btn-xs btn-primary glyphicon glyphicon-cog" }) |
+                    @Html.ActionLink(" ", "Edit", new { id = item.Id_Pais }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil", data_toggle = "modal", data_target = "#EditModal" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.Id_Pais }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list", data_toggle = "modal", data_target = "#DetailsModal" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.Id_Pais }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove", data_toggle = "modal", data_target = "#DelModal" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    @{
+        var ControllerName = ViewContext.RouteData.Values["controller"];
+    }
+    <table>
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FIPS)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Prioridad)
-            </td>
-            <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.Id_Pais }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
-                @Html.ActionLink(" ", "Details", new { id = item.Id_Pais }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
-                @Html.ActionLink(" ", "Delete", new { id = item.Id_Pais }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
+                <a class="btn btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#CreateModal" id="Agregar" href="~/@ControllerName/Create"></a>
             </td>
         </tr>
-    }
+    </table>
 
-</table>
-@Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-@{
-    var ControllerName = ViewContext.RouteData.Values["controller"];
-}
-<table>
-    <tr>
-        <td>
-            <a class="btn btn-success glyphicon glyphicon-plus" data-container="body" data-toggle="popover" data-placement="right" data-content="Agregar" href="~/@ControllerName/Create"></a>
-        </td>
-    </tr>
-</table>
+    <!-- Modal -->
+    <div class="modal fade" id="DelModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+    <!-- Detalles Modal -->
+    <div class="modal fade" id="DetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>
+    <!-- Create Modal -->
+    <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            </div>
+        </div>
+    </div>

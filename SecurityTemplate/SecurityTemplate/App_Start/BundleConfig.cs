@@ -22,6 +22,7 @@ namespace Security
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                        "~/Scripts/jquery.validate.unobtrusive.min.js",
                         "~/Scripts/jquery.validate*"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -37,8 +38,8 @@ namespace Security
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/PagedList.css",
-                      "~/Content/themes/base/all.css"
-                      
+                      "~/Content/themes/base/all.css",
+                      "~/Content/font-awesome.min.css"                      
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/MX-calendar").Include(

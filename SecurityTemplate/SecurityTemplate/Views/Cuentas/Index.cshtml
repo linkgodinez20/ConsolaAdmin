@@ -38,111 +38,137 @@
 }
 
 <br /><br /><br />
+<div class="table-responsive">
+    <table class="table table-bordered table-condensed table-striped table-hover Box">
+        <tr>
+            <th class="alert-info">
+                @*@Html.DisplayNameFor(model => model.Baja.Nombre)*@
+                @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="alert-info">
+                @*@Html.DisplayNameFor(model => model.LogIn.Usuario)*@
+                @Html.ActionLink("Login", "Index", new { sortOrder = ViewBag.Login, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="alert-info">
+                @*@Html.DisplayNameFor(model => model.Perfiles.Nombre)*@
+                @Html.ActionLink("Perfil", "Index", new { sortOrder = ViewBag.Perfil, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="alert-info">
+                @*@Html.DisplayNameFor(model => model.Sistemas.Nombre)*@
+                @Html.ActionLink("Sistema", "Index", new { sortOrder = ViewBag.Sistema, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="alert-info">
+                @*@Html.DisplayNameFor(model => model.FechaCreacion)*@
+                @Html.ActionLink("Fecha Creación", "Index", new { sortOrder = ViewBag.FechaCrea, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="alert-info">
+                @*@Html.DisplayNameFor(model => model.FechaModificacion)*@
+                @Html.ActionLink("Fecha mod", "Index", new { sortOrder = ViewBag.FechaMod, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="alert-info">
+                @*@Html.DisplayNameFor(model => model.IntentosCnn)*@
+                @Html.ActionLink("Intentos Conex", "Index", new { sortOrder = ViewBag.Intentos, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="alert-info">
+                @*@Html.DisplayNameFor(model => model.InicioBloqueo)*@
+                @*@Html.ActionLink("Inicio Bloqueo", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })*@
+                <a>Inicio Bloqueo</a>
+            </th>
+            <th class="alert-info">
+                @*@Html.DisplayNameFor(model => model.Estatus)*@
+                @* @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })*@
+                <a>Estatus</a>
+            </th>
+            <th class="alert-info">
+                @*@Html.DisplayNameFor(model => model.RegistroCompleto)*@
+                @*@Html.ActionLink("RegistroCompleto", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })*@
+                <a>RegistroCompleto</a>
+            </th>
 
-<table class="table table-bordered table-condensed table-striped table-hover">
-    <tr>
-        <th class="alert-info">
-            @*@Html.DisplayNameFor(model => model.Baja.Nombre)*@
-            @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            @*@Html.DisplayNameFor(model => model.LogIn.Usuario)*@
-            @Html.ActionLink("Login", "Index", new { sortOrder = ViewBag.Login, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            @*@Html.DisplayNameFor(model => model.Perfiles.Nombre)*@
-            @Html.ActionLink("Perfil", "Index", new { sortOrder = ViewBag.Perfil, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            @*@Html.DisplayNameFor(model => model.Sistemas.Nombre)*@
-            @Html.ActionLink("Sistema", "Index", new { sortOrder = ViewBag.Sistema, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            @*@Html.DisplayNameFor(model => model.FechaCreacion)*@
-            @Html.ActionLink("Fecha Creación", "Index", new { sortOrder = ViewBag.FechaCrea, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            @*@Html.DisplayNameFor(model => model.FechaModificacion)*@
-            @Html.ActionLink("Fecha mod", "Index", new { sortOrder = ViewBag.FechaMod, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            @*@Html.DisplayNameFor(model => model.IntentosCnn)*@
-            @Html.ActionLink("Intentos Conex", "Index", new { sortOrder = ViewBag.Intentos, currentFilter = ViewBag.CurrentFilter })
-        </th>
-        <th class="alert-info">
-            @*@Html.DisplayNameFor(model => model.InicioBloqueo)*@
-            @*@Html.ActionLink("Inicio Bloqueo", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })*@
-            <a>Inicio Bloqueo</a>
-        </th>
-        <th class="alert-info">
-            @*@Html.DisplayNameFor(model => model.Estatus)*@
-            @* @Html.ActionLink("Baja", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })*@
-            <a>Estatus</a>
-        </th>
-        <th class="alert-info">
-            @*@Html.DisplayNameFor(model => model.RegistroCompleto)*@
-            @*@Html.ActionLink("RegistroCompleto", "Index", new { sortOrder = ViewBag.Baja, currentFilter = ViewBag.CurrentFilter })*@
-            <a>RegistroCompleto</a>
-        </th>
-        
-        <th class="alert-success">
-            <span class="glyphicon glyphicon-cog"> <b>Acciones</b> </span>
-        </th>
-    </tr>
+            <th class="alert-success">
+                <span class="glyphicon glyphicon-cog"></span> <b>Acciones</b> 
+            </th>
+        </tr>
 
-    @foreach (var item in Model)
-    {
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Baja.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LogIn.Usuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Perfiles.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sistemas.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaCreacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaModificacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IntentosCnn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InicioBloqueo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RegistroCompleto)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.Id_Cuenta }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil", data_toggle = "modal", data_target = "#EditModal" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.Id_Cuenta }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list", data_toggle = "modal", data_target = "#DetailsModal" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.Id_Cuenta }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove", data_toggle = "modal", data_target = "#DelModal" })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+    <!-- Delete Modal -->
+    <div class="modal fade" id="DelModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content"> </div>
+        </div>
+    </div>
+    <!-- Edit Modal -->
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">  </div>
+        </div>
+    </div>
+    <!-- Create Modal -->
+    <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">  </div>
+        </div>
+    </div>
+    <!-- Details Modal -->
+    <div class="modal fade" id="DetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">  </div>
+        </div>
+    </div>
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    <table class="btn-group">
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Baja.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LogIn.Usuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Perfiles.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sistemas.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaCreacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaModificacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IntentosCnn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InicioBloqueo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RegistroCompleto)
-            </td>
-            <td>
-                @Html.ActionLink(" ", "Edit", new { id = item.Id_Cuenta }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil" }) |
-                @Html.ActionLink(" ", "Details", new { id = item.Id_Cuenta }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list" }) |
-                @Html.ActionLink(" ", "Delete", new { id = item.Id_Cuenta }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove" })
+                <div class="input-group">
+                    <p>
+                        <a class="btn btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#CreateModal" href="/Cuentas/Create"></a>
+                    </p>
+                </div>
             </td>
         </tr>
-    }
-
-</table>
-@Html.PagedListPager(Model, page => Url.Action("Index",
-new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-<table class="btn-group">
-    <tr>
-        <td>
-            <div class="input-group">
-                <p>                   
-                    <a class="btn btn-success glyphicon glyphicon-plus" data-container="body" data-toggle="popover" data-placement="right"
-                       data-content="Nuevo" href="/Cuentas/Create"></a>
-                </p>
-            </div>
-        </td>
-    </tr>
-</table>
+    </table>

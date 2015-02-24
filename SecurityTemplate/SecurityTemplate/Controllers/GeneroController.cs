@@ -27,16 +27,12 @@ namespace Security.Controllers
         }
 
         // GET: Genero/Details/5
-        public ActionResult Details(byte id)
+        public ActionResult Details(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Genero genero = repo.Get(id);
-            if (genero == null)
+            if (genero == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             return View(genero);
         }
@@ -65,16 +61,12 @@ namespace Security.Controllers
         }
 
         // GET: Genero/Edit/5
-        public ActionResult Edit(byte id)
+        public ActionResult Edit(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Genero genero = repo.Get(id);
-            if (genero == null)
+            if (genero == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             return View(genero);
         }
@@ -96,16 +88,12 @@ namespace Security.Controllers
         }
 
         // GET: Genero/Delete/5
-        public ActionResult Delete(byte id)
+        public ActionResult Delete(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Genero genero = repo.Get(id);
-            if (genero == null)
+            if (genero == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             return View(genero);
         }

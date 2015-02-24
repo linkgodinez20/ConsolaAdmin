@@ -2,38 +2,47 @@
 
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2 class="Titulo">Detalles</h2>
+<script>
+    $(document).ready(function () {
+        $('button').popover({ trigger: "hover" });
+        $('a').popover({ trigger: 'hover' });
+    });
+</script>
 
-<div>
-    <h4>Preguntas</h4>
-	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Pregunta)
-        </dt>
+<div class="modal-header label-info">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-        <dd>
-            @Html.DisplayFor(model => model.Pregunta)
-        </dd>
+    <h2 class="modal-title">Detalles</h2>
 
-    </dl>
+    <h4 class="Fuente_blanca">Preguntas</h4>
 </div>
-<p>
+
+<div class="modal-body">
+    <table class="table table-striped table-bordered table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pregunta)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Pregunta)
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
     @{
         var ControllerName = ViewContext.RouteData.Values["Controller"];
     }
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <a class="btn btn-warning glyphicon glyphicon-pencil" data-container="body" data-toggle="popover" data-placement="left"
-               data-content="Editar" href="~/@ControllerName/Edit/@Model.Id_Pregunta"></a>
+            @*<a class="btn btn-warning glyphicon glyphicon-pencil" data-container="body" data-toggle="popover" data-placement="left"
+                data-content="Editar" href="~/@ControllerName/Edit/@Model.Id_Accion"></a>*@
             <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right"
                data-content="Volver" href="~/@ControllerName"></a>
         </div>
     </div>
-    <hr />
-    <hr />
-</p>
-
+</div>

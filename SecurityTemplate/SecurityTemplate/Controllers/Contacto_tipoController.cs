@@ -27,16 +27,12 @@ namespace Security.Controllers
         }
 
         // GET: Contacto_tipo/Details/5
-        public ActionResult Details(byte id)
+        public ActionResult Details(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Contacto_tipo contacto_tipo = repo.Get(id);
-            if (contacto_tipo == null)
+            if (contacto_tipo == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             return View(contacto_tipo);
         }
@@ -65,16 +61,12 @@ namespace Security.Controllers
         }
 
         // GET: Contacto_tipo/Edit/5
-        public ActionResult Edit(byte id)
+        public ActionResult Edit(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Contacto_tipo contacto_tipo = repo.Get(id);
-            if (contacto_tipo == null)
+            if (contacto_tipo == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             return View(contacto_tipo);
         }
@@ -96,16 +88,12 @@ namespace Security.Controllers
         }
 
         // GET: Contacto_tipo/Delete/5
-        public ActionResult Delete(byte id)
+        public ActionResult Delete(byte id = 0)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Contacto_tipo contacto_tipo = repo.Get(id);
-            if (contacto_tipo == null)
+            if (contacto_tipo == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             return View(contacto_tipo);
         }

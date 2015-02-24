@@ -24,14 +24,25 @@ namespace Security.Controllers
         }
 
         // GET: /Entidades/
-        //public ActionResult Index()
-        //{
-        //    var entidades = repo.GetAll().Include(e => e.Paises);
-        //    return View(entidades.ToList());
-        //}
-
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(Int16? Pais, string sortOrder, string currentFilter, string searchString, int? page)
         {
+            if (Pais != null)
+            {
+                Session["Entidades_Index_Id_Pais"] = Pais;
+
+                var np = (from p in paises.GetAll()
+                         where p.Id_Pais == Pais
+                         select new
+                         {
+                             Nombre = p.Nombre
+                         }).ToList();
+
+                foreach (var p in np)
+                {
+                    Session["Entidades_Index_Id_PaisNombre"] = p.Nombre;
+                }
+            }
+            
             ViewBag.CurrentSort = sortOrder;
             ViewBag.Entidad = String.IsNullOrEmpty(sortOrder) ? "Entidad_desc" : "";
             ViewBag.Abreviatura = sortOrder == "Abreviatura" ? "Abreviatura" : "Abreviatura_desc";
@@ -48,7 +59,9 @@ namespace Security.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            IOrderedQueryable<Entidades> entidades = repo.GetAll().Include(e => e.Paises).OrderBy(x => x.Nombre);
+            Int16? Ent_idx_IdPais = Convert.ToInt16(Session["Entidades_Index_Id_Pais"]);
+            IOrderedQueryable<Entidades> entidades = repo.GetAll().Where(p => p.Id_Pais == Ent_idx_IdPais).OrderBy(x => x.Nombre);
+            
 
             var modelo = from s in entidades select s;
             if (!String.IsNullOrEmpty(searchString))
@@ -80,7 +93,7 @@ namespace Security.Controllers
                     break;
             }
 
-            int pageSize = 10;
+            int pageSize = 6;
             int pageNumber = (page ?? 1);
 
             return View(modelo.ToPagedList(pageNumber, pageSize));
@@ -90,7 +103,7 @@ namespace Security.Controllers
         public ActionResult Details(short id = 0, short id2 = 0)
         {
             Entidades entidades = repo.Get(id,id2);
-            if (entidades == null || id == 0)
+            if (entidades == null || id == 0 || id2 == 0)
             {
                 return RedirectToAction("Index");
             }
@@ -123,8 +136,8 @@ namespace Security.Controllers
         // GET: /Entidades/Edit/5
         public ActionResult Edit(short id = 0, short id2 = 0)
         {
-            Entidades entidades = repo.Get(id);
-            if (entidades == null || id == 0)
+            Entidades entidades = repo.Get(id,id2);
+            if (entidades == null || id == 0 || id2 == 0)
             {
                 return RedirectToAction("Index");
             }
@@ -150,8 +163,8 @@ namespace Security.Controllers
         // GET: /Entidades/Delete/5
         public ActionResult Delete(short id = 0, short id2 = 0)
         {
-            Entidades entidades = repo.Get(id);
-            if (entidades == null || id == 0)
+            Entidades entidades = repo.Get(id,id2);
+            if (entidades == null || id == 0 || id2 == 0)
             {
                 return RedirectToAction("Index");
             }
@@ -161,11 +174,11 @@ namespace Security.Controllers
         // POST: /Entidades/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Int16 id)
+        public ActionResult DeleteConfirmed(Int16 id,Int16 id2)
         {
             try
             {
-                Entidades entidades = repo.Get(id);
+                Entidades entidades = repo.Get(id,id2);
                 repo.Delete(entidades);
                 repo.Save();
                 return RedirectToAction("Index");

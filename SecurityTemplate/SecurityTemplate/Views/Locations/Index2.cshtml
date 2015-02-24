@@ -1,0 +1,117 @@
+﻿@model PagedList.IPagedList<Security.Core.Model.Locations>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<script src="~/Scripts/jquery-2.1.3.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('button').popover({ trigger: "hover" });
+
+        $('a').popover({ trigger: 'hover' });
+
+        $('#btnFilter').click(function () {
+            $('#SearchString').val('');
+        });
+
+    });
+</script>
+
+@{
+    ViewBag.Title = "Ubicaciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="Titulo" align="center">UBICACIONES</h2>
+
+@using (Html.BeginForm("Index", "Locations", FormMethod.Get))
+{
+    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
+        <div class="input-group">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+            <span class="input-group-btn">
+                <button type="submit" value="create" class="btn btn-info">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+}
+
+<br /><br /><br />
+<div class="table-responsive">
+    <table class="table table-bordered table-condensed table-striped table-hover">
+        <tr>
+            <th class="alert-info">
+                @Html.ActionLink("Ubicacion", "Index", new { sortOrder = ViewBag.Ubicaciones, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="alert-info">
+                @Html.ActionLink("Latitud", "Index", new { sortOrder = ViewBag.Latitud, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="alert-info">
+                @Html.ActionLink("Longitud", "Index", new { sortOrder = ViewBag.Longitud, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th class="alert-success">
+                <span class="glyphicon glyphicon-cog"> <b>Acciones</b> </span>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Latitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Longitude)
+                </td>
+                <td>
+                    @Html.ActionLink(" ", "Edit", new { id = item.LocationId }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil", data_toggle = "modal", data_target = "#EditModal" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.LocationId }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list", data_toggle = "modal", data_target = "#DetailsModal" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.LocationId }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove", data_toggle = "modal", data_target = "#DelModal" })
+
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+    <!-- Delete Modal -->
+    <div class="modal fade" id="DelModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content"> </div>
+        </div>
+    </div>
+    <!-- Edit Modal -->
+    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">  </div>
+        </div>
+    </div>
+    <!-- Create Modal -->
+    <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">  </div>
+        </div>
+    </div>
+    <!-- Details Modal -->
+    <div class="modal fade" id="DetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">  </div>
+        </div>
+    </div>
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    <table class="btn-group">
+        <tr>
+            <td>
+                <div class="input-group">
+                    <p>
+                        <a class="btn btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#CreateModal" href="~/Locations/Create"></a>
+                    </p>
+                </div>
+            </td>
+        </tr>
+    </table>
+

@@ -81,61 +81,26 @@ namespace Security.Controllers
         // GET: Sesiones/Details/5
         public ActionResult Details(int id = 0)
         {
-            if (id == 0)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Sesiones sesiones = repo.Get(id);
-            if (sesiones == null)
+            if (sesiones == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             return View(sesiones);
         }
 
-        // GET: Sesiones/Create
-        public ActionResult Create()
-        {
-            ViewBag.Id_Cuenta = new SelectList(Repo_Cuentas.GetAll(), "Id_Cuenta", "Id_Cuenta");
-            ViewBag.Id_Sistema = new SelectList(Repo_Sistemas.GetAll(), "Id_Sistema", "Nombre");
-            return View();
-        }
-
-        // POST: Sesiones/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id_Sesion,Identificador,Id_Cuenta,FechaHoraInicio,OnLine,CierreSesion,UltimoMovimiento,Id_Sistema,Estatus")] Sesiones sesiones)
-        {
-            if (ModelState.IsValid)
-            {
-                repo.Add(sesiones);
-                repo.Save();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.Id_Cuenta = new SelectList(Repo_Cuentas.GetAll(), "Id_Cuenta", "Id_Cuenta", sesiones.Id_Cuenta);
-            ViewBag.Id_Sistema = new SelectList(Repo_Sistemas.GetAll(), "Id_Sistema", "Nombre", sesiones.Id_Sistema);
-
-            return View(sesiones);
-        }
+        
 
         // GET: Sesiones/Edit/5
         public ActionResult Edit(int id = 0)
         {
-            if (id == 0)
+            Sesiones sesiones = repo.Get(id);
+            if (sesiones == null || id == 0)
             {
                 return RedirectToAction("index");
-                //return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Sesiones sesiones = repo.Get(id);
-            if (sesiones == null)
-            {
-                return HttpNotFound();
             }
 
-            ViewBag.Id_Cuenta = new SelectList(Repo_Cuentas.GetAll(), "Id_Cuenta", "Id_Cuenta", sesiones.Id_Cuenta);
+            //ViewBag.Id_Cuenta = new SelectList(Repo_Cuentas.GetAll(), "Id_Cuenta", "Id_Cuenta", sesiones.Id_Cuenta);
             ViewBag.Id_Sistema = new SelectList(Repo_Sistemas.GetAll(), "Id_Sistema", "Nombre", sesiones.Id_Sistema);
 
             return View(sesiones);
@@ -150,12 +115,14 @@ namespace Security.Controllers
         {
             if (ModelState.IsValid)
             {
+                sesiones.FechaHoraInicio = Convert.ToDateTime(sesiones.FechaHoraInicio);
+                sesiones.UltimoMovimiento = DateTime.Now;
                 repo.Update(sesiones);
                 repo.Save();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id_Cuenta = new SelectList(Repo_Cuentas.GetAll(), "Id_Cuenta", "Id_Cuenta", sesiones.Id_Cuenta);
+            //ViewBag.Id_Cuenta = new SelectList(Repo_Cuentas.GetAll(), "Id_Cuenta", "Id_Cuenta", sesiones.Id_Cuenta);
             ViewBag.Id_Sistema = new SelectList(Repo_Sistemas.GetAll(), "Id_Sistema", "Nombre", sesiones.Id_Sistema);
 
             return View(sesiones);
@@ -164,14 +131,10 @@ namespace Security.Controllers
         // GET: Sesiones/Delete/5
         public ActionResult Delete(int id = 0)
         {
-            if (id == 0)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Sesiones sesiones = repo.Get(id);
-            if (sesiones == null)
+            if (sesiones == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
             return View(sesiones);
         }

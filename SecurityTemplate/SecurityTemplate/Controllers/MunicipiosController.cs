@@ -30,26 +30,15 @@ namespace Security.Controllers
         }
 
         // GET: Municipios
-        public ActionResult Index(string sortOrder, string currentFilter, string Entidades_ddl, string searchString, int? page)
+        public ActionResult Index(Int16? Pais, Int16? Entidad, string sortOrder, string currentFilter, string searchString, int? page)
         {
-            // Inicio entidad
-
-            //ViewBag.Entidades_ddl = new SelectList(Repo_Entidad.GetAll(), "Id_Entidad", "Nombre");
-            
-            
-
-            Int16 entidadSeleccionada = 1;            
-
-            if (!String.IsNullOrEmpty(Entidades_ddl))
+            if ((null != Pais) && (null != Entidad) && (1 != page))
             {
-                entidadSeleccionada = Convert.ToInt16(Entidades_ddl);
-                Session["EntidadSelect"] = Convert.ToString(entidadSeleccionada);
+                Session["Municipios_index_IdPais"] = Convert.ToInt16(Pais);
+                Session["Municipios_index_IdEntidad"] = Convert.ToInt16(Entidad);
+                Session["Municipios_Page"] = Convert.ToInt32(page);
             }
-
-            ViewBag.Entidades_ddl = new SelectList(Repo_Entidad.GetAll(), "Id_Entidad", "Nombre", Session["EntidadSelect"]);
-
-            // fin entiadd
-
+            
             ViewBag.CurrentSort = sortOrder;            
 
             ViewBag.SortByMunicipio = sortOrder == "Municipio_desc" ? "Municipio_desc" : "Municipio";
@@ -57,7 +46,8 @@ namespace Security.Controllers
 
             if (searchString != null)
             {
-                page = 1;
+                Int32 pagina = Convert.ToInt32(Session["Municipios_Page"]);
+                page = pagina;//1;
             }
             else
             {
@@ -66,14 +56,16 @@ namespace Security.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            IOrderedQueryable<Municipios> ordena_municipios = repo.GetAll()
+            Int16? Mun_idx_IdPais = Convert.ToInt16(Session["Municipios_index_IdPais"]);
+            Int16? Mun_idx_IdEntidad = Convert.ToInt16(Session["Municipios_index_IdEntidad"]);
+
+            IOrderedQueryable<Municipios> ordena_municipios = repo.GetAll().Where(p => p.Id_Pais == Mun_idx_IdPais).Where(e => e.Id_Entidad == Mun_idx_IdEntidad)
                 .OrderBy(x => x.Id_Pais).OrderBy(y => y.Id_Entidad).OrderBy(z => z.Id_Municipio);
 
 
-            entidadSeleccionada = Convert.ToInt16(Session["EntidadSelect"]);
+            //entidadSeleccionada = Convert.ToInt16(Session["EntidadSelect"]);
 
-            var municipios = from s in ordena_municipios
-                             where s.Id_Entidad == entidadSeleccionada
+            var municipios = from s in ordena_municipios                             
                            select s;
 
             if (!String.IsNullOrEmpty(searchString))
@@ -124,10 +116,6 @@ namespace Security.Controllers
         // GET: Municipios/Create
         public ActionResult Create()
         {
-            //ViewBag.Id_Pais = new SelectList(db.Entidades, "Id_Pais", "Nombre"); //Original
-            //ViewBag.Id_Pais = new SelectList(Repo_Pais.GetAll(), "Id_Pais", "Nombre");
-            //ViewBag.Id_Entidad = new SelectList(Repo_Entidad.GetAll(), "Id_Entidad", "Nombre");
-            //ViewBag.Id_Municipio = new SelectList(repo.GetAll(), "Id_Municipio", "Nombre");
             return View();
         }
 
@@ -144,13 +132,6 @@ namespace Security.Controllers
                 repo.Save();
                 return RedirectToAction("Index");
             }
-
-            //ViewBag.Id_Pais = new SelectList(Repo_Pais.GetAll(), "Id_Pais", "Nombre");
-            //ViewBag.Id_Entidad = new SelectList(Repo_Entidad.GetAll(), "Id_Entidad", "Nombre", municipios.Id_Pais);
-            //ViewBag.Id_Municipio = new SelectList(repo.GetAll(), "Id_Municipio", "Nombre", municipios.Id_Entidad);
-
-            //ViewBag.Id_Entidad = new SelectList(Repo_Entidad.GetAll(), "Id_Entidad", "Nombre", municipios.Id_Pais);
-            //ViewBag.Id_Municipio = new SelectList(repo.GetAll(), "Id_Municipio", "Nombre", municipios.Id_Entidad);
 
             return View(municipios);
         }
@@ -181,14 +162,6 @@ namespace Security.Controllers
         {
             if (ModelState.IsValid)
             {
-                //String[] pkey = new String[3];
-
-                //pkey[0] = "Id_Pais";
-                //pkey[1] = "Id_Entidad";
-                //pkey[2] = "Id_Municipio";
-
-                //municipio_Key.GetKeys(municipios, repo, pkey);
-
                 repo.Update(municipios);
                 repo.Save();
                 return RedirectToAction("Index");

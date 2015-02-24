@@ -99,18 +99,14 @@ namespace Security.Controllers
         }
 
         // GET: Contactos/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int id = 0)
         {
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            Contactos contacto = repo.Get(id);
-            if (contacto == null)
+            Contactos contactos = repo.Get(id);
+            if (contactos == null || id == 0)
             {
-                return HttpNotFound();
+                return RedirectToAction("index");
             }
-            return View(contacto);
+            return View(contactos);
         }
 
         // GET: Contactos/Create
@@ -124,35 +120,31 @@ namespace Security.Controllers
         // POST: Contactos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id_Contacto,Id_ContactoTipo,Contacto1,Id_ContactoMedio,Notas,Estatus")] Contactos contacto)
+        public ActionResult Create([Bind(Include = "Id_Contacto,Id_ContactoTipo,Contacto,Id_ContactoMedio,Notas,Estatus")] Contactos contactos)
         {
             if (ModelState.IsValid)
             {
-                repo.Add(contacto);
+                repo.Add(contactos);
                 repo.Save();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id_ContactoMedio = new SelectList(Repo_ContactoMedio.GetAll(), "Id_ContactoMedio", "Nombre", contacto.Id_ContactoMedio);
-            ViewBag.Id_ContactoTipo = new SelectList(Repo_ContactoTipo.GetAll(), "Id_ContactoTipo", "Nombre", contacto.Id_ContactoTipo);
-            return View(contacto);
+            ViewBag.Id_ContactoMedio = new SelectList(Repo_ContactoMedio.GetAll(), "Id_ContactoMedio", "Nombre", contactos.Id_ContactoMedio);
+            ViewBag.Id_ContactoTipo = new SelectList(Repo_ContactoTipo.GetAll(), "Id_ContactoTipo", "Nombre", contactos.Id_ContactoTipo);
+            return View(contactos);
         }
 
         // GET: Contactos/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id = 0)
         {
-            if (id == null)
+            Contactos contactos = repo.Get(id);
+            if (contactos == null || id == 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("index");
             }
-            Contactos contacto = repo.Get(id);
-            if (contacto == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.Id_ContactoMedio = new SelectList(Repo_ContactoMedio.GetAll(), "Id_ContactoMedio", "Nombre", contacto.Id_ContactoMedio);
-            ViewBag.Id_ContactoTipo = new SelectList(Repo_ContactoTipo.GetAll(), "Id_ContactoTipo", "Nombre", contacto.Id_ContactoTipo);
-            return View(contacto);
+            ViewBag.Id_ContactoMedio = new SelectList(Repo_ContactoMedio.GetAll(), "Id_ContactoMedio", "Nombre", contactos.Id_ContactoMedio);
+            ViewBag.Id_ContactoTipo = new SelectList(Repo_ContactoTipo.GetAll(), "Id_ContactoTipo", "Nombre", contactos.Id_ContactoTipo);
+            return View(contactos);
         }
 
         // POST: Contactos/Edit/5
@@ -160,32 +152,28 @@ namespace Security.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id_Contacto,Id_ContactoTipo,Contacto1,Id_ContactoMedio,Notas,Estatus")] Contactos contacto)
+        public ActionResult Edit([Bind(Include = "Id_Contacto,Id_ContactoTipo,Contacto,Id_ContactoMedio,Notas,Estatus")] Contactos contactos)
         {
             if (ModelState.IsValid)
             {
-                repo.Update(contacto);
+                repo.Update(contactos);
                 repo.Save();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id_ContactoMedio = new SelectList(Repo_ContactoMedio.GetAll(), "Id_ContactoMedio", "Nombre", contacto.Id_ContactoMedio);
-            ViewBag.Id_ContactoTipo = new SelectList(Repo_ContactoTipo.GetAll(), "Id_ContactoTipo", "Nombre", contacto.Id_ContactoTipo);
-            return View(contacto);
+            ViewBag.Id_ContactoMedio = new SelectList(Repo_ContactoMedio.GetAll(), "Id_ContactoMedio", "Nombre", contactos.Id_ContactoMedio);
+            ViewBag.Id_ContactoTipo = new SelectList(Repo_ContactoTipo.GetAll(), "Id_ContactoTipo", "Nombre", contactos.Id_ContactoTipo);
+            return View(contactos);
         }
 
         // GET: Contactos/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id = 0)
         {
-            if (id == null)
+            Contactos contactos = repo.Get(id);
+            if (contactos == null || id == 0)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("index");
             }
-            Contactos contacto = repo.Get(id);
-            if (contacto == null)
-            {
-                return HttpNotFound();
-            }
-            return View(contacto);
+            return View(contactos);
         }
 
         // POST: Contactos/Delete/5
@@ -193,8 +181,8 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Contactos contacto = repo.Get(id);
-            repo.Delete(contacto);
+            Contactos contactos = repo.Get(id);
+            repo.Delete(contactos);
             repo.Save();
             return RedirectToAction("Index");
         }

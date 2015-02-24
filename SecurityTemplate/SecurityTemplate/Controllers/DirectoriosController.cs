@@ -103,7 +103,7 @@ namespace Security.Controllers
         public ActionResult Create([Bind(Include="Id_Directorio,Nombre,Id_DirectorioTipo,Estatus")] Directorios directorios)
         {
             if (ModelState.IsValid)
-            {
+            {   
                 repo.Add(directorios);
                 repo.Save();
                 return RedirectToAction("Index");

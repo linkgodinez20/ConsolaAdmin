@@ -110,13 +110,13 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(municipios);
+            return PartialView("_Details", municipios);
         }
 
         // GET: Municipios/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: Municipios/Create
@@ -130,10 +130,12 @@ namespace Security.Controllers
             {
                 repo.Add(municipios);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Municipios");
+                return Json(new { success = true, url = url });
             }
 
-            return View(municipios);
+            return PartialView("_Create", municipios);
         }
 
         // GET: Municipios/Edit/5
@@ -150,7 +152,7 @@ namespace Security.Controllers
             ViewBag.Id_Entidad = new SelectList(Repo_Entidad.GetAll(), "Id_Entidad", "Nombre", municipios.Id_Entidad);
             ViewBag.Id_Municipio = new SelectList(repo.GetAll(), "Id_Municipio", "Nombre", municipios.Id_Municipio);
 
-            return View(municipios);
+            return PartialView("_Edit", municipios);
         }
 
         // POST: Municipios/Edit/5
@@ -164,13 +166,15 @@ namespace Security.Controllers
             {
                 repo.Update(municipios);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Municipios");
+                return Json(new { success = true, url = url });
             }
             ViewBag.Id_Pais = new SelectList(Repo_Pais.GetAll(), "Id_Pais", "Nombre", municipios.Id_Pais);
             ViewBag.Id_Entidad = new SelectList(Repo_Entidad.GetAll(), "Id_Entidad", "Nombre", municipios.Id_Entidad);
             ViewBag.Id_Municipio = new SelectList(repo.GetAll(), "Id_Municipio", "Nombre", municipios.Id_Municipio);
 
-            return View(municipios);
+            return PartialView("_Edit", municipios);
         }
 
         // GET: Municipios/Delete/5
@@ -181,7 +185,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(municipios);
+            return PartialView("_Delete", municipios);
         }
 
         // POST: Municipios/Delete/5
@@ -192,7 +196,9 @@ namespace Security.Controllers
             Municipios municipios = repo.Get(id,id2,id3);
             repo.Delete(municipios);
             repo.Save();
-            return RedirectToAction("Index");
+
+            string url = Url.Action("Index", "Municipios", new { id = municipios.Id_Municipio });
+            return Json(new { success = true, url = url });
         }
 
         protected override void Dispose(bool disposing)

@@ -94,7 +94,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(preguntas_x_login);
+            return PartialView("_Details", preguntas_x_login);
         }
 
         // GET: /PreguntasXLogin/Create
@@ -102,7 +102,7 @@ namespace Security.Controllers
         {
             ViewBag.Id_Login = new SelectList(login.GetAll(), "Id_Login", "Usuario");
             ViewBag.Id_Pregunta = new SelectList(preguntas.GetAll(), "Id_Pregunta", "Pregunta");
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: /PreguntasXLogin/Create
@@ -114,12 +114,14 @@ namespace Security.Controllers
             {
                 repo.Add(preguntas_x_login);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Preguntas_x_Login");
+                return Json(new { success = true, url = url });
             }
 
             ViewBag.Id_Login = new SelectList(login.GetAll(), "Id_Login", "Usuario", preguntas_x_login.Id_Login);
             ViewBag.Id_Pregunta = new SelectList(preguntas.GetAll(), "Id_Pregunta", "Pregunta", preguntas_x_login.Id_Pregunta);
-            return View(preguntas_x_login);
+            return PartialView("_Create", preguntas_x_login);
         }
 
         // GET: /PreguntasXLogin/Edit/5
@@ -132,7 +134,7 @@ namespace Security.Controllers
             }
             ViewBag.Id_Login = new SelectList(login.GetAll(), "Id_Login", "Usuario", preguntas_x_login.Id_Login);
             ViewBag.Id_Pregunta = new SelectList(preguntas.GetAll(), "Id_Pregunta", "Pregunta", preguntas_x_login.Id_Pregunta);
-            return View(preguntas_x_login);
+            return PartialView("_Edit", preguntas_x_login);
         }
 
         // POST: /PreguntasXLogin/Edit/5
@@ -144,11 +146,13 @@ namespace Security.Controllers
             {
                 repo.Update(preguntas_x_login);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Preguntas_x_Login");
+                return Json(new { success = true, url = url });   
             }
             ViewBag.Id_Login = new SelectList(login.GetAll(), "Id_Login", "Usuario", preguntas_x_login.Id_Login);
             ViewBag.Id_Pregunta = new SelectList(preguntas.GetAll(), "Id_Pregunta", "Pregunta", preguntas_x_login.Id_Pregunta);
-            return View(preguntas_x_login);
+            return PartialView("_Edit", preguntas_x_login);
         }
 
         // GET: /PreguntasXLogin/Delete/5
@@ -159,7 +163,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(preguntas_x_login);
+            return PartialView("_Delete", preguntas_x_login);
         }
 
         // POST: /PreguntasXLogin/Delete/5
@@ -172,7 +176,9 @@ namespace Security.Controllers
                 Preguntas_x_Login preguntas_x_login = repo.Get(id);
                 repo.Delete(preguntas_x_login);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Preguntas_x_Login", new { id = preguntas_x_login.Id });
+                return Json(new { success = true, url = url });
             }
             catch (Exception ex)
             {

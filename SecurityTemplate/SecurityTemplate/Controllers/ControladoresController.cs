@@ -81,7 +81,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(controladores);
+            return PartialView("_Details", controladores);
         }
 
         // GET: Controladores/Create
@@ -89,7 +89,7 @@ namespace Security.Controllers
         {
             ViewBag.Id_Sistema = new SelectList(repo_Sistemas.GetAll(), "Id_Sistema", "Nombre");
 
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: Controladores/Create
@@ -103,12 +103,14 @@ namespace Security.Controllers
             {
                 repo.Add(controladores);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Controladores");
+                return Json(new { success = true, url = url });
             }
 
             ViewBag.Id_Sistema = new SelectList(repo_Sistemas.GetAll(), "Id_Sistema", "Nombre", controladores.Id_Sistema);
 
-            return View(controladores);
+            return PartialView("_Create", controladores);
         }
 
         // GET: Controladores/Edit/5
@@ -122,7 +124,7 @@ namespace Security.Controllers
             }
             ViewBag.Id_Sistema = new SelectList(repo_Sistemas.GetAll(), "Id_Sistema", "Nombre", controladores.Id_Sistema);
 
-            return View(controladores);
+            return PartialView("_Edit", controladores);
         }
 
         // POST: Controladores/Edit/5
@@ -136,12 +138,14 @@ namespace Security.Controllers
             {
                 repo.Update(controladores);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Controladores");
+                return Json(new { success = true, url = url });
             }
 
             ViewBag.Id_Sistema = new SelectList(repo_Sistemas.GetAll(), "Id_Sistema", "Nombre", controladores.Id_Sistema);
 
-            return View(controladores);
+            return PartialView("_Edit", controladores);
         }
 
         // GET: Controladores/Delete/5
@@ -153,7 +157,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(controladores);
+            return PartialView("_Delete", controladores);
         }
 
         // POST: Controladores/Delete/5
@@ -164,7 +168,9 @@ namespace Security.Controllers
             Controladores controladores = repo.Get(id);
             repo.Delete(controladores);
             repo.Save();
-            return RedirectToAction("Index");
+
+            string url = Url.Action("Index", "Controladores", new { id = controladores.Id_Controlador });
+            return Json(new { success = true, url = url });
         }
 
         protected override void Dispose(bool disposing)

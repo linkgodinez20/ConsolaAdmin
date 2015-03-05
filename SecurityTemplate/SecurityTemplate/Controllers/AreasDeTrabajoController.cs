@@ -83,14 +83,14 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");            
             }
-            return View(areasdetrabajo);
+            return PartialView("_Details", areasdetrabajo);
         }
 
         // GET: /AreasDeTrabajo/Create
         public ActionResult Create()
         {
             ViewBag.Id_Sistema = new SelectList( sistemas.GetAll(), "Id_Sistema", "Nombre");
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: /AreasDeTrabajo/Create        
@@ -101,12 +101,14 @@ namespace Security.Controllers
             if (ModelState.IsValid)
             {
                 repo.Add(areasdetrabajo);
-                repo.Save();
-                return RedirectToAction("Index");
+                repo.Save();                
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "AreasDeTrabajo");
+                return Json(new { success = true, url = url });
             }
 
             ViewBag.Id_Sistema = new SelectList(sistemas.GetAll(), "Id_Sistema", "Nombre", areasdetrabajo.Id_Sistema);
-            return View(areasdetrabajo);
+            return PartialView("_Create", areasdetrabajo);
         }
 
         // GET: /AreasDeTrabajo/Edit/5
@@ -119,7 +121,7 @@ namespace Security.Controllers
             }
 
             ViewBag.Id_Sistema = new SelectList(sistemas.GetAll(), "Id_Sistema", "Nombre", areasdetrabajo.Id_Sistema);
-            return View(areasdetrabajo);
+            return PartialView("_Edit", areasdetrabajo);
         }
 
         // POST: /AreasDeTrabajo/Edit/5
@@ -131,10 +133,12 @@ namespace Security.Controllers
             {
                 repo.Update(areasdetrabajo);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "AreasDeTrabajo");
+                return Json(new { success = true, url = url });   
             }
             ViewBag.Id_Sistema = new SelectList(sistemas.GetAll(), "Id_Sistema", "Nombre", areasdetrabajo.Id_Sistema);
-            return View(areasdetrabajo);
+            return PartialView("_Edit", areasdetrabajo);
         }
 
         // GET: /AreasDeTrabajo/Delete/5
@@ -145,7 +149,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(areasdetrabajo);
+            return PartialView("_Delete", areasdetrabajo);
         }
 
         // POST: /AreasDeTrabajo/Delete/5
@@ -158,7 +162,9 @@ namespace Security.Controllers
                 AreasDeTrabajo areasdetrabajo = repo.Get(id);
                 repo.Delete(areasdetrabajo);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "AreasDeTrabajo", new { id = areasdetrabajo.Id_AreaDeTrabajo });
+                return Json(new { success = true, url = url });
             }
             catch (Exception ex)
             {

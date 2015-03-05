@@ -1,0 +1,153 @@
+﻿@model Security.Core.Model.Municipios
+
+@Scripts.Render("~/bundles/Miscelaneous")
+<script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+<script src="~/Scripts/jquery-2.1.3.js"></script>
+
+<div class="modal-header label-success">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hitden="true">&times;</span></button>
+    <h2 class="modal-title">Nuevo</h2>
+    <h4 class="Fuente_blanca">Municipio</h4>
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id_Pais)
+        @Html.HiddenFor(model => model.Id_Entidad)
+        @Html.HiddenFor(model => model.Id_Municipio)
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Id_Pais, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Id_Pais", new SelectList(string.Empty, "Id_Pais", "Nombre"), htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Id_Pais, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Id_Entidad, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Id_Entidad", new SelectList(string.Empty, "Id_Entidad", "Nombre"), htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Id_Entidad, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Id_Municipio, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Id_Municipio, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.Id_Municipio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Abreviatura, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Abreviatura, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Abreviatura, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" value="create" class="btn btn-success">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right" data-content="Volver" data-dismiss="modal"></a>
+            </div>
+        </div>
+    </div>
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var options = [[]];
+
+        $.getJSON("/api/Paises", function (result) {
+            for (var i = 0; i < result.length; i++) {
+                options.push('<option value="',
+                  result[i].Id_Pais, '">',
+                  result[i].Nombre, '</option>');
+            }
+            $("#Id_Pais").html(options.join(''));
+        });
+
+
+        $("#Id_Pais").on('change', function (e) {
+            var idp = $(this).val();
+
+            e.preventDefault();
+
+            $("#Id_Entidad").empty();
+            $("#Id_Municipio").empty();
+
+            var options = [[]];
+
+            $.getJSON("/api/Entidades/?IdPais=" + idp, function (result) {
+                for (var i = 0; i < result.length; i++) {
+                    options.push('<option value="',
+                      result[i].Id_Entidad, '">',
+                      result[i].Nombre, '</option>');
+                }
+                $("#Id_Entidad").html(options.join(''));
+            });
+
+            return false;
+        })
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Id_Entidad").on('change', function (e) {
+            var ide = $(this).val();
+
+            e.preventDefault();
+            $("#Id_Municipio").empty();
+
+            var options = [[]];
+
+            $.getJSON("/api/Municipios/?IdEntidad=" + ide, function (result) {
+                for (var i = 0; i < result.length; i++) {
+                    options.push('<option value="',
+                      result[i].Id_Municipio, '">',
+                      result[i].Nombre, '</option>');
+                }
+                $("#Id_Municipio").html(options.join(''));
+            });
+
+            $.getJSON("/api/Municipios/CountMunicipio?IdEntidad=" + ide, function (result) {
+                $("#Id_Municipio").val(result);
+            });
+
+            $('#Nombre').focus();
+            return false;
+        })
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#Id_Pais').focus();
+    });
+</script>
+

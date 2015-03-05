@@ -84,13 +84,13 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(paises);
+            return PartialView("_Details", paises);
         }
 
         // GET: Paises/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: Paises/Create
@@ -107,10 +107,12 @@ namespace Security.Controllers
 
                 repo.Add(paises);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Paises");
+                return Json(new { success = true, url = url });
             }
 
-            return View(paises);
+            return PartialView("_Create", paises);
         }
 
         // GET: Paises/Edit/5
@@ -121,7 +123,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(paises);
+            return PartialView("_Edit", paises);
         }
 
         // POST: Paises/Edit/5
@@ -133,11 +135,15 @@ namespace Security.Controllers
         {
             if (ModelState.IsValid)
             {
+                paises.Bandera = paises.FIPS.ToString().ToLower() + ".png";
+
                 repo.Update(paises);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Paises");
+                return Json(new { success = true, url = url });
             }
-            return View(paises);
+            return PartialView("_Edit", paises);
         }
 
         // GET: Paises/Delete/5
@@ -148,7 +154,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(paises);
+            return PartialView("_Delete", paises);
         }
 
         // POST: Paises/Delete/5
@@ -159,7 +165,9 @@ namespace Security.Controllers
             Paises paises = repo.Get(id);
             repo.Delete(paises);
             repo.Save();
-            return RedirectToAction("Index");
+
+            string url = Url.Action("Index", "Paises", new { id = paises.Id_Pais });
+            return Json(new { success = true, url = url });
         }
 
         protected override void Dispose(bool disposing)

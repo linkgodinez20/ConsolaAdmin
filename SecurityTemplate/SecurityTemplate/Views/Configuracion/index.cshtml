@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ol class="breadcrumb">
+    <li><span class="glyphicon glyphicon-home"></span> @Html.ActionLink("Inicio", "Index", "Home")</li>
+    <li><b>Configuraci&oacute;n</b></li>
+</ol>
+<h2 class="Titulo" align="center">Configuraci&oacute;n</h2>
+<hr />
+
+
+<ul class="nav nav-tabs" role="tablist" id="myTab">
+    <li role="presentation" class="active"><a href="#ConfigSistema" aria-controls="Sistema" role="tab" data-toggle="tab">Configuración del sistema</a></li>
+    <li role="presentation"><a href="#ConfigPersonas" aria-controls="ConfigPersonas" role="tab" data-toggle="tab">Personas</a></li>
+    <li role="presentation"><a href="#Permisos" aria-controls="Permisos" role="tab" data-toggle="tab">Permisos</a></li>
+    <li role="presentation"><a href="#CatalogosGrales" aria-controls="CatalogosGrales" role="tab" data-toggle="tab">Catálogos generales</a></li>
+</ul>
+
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active Box" id="ConfigSistema">
+        <div class="body-content">
+            @Html.Partial("_ConfigSistema");
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="ConfigPersonas">
+        <div class="body-content">
+            @Html.Partial("_PlantillaPersonas");
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Permisos">
+        <div class="body-content">
+            @Html.Partial("_ConfigSistema");
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="Perfiles">
+        <div class="body-content">
+            @Html.Partial("_ConfigSistema");
+        </div>
+    </div>
+</div>
+
+<script>
+  $(function () {
+    $('#myTab a:last').tab('show')
+  })
+</script>

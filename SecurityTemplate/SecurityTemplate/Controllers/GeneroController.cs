@@ -34,13 +34,13 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(genero);
+            return PartialView("_Details", genero);
         }
 
         // GET: Genero/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: Genero/Create
@@ -54,10 +54,12 @@ namespace Security.Controllers
             {
                 repo.Add(genero);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Genero");
+                return Json(new { success = true, url = url });
             }
 
-            return View(genero);
+            return PartialView("_Create", genero);
         }
 
         // GET: Genero/Edit/5
@@ -68,7 +70,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(genero);
+            return PartialView("_Edit", genero);
         }
 
         // POST: Genero/Edit/5
@@ -82,9 +84,11 @@ namespace Security.Controllers
             {
                 repo.Update(genero);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Genero");
+                return Json(new { success = true, url = url });
             }
-            return View(genero);
+            return PartialView("_Edit", genero);
         }
 
         // GET: Genero/Delete/5
@@ -95,7 +99,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(genero);
+            return PartialView("_Delete", genero);
         }
 
         // POST: Genero/Delete/5
@@ -106,7 +110,9 @@ namespace Security.Controllers
             Genero genero = repo.Get(id);
             repo.Delete(genero);
             repo.Save();
-            return RedirectToAction("Index");
+
+            string url = Url.Action("Index", "Genero", new { id = genero.Id_Genero });
+            return Json(new { success = true, url = url });
         }
 
         protected override void Dispose(bool disposing)

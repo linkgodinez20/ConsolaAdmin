@@ -127,7 +127,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(cuentas);
+            return PartialView("_Details", cuentas);
         }
 
         // GET: /Cuentas/Create
@@ -137,7 +137,7 @@ namespace Security.Controllers
             ViewBag.Id_Login = new SelectList(login.GetAll(), "Id_Login", "Usuario");
             ViewBag.Id_Perfil = new SelectList(perfiles.GetAll(), "Id_Perfil", "Nombre");
             ViewBag.Id_Sistema = new SelectList(sistemas.GetAll(), "Id_Sistema", "Nombre");
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: /Cuentas/Create
@@ -149,14 +149,16 @@ namespace Security.Controllers
             {
                 repo.Add(cuentas);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Cuentas");
+                return Json(new { success = true, url = url });
             }
 
             ViewBag.Id_Baja = new SelectList(baja.GetAll(), "Id_Baja", "Nombre", cuentas.Id_Baja);
             ViewBag.Id_Login = new SelectList(login.GetAll(), "Id_Login", "Usuario", cuentas.Id_Login);
             ViewBag.Id_Perfil = new SelectList(perfiles.GetAll(), "Id_Perfil", "Nombre", cuentas.Id_Perfil);
             ViewBag.Id_Sistema = new SelectList(sistemas.GetAll(), "Id_Sistema", "Nombre", cuentas.Id_Sistema);
-            return View(cuentas);
+            return PartialView("_Create", cuentas);
         }
 
         // GET: /Cuentas/Edit/5
@@ -170,8 +172,8 @@ namespace Security.Controllers
             ViewBag.Id_Baja = new SelectList(baja.GetAll(), "Id_Baja", "Nombre", cuentas.Id_Baja);
             ViewBag.Id_Login = new SelectList(login.GetAll(), "Id_Login", "Usuario", cuentas.Id_Login);
             ViewBag.Id_Perfil = new SelectList(perfiles.GetAll(), "Id_Perfil", "Nombre", cuentas.Id_Perfil);
-            ViewBag.Id_Sistema = new SelectList(sistemas.GetAll(), "Id_Sistema", "Nombre", cuentas.Id_Sistema);        
-            return View(cuentas);
+            ViewBag.Id_Sistema = new SelectList(sistemas.GetAll(), "Id_Sistema", "Nombre", cuentas.Id_Sistema);
+            return PartialView("_Edit", cuentas);
         }
 
         // POST: /Cuentas/Edit/5
@@ -183,13 +185,15 @@ namespace Security.Controllers
             {
                 repo.Update(cuentas);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "AreasDeTrabajo");
+                return Json(new { success = true, url = url });   
             }
             ViewBag.Id_Baja = new SelectList(baja.GetAll(), "Id_Baja", "Nombre", cuentas.Id_Baja);
             ViewBag.Id_Login = new SelectList(login.GetAll(), "Id_Login", "Usuario", cuentas.Id_Login);
             ViewBag.Id_Perfil = new SelectList(perfiles.GetAll(), "Id_Perfil", "Nombre", cuentas.Id_Perfil);
-            ViewBag.Id_Sistema = new SelectList(sistemas.GetAll(), "Id_Sistema", "Nombre", cuentas.Id_Sistema);   
-            return View(cuentas);
+            ViewBag.Id_Sistema = new SelectList(sistemas.GetAll(), "Id_Sistema", "Nombre", cuentas.Id_Sistema);
+            return PartialView("_Edit", cuentas);
         }
 
         // GET: /Cuentas/Delete/5
@@ -200,7 +204,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(cuentas);
+            return PartialView("_Delete", cuentas);
         }
 
         // POST: /Cuentas/Delete/5
@@ -213,7 +217,9 @@ namespace Security.Controllers
                 Cuentas cuentas = repo.Get(id);
                 repo.Delete(cuentas);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "AreasDeTrabajo", new { id = cuentas.Id_Cuenta });
+                return Json(new { success = true, url = url });
             }
             catch (Exception ex)
             {

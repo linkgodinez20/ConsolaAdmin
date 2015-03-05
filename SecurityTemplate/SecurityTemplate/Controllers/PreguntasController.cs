@@ -72,13 +72,13 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(preguntas);
+            return PartialView("_Details", preguntas);
         }
 
         // GET: /Preguntas/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: /Preguntas/Create
@@ -90,10 +90,12 @@ namespace Security.Controllers
             {
                 repo.Add(preguntas);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Preguntas");
+                return Json(new { success = true, url = url });
             }
 
-            return View(preguntas);
+            return PartialView("_Create", preguntas);
         }
 
         // GET: /Preguntas/Edit/5
@@ -104,7 +106,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(preguntas);
+            return PartialView("_Edit", preguntas);
         }
 
         // POST: /Preguntas/Edit/5
@@ -116,9 +118,11 @@ namespace Security.Controllers
             {
                 repo.Update(preguntas);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Preguntas");
+                return Json(new { success = true, url = url });   
             }
-            return View(preguntas);
+            return PartialView("_Edit", preguntas);
         }
 
         // GET: /Preguntas/Delete/5
@@ -129,7 +133,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(preguntas);
+            return PartialView("_Delete", preguntas);
         }
 
         // POST: /Preguntas/Delete/5
@@ -142,7 +146,9 @@ namespace Security.Controllers
                 Preguntas preguntas = repo.Get(id);
                 repo.Delete(preguntas);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Preguntas", new { id = preguntas.Id_Pregunta });
+                return Json(new { success = true, url = url });
             }
             catch (Exception ex)
             {

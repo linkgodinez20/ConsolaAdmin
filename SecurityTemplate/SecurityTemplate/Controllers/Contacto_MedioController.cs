@@ -72,13 +72,13 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(contacto_medio);
+            return PartialView("_Details", contacto_medio);
         }
 
         // GET: /Contacto_Medio/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: /Contacto_Medio/Create
@@ -90,10 +90,12 @@ namespace Security.Controllers
             {
                 repo.Add(contacto_medio);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Contacto_Medio");
+                return Json(new { success = true, url = url });
             }
 
-            return View(contacto_medio);
+            return PartialView("_Create", contacto_medio);
         }
 
         // GET: /Contacto_Medio/Edit/5
@@ -104,7 +106,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(contacto_medio);
+            return PartialView("_Edit", contacto_medio);
         }
 
         // POST: /Contacto_Medio/Edit/5
@@ -116,9 +118,11 @@ namespace Security.Controllers
             {
                 repo.Update(contacto_medio);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Contacto_Medio");
+                return Json(new { success = true, url = url });   
             }
-            return View(contacto_medio);
+            return PartialView("_Edit", contacto_medio);
         }
 
         // GET: /Contacto_Medio/Delete/5
@@ -129,7 +133,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(contacto_medio);
+            return PartialView("_Delete", contacto_medio);
         }
 
         // POST: /Contacto_Medio/Delete/5
@@ -142,7 +146,9 @@ namespace Security.Controllers
                 Contacto_medio contacto_medio = repo.Get(id);
                 repo.Delete(contacto_medio);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Contacto_Medio", new { id = contacto_medio.Id_ContactoMedio });
+                return Json(new { success = true, url = url });
             }
             catch (Exception ex)
             {

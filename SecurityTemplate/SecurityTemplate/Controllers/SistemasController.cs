@@ -29,13 +29,13 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(sistemas);
+            return PartialView("_Details", sistemas);
         }
 
         // GET: /Sistemas/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: /Sistemas/Create
@@ -49,10 +49,12 @@ namespace Security.Controllers
             {
                 repo.Add(sistemas);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Sistemas");
+                return Json(new { success = true, url = url });
             }
 
-            return View(sistemas);
+            return PartialView("_Create", sistemas);
         }
 
         // GET: /Sistemas/Edit/5
@@ -64,7 +66,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(sistemas);
+            return PartialView("_Edit", sistemas);
         }
 
         // POST: /Sistemas/Edit/5
@@ -78,9 +80,11 @@ namespace Security.Controllers
             {
                 repo.Update(sistemas);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Sistemas");
+                return Json(new { success = true, url = url });
             }
-            return View(sistemas);
+            return PartialView("_Edit", sistemas);
         }
 
         // GET: /Sistemas/Delete/5
@@ -92,7 +96,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(sistemas);
+            return PartialView("_Delete", sistemas);
         }
 
         // POST: /Sistemas/Delete/5
@@ -103,7 +107,9 @@ namespace Security.Controllers
             Sistemas sistemas = repo.Get(id);
             repo.Delete(sistemas);
             repo.Save();
-            return RedirectToAction("Index");
+
+            string url = Url.Action("Index", "Sistemas", new { id = sistemas.Id_Sistema });
+            return Json(new { success = true, url = url });
         }
 
         protected override void Dispose(bool disposing)

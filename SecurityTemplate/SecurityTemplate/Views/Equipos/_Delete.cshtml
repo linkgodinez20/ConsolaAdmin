@@ -1,0 +1,139 @@
+﻿@model Security.Core.Model.Equipos
+
+@Scripts.Render("~/bundles/Miscelaneous")
+
+<div class="modal-header label-danger">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hitden="true">&times;</span></button>
+    <h2 class="modal-title">Eliminar</h2>
+    <h4 class="Fuente_blanca">¿Est&aacute; seguro de eliminar este registro?</h4>
+</div>
+
+<div class="modal-body">
+    <table class="table table-striped table-bordered table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Hostname)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Hostname)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IP)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.IP)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MacAddress)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.MacAddress)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Descripcion)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ubiacion)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Ubiacion)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaAlta)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.FechaAlta)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCaducidad)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.FechaCaducidad)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Estatus)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Estatus)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cuentas.Id_Cuenta)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Cuentas.Id_Cuenta)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Equipos_tipo.Nombre)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Equipos_tipo.Nombre)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_DispositivoTipo)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Dispositivos_tipo.Nombre)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sistemas.Nombre)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Sistemas.Nombre)
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" value="Delete" class="btn btn-danger " data-container="body" data-toggle="popover" data-placement="left" data-content="Eliminar">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </button>
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right" data-content="Volver" data-dismiss="modal"></a>
+            </div>
+        </div>
+    }
+</div>
+

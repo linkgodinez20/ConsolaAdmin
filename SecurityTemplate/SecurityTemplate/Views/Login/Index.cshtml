@@ -15,7 +15,7 @@
 
     });
 </script>
-
+@Scripts.Render("~/bundles/Miscelaneous")
 @{
     ViewBag.Title = "LogIn";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -85,9 +85,9 @@
                     @Html.DisplayFor(modelItem => item.Personas.APaterno)
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "Edit", new { id = item.Id_Login }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil", data_toggle = "modal", data_target = "#EditModal" }) |
-                    @Html.ActionLink(" ", "Details", new { id = item.Id_Login }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list", data_toggle = "modal", data_target = "#DetailsModal" }) |
-                    @Html.ActionLink(" ", "Delete", new { id = item.Id_Login }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove", data_toggle = "modal", data_target = "#DelModal" })
+                    @Html.ActionLink(" ", "Edit", new { id = item.Id_Login }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil", data_modal = "" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.Id_Login }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list", data_modal = "" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.Id_Login }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove", data_modal = "" })
 
                 </td>
             </tr>
@@ -95,38 +95,14 @@
 
     </table>
 </div>
-    <!-- Modal -->
-    <div class="modal fade" id="DelModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-            </div>
+<!-- Modal -->
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
         </div>
     </div>
-    <!-- Delete Modal -->
-    <div class="modal fade" id="DelModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content"> </div>
-        </div>
-    </div>
-    <!-- Edit Modal -->
-    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">  </div>
-        </div>
-    </div>
-    <!-- Create Modal -->
-    <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">  </div>
-        </div>
-    </div>
-    <!-- Details Modal -->
-    <div class="modal fade" id="DetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">  </div>
-        </div>
-    </div>
+</div>
     @Html.PagedListPager(Model, page => Url.Action("Index",
 new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
     <table class="btn-group">
@@ -134,9 +110,52 @@ new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilt
             <td>
                 <div class="input-group">
                     <p>
-                        <a class="btn btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#CreateModal" href="/LogIn/Create"></a>
+                        @*<a class="btn btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#CreateModal" href="/LogIn/Create"></a>*@
+                        @Html.ActionLink(" ", "Create", "Login", htmlAttributes: new { @class = "btn btn-success glyphicon glyphicon-plus", data_modal = "" })
                     </p>
                 </div>
             </td>
         </tr>
     </table>
+<script type="text/javascript">
+    $(function () {
+        $.ajaxSetup({ cache: false });
+
+        $("a[data-modal]").on("click", function (e) {
+            // hide dropdown if any (this is used wehen invoking modal from link in bootstrap dropdown )
+            //$(e.target).closest('.btn-group').children('.dropdown-toggle').dropdown('toggle');
+
+            $('#myModalContent').load(this.href, function () {
+                $('#myModal').modal({
+                    backdrop: 'static',
+                    keyboard: true,
+
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        });
+    });
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+
+            $.ajax({
+                type: this.method,
+                url: this.action,
+                data: $(this).serialize(),
+                success: function (result) {
+                    if (result.success) {
+                        $('#myModal').modal('hide');
+                        window.location.href = result.url;
+                    } else {
+                        $('#myModalContent').html(result);
+                        bindForm(dialog);
+                    }
+                }
+            });
+
+            return false;
+        });
+    }
+</script>

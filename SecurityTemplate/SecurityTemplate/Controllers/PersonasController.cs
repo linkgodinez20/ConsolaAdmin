@@ -13,6 +13,7 @@ using PagedList;
 using System.IO;
 
 using Security.Data;
+using System.Diagnostics;
 
 
 namespace Security.Controllers
@@ -109,11 +110,9 @@ namespace Security.Controllers
 
             int pageSize = 3;
             int pageNumber = (page ?? 1);
-            //productos = db.Producto.Include(p => p.ProductoTipo).Include(p => p.UnidadMedida);
 
             return View(personas.ToPagedList(pageNumber, pageSize));
-            //var personas = repo.GetAll().Include(p => p.Genero);
-            //return View(personas.ToList());
+
         }
 
         // GET: Personas/Details/5
@@ -124,7 +123,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(personas);
+            return PartialView("_Details", personas);
         }
 
 
@@ -132,7 +131,7 @@ namespace Security.Controllers
         public ActionResult Create()
         {            
             ViewBag.Id_Genero = new SelectList(genero.GetAll(), "Id_Genero", "Nombre");
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: Personas/Create
@@ -174,14 +173,17 @@ namespace Security.Controllers
 
                 //repo.Add(personas);
                 //repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Personas");
+                return Json(new { success = true, url = url });
             }
 
             ViewBag.Id_Genero = new SelectList(genero.GetAll(), "Id_Genero", "Nombre", personas.Id_Genero);
-            return View(personas);
+            return PartialView("_Create", personas);
         }
 
         // GET: Personas/Edit/5
+        //[ChildActionOnly]
         public ActionResult Edit(int id = 0)
         {
             Personas personas = repo.Get(id);
@@ -192,9 +194,9 @@ namespace Security.Controllers
 
             ViewBag.Id_Genero = new SelectList(genero.GetAll(), "Id_Genero", "Nombre", personas.Id_Genero);
             ViewBag.Dir_PersonasFoto = config.Directorio_PersonasFoto;
+            ViewBag.foto = personas.Foto;
 
-
-            return View(personas);
+            return PartialView("_Edit", personas);
         }
 
         // POST: Personas/Edit/5
@@ -206,12 +208,14 @@ namespace Security.Controllers
             {
                 personas.FechaCreacion = DateTime.Now;
 
+                //HttpPostedFileBase file = (HttpPostedFileBase)Session["file"];
+
                 if ((file != null) && (file.ContentLength > 0) && (!string.IsNullOrEmpty(file.FileName)))
                 {
                     String OriginalfileName = Path.GetFileName(file.FileName);
 
                     String sis_id = config.Sistema_iD.ToString("00");
-                    String middle = sis_id + "-" + personas.Id_Persona.ToString("000000");
+                    String middle = sis_id + "-" + personas.Id_Persona.ToString("000000") + "-" + personas.APaterno;
                     String FileExtension = System.IO.Path.GetExtension(file.FileName);
 
                     String filename = middle + FileExtension;
@@ -220,13 +224,13 @@ namespace Security.Controllers
 
                     var path = Path.Combine(Server.MapPath(config.Directorio_PersonasFoto), filename);
 
-                    //if (System.IO.File.Exists(path))
-                    //{
-                    //    System.IO.File.Delete(path);
-                    //}
+                    if (System.IO.File.Exists(path))
+                    {
+                        System.IO.File.Delete(path);
+                    }
 
                     file.SaveAs(path);
-
+                    Trace.Write("Guardado:" + path);
 
                 }
                 else {
@@ -235,11 +239,14 @@ namespace Security.Controllers
 
                 repo.Update(personas);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Personas");
+                return Json(new { success = true, url = url });
             }
 
             ViewBag.Id_Genero = new SelectList(genero.GetAll(), "Id_Genero", "Nombre", personas.Id_Genero);
-            return View(personas);
+            //return View(personas);
+            return PartialView("_Edit", personas);
         }
 
         // GET: Personas/Delete/5
@@ -250,7 +257,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(personas);
+            return PartialView("_Delete", personas);
         }
 
         // POST: Personas/Delete/5
@@ -261,7 +268,37 @@ namespace Security.Controllers
             Personas personas = repo.Get(id);
             repo.Delete(personas);
             repo.Save();
-            return RedirectToAction("Index");
+
+            string url = Url.Action("Index", "Personas", new { id = personas.Id_Persona });
+            return Json(new { success = true, url = url });
+        }
+        //, String APaterno, String Nombre, Int32 IdPersona
+        [HttpPost]
+        public JsonResult getFile(HttpPostedFileBase file) {
+
+            if ((file != null) && (file.ContentLength > 0) && (!string.IsNullOrEmpty(file.FileName)))
+            {
+                //FileModel fm = new FileModel();
+                
+                //String OriginalfileName = Path.GetFileName(file.FileName);
+                //String sis_id = config.Sistema_iD.ToString("00");
+                ////String middle = sis_id + "-" + IdPersona.ToString("000000") + "-" + Nombre + "-" + APaterno;
+
+                //fm.extension = System.IO.Path.GetExtension(file.FileName);
+                ////fm.filename = middle + fm.extension;
+                //fm.fullpath = Path.Combine(Server.MapPath(config.Directorio_PersonasFoto), fm.filename);
+
+                //Session["file"] = fm;
+                ////if (System.IO.File.Exists(path))
+                ////{
+                ////    System.IO.File.Delete(path);
+                ////}
+
+                ////file.SaveAs(path);
+                Session["file"] = file;
+            }
+
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

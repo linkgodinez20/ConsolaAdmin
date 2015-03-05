@@ -34,13 +34,13 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(contacto_tipo);
+            return PartialView("_Details", contacto_tipo);
         }
 
         // GET: Contacto_tipo/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: Contacto_tipo/Create
@@ -54,10 +54,12 @@ namespace Security.Controllers
             {
                 repo.Add(contacto_tipo);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Contacto_tipo");
+                return Json(new { success = true, url = url });
             }
 
-            return View(contacto_tipo);
+            return PartialView("_Create", contacto_tipo);
         }
 
         // GET: Contacto_tipo/Edit/5
@@ -68,7 +70,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(contacto_tipo);
+            return PartialView("_Edit", contacto_tipo);
         }
 
         // POST: Contacto_tipo/Edit/5
@@ -82,9 +84,11 @@ namespace Security.Controllers
             {
                 repo.Update(contacto_tipo);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Contacto_tipo");
+                return Json(new { success = true, url = url });
             }
-            return View(contacto_tipo);
+            return PartialView("_Edit", contacto_tipo);
         }
 
         // GET: Contacto_tipo/Delete/5
@@ -95,7 +99,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(contacto_tipo);
+            return PartialView("_Delete", contacto_tipo);
         }
 
         // POST: Contacto_tipo/Delete/5
@@ -106,7 +110,9 @@ namespace Security.Controllers
             Contacto_tipo contacto_tipo = repo.Get(id);
             repo.Delete(contacto_tipo);
             repo.Save();
-            return RedirectToAction("Index");
+
+            string url = Url.Action("Index", "Contacto_tipo", new { id = contacto_tipo.Id_ContactoTipo });
+            return Json(new { success = true, url = url });
         }
 
         protected override void Dispose(bool disposing)

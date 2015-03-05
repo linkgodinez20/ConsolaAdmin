@@ -35,13 +35,13 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(baja);
+            return PartialView("_Details", baja);
         }
 
         // GET: Bajas/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: Bajas/Create
@@ -55,10 +55,12 @@ namespace Security.Controllers
             {
                 repo.Add(baja);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Bajas");
+                return Json(new { success = true, url = url });
             }
 
-            return View(baja);
+            return PartialView("_Create", baja);
         }
 
         // GET: Bajas/Edit/5
@@ -70,7 +72,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(baja);
+            return PartialView("_Edit", baja);
         }
 
         // POST: Bajas/Edit/5
@@ -84,9 +86,11 @@ namespace Security.Controllers
             {
                 repo.Update(baja);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Bajas");
+                return Json(new { success = true, url = url });
             }
-            return View(baja);
+            return PartialView("_Edit", baja);
         }
 
         // GET: Bajas/Delete/5
@@ -97,7 +101,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(baja);
+            return PartialView("_Delete", baja);
         }
 
         // POST: Bajas/Delete/5
@@ -108,7 +112,9 @@ namespace Security.Controllers
             Baja baja = repo.Get(id);
             repo.Delete(baja);
             repo.Save();
-            return RedirectToAction("Index");
+
+            string url = Url.Action("Index", "Bajas", new { id = baja.Id_Baja });
+            return Json(new { success = true, url = url });
         }
 
         protected override void Dispose(bool disposing)

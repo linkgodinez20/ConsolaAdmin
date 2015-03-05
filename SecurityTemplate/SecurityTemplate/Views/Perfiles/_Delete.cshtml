@@ -1,0 +1,75 @@
+﻿@model Security.Core.Model.Perfiles
+
+@Scripts.Render("~/bundles/Miscelaneous")
+
+<div class="modal-header label-danger">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hitden="true">&times;</span></button>
+    <h2 class="modal-title">Eliminar</h2>
+    <h4 class="Fuente_blanca">¿Est&aacute; seguro de eliminar este registro?</h4>
+</div>
+
+<div class="modal-body">
+    <table class="table table-striped table-bordered table-condensed">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Nombre)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Funcion)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Funcion)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Tipo)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nivel)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Nivel)
+            </td>
+        </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_Sistema)
+            </th>
+
+            <td>
+                @Html.DisplayFor(model => model.Sistemas.Nombre)
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="modal-footer">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" value="Delete" class="btn btn-danger " data-container="body" data-toggle="popover" data-placement="left" data-content="Eliminar">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </button>
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right" data-content="Volver" data-dismiss="modal"></a>
+            </div>
+        </div>
+    }
+</div>
+

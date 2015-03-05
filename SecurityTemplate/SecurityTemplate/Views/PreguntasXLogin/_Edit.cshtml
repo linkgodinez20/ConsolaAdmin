@@ -1,0 +1,66 @@
+﻿@model Security.Core.Model.Preguntas_x_Login
+
+<script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+@Scripts.Render("~/bundles/Miscelaneous")
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('button').popover({ trigger: "hover" });
+        $('a').popover({ trigger: 'hover' });
+
+    });
+</script>*@
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2 class="Titulo">Editar</h2>
+
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Preguntas_x_Login</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.Id_Login)
+
+            @Html.HiddenFor(model => model.Id_Pregunta)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Respuesta, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Respuesta, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Respuesta, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        @{
+        var ControllerName = ViewContext.RouteData.Values["Controller"];
+        var referencia = "~/" + @ControllerName + "/Edit/" + Model.Id;
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" value="Save" class="btn btn-success" data-container="body" data-toggle="popover" data-placement="left"
+                        data-content="Guardar">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right"
+                   data-content="Volver" href="~/@ControllerName"></a>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

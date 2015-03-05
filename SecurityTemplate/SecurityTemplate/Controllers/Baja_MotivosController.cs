@@ -81,14 +81,14 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(baja_motivos);
+            return PartialView("_Details", baja_motivos);
         }
 
         // GET: /Baja_Motivos/Create
         public ActionResult Create()
         {
             ViewBag.Id_Baja = new SelectList(baja.GetAll(), "Id_Baja", "Nombre");
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: /Baja_Motivos/Create
@@ -100,11 +100,13 @@ namespace Security.Controllers
             {
                 repo.Add(baja_motivos);                
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Baja_Motivos");
+                return Json(new { success = true, url = url });
             }
 
             ViewBag.Id_Baja = new SelectList(baja.GetAll(), "Id_Baja", "Nombre", baja_motivos.Id_Baja);
-            return View(baja_motivos);
+            return PartialView("_Create", baja_motivos);
         }
 
         // GET: /Baja_Motivos/Edit/5
@@ -117,7 +119,7 @@ namespace Security.Controllers
             }
 
             ViewBag.Id_Baja = new SelectList(baja.GetAll(), "Id_Baja", "Nombre", baja_motivos.Id_Baja);
-            return View(baja_motivos);
+            return PartialView("_Edit", baja_motivos);
         }
 
         // POST: /Baja_Motivos/Edit/5
@@ -129,10 +131,12 @@ namespace Security.Controllers
             {
                 repo.Update(baja_motivos);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Baja_Motivos");
+                return Json(new { success = true, url = url }); 
             }
             ViewBag.Id_Baja = new SelectList(baja.GetAll(), "Id_Baja", "Nombre", baja_motivos.Id_Baja);
-            return View(baja_motivos);
+            return PartialView("_Edit", baja_motivos);
         }
 
         // GET: /Baja_Motivos/Delete/5
@@ -143,7 +147,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(baja_motivos);
+            return PartialView("_Delete", baja_motivos);
         }
 
         // POST: /Baja_Motivos/Delete/5
@@ -156,7 +160,9 @@ namespace Security.Controllers
                 Baja_motivos baja_motivos = repo.Get(id);
                 repo.Delete(baja_motivos);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Baja_Motivos", new { id = baja_motivos.Id_MotivoBaja });
+                return Json(new { success = true, url = url });
             }
             catch (Exception ex)
             {
@@ -164,7 +170,6 @@ namespace Security.Controllers
                 ViewBag.True = 1;
                 return View();
             }
-
         }
 
         protected override void Dispose(bool disposing)

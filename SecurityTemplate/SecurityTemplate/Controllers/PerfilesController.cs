@@ -38,14 +38,14 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(perfiles);
+            return PartialView("_Details", perfiles);
         }
 
         // GET: Perfiles/Create
         public ActionResult Create()
         {
             ViewBag.Id_Sistema = new SelectList(Repo_Sistemas.GetAll(), "Id_Sistema", "Nombre");
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: Perfiles/Create
@@ -59,11 +59,13 @@ namespace Security.Controllers
             {
                 repo.Add(perfiles);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Perfiles");
+                return Json(new { success = true, url = url });
             }
 
             ViewBag.Id_Sistema = new SelectList(Repo_Sistemas.GetAll(), "Id_Sistema", "Nombre", perfiles.Id_Sistema);
-            return View(perfiles);
+            return PartialView("_Create", perfiles);
         }
 
         // GET: Perfiles/Edit/5
@@ -75,7 +77,7 @@ namespace Security.Controllers
                 return RedirectToAction("index");
             }
             ViewBag.Id_Sistema = new SelectList(Repo_Sistemas.GetAll(), "Id_Sistema", "Nombre", perfiles.Id_Sistema);
-            return View(perfiles);
+            return PartialView("_Edit", perfiles);
         }
 
         // POST: Perfiles/Edit/5
@@ -89,10 +91,12 @@ namespace Security.Controllers
             {
                 repo.Update(perfiles);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Perfiles");
+                return Json(new { success = true, url = url });
             }
             ViewBag.Id_Sistema = new SelectList(Repo_Sistemas.GetAll(), "Id_Sistema", "Nombre", perfiles.Id_Sistema);
-            return View(perfiles);
+            return PartialView("_Edit", perfiles);
         }
 
         // GET: Perfiles/Delete/5
@@ -103,7 +107,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(perfiles);
+            return PartialView("_Delete", perfiles);
         }
 
         // POST: Perfiles/Delete/5
@@ -114,7 +118,9 @@ namespace Security.Controllers
             Perfiles perfiles = repo.Get(id);
             repo.Delete(perfiles);
             repo.Save();
-            return RedirectToAction("Index");
+
+            string url = Url.Action("Index", "Perfiles", new { id = perfiles.Id_Perfil });
+            return Json(new { success = true, url = url });
         }
 
         protected override void Dispose(bool disposing)

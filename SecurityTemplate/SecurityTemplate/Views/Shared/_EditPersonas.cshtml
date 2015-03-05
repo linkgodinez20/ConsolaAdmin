@@ -1,0 +1,201 @@
+﻿
+@model Security.Core.Model.Personas
+
+@{
+    ViewBag.Title = "Persona / Editar";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="modal-header label-warning">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hitden="true">&times;</span></button>
+
+    <h2 class="modal-title">Editar</h2>
+
+    <h4 class="Fuente_blanca">Personas</h4>
+</div>
+
+
+@using (Html.BeginForm("Edit", "Personas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id_Persona)
+            @Html.HiddenFor(model => model.Foto)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.APaterno, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.APaterno, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.APaterno, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AMaterno, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AMaterno, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AMaterno, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Id_Genero, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Id_Genero", null, htmlAttributes: new { @class = "form-control" })
+
+
+
+                    @Html.ValidationMessageFor(model => model.Id_Genero, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FechaNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.FechaNacimiento, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RFC, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.RFC, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.RFC, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Homoclave, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Homoclave, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Homoclave, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CURP, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CURP, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CURP, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Foto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-lg-2 col-md-6 col-sm-7">
+
+                    @{
+    var config = ViewBag.Dir_PersonasFoto + "/" + Model.Foto;
+    //ViewBag.FotoExistente = Model.Foto;
+                    }
+
+                    <div class="panel panel-info">
+                        <div class="panel-body">
+                            <img id="img_Foto" style="Height:100px;Width:100px" src="@Url.Content(@config)" />
+                            <div style="text-align:center">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <label id="FotoName" class="Dialogos"></label>
+
+                    <input id="file" type="file" accept=".jpg, .png, .bmp, .gif"
+                           class="form-control alert-success" name="file" onchange="previewFile()" lang="es-mx" />
+
+                    @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Estatus, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Estatus)
+                        @Html.ValidationMessageFor(model => model.Estatus, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        @{
+    var ControllerName = ViewContext.RouteData.Values["Controller"];
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" value="Guardar" class="btn btn-success" data-container="body" data-toggle="popover" data-placement="left" data-content="Guardar">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right" data-content="Volver" href="/@ControllerName"></a>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Scripts/jquery-2.1.3.js"></script>
+<script src="~/Scripts/jquery-ui-1.11.2.js"></script>
+<link href="~/Content/themes/base/all.css" rel="stylesheet" />
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.datepicker.setDefaults($.datepicker.regional['es-MX']);
+            $('#FechaNacimiento').datepicker({ dateFormat: "yy-mm-dd" });
+        });
+    </script>
+
+    <script>
+
+        function previewFile() {
+            var preview = document.querySelector('#img_Foto');
+            var file = document.querySelector('#file').files[0];
+            var reader = new FileReader();
+
+            $('#FotoName').empty();
+            $('#FotoName').append(file.name);
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "../../Content/Images/default-image.jpg";
+            }
+        }
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#APaterno').focus();
+        });
+    </script>
+}
+
+

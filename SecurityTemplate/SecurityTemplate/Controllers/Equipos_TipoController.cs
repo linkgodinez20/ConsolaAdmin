@@ -72,13 +72,13 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(equipos_tipo);
+            return PartialView("_Details", equipos_tipo);
         }
 
         // GET: /Equipos_Tipo/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: /Equipos_Tipo/Create       
@@ -90,10 +90,12 @@ namespace Security.Controllers
             {
                 repo.Add(equipos_tipo);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Equipos_Tipo");
+                return Json(new { success = true, url = url });
             }
 
-            return View(equipos_tipo);
+            return PartialView("_Create", equipos_tipo);
         }
 
         // GET: /Equipos_Tipo/Edit/5
@@ -104,7 +106,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(equipos_tipo);
+            return PartialView("_Edit", equipos_tipo);
         }
 
         // POST: /Equipos_Tipo/Edit/5
@@ -116,9 +118,11 @@ namespace Security.Controllers
             {
                 repo.Update(equipos_tipo);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Equipos_Tipo");
+                return Json(new { success = true, url = url });   
             }
-            return View(equipos_tipo);
+            return PartialView("_Edit", equipos_tipo);
         }
 
         // GET: /Equipos_Tipo/Delete/5
@@ -129,7 +133,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(equipos_tipo);
+            return PartialView("_Delete", equipos_tipo);
         }
 
         // POST: /Equipos_Tipo/Delete/5
@@ -142,7 +146,9 @@ namespace Security.Controllers
                 Equipos_tipo equipos_tipo = repo.Get(id);
                 repo.Delete(equipos_tipo);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Equipos_Tipo", new { id = equipos_tipo.Id_EquipoTipo });
+                return Json(new { success = true, url = url });
             }
             catch (Exception ex)
             {

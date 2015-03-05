@@ -5,13 +5,15 @@
     ViewBag.Title = "Domicilios / Lista";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2 class="Titulo" align="center">Domicilios</h2>
+
+@Scripts.Render("~/bundles/Miscelaneous")
+
 <ol class="breadcrumb">
     <li><span class="glyphicon glyphicon-home"></span> @Html.ActionLink("Inicio", "Index", "Home")</li>
     <li><b>Domicilio</b></li>
     <li class="active">Lista</li>
 </ol>
-
+<h2 class="Titulo" align="center">Domicilios</h2>
 @using (Html.BeginForm("Index", "Domicilios", FormMethod.Get))
 {
     <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3">
@@ -22,7 +24,7 @@
                     <i class="glyphicon glyphicon-search"></i>
                 </button>
                 <button name="btnFilter" id="btnFilter" type="submit" value="index" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="right" data-content="Quitar filtro">
-                    <i class="glyphicon glyphicon-filter"></i>                    
+                    <i class="glyphicon glyphicon-filter"></i>
                 </button>
             </div>
         </div>
@@ -98,57 +100,73 @@
                     @Html.DisplayFor(modelItem => item.FechaModificacion)
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "Edit", new { id = item.Id_Domicilio }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil", data_toggle = "modal", data_target = "#EditModal" }) |
-                    @Html.ActionLink(" ", "Details", new { id = item.Id_Domicilio }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list", data_toggle = "modal", data_target = "#DetailsModal" }) |
-                    @Html.ActionLink(" ", "Delete", new { id = item.Id_Domicilio }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove", data_toggle = "modal", data_target = "#DelModal" })
+                    @Html.ActionLink(" ", "Edit", new { id = item.Id_Domicilio }, new { @class = "btn-xs btn-warning glyphicon glyphicon-pencil", data_modal = "" }) |
+                    @Html.ActionLink(" ", "Details", new { id = item.Id_Domicilio }, new { @class = "btn-xs btn-info glyphicon glyphicon-th-list", data_modal = "" }) |
+                    @Html.ActionLink(" ", "Delete", new { id = item.Id_Domicilio }, new { @class = "btn-xs btn-danger glyphicon glyphicon-remove", data_modal = "" })
                 </td>
             </tr>
         }
 
     </table>
-    </div>
-    @Html.PagedListPager(Model, page => Url.Action("Index",
+</div>
+@Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
-    @{
-        var ControllerName = ViewContext.RouteData.Values["controller"];
+<table>
+    <tr>
+        <td>
+            @Html.ActionLink(" ", "Create", "Domicilios", htmlAttributes: new { @class = "btn btn-success glyphicon glyphicon-plus", data_modal = "" })
+        </td>
+    </tr>
+</table>
+
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $.ajaxSetup({ cache: false });
+
+        $("a[data-modal]").on("click", function (e) {
+            // hide dropdown if any (this is used wehen invoking modal from link in bootstrap dropdown )
+            //$(e.target).closest('.btn-group').children('.dropdown-toggle').dropdown('toggle');
+
+            $('#myModalContent').load(this.href, function () {
+                $('#myModal').modal({
+                    backdrop: 'static',
+                    keyboard: true,
+
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        });
+    });
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+
+            $.ajax({
+                type: this.method,
+                url: this.action,
+                data: $(this).serialize(),
+                success: function (result) {
+                    if (result.success) {
+                        $('#myModal').modal('hide');
+                        window.location.href = result.url;
+                    } else {
+                        $('#myModalContent').html(result);
+                        bindForm(dialog);
+                    }
+                }
+            });
+
+            return false;
+        });
     }
-    <table>
-        <tr>
-            <td>
-                <a class="btn btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#CreateModal" id="Agregar" href="~/@ControllerName/Create"></a>
-            </td>
-        </tr>
-    </table>
-    <!-- Modal -->
-    <div class="modal fade" id="DelModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-            </div>
-        </div>
-    </div>
-    <!-- Edit Modal -->
-    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-            </div>
-        </div>
-    </div>
-    <!-- Detalles Modal -->
-    <div class="modal fade" id="DetailsModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-            </div>
-        </div>
-    </div>
-    <!-- Create Modal -->
-    <div class="modal fade" id="CreateModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-            </div>
-        </div>
-    </div>
+</script>

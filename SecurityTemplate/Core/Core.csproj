@@ -154,6 +154,7 @@
     <Compile Include="Model\Events.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\FileModel.cs" />
     <Compile Include="Model\Genero.cs">
       <DependentUpon>SecurityModel.tt</DependentUpon>
     </Compile>

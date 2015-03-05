@@ -50,6 +50,12 @@
       <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcSiteMapProvider">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.Core.4.6.18\lib\net45\MvcSiteMapProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcSiteMapProvider.WebActivator">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.4.6.18\lib\net45\MvcSiteMapProvider.WebActivator.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.7\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -139,8 +145,9 @@
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
-    <Reference Include="WebActivatorEx">
-      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivatorEx.2.0.1\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -160,6 +167,7 @@
     <Compile Include="Controllers\Baja_MotivosController.cs" />
     <Compile Include="Controllers\BeneficiosController.cs" />
     <Compile Include="Controllers\Beneficio_TipoController.cs" />
+    <Compile Include="Controllers\ConfiguracionController.cs" />
     <Compile Include="Controllers\ContactosController.cs" />
     <Compile Include="Controllers\Contacto_MedioController.cs" />
     <Compile Include="Controllers\Contacto_tipoController.cs" />
@@ -195,6 +203,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -277,6 +286,10 @@
     <Content Include="less\rotated-flipped.less" />
     <Content Include="less\stacked.less" />
     <Content Include="less\variables.less" />
+    <Content Include="Mvc.sitemap" />
+    <None Include="MvcSiteMapSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\PublishProfiles\IIS 31.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Media\Paises\Banderas\ad.png" />
@@ -541,6 +554,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\mike.js" />
     <Content Include="Scripts\Miscelaneous.js" />
+    <Content Include="Scripts\modalform.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\respond.js" />
@@ -565,69 +579,65 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Sistemas\Create.cshtml" />
-    <Content Include="Views\Sistemas\Delete.cshtml" />
-    <Content Include="Views\Sistemas\Details.cshtml" />
-    <Content Include="Views\Sistemas\Edit.cshtml" />
+    <Content Include="Views\Sistemas\_Create.cshtml" />
+    <Content Include="Views\Sistemas\_Delete.cshtml" />
+    <Content Include="Views\Sistemas\_Details.cshtml" />
+    <Content Include="Views\Sistemas\_Edit.cshtml" />
     <Content Include="Views\Sistemas\Index.cshtml" />
-    <Content Include="Views\Genero\Create.cshtml" />
-    <Content Include="Views\Genero\Delete.cshtml" />
-    <Content Include="Views\Genero\Details.cshtml" />
-    <Content Include="Views\Genero\Edit.cshtml" />
+    <Content Include="Views\Genero\_Create.cshtml" />
+    <Content Include="Views\Genero\_Delete.cshtml" />
+    <Content Include="Views\Genero\_Details.cshtml" />
+    <Content Include="Views\Genero\_Edit.cshtml" />
     <Content Include="Views\Genero\Index.cshtml" />
-    <Content Include="Views\Personas\Create.cshtml" />
-    <Content Include="Views\Personas\Delete.cshtml" />
-    <Content Include="Views\Personas\Details.cshtml" />
-    <Content Include="Views\Personas\Edit.cshtml" />
+    <Content Include="Views\Personas\_Create.cshtml" />
+    <Content Include="Views\Personas\_Delete.cshtml" />
+    <Content Include="Views\Personas\_Details.cshtml" />
+    <Content Include="Views\Personas\_Edit.cshtml" />
     <Content Include="Views\Personas\Index.cshtml" />
-    <Content Include="Views\Bajas\Create.cshtml" />
-    <Content Include="Views\Bajas\Delete.cshtml" />
-    <Content Include="Views\Bajas\Details.cshtml" />
-    <Content Include="Views\Bajas\Edit.cshtml" />
+    <Content Include="Views\Bajas\_Create.cshtml" />
+    <Content Include="Views\Bajas\_Delete.cshtml" />
+    <Content Include="Views\Bajas\_Details.cshtml" />
+    <Content Include="Views\Bajas\_Edit.cshtml" />
     <Content Include="Views\Bajas\Index.cshtml" />
-    <Content Include="Views\Beneficios\Create.cshtml" />
-    <Content Include="Views\Beneficios\Delete.cshtml" />
-    <Content Include="Views\Beneficios\Details.cshtml" />
-    <Content Include="Views\Beneficios\Edit.cshtml" />
+    <Content Include="Views\Beneficios\_Create.cshtml" />
+    <Content Include="Views\Beneficios\_Delete.cshtml" />
+    <Content Include="Views\Beneficios\_Details.cshtml" />
+    <Content Include="Views\Beneficios\_Edit.cshtml" />
     <Content Include="Views\Beneficios\Index.cshtml" />
-    <Content Include="Views\Contacto_tipo\Create.cshtml" />
-    <Content Include="Views\Contacto_tipo\Delete.cshtml" />
-    <Content Include="Views\Contacto_tipo\Details.cshtml" />
-    <Content Include="Views\Contacto_tipo\Edit.cshtml" />
+    <Content Include="Views\Contacto_tipo\_Create.cshtml" />
+    <Content Include="Views\Contacto_tipo\_Delete.cshtml" />
+    <Content Include="Views\Contacto_tipo\_Details.cshtml" />
+    <Content Include="Views\Contacto_tipo\_Edit.cshtml" />
     <Content Include="Views\Contacto_tipo\Index.cshtml" />
-    <Content Include="Views\Municipios\Create.cshtml" />
-    <Content Include="Views\Municipios\Delete.cshtml" />
-    <Content Include="Views\Municipios\Details.cshtml" />
-    <Content Include="Views\Municipios\Edit.cshtml" />
+    <Content Include="Views\Municipios\_Create.cshtml" />
+    <Content Include="Views\Municipios\_Delete.cshtml" />
+    <Content Include="Views\Municipios\_Details.cshtml" />
+    <Content Include="Views\Municipios\_Edit.cshtml" />
     <Content Include="Views\Municipios\Index.cshtml" />
-    <Content Include="Views\Paises\Create.cshtml" />
-    <Content Include="Views\Paises\Delete.cshtml" />
-    <Content Include="Views\Paises\Details.cshtml" />
-    <Content Include="Views\Paises\Edit.cshtml" />
+    <Content Include="Views\Paises\_Create.cshtml" />
+    <Content Include="Views\Paises\_Delete.cshtml" />
+    <Content Include="Views\Paises\_Details.cshtml" />
+    <Content Include="Views\Paises\_Edit.cshtml" />
     <Content Include="Views\Paises\Index.cshtml" />
-    <Content Include="Views\Perfiles\Create.cshtml" />
-    <Content Include="Views\Perfiles\Delete.cshtml" />
-    <Content Include="Views\Perfiles\Details.cshtml" />
-    <Content Include="Views\Perfiles\Edit.cshtml" />
+    <Content Include="Views\Perfiles\_Create.cshtml" />
+    <Content Include="Views\Perfiles\_Delete.cshtml" />
+    <Content Include="Views\Perfiles\_Details.cshtml" />
+    <Content Include="Views\Perfiles\_Edit.cshtml" />
     <Content Include="Views\Perfiles\Index.cshtml" />
-    <Content Include="Views\Contactos\Create.cshtml" />
-    <Content Include="Views\Contactos\Delete.cshtml" />
-    <Content Include="Views\Contactos\Details.cshtml" />
-    <Content Include="Views\Contactos\Edit.cshtml" />
     <Content Include="Views\Contactos\Index.cshtml" />
-    <Content Include="Views\Domicilios\Create.cshtml" />
-    <Content Include="Views\Domicilios\Delete.cshtml" />
-    <Content Include="Views\Domicilios\Details.cshtml" />
-    <Content Include="Views\Domicilios\Edit.cshtml" />
+    <Content Include="Views\Domicilios\_Create.cshtml" />
+    <Content Include="Views\Domicilios\_Delete.cshtml" />
+    <Content Include="Views\Domicilios\_Details.cshtml" />
+    <Content Include="Views\Domicilios\_Edit.cshtml" />
     <Content Include="Views\Domicilios\Index.cshtml" />
-    <Content Include="Views\Equipos\Create.cshtml" />
-    <Content Include="Views\Equipos\Delete.cshtml" />
-    <Content Include="Views\Equipos\Details.cshtml" />
-    <Content Include="Views\Equipos\Edit.cshtml" />
+    <Content Include="Views\Equipos\_Create.cshtml" />
+    <Content Include="Views\Equipos\_Delete.cshtml" />
+    <Content Include="Views\Equipos\_Details.cshtml" />
+    <Content Include="Views\Equipos\_Edit.cshtml" />
     <Content Include="Views\Equipos\Index.cshtml" />
-    <Content Include="Views\Sesiones\Delete.cshtml" />
-    <Content Include="Views\Sesiones\Details.cshtml" />
-    <Content Include="Views\Sesiones\Edit.cshtml" />
+    <Content Include="Views\Sesiones\_Delete.cshtml" />
+    <Content Include="Views\Sesiones\_Details.cshtml" />
+    <Content Include="Views\Sesiones\_Edit.cshtml" />
     <Content Include="Views\Sesiones\Index.cshtml" />
     <Content Include="Views\AreasDeTrabajo\Create.cshtml" />
     <Content Include="Views\AreasDeTrabajo\Delete.cshtml" />
@@ -659,10 +669,10 @@
     <Content Include="Views\Directorios\Details.cshtml" />
     <Content Include="Views\Directorios\Edit.cshtml" />
     <Content Include="Views\Directorios\Index.cshtml" />
-    <Content Include="Views\Entidades\Create.cshtml" />
-    <Content Include="Views\Entidades\Delete.cshtml" />
-    <Content Include="Views\Entidades\Details.cshtml" />
-    <Content Include="Views\Entidades\Edit.cshtml" />
+    <Content Include="Views\Entidades\_Create.cshtml" />
+    <Content Include="Views\Entidades\_Delete.cshtml" />
+    <Content Include="Views\Entidades\_Details.cshtml" />
+    <Content Include="Views\Entidades\_Edit.cshtml" />
     <Content Include="Views\Entidades\Index.cshtml" />
     <Content Include="Views\Equipos_Tipo\Create.cshtml" />
     <Content Include="Views\Equipos_Tipo\Delete.cshtml" />
@@ -689,10 +699,10 @@
     <Content Include="Views\Preguntas\Details.cshtml" />
     <Content Include="Views\Preguntas\Edit.cshtml" />
     <Content Include="Views\Preguntas\Index.cshtml" />
-    <Content Include="Views\Controladores\Create.cshtml" />
-    <Content Include="Views\Controladores\Delete.cshtml" />
-    <Content Include="Views\Controladores\Details.cshtml" />
-    <Content Include="Views\Controladores\Edit.cshtml" />
+    <Content Include="Views\Controladores\_Create.cshtml" />
+    <Content Include="Views\Controladores\_Delete.cshtml" />
+    <Content Include="Views\Controladores\_Details.cshtml" />
+    <Content Include="Views\Controladores\_Edit.cshtml" />
     <Content Include="Views\Controladores\Index.cshtml" />
     <Content Include="scss\font-awesome.scss" />
     <Content Include="scss\_animated.scss" />
@@ -709,16 +719,34 @@
     <Content Include="scss\_variables.scss" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Shared\_Layout3.cshtml" />
-    <Content Include="Views\Acciones\Create.cshtml" />
-    <Content Include="Views\Acciones\Delete.cshtml" />
-    <Content Include="Views\Acciones\Details.cshtml" />
-    <Content Include="Views\Acciones\Edit.cshtml" />
     <Content Include="Views\Acciones\Index.cshtml" />
     <Content Include="Views\DispositivosTipo\Create.cshtml" />
     <Content Include="Views\DispositivosTipo\Delete.cshtml" />
     <Content Include="Views\DispositivosTipo\Details.cshtml" />
     <Content Include="Views\DispositivosTipo\Edit.cshtml" />
     <Content Include="Views\DispositivosTipo\Index.cshtml" />
+    <Content Include="Views\Shared\_ConfigSistema.cshtml" />
+    <Content Include="Views\Configuracion\index.cshtml" />
+    <Content Include="Views\Shared\_PlantillaPersonas.cshtml" />
+    <Content Include="Views\Shared\_Permisos.cshtml" />
+    <Content Include="Views\Shared\_EditPersonas.cshtml" />
+    <Content Include="Views\Contactos\_Create.cshtml" />
+    <Content Include="Views\Contactos\_Delete.cshtml" />
+    <Content Include="Views\Contactos\_Details.cshtml" />
+    <Content Include="Views\Contactos\_Edit.cshtml" />
+    <Content Include="Views\Acciones\_Create.cshtml" />
+    <Content Include="Views\Acciones\_Delete.cshtml" />
+    <Content Include="Views\Acciones\_Details.cshtml" />
+    <Content Include="Views\Acciones\_Edit.cshtml" />
+    <Content Include="Views\Shared\_fileupload.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

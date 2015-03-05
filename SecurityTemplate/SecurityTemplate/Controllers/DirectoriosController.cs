@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -87,14 +87,14 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(directorios);
+            return PartialView("_Details", directorios);
         }
 
         // GET: /Directorios/Create
         public ActionResult Create()
         {
             ViewBag.Id_DirectorioTipo = new SelectList(dirTipo.GetAll(), "Id_DirectorioTipo", "Nombre");
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: /Directorios/Create
@@ -106,11 +106,13 @@ namespace Security.Controllers
             {   
                 repo.Add(directorios);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Directorios");
+                return Json(new { success = true, url = url });
             }
 
             ViewBag.Id_DirectorioTipo = new SelectList(dirTipo.GetAll(), "Id_DirectorioTipo", "Nombre", directorios.Id_DirectorioTipo);
-            return View(directorios);
+            return PartialView("_Create", directorios);
         }
 
         // GET: /Directorios/Edit/5
@@ -122,7 +124,7 @@ namespace Security.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Id_DirectorioTipo = new SelectList(dirTipo.GetAll(), "Id_DirectorioTipo", "Nombre", directorios.Id_DirectorioTipo);
-            return View(directorios);
+            return PartialView("_Edit", directorios);
         }
 
         // POST: /Directorios/Edit/5     
@@ -134,7 +136,9 @@ namespace Security.Controllers
             {
                 repo.Update(directorios);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Directorios");
+                return Json(new { success = true, url = url });   
             }
             ViewBag.Id_DirectorioTipo = new SelectList(dirTipo.GetAll(), "Id_DirectorioTipo", "Nombre", directorios.Id_DirectorioTipo);
             return View(directorios);
@@ -148,7 +152,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(directorios);
+            return PartialView("_Delete", directorios);
         }
 
         // POST: /Directorios/Delete/5
@@ -161,7 +165,9 @@ namespace Security.Controllers
                 Directorios directorios = repo.Get(id);
                 repo.Delete(directorios);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Directorios", new { id = directorios.Id_Directorio });
+                return Json(new { success = true, url = url });            
             }
             catch(Exception ex)
             {

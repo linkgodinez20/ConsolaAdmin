@@ -107,14 +107,14 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(entidades);
+            return PartialView("_Details", entidades);
         }
 
         // GET: /Entidades/Create
         public ActionResult Create()
         {
             ViewBag.Id_Pais = new SelectList(paises.GetAll(), "Id_Pais", "FIPS");
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: /Entidades/Create
@@ -126,11 +126,13 @@ namespace Security.Controllers
             {
                 repo.Add(entidades);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Entidades");
+                return Json(new { success = true, url = url });
             }
 
             ViewBag.Id_Pais = new SelectList(paises.GetAll(), "Id_Pais", "FIPS", entidades.Id_Pais);
-            return View(entidades);
+            return PartialView("_Create", entidades);
         }
 
         // GET: /Entidades/Edit/5
@@ -142,7 +144,7 @@ namespace Security.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Id_Pais = new SelectList(paises.GetAll(), "Id_Pais", "FIPS", entidades.Id_Pais);
-            return View(entidades);
+            return PartialView("_Edit", entidades);
         }
 
         // POST: /Entidades/Edit/5
@@ -154,10 +156,12 @@ namespace Security.Controllers
             {
                 repo.Update(entidades);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Entidades");
+                return Json(new { success = true, url = url });
             }
             ViewBag.Id_Pais = new SelectList(paises.GetAll(), "Id_Pais", "FIPS", entidades.Id_Pais);
-            return View(entidades);
+            return PartialView("_Edit", entidades);
         }
 
         // GET: /Entidades/Delete/5
@@ -168,7 +172,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(entidades);
+            return PartialView("_Delete", entidades);
         }
 
         // POST: /Entidades/Delete/5
@@ -181,7 +185,9 @@ namespace Security.Controllers
                 Entidades entidades = repo.Get(id,id2);
                 repo.Delete(entidades);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Entidades", new { id = entidades.Id_Pais, id2 = entidades.Id_Entidad });
+                return Json(new { success = true, url = url });
             }
             catch (Exception ex)
             {

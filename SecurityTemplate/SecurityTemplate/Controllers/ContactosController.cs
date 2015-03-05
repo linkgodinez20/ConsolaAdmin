@@ -28,7 +28,6 @@ namespace Security.Controllers
         // GET: Contactos
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-
             ViewBag.CurrentSort = sortOrder;
 
             ViewBag.SortByContactoTipo = sortOrder == "Tipo_desc" ? "Tipo_desc" : "Tipo";
@@ -51,12 +50,12 @@ namespace Security.Controllers
             IOrderedQueryable<Contactos> ordena_contactos = repo.GetAll()
                 .OrderBy(x => x.Contacto_tipo.Nombre).OrderBy(y => y.Contacto_medio.Nombre).OrderBy(z => z.Contacto);
 
-            var actividades = from s in ordena_contactos
-                              select s;
+            var contactos = from s in ordena_contactos
+                            select s;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                actividades = actividades.Where(s => s.Contacto_tipo.Nombre.Contains(searchString)
+                contactos = contactos.Where(s => s.Contacto_tipo.Nombre.Contains(searchString)
                                        || s.Contacto_medio.Nombre.Contains(searchString)
                                        || s.Contacto.Contains(searchString)
                                        );
@@ -65,37 +64,32 @@ namespace Security.Controllers
             switch (sortOrder)
             {
                 case "Medio":
-                    actividades = actividades.OrderBy(p => p.Contacto_medio.Nombre);
+                    contactos = contactos.OrderBy(p => p.Contacto_medio.Nombre);
                     break;
                 case "Medio_desc":
-                    actividades = actividades.OrderByDescending(p => p.Contacto_medio.Nombre);
+                    contactos = contactos.OrderByDescending(p => p.Contacto_medio.Nombre);
                     break;
                 case "Tipo":
-                    actividades = actividades.OrderBy(p => p.Contacto_tipo.Nombre);
+                    contactos = contactos.OrderBy(p => p.Contacto_tipo.Nombre);
                     break;
                 case "Tipo_desc":
-                    actividades = actividades.OrderByDescending(p => p.Contacto_tipo.Nombre);
+                    contactos = contactos.OrderByDescending(p => p.Contacto_tipo.Nombre);
                     break;
                 case "Contacto":
-                    actividades = actividades.OrderBy(p => p.Contacto);
+                    contactos = contactos.OrderBy(p => p.Contacto);
                     break;
                 case "Contacto_desc":
-                    actividades = actividades.OrderByDescending(p => p.Contacto);
+                    contactos = contactos.OrderByDescending(p => p.Contacto);
                     break;
                 default:
-                    actividades = actividades.OrderBy(ct => ct.Contacto_tipo.Nombre).OrderBy(cm => cm.Contacto_medio.Nombre).OrderBy(c => c.Contacto);
+                    contactos = contactos.OrderBy(ct => ct.Contacto_tipo.Nombre).OrderBy(cm => cm.Contacto_medio.Nombre).OrderBy(c => c.Contacto);
                     break;
             }
 
             int pageSize = 3;
             int pageNumber = (page ?? 1);
 
-
-            return View(actividades.ToPagedList(pageNumber, pageSize));
-
-
-            //var contacto = repo.GetAll().Include(c => c.Contacto_medio).Include(c => c.Contacto_tipo);
-            //return View(contacto.ToList());
+            return View(contactos.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Contactos/Details/5
@@ -106,7 +100,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(contactos);
+            return PartialView("_Details", contactos);
         }
 
         // GET: Contactos/Create
@@ -114,7 +108,8 @@ namespace Security.Controllers
         {
             ViewBag.Id_ContactoMedio = new SelectList(Repo_ContactoMedio.GetAll(), "Id_ContactoMedio", "Nombre");
             ViewBag.Id_ContactoTipo = new SelectList(Repo_ContactoTipo.GetAll(), "Id_ContactoTipo", "Nombre");
-            return View();
+
+            return PartialView("_Create");
         }
 
         // POST: Contactos/Create
@@ -126,12 +121,16 @@ namespace Security.Controllers
             {
                 repo.Add(contactos);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                //string url = Url.Action("Index", "Contactos", new { id = contactos.Id_Contacto });
+                string url = Url.Action("Index", "Contactos");
+                return Json(new { success = true, url = url });
             }
 
             ViewBag.Id_ContactoMedio = new SelectList(Repo_ContactoMedio.GetAll(), "Id_ContactoMedio", "Nombre", contactos.Id_ContactoMedio);
             ViewBag.Id_ContactoTipo = new SelectList(Repo_ContactoTipo.GetAll(), "Id_ContactoTipo", "Nombre", contactos.Id_ContactoTipo);
-            return View(contactos);
+
+            return PartialView("_Create", contactos);
         }
 
         // GET: Contactos/Edit/5
@@ -141,10 +140,12 @@ namespace Security.Controllers
             if (contactos == null || id == 0)
             {
                 return RedirectToAction("index");
+
             }
             ViewBag.Id_ContactoMedio = new SelectList(Repo_ContactoMedio.GetAll(), "Id_ContactoMedio", "Nombre", contactos.Id_ContactoMedio);
             ViewBag.Id_ContactoTipo = new SelectList(Repo_ContactoTipo.GetAll(), "Id_ContactoTipo", "Nombre", contactos.Id_ContactoTipo);
-            return View(contactos);
+
+            return PartialView("_Edit", contactos);
         }
 
         // POST: Contactos/Edit/5
@@ -158,11 +159,15 @@ namespace Security.Controllers
             {
                 repo.Update(contactos);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                //string url = Url.Action("Index", "Contactos", new { id = contactos.Id_Contacto });
+                string url = Url.Action("Index", "Contactos");
+                return Json(new { success = true, url = url });   
             }
             ViewBag.Id_ContactoMedio = new SelectList(Repo_ContactoMedio.GetAll(), "Id_ContactoMedio", "Nombre", contactos.Id_ContactoMedio);
             ViewBag.Id_ContactoTipo = new SelectList(Repo_ContactoTipo.GetAll(), "Id_ContactoTipo", "Nombre", contactos.Id_ContactoTipo);
-            return View(contactos);
+
+            return PartialView("_Edit", contactos);
         }
 
         // GET: Contactos/Delete/5
@@ -173,7 +178,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(contactos);
+            return PartialView("_Delete", contactos);
         }
 
         // POST: Contactos/Delete/5
@@ -184,7 +189,9 @@ namespace Security.Controllers
             Contactos contactos = repo.Get(id);
             repo.Delete(contactos);
             repo.Save();
-            return RedirectToAction("Index");
+
+            string url = Url.Action("Index", "Contactos", new { id = contactos.Id_Contacto });
+            return Json(new { success = true, url = url });
         }
 
         protected override void Dispose(bool disposing)

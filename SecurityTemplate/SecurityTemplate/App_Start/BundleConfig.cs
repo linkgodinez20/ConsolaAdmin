@@ -39,7 +39,8 @@ namespace Security
                       "~/Content/site.css",
                       "~/Content/PagedList.css",
                       "~/Content/themes/base/all.css",
-                      "~/Content/font-awesome.min.css"                      
+                      "~/Content/font-awesome.min.css",
+                      "~/Content/animate.css"
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/MX-calendar").Include(

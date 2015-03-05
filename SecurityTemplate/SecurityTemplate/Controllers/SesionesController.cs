@@ -86,7 +86,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(sesiones);
+            return PartialView("_Details", sesiones);
         }
 
         
@@ -103,7 +103,7 @@ namespace Security.Controllers
             //ViewBag.Id_Cuenta = new SelectList(Repo_Cuentas.GetAll(), "Id_Cuenta", "Id_Cuenta", sesiones.Id_Cuenta);
             ViewBag.Id_Sistema = new SelectList(Repo_Sistemas.GetAll(), "Id_Sistema", "Nombre", sesiones.Id_Sistema);
 
-            return View(sesiones);
+            return PartialView("_Edit", sesiones);
         }
 
         // POST: Sesiones/Edit/5
@@ -119,13 +119,14 @@ namespace Security.Controllers
                 sesiones.UltimoMovimiento = DateTime.Now;
                 repo.Update(sesiones);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Sesiones");
+                return Json(new { success = true, url = url });
             }
 
-            //ViewBag.Id_Cuenta = new SelectList(Repo_Cuentas.GetAll(), "Id_Cuenta", "Id_Cuenta", sesiones.Id_Cuenta);
             ViewBag.Id_Sistema = new SelectList(Repo_Sistemas.GetAll(), "Id_Sistema", "Nombre", sesiones.Id_Sistema);
 
-            return View(sesiones);
+            return PartialView("_Edit", sesiones);
         }
 
         // GET: Sesiones/Delete/5
@@ -136,7 +137,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(sesiones);
+            return PartialView("_Delete", sesiones);
         }
 
         // POST: Sesiones/Delete/5
@@ -147,7 +148,9 @@ namespace Security.Controllers
             Sesiones sesiones = repo.Get(id);
             repo.Delete(sesiones);
             repo.Save();
-            return RedirectToAction("Index");
+
+            string url = Url.Action("Index", "Sesiones", new { id = sesiones.Id_Sesion});
+            return Json(new { success = true, url = url });
         }
 
         protected override void Dispose(bool disposing)

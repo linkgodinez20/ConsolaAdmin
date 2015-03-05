@@ -23,18 +23,32 @@ namespace Security.Controllers.svc
 
         // GET: api/Entidades
 
-        public IQueryable GetEntidades([FromUri]string IdPais)
+        public IQueryable GetEntidades([FromUri]string IdPais = "")
         {
-            Int16 idPais = Convert.ToInt16(IdPais);
 
-            var entidades = from ent in db.Entidades
-                            where ent.Id_Pais == idPais
-                            select new { 
+            if (IdPais != "") {
+                Int16 idPais = Convert.ToInt16(IdPais);
+
+                var entidades = from ent in db.Entidades
+                                where ent.Id_Pais == idPais
+                                select new
+                                {
+                                    Id_Entidad = ent.Id_Entidad,
+                                    Nombre = ent.Nombre
+                                };
+                return entidades;
+            }
+            else { 
+            var entidades = from ent in db.Entidades                            
+                            select new
+                            {
                                 Id_Entidad = ent.Id_Entidad,
                                 Nombre = ent.Nombre
                             };
 
             return entidades;
+            }
+            
         }
 
         // GET: api/Entidades/5

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+
+  <mvcSiteMapNode title="Inicio" controller="Home" action="Index">
+    <mvcSiteMapNode title="Acerca de" controller="Home" action="About"/>
+    <mvcSiteMapNode title="Contacto" controller="Home" action="Contact"/>
+
+    <mvcSiteMapNode title="Acciones"        controller="Acciones"       action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="AreasDeTrabajo"  controller="AreasDeTrabajo" action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="MotivosDeBaja"   controller="Baja_Motivos"    action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Bajas"           controller="Bajas"          action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="TiposBeneficio"  controller="Beneficio_tipo" action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Beneficios"  controller="Beneficios" action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="MedioDeContacto" controller="Contacto_Medio"  action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="TiposDeContacto"   controller="Contacto_tipo"  action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Contactos"       controller="Contactos"      action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Controladores"   controller="Controladores"  action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Cuentas"         controller="Cuentas"        action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Directorios"     controller="Directorios"     action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="TiposDeDispositivos" controller="DispositivosTipo" action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Domicilios"      controller="Domicilios"     action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Entidades"       controller="Entidades"      action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="TipoDeEquipos"    controller="Equipos_Tipo"   action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Equipos"         controller="Equipos"     action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Genero"          controller="Genero"     action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Ubicaciones"     controller="Locations"     action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Login"           controller="Login"     action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Municipios"      controller="Municipios"     action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Paises"          controller="Paises"     action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Perfiles"        controller="Perfiles"     action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Personas"        controller="Personas"     action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Preguntas"       controller="Preguntas"     action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="PreguntasPorLogin" controller="PreguntasXLogin"     action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Sesiones"       controller="Sesiones"     action="Index"></mvcSiteMapNode>
+    <mvcSiteMapNode title="Sistemas"        controller="Sistemas"     action="Index"></mvcSiteMapNode>
+  </mvcSiteMapNode>
+</mvcSiteMap>

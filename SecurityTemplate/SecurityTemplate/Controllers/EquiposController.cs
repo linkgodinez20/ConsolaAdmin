@@ -95,8 +95,8 @@ namespace Security.Controllers
             int pageSize = 3;
             int pageNumber = (page ?? 1);
 
-            //return View(personas.ToPagedList(pageNumber, pageSize));
-            return View("Index", "~/Views/Shared/_Layout.cshtml", personas.ToPagedList(pageNumber, pageSize));
+            return View(personas.ToPagedList(pageNumber, pageSize));
+            //return View("Index", "~/Views/Shared/_Layout.cshtml", personas.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Equipos/Details/5
@@ -107,7 +107,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(equipos);
+            return PartialView("_Details", equipos);
         }
 
         // GET: Equipos/Create
@@ -116,7 +116,7 @@ namespace Security.Controllers
             ViewBag.Id_EquipoTipo = new SelectList(Repo_EquiposTipo.GetAll(), "Id_EquipoTipo", "Nombre");
             ViewBag.Id_Sistema = new SelectList(Repo_Sistemas.GetAll(), "Id_Sistema", "Nombre");
             ViewBag.Id_DispositivoTipo = new SelectList(repo_DispositivoTipo.GetAll(), "Id_DispositivoTipo", "Nombre");
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: Equipos/Create
@@ -140,7 +140,9 @@ namespace Security.Controllers
 
                 repo.Add(equipos);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Equipos");
+                return Json(new { success = true, url = url });
             }
 
             ViewBag.Id_EquipoTipo = new SelectList(Repo_EquiposTipo.GetAll(), "Id_EquipoTipo", "Nombre", equipos.Id_EquipoTipo);
@@ -148,7 +150,7 @@ namespace Security.Controllers
             ViewBag.Id_DispositivoTipo = new SelectList(repo_DispositivoTipo.GetAll(), "Id_DispositivoTipo", "Nombre", equipos.Id_DispositivoTipo);
 
             //return View(equipos);
-            return PartialView(equipos);
+            return PartialView("_Create", equipos);
         }
 
         // GET: Equipos/Edit/5
@@ -159,12 +161,12 @@ namespace Security.Controllers
             {
                 return HttpNotFound();
             }
-            //ViewBag.Id_Cuenta = new SelectList(Repo_Cuentas.GetAll(), "Id_Cuenta", "Id_Cuenta", equipos.Id_Cuenta);
+            
             ViewBag.Id_EquipoTipo = new SelectList(Repo_EquiposTipo.GetAll(), "Id_EquipoTipo", "Nombre", equipos.Id_EquipoTipo);
             ViewBag.Id_Sistema = new SelectList(Repo_Sistemas.GetAll(), "Id_Sistema", "Nombre", equipos.Id_Sistema);
             ViewBag.Id_DispositivoTipo = new SelectList(repo_DispositivoTipo.GetAll(), "Id_DispositivoTipo", "Nombre", equipos.Id_DispositivoTipo);
 
-            return PartialView(equipos);
+            return PartialView("_Edit", equipos);
             //return View(equipos);
         }
 
@@ -182,14 +184,16 @@ namespace Security.Controllers
 
                 repo.Update(equipos);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Equipos");
+                return Json(new { success = true, url = url });
             }
-            //ViewBag.Id_Cuenta = new SelectList(Repo_Cuentas.GetAll(), "Id_Cuenta", "Id_Cuenta", equipos.Id_Cuenta);
+            
             ViewBag.Id_EquipoTipo = new SelectList(Repo_EquiposTipo.GetAll(), "Id_EquipoTipo", "Nombre", equipos.Id_EquipoTipo);
             ViewBag.Id_Sistema = new SelectList(Repo_Sistemas.GetAll(), "Id_Sistema", "Nombre", equipos.Id_Sistema);
             ViewBag.Id_DispositivoTipo = new SelectList(repo_DispositivoTipo.GetAll(), "Id_DispositivoTipo", "Nombre", equipos.Id_DispositivoTipo);
 
-            return View(equipos);
+            return PartialView("_Edit", equipos);
         }
 
         // GET: Equipos/Delete/5
@@ -200,7 +204,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(equipos);
+            return PartialView("_Delete", equipos);
         }
 
         // POST: Equipos/Delete/5
@@ -211,7 +215,9 @@ namespace Security.Controllers
             Equipos equipos = repo.Get(id);
             repo.Delete(equipos);
             repo.Save();
-            return RedirectToAction("Index");
+
+            string url = Url.Action("Index", "Equipos", new { id = equipos.Id_Equipo });
+            return Json(new { success = true, url = url });
         }
 
         protected override void Dispose(bool disposing)

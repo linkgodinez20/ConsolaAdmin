@@ -91,6 +91,7 @@ namespace Security.Controllers
             int pageSize = 3;
             int pageNumber = (page ?? 1);
 
+            //domicilios.Include(p => p.Municipios);
 
             return View(domicilios.ToPagedList(pageNumber, pageSize));
 
@@ -105,7 +106,7 @@ namespace Security.Controllers
                 //return HttpNotFound();
                 return RedirectToAction("index");
             }
-            return View(domicilios);
+            return PartialView("_Details", domicilios);
         }
 
         // GET: Domicilios/Create
@@ -113,7 +114,7 @@ namespace Security.Controllers
         {
             ViewBag.Id_ContactoTipo = new SelectList(Repo_Contacto_tipo.GetAll(), "Id_ContactoTipo", "Nombre");
 
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: Domicilios/Create
@@ -126,15 +127,18 @@ namespace Security.Controllers
             if (ModelState.IsValid)
             {
                 domicilios.FechaModificacion = DateTime.Now;
+
                 repo.Add(domicilios);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Domicilios");
+                return Json(new { success = true, url = url });
             }
 
             ViewBag.Id_ContactoTipo = new SelectList(Repo_Contacto_tipo.GetAll(), "Id_ContactoTipo", "Nombre", domicilios.Id_ContactoTipo);
             ViewBag.Id_Pais = new SelectList(Repo_Municipios.GetAll(), "Id_Pais", "Nombre", domicilios.Id_Pais);
 
-            return View(domicilios);
+            return PartialView("_Create", domicilios);
         }
 
         // GET: Domicilios/Edit/5
@@ -146,21 +150,21 @@ namespace Security.Controllers
                 return RedirectToAction("index");
             }
 
-            var getEntidad = from e in Repo_Entidades.GetAll()
-                             where e.Id_Pais == domicilios.Id_Pais
-                             select e;
+            //var getEntidad = from e in Repo_Entidades.GetAll()
+            //                 where e.Id_Pais == domicilios.Id_Pais
+            //                 select e;
 
-            var getMunicipio = from m in Repo_Municipios.GetAll()
-                               where m.Id_Entidad == domicilios.Id_Entidad && m.Id_Pais == domicilios.Id_Pais
-                               select m;
+            //var getMunicipio = from m in Repo_Municipios.GetAll()
+            //                   where m.Id_Entidad == domicilios.Id_Entidad && m.Id_Pais == domicilios.Id_Pais
+            //                   select m;
 
             ViewBag.Id_ContactoTipo = new SelectList(Repo_Contacto_tipo.GetAll(), "Id_ContactoTipo", "Nombre", domicilios.Id_ContactoTipo);
 
             ViewBag.Id_Pais = new SelectList(Repo_Paises.GetAll(), "Id_Pais", "Nombre", domicilios.Id_Pais);
-            ViewBag.Id_Entidad = new SelectList(getEntidad, "Id_Entidad", "Nombre", domicilios.Id_Entidad);
-            ViewBag.Id_Municipio = new SelectList(getMunicipio, "Id_Municipio", "Nombre", domicilios.Id_Municipio);
+            //ViewBag.Id_Entidad = new SelectList(getEntidad, "Id_Entidad", "Nombre", domicilios.Id_Entidad);
+            //ViewBag.Id_Municipio = new SelectList(getMunicipio, "Id_Municipio", "Nombre", domicilios.Id_Municipio);
 
-            return View(domicilios);
+            return PartialView("_Edit", domicilios);
         }
 
         // POST: Domicilios/Edit/5
@@ -170,33 +174,31 @@ namespace Security.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id_Domicilio,Id_ContactoTipo,Domicilio,NumeroExterior,NumeroInterior,Id_Pais,Id_Entidad,Id_Municipio,Colonia,EntreCalle,YCalle,Notas,FechaModificacion,Estatus")] Domicilios domicilios)
         {
-            var getEntidad = from e in Repo_Entidades.GetAll()
-                             where e.Id_Pais == domicilios.Id_Pais
-                             select e;
+            //var getEntidad = from e in Repo_Entidades.GetAll()
+            //                 where e.Id_Pais == domicilios.Id_Pais
+            //                 select e;
 
-            var getMunicipio = from m in Repo_Municipios.GetAll()
-                               where m.Id_Entidad == domicilios.Id_Entidad && m.Id_Pais == domicilios.Id_Pais
-                               select m;
+            //var getMunicipio = from m in Repo_Municipios.GetAll()
+            //                   where m.Id_Entidad == domicilios.Id_Entidad && m.Id_Pais == domicilios.Id_Pais
+            //                   select m;
 
             ViewBag.Id_ContactoTipo = new SelectList(Repo_Contacto_tipo.GetAll(), "Id_ContactoTipo", "Nombre", domicilios.Id_ContactoTipo);
 
             ViewBag.Id_Pais = new SelectList(Repo_Paises.GetAll(), "Id_Pais", "Nombre", domicilios.Id_Pais);
-            ViewBag.Id_Entidad = new SelectList(getEntidad, "Id_Entidad", "Nombre", domicilios.Id_Entidad);
-            ViewBag.Id_Municipio = new SelectList(getMunicipio, "Id_Municipio", "Nombre", domicilios.Id_Municipio);
+            //ViewBag.Id_Entidad = new SelectList(getEntidad, "Id_Entidad", "Nombre", domicilios.Id_Entidad);
+            //ViewBag.Id_Municipio = new SelectList(getMunicipio, "Id_Municipio", "Nombre", domicilios.Id_Municipio);
 
             if (ModelState.IsValid)
             {
                 domicilios.FechaModificacion = DateTime.Now;
                 repo.Update(domicilios);
                 repo.Save();
-                return RedirectToAction("Index");
+
+                string url = Url.Action("Index", "Domicilios");
+                return Json(new { success = true, url = url });
             }
 
-            //ViewBag.Id_Pais = new SelectList(Repo_Paises.GetAll(), "Id_Pais", "Nombre", domicilios.Id_Pais);
-            //ViewBag.Id_Entidad = new SelectList(Repo_Entidades.GetAll(), "Id_Entidad", "Nombre", domicilios.Id_Entidad);
-            //ViewBag.Id_Municipio = new SelectList(Repo_Municipios.GetAll(), "Id_Municipio", "Nombre", domicilios.Id_Municipio);
-
-            return View(domicilios);
+            return PartialView("_Edit", domicilios);
         }
 
         // GET: Domicilios/Delete/5
@@ -207,7 +209,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View(domicilios);
+            return PartialView("_Delete", domicilios);
         }
 
         // POST: Domicilios/Delete/5
@@ -218,7 +220,9 @@ namespace Security.Controllers
             Domicilios domicilios = repo.Get(id);
             repo.Delete(domicilios);
             repo.Save();
-            return RedirectToAction("Index");
+
+            string url = Url.Action("Index", "Domicilios", new { id = domicilios.Id_Domicilio });
+            return Json(new { success = true, url = url });
         }
 
         protected override void Dispose(bool disposing)

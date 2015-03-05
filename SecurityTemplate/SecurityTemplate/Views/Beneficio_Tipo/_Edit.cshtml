@@ -1,0 +1,73 @@
+﻿@model Security.Core.Model.Beneficio_tipo
+
+<script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+@Scripts.Render("~/bundles/Miscelaneous")
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+@*<script>
+    $(document).ready(function () {
+        $('button').popover({ trigger: "hover" });
+        $('a').popover({ trigger: 'hover' });
+    });
+</script>*@
+
+<div class="modal-header label-warning">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+    <h2 class="modal-title">Editar</h2>
+
+    <h4 class="Fuente_blanca">Tipo de beneficio</h4>
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="modal-body">
+
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Tipo de beneficio</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.Id_BeneficioTipo)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nombre, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        @{
+            var ControllerName = ViewContext.RouteData.Values["Controller"];
+            var referencia = "~/" + @ControllerName + "/Edit/" + Model.Id_BeneficioTipo;
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" value="Save" class="btn btn-success" data-container="body" data-toggle="popover" data-placement="left"
+                        data-content="Guardar">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </button>
+                <a class="btn btn-info glyphicon glyphicon-chevron-left" data-container="body" data-toggle="popover" data-placement="right"
+                   data-content="Volver" href="~/@ControllerName"></a>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#Nombre').focus();
+        });
+    </script>
+}

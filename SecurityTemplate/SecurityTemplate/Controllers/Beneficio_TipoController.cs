@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -73,13 +73,13 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(beneficio_tipo);
+            return PartialView("_Details", beneficio_tipo);
         }
 
         // GET: /Beneficio_Tipo/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: /Beneficio_Tipo/Create
@@ -91,10 +91,12 @@ namespace Security.Controllers
             {
                 repo.Add(beneficio_tipo);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Beneficio_Tipo");
+                return Json(new { success = true, url = url });
             }
 
-            return View(beneficio_tipo);
+            return PartialView("_Create", beneficio_tipo);
         }
 
         // GET: /Beneficio_Tipo/Edit/5
@@ -106,7 +108,7 @@ namespace Security.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(beneficio_tipo);
+            return PartialView("_Edit", beneficio_tipo);
         }
 
         // POST: /Beneficio_Tipo/Edit/5
@@ -118,9 +120,11 @@ namespace Security.Controllers
             {
                 repo.Update(beneficio_tipo);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Beneficio_Tipo");
+                return Json(new { success = true, url = url });   
             }
-            return View(beneficio_tipo);
+            return PartialView("_Edit", beneficio_tipo);
         }
 
         // GET: /Beneficio_Tipo/Delete/5
@@ -131,7 +135,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(beneficio_tipo);
+            return PartialView("_Delete", beneficio_tipo);
         }
 
         // POST: /Beneficio_Tipo/Delete/5
@@ -144,7 +148,9 @@ namespace Security.Controllers
                 Beneficio_tipo beneficio_tipo = repo.Get(id);
                 repo.Delete(beneficio_tipo);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Beneficio_Tipo", new { id = beneficio_tipo.Id_BeneficioTipo });
+                return Json(new { success = true, url = url });
             }
             catch (Exception ex)
             {

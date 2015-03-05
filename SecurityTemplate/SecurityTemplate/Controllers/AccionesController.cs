@@ -73,13 +73,13 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(accions);
+            return PartialView("_Details", accions);
         }
 
         // GET: Acciones/Create
         public ActionResult Create()
-        {           
-            return View();
+        {
+            return PartialView("_Create");
         }
 
         // POST: Acciones/Create
@@ -93,7 +93,9 @@ namespace Security.Controllers
             {
                 repo.Add(acciones);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Acciones");
+                return Json(new { success = true, url = url });
             }
 
             return View(acciones);
@@ -107,7 +109,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(acciones);
+            return PartialView("_Edit", acciones);
         }
 
         // POST: Acciones/Edit/5
@@ -121,9 +123,11 @@ namespace Security.Controllers
             {                
                 repo.Update(acciones);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Acciones");
+                return Json(new { success = true, url = url });   
             }
-            return View(acciones);
+            return PartialView("_Edit", acciones);
         }
 
         // GET: Acciones/Delete/5
@@ -134,7 +138,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(acciones);
+            return PartialView("_Delete", acciones);
         }
 
         // POST: Acciones/Delete/5
@@ -147,7 +151,9 @@ namespace Security.Controllers
                 Acciones acciones = repo.Get(id);
                 repo.Delete(acciones);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Acciones", new { id = acciones.Id_Accion });
+                return Json(new { success = true, url = url });
             }
             catch (Exception ex)
             {

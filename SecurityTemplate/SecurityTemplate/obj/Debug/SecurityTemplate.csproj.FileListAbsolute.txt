@@ -218,3 +218,7 @@ E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate\
 E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate\bin\PagedList.Mvc.dll
 E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate\bin\PagedList.xml
 E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate\bin\PagedList.Mvc.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate\bin\MvcSiteMapProvider.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate\bin\MvcSiteMapProvider.WebActivator.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate\bin\MvcSiteMapProvider.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate\bin\MvcSiteMapProvider.WebActivator.xml

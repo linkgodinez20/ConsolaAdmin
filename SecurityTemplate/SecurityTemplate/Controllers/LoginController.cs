@@ -22,12 +22,6 @@ namespace Security.Controllers
             this.personas = Personas;
         }
 
-        // GET: /Login/
-        //public ActionResult Index()
-        //{
-        //    var login = repo.GetAll().Include(l => l.Personas);
-        //    return View(login.ToList());
-        //}
 
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
@@ -86,14 +80,14 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(login);
+            return PartialView("_Details", login);
         }
 
         // GET: /Login/Create
         public ActionResult Create()
         {
             ViewBag.Id_Persona = new SelectList(personas.GetAll(), "Id_Persona", "APaterno");
-            return View();
+            return PartialView("_Create");
         }
 
         // POST: /Login/Create
@@ -105,11 +99,13 @@ namespace Security.Controllers
             {
                 repo.Add(login);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Login");
+                return Json(new { success = true, url = url });
             }
 
             ViewBag.Id_Persona = new SelectList(personas.GetAll(), "Id_Persona", "APaterno", login.Id_Persona);
-            return View(login);
+            return PartialView("_Create", login);
         }
 
         // GET: /Login/Edit/5
@@ -121,7 +117,7 @@ namespace Security.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Id_Persona = new SelectList(personas.GetAll(), "Id_Persona", "APaterno", login.Id_Persona);
-            return View(login);
+            return PartialView("_Edit", login);
         }
 
         // POST: /Login/Edit/5
@@ -133,10 +129,12 @@ namespace Security.Controllers
             {
                 repo.Update(login); 
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Login");
+                return Json(new { success = true, url = url });  
             }
             ViewBag.Id_Persona = new SelectList(personas.GetAll(), "Id_Persona", "APaterno", login.Id_Persona);
-            return View(login);
+            return PartialView("_Edit", login);
         }
 
         // GET: /Login/Delete/5
@@ -147,7 +145,7 @@ namespace Security.Controllers
             {
                 return RedirectToAction("Index");
             }
-            return View(login);
+            return PartialView("_Delete", login);
         }
 
         // POST: /Login/Delete/5
@@ -160,7 +158,9 @@ namespace Security.Controllers
                 LogIn login = repo.Get(id);
                 repo.Delete(login);
                 repo.Save();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                string url = Url.Action("Index", "Login", new { id = login.Id_Login });
+                return Json(new { success = true, url = url });
             }
             catch (Exception ex)
             {

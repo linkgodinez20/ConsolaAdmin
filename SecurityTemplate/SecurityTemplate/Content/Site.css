@@ -32,6 +32,17 @@ textarea {
     width: 950px;
  }
 
+/*.content-header a {
+    background-image:url('Images/house.ico');
+    text-decoration:none;
+    padding-left:5px;
+    background-position:1px;
+    background-repeat:no-repeat;
+    vertical-align:middle;
+    text-indent: -9999px;
+    display:inline-block;
+}*/
+
 .Edit {
     background-image:url('Images/pencil.png');
 }

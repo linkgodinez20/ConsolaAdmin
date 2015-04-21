@@ -188,3 +188,53 @@ D:\Humberto Flores\Documentos\Visual Studio 2013\Projects\SecurityTemplate\Secur
 D:\Humberto Flores\Documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\PagedList.xml
 E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\PagedList.dll
 E:\Mis documentos\Visual Studio 2013\Projects\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\PagedList.xml
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Services.dll
+D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Services.pdb
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.Tests.dll.config
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.Tests.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.Tests.pdb
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.SqlServer.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Newtonsoft.Json.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Omu.ValueInjecter.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Helpers.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Mvc.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Razor.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Core.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Optimization.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Ninject.Web.Common.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Ninject.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\WebActivatorEx.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Data.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\PagedList.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.WebHost.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Net.Http.Formatting.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\SecurityTemplate.pdb
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\EntityFramework.SqlServer.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Newtonsoft.Json.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Omu.ValueInjecter.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Helpers.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Mvc.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Razor.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Core.pdb
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Optimization.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Ninject.Web.Common.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Ninject.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\Data.pdb
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\PagedList.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Web.Http.WebHost.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\bin\Debug\System.Net.Http.Formatting.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.csprojResolveAssemblyReference.cache
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\SecurityTemplate.Tests\obj\Debug\SecurityTemplate.Tests.pdb

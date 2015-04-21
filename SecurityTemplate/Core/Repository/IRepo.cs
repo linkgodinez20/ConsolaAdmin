@@ -13,9 +13,12 @@ namespace Security.Core.Repository
         T Add(T o);
         void Save();
         void Update(T o);
+        void Refresh(T o);
         //void Update(T o, params String[] pkey);
         void Delete(T o);
         IQueryable<T> Where(Expression<Func<T, bool>> predicate, bool showDeleted = false);
         int Count();
+        int Count(Expression<Func<T, bool>> predicate);
+        bool ProxyCreationEnabled(bool val);
     }
 }

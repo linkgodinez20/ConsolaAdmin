@@ -204,5 +204,11 @@ namespace Security.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
     }
 }

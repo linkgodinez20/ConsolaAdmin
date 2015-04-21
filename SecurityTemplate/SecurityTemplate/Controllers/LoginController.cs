@@ -9,19 +9,23 @@ using System.Web.Mvc;
 using Security.Core.Model;
 using Security.Core.Repository;
 using PagedList;
+using Security.Services;
 
 namespace Security.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : Controller, IUserService
     {        
         private readonly IRepo<LogIn> repo;
-        private readonly IRepo<Personas> personas;
-        public LoginController(IRepo<LogIn> Repo, IRepo<Personas> Personas) 
+        private readonly IRepo<Personas> personas; 
+        private readonly IRepo<Cuentas> cuentas;
+        private readonly IRepo<Cuentas_x_Personas> cuentasXPers;        
+        public LoginController(IRepo<LogIn> Repo, IRepo<Personas> Personas, IRepo<Cuentas> Cuentas, IRepo<Cuentas_x_Personas> CuentasXPers)
         {
             this.repo = Repo;
             this.personas = Personas;
+            this.cuentas = Cuentas;
+            this.cuentasXPers = CuentasXPers;
         }
-
 
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
@@ -71,8 +75,7 @@ namespace Security.Controllers
 
             return View(modelo.ToPagedList(pageNumber, pageSize));
         }
-
-        // GET: /Login/Details/5
+        
         public ActionResult Details(int id = 0)
         {
             LogIn login = repo.Get(id);
@@ -83,14 +86,12 @@ namespace Security.Controllers
             return PartialView("_Details", login);
         }
 
-        // GET: /Login/Create
         public ActionResult Create()
         {
             ViewBag.Id_Persona = new SelectList(personas.GetAll(), "Id_Persona", "APaterno");
             return PartialView("_Create");
         }
 
-        // POST: /Login/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="Id_Login,Usuario,Senha,Salt,UsoSalt,Id_Persona")] LogIn login)
@@ -108,7 +109,6 @@ namespace Security.Controllers
             return PartialView("_Create", login);
         }
 
-        // GET: /Login/Edit/5
         public ActionResult Edit(int id = 0)
         {            
             LogIn login = repo.Get(id);
@@ -120,7 +120,6 @@ namespace Security.Controllers
             return PartialView("_Edit", login);
         }
 
-        // POST: /Login/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include="Id_Login,Usuario,Senha,Salt,UsoSalt,Id_Persona")] LogIn login)
@@ -137,7 +136,6 @@ namespace Security.Controllers
             return PartialView("_Edit", login);
         }
 
-        // GET: /Login/Delete/5
         public ActionResult Delete(int id = 0)
         {
             LogIn login = repo.Get(id);
@@ -148,7 +146,6 @@ namespace Security.Controllers
             return PartialView("_Delete", login);
         }
 
-        // POST: /Login/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -180,5 +177,108 @@ namespace Security.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public bool IsUnique(string login)
+        {
+            LogIn cosa = repo.Get();
+            throw new NotImplementedException();
+        }
+
+        public bool CambiarPassword(int id, string OldPassword, string newPassword)
+        {
+            bool res = false;
+            LogIn login = repo.Get(id);
+            if (login.Senha.Equals(OldPassword)) 
+            {
+                login.Senha = newPassword;
+                repo.Update(login);
+                repo.Save();
+                string url = Url.Action("Index", "Login");                  
+            }              
+            return res;
+        }
+                
+        public void Ingresar([Bind(Include = "Usuario,Senha")] LogIn login)
+        {
+            Services.
+            UsuarioIngreso user = new UsuarioIngreso();
+            Session["NombreUsr"] = null;
+            Session["IDUser"] = null;
+            Session["FotoUsr"] = null;
+            try 
+            {
+                var query = from l in repo.GetAll()
+                            join p in personas.GetAll() on l.Id_Persona equals p.Id_Persona
+                            join c in cuentas.GetAll() on l.Id_Login equals c.Id_Login
+                            join cp in cuentasXPers.GetAll() on p.Id_Persona equals cp.Id_Persona
+                            where l.Usuario == login.Usuario && l.Senha == login.Senha
+                            select new
+                            {
+                                l.Usuario,
+                                l.Senha,
+                                p.Nombre,
+                                p.APaterno,
+                                p.AMaterno,
+                                p.Email,
+                                p.Foto,
+                                c.Id_Cuenta,
+                                p.Id_Persona
+                            };
+                foreach (var usr in query)
+                {
+                    user.Usuario = usr.Usuario;
+                    user.Contraeña = usr.Senha;
+                    user.Nombre = usr.Nombre; 
+                    user.APaterno = usr.APaterno;
+                    user.AMaterno = usr.AMaterno;
+                    user.Email = usr.Email;
+                    user.FotoUrl = usr.Foto;
+                    user.IdCuenta = usr.Id_Cuenta;
+                    user.IdPersona = usr.Id_Persona;                    
+                    Console.WriteLine(usr.Nombre+" "+ usr.APaterno+" "+usr.Foto);
+                }
+                Session["NombreUsr"] = user.Nombre + " " + user.APaterno;
+                Session["IDUser"] = user.IdPersona;
+                Session["FotoUsr"] = user.FotoUrl;
+                             
+                if (System.Web.HttpContext.Current.Cache["Usuario"] == null)
+                {                    
+                    System.Web.HttpContext.Current.Cache["Usuario"] = user.Nombre +" "+ user.APaterno +" "+user.AMaterno;
+                }                
+            }
+            catch (Exception ex)
+            {                
+                ViewBag.Error = ex.Message;
+                ViewBag.True = 1;                
+            }            
+        }
+
+        public void CerrarSesiom(int id)
+        {
+            Session["NombreUsr"] = null;
+            Session["IDUser"] = null;
+            Session["FotoUsr"] = null;
+            Session.Timeout = 5;
+        }
+
+        public ActionResult Create()
+        {
+            HttpCookie cookie = new HttpCookie("Cookie");
+            cookie.Value = "Hello Cookie! CreatedOn: " + DateTime.Now.ToShortTimeString();
+            this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Remove()
+        {
+            if (this.ControllerContext.HttpContext.Request.Cookies.AllKeys.Contains("Cookie"))
+            {
+                HttpCookie cookie = this.ControllerContext.HttpContext.Request.Cookies["Cookie"];
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                this.ControllerContext.HttpContext.Response.Cookies.Add(cookie);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

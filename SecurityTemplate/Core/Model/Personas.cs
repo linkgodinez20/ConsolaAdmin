@@ -19,7 +19,6 @@ namespace Security.Core.Model
             this.Contacto_x_Persona = new HashSet<Contacto_x_Persona>();
             this.Cuentas_x_Personas = new HashSet<Cuentas_x_Personas>();
             this.Domicilio_x_Personas = new HashSet<Domicilio_x_Personas>();
-            this.LogIn = new HashSet<LogIn>();
         }
     
         public int Id_Persona { get; set; }
@@ -40,6 +39,5 @@ namespace Security.Core.Model
         public virtual ICollection<Cuentas_x_Personas> Cuentas_x_Personas { get; set; }
         public virtual ICollection<Domicilio_x_Personas> Domicilio_x_Personas { get; set; }
         public virtual Genero Genero { get; set; }
-        public virtual ICollection<LogIn> LogIn { get; set; }
     }
 }

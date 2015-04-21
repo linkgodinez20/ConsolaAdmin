@@ -16,12 +16,12 @@ namespace Security.Core.Model
     {
         public Preguntas()
         {
-            this.Preguntas_x_Login = new HashSet<Preguntas_x_Login>();
+            this.Preguntas_x_Cuentas = new HashSet<Preguntas_x_Cuentas>();
         }
     
         public byte Id_Pregunta { get; set; }
         public string Pregunta { get; set; }
     
-        public virtual ICollection<Preguntas_x_Login> Preguntas_x_Login { get; set; }
+        public virtual ICollection<Preguntas_x_Cuentas> Preguntas_x_Cuentas { get; set; }
     }
 }

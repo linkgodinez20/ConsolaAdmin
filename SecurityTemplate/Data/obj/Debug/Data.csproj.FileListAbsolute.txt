@@ -54,3 +54,17 @@ D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Debu
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\obj\Debug\Data.dll
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\obj\Debug\Data.pdb
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\Data.dll.config
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\Data.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\Data.pdb
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\Core.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\EntityFramework.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\EntityFramework.SqlServer.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\Omu.ValueInjecter.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\Core.pdb
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\EntityFramework.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\bin\Debug\Omu.ValueInjecter.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\obj\Debug\Data.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Data\obj\Debug\Data.pdb

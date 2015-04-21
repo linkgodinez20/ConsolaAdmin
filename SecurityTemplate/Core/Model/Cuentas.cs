@@ -22,15 +22,17 @@ namespace Security.Core.Model
             this.Cuentas_x_Personas = new HashSet<Cuentas_x_Personas>();
             this.Equipos = new HashSet<Equipos>();
             this.MotivoBaja_x_Cuenta = new HashSet<MotivoBaja_x_Cuenta>();
+            this.Preguntas_x_Cuentas = new HashSet<Preguntas_x_Cuentas>();
             this.Sesiones = new HashSet<Sesiones>();
         }
     
         public int Id_Cuenta { get; set; }
-        public int Id_Login { get; set; }
+        public string Usuario { get; set; }
+        public string Senha { get; set; }
+        public string Salt { get; set; }
         public short Id_Perfil { get; set; }
         public System.DateTime FechaCreacion { get; set; }
         public Nullable<System.DateTime> FechaModificacion { get; set; }
-        public byte IntentosCnn { get; set; }
         public Nullable<System.DateTime> InicioBloqueo { get; set; }
         public byte Id_Sistema { get; set; }
         public bool Estatus { get; set; }
@@ -41,12 +43,12 @@ namespace Security.Core.Model
         public virtual ICollection<Benficio_x_Cuenta> Benficio_x_Cuenta { get; set; }
         public virtual ICollection<Cuenta_x_AreasDeTrabajo_x_Accion> Cuenta_x_AreasDeTrabajo_x_Accion { get; set; }
         public virtual ICollection<Cuenta_x_Controlador_x_Accion> Cuenta_x_Controlador_x_Accion { get; set; }
-        public virtual LogIn LogIn { get; set; }
         public virtual Perfiles Perfiles { get; set; }
         public virtual Sistemas Sistemas { get; set; }
         public virtual ICollection<Cuentas_x_Personas> Cuentas_x_Personas { get; set; }
         public virtual ICollection<Equipos> Equipos { get; set; }
         public virtual ICollection<MotivoBaja_x_Cuenta> MotivoBaja_x_Cuenta { get; set; }
+        public virtual ICollection<Preguntas_x_Cuentas> Preguntas_x_Cuentas { get; set; }
         public virtual ICollection<Sesiones> Sesiones { get; set; }
     }
 }

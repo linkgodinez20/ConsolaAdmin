@@ -6,13 +6,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Scripts.Render("~/bundles/Miscelaneous")
 
-<ol class="breadcrumb">
+
+@*<ol class="breadcrumb">
     <li><span class="glyphicon glyphicon-home"></span> @Html.ActionLink("Inicio", "Index", "Home")</li>
     <li><b>Personas</b></li>
     <li class="active">Lista</li>
-</ol>
+</ol>*@
 <h2 class="Titulo" align="center">Personas</h2>
 @using (Html.BeginForm("Index", "Personas", FormMethod.Get))
 {
@@ -157,3 +157,5 @@
         });
     }
 </script>
+
+@Scripts.Render("~/bundles/Miscelaneous")

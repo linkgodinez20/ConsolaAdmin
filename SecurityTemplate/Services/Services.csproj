@@ -42,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,10 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Catalogos.cs" />
-    <Compile Include="IPictureService.cs" />
-    <Compile Include="IUserService.cs" />
+    <Compile Include="Helpers\LogInServiceHelper.cs" />
+    <Compile Include="IServices\IDomiciliosServices.cs" />
+    <Compile Include="IServices\IPermissionServices.cs" />
+    <Compile Include="IServices\IUserServices.cs" />
+    <Compile Include="IServices\IValidationServices.cs" />
+    <Compile Include="Services\CipherUtility.cs" />
+    <Compile Include="Services\Catalogos.cs" />
+    <Compile Include="IServices\ILoginServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\LoginServices.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="ViewModels\LoginInfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -64,6 +73,7 @@
       <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

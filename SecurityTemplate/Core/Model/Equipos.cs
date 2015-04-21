@@ -21,7 +21,8 @@ namespace Security.Core.Model
         public byte Id_EquipoTipo { get; set; }
         public byte Id_DispositivoTipo { get; set; }
         public string Descripcion { get; set; }
-        public System.Data.Entity.Spatial.DbGeography Ubiacion { get; set; }
+        public Nullable<double> Longitud { get; set; }
+        public Nullable<double> Latitud { get; set; }
         public System.DateTime FechaAlta { get; set; }
         public Nullable<System.DateTime> FechaCaducidad { get; set; }
         public int Id_Cuenta { get; set; }

@@ -183,11 +183,12 @@
             <PropertyRef Name="Id_Cuenta" />
           </Key>
           <Property Name="Id_Cuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Id_Login" Type="int" Nullable="false" />
+          <Property Name="Usuario" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Senha" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Salt" Type="nvarchar" MaxLength="128" />
           <Property Name="Id_Perfil" Type="smallint" Nullable="false" />
           <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
           <Property Name="FechaModificacion" Type="datetime" />
-          <Property Name="IntentosCnn" Type="tinyint" Nullable="false" />
           <Property Name="InicioBloqueo" Type="datetime" />
           <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
           <Property Name="Estatus" Type="bit" Nullable="false" />
@@ -202,21 +203,13 @@
           <Property Name="Id_Persona" Type="int" Nullable="false" />
           <Property Name="Id_Cuenta" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Directorio_tipo">
-          <Key>
-            <PropertyRef Name="Id_DirectorioTipo" />
-          </Key>
-          <Property Name="Id_DirectorioTipo" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="25" Nullable="false" />
-        </EntityType>
         <EntityType Name="Directorios">
           <Key>
             <PropertyRef Name="Id_Directorio" />
           </Key>
           <Property Name="Id_Directorio" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="Ruta" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="Id_DirectorioTipo" Type="tinyint" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Ruta" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Estatus" Type="bit" Nullable="false" />
           <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
         </EntityType>
@@ -285,13 +278,14 @@
             <PropertyRef Name="Id_Equipo" />
           </Key>
           <Property Name="Id_Equipo" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Hostname" Type="nvarchar" MaxLength="50" />
-          <Property Name="IP" Type="nvarchar" MaxLength="50" />
-          <Property Name="MacAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hostname" Type="nvarchar" MaxLength="128" />
+          <Property Name="IP" Type="nvarchar" MaxLength="128" />
+          <Property Name="MacAddress" Type="nvarchar" MaxLength="128" />
           <Property Name="Id_EquipoTipo" Type="tinyint" Nullable="false" />
           <Property Name="Id_DispositivoTipo" Type="tinyint" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="128" />
-          <Property Name="Ubiacion" Type="geography" />
+          <Property Name="Longitud" Type="float" />
+          <Property Name="Latitud" Type="float" />
           <Property Name="FechaAlta" Type="datetime" Nullable="false" />
           <Property Name="FechaCaducidad" Type="datetime" />
           <Property Name="Id_Cuenta" Type="int" Nullable="false" />
@@ -329,17 +323,6 @@
           <Property Name="LocationName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Latitude" Type="float" Nullable="false" />
           <Property Name="Longitude" Type="float" Nullable="false" />
-        </EntityType>
-        <EntityType Name="LogIn">
-          <Key>
-            <PropertyRef Name="Id_Login" />
-          </Key>
-          <Property Name="Id_Login" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Senha" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Salt" Type="nvarchar" MaxLength="128" />
-          <Property Name="UsoSalt" Type="bit" Nullable="false" />
-          <Property Name="Id_Persona" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MotivoBaja_x_Cuenta">
           <Key>
@@ -489,12 +472,12 @@
           <Property Name="Id_Pregunta" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Pregunta" Type="varchar" MaxLength="64" Nullable="false" />
         </EntityType>
-        <EntityType Name="Preguntas_x_Login">
+        <EntityType Name="Preguntas_x_Cuentas">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Id_Login" Type="int" Nullable="false" />
+          <Property Name="Id_Cuenta" Type="int" Nullable="false" />
           <Property Name="Id_Pregunta" Type="tinyint" Nullable="false" />
           <Property Name="Respuesta" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
@@ -509,7 +492,8 @@
           <Property Name="OnLine" Type="bit" Nullable="false" />
           <Property Name="CierreSesion" Type="bit" Nullable="false" />
           <Property Name="UltimoMovimiento" Type="datetime" />
-          <Property Name="Ubiacion" Type="geography" />
+          <Property Name="Longitud" Type="float" />
+          <Property Name="Latitud" Type="float" />
           <Property Name="Id_Sistema" Type="tinyint" Nullable="false" />
           <Property Name="Estatus" Type="bit" Nullable="false" />
         </EntityType>
@@ -895,18 +879,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Cuentas_Id_Login">
-          <End Role="LogIn" Type="Self.LogIn" Multiplicity="1" />
-          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LogIn">
-              <PropertyRef Name="Id_Login" />
-            </Principal>
-            <Dependent Role="Cuentas">
-              <PropertyRef Name="Id_Login" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Cuentas_Id_Perfil">
           <End Role="Perfiles" Type="Self.Perfiles" Multiplicity="1" />
           <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="*" />
@@ -952,18 +924,6 @@
             </Principal>
             <Dependent Role="Cuentas_x_Personas">
               <PropertyRef Name="Id_Persona" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Directorios_Id_DirectorioTipo">
-          <End Role="Directorio_tipo" Type="Self.Directorio_tipo" Multiplicity="1" />
-          <End Role="Directorios" Type="Self.Directorios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Directorio_tipo">
-              <PropertyRef Name="Id_DirectorioTipo" />
-            </Principal>
-            <Dependent Role="Directorios">
-              <PropertyRef Name="Id_DirectorioTipo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1136,18 +1096,6 @@
             </Principal>
             <Dependent Role="Equipos">
               <PropertyRef Name="Id_Sistema" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_LogIn_Id_Persona">
-          <End Role="Personas" Type="Self.Personas" Multiplicity="1" />
-          <End Role="LogIn" Type="Self.LogIn" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Personas">
-              <PropertyRef Name="Id_Persona" />
-            </Principal>
-            <Dependent Role="LogIn">
-              <PropertyRef Name="Id_Persona" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1417,27 +1365,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Preguntas_x_Login_Id_Cuenta">
+        <Association Name="FK_Preguntas_x_Cuentas_Id_Cuenta">
+          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+          <End Role="Preguntas_x_Cuentas" Type="Self.Preguntas_x_Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuentas">
+              <PropertyRef Name="Id_Cuenta" />
+            </Principal>
+            <Dependent Role="Preguntas_x_Cuentas">
+              <PropertyRef Name="Id_Cuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Preguntas_x_Cuentas_Id_Pregunta">
           <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="1" />
-          <End Role="Preguntas_x_Login" Type="Self.Preguntas_x_Login" Multiplicity="*" />
+          <End Role="Preguntas_x_Cuentas" Type="Self.Preguntas_x_Cuentas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Preguntas">
               <PropertyRef Name="Id_Pregunta" />
             </Principal>
-            <Dependent Role="Preguntas_x_Login">
+            <Dependent Role="Preguntas_x_Cuentas">
               <PropertyRef Name="Id_Pregunta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Preguntas_x_Login_Id_Login">
-          <End Role="LogIn" Type="Self.LogIn" Multiplicity="1" />
-          <End Role="Preguntas_x_Login" Type="Self.Preguntas_x_Login" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LogIn">
-              <PropertyRef Name="Id_Login" />
-            </Principal>
-            <Dependent Role="Preguntas_x_Login">
-              <PropertyRef Name="Id_Login" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1489,7 +1437,6 @@
           <EntitySet Name="Cuenta_x_Controlador_x_Accion" EntityType="Self.Cuenta_x_Controlador_x_Accion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cuentas" EntityType="Self.Cuentas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cuentas_x_Personas" EntityType="Self.Cuentas_x_Personas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Directorio_tipo" EntityType="Self.Directorio_tipo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Directorios" EntityType="Self.Directorios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Directorios_x_Perfiles" EntityType="Self.Directorios_x_Perfiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Directorios_x_Sistemas" EntityType="Self.Directorios_x_Sistemas" Schema="dbo" store:Type="Tables" />
@@ -1502,7 +1449,6 @@
           <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Genero" EntityType="Self.Genero" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LogIn" EntityType="Self.LogIn" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MotivoBaja_x_Cuenta" EntityType="Self.MotivoBaja_x_Cuenta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Municipios" EntityType="Self.Municipios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
@@ -1518,7 +1464,7 @@
           <EntitySet Name="Perfiles" EntityType="Self.Perfiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Preguntas" EntityType="Self.Preguntas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Preguntas_x_Login" EntityType="Self.Preguntas_x_Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Preguntas_x_Cuentas" EntityType="Self.Preguntas_x_Cuentas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sesiones" EntityType="Self.Sesiones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sistemas" EntityType="Self.Sistemas" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Accion_x_Controlador_Id_Accion" Association="Self.FK_Accion_x_Controlador_Id_Accion">
@@ -1645,10 +1591,6 @@
             <End Role="Baja" EntitySet="Baja" />
             <End Role="Cuentas" EntitySet="Cuentas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Cuentas_Id_Login" Association="Self.FK_Cuentas_Id_Login">
-            <End Role="LogIn" EntitySet="LogIn" />
-            <End Role="Cuentas" EntitySet="Cuentas" />
-          </AssociationSet>
           <AssociationSet Name="FK_Cuentas_Id_Perfil" Association="Self.FK_Cuentas_Id_Perfil">
             <End Role="Perfiles" EntitySet="Perfiles" />
             <End Role="Cuentas" EntitySet="Cuentas" />
@@ -1664,10 +1606,6 @@
           <AssociationSet Name="FK_Cuentas_x_Personas_Id_Persona" Association="Self.FK_Cuentas_x_Personas_Id_Persona">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Cuentas_x_Personas" EntitySet="Cuentas_x_Personas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Directorios_Id_DirectorioTipo" Association="Self.FK_Directorios_Id_DirectorioTipo">
-            <End Role="Directorio_tipo" EntitySet="Directorio_tipo" />
-            <End Role="Directorios" EntitySet="Directorios" />
           </AssociationSet>
           <AssociationSet Name="FK_Directorios_Id_Sistema" Association="Self.FK_Directorios_Id_Sistema">
             <End Role="Sistemas" EntitySet="Sistemas" />
@@ -1724,10 +1662,6 @@
           <AssociationSet Name="FK_Equipos_Id_Sistema" Association="Self.FK_Equipos_Id_Sistema">
             <End Role="Sistemas" EntitySet="Sistemas" />
             <End Role="Equipos" EntitySet="Equipos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LogIn_Id_Persona" Association="Self.FK_LogIn_Id_Persona">
-            <End Role="Personas" EntitySet="Personas" />
-            <End Role="LogIn" EntitySet="LogIn" />
           </AssociationSet>
           <AssociationSet Name="FK_MotivoBaja_x_Cuenta_Id_Cuenta" Association="Self.FK_MotivoBaja_x_Cuenta_Id_Cuenta">
             <End Role="Cuentas" EntitySet="Cuentas" />
@@ -1817,13 +1751,13 @@
             <End Role="Genero" EntitySet="Genero" />
             <End Role="Personas" EntitySet="Personas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Preguntas_x_Login_Id_Cuenta" Association="Self.FK_Preguntas_x_Login_Id_Cuenta">
-            <End Role="Preguntas" EntitySet="Preguntas" />
-            <End Role="Preguntas_x_Login" EntitySet="Preguntas_x_Login" />
+          <AssociationSet Name="FK_Preguntas_x_Cuentas_Id_Cuenta" Association="Self.FK_Preguntas_x_Cuentas_Id_Cuenta">
+            <End Role="Cuentas" EntitySet="Cuentas" />
+            <End Role="Preguntas_x_Cuentas" EntitySet="Preguntas_x_Cuentas" />
           </AssociationSet>
-          <AssociationSet Name="FK_Preguntas_x_Login_Id_Login" Association="Self.FK_Preguntas_x_Login_Id_Login">
-            <End Role="LogIn" EntitySet="LogIn" />
-            <End Role="Preguntas_x_Login" EntitySet="Preguntas_x_Login" />
+          <AssociationSet Name="FK_Preguntas_x_Cuentas_Id_Pregunta" Association="Self.FK_Preguntas_x_Cuentas_Id_Pregunta">
+            <End Role="Preguntas" EntitySet="Preguntas" />
+            <End Role="Preguntas_x_Cuentas" EntitySet="Preguntas_x_Cuentas" />
           </AssociationSet>
           <AssociationSet Name="FK_Sesiones_Id_Cuenta" Association="Self.FK_Sesiones_Id_Cuenta">
             <End Role="Cuentas" EntitySet="Cuentas" />
@@ -1862,7 +1796,6 @@
           <EntitySet Name="Cuenta_x_Controlador_x_Accion" EntityType="SecurityModel.Cuenta_x_Controlador_x_Accion" />
           <EntitySet Name="Cuentas" EntityType="SecurityModel.Cuentas" />
           <EntitySet Name="Cuentas_x_Personas" EntityType="SecurityModel.Cuentas_x_Personas" />
-          <EntitySet Name="Directorio_tipo" EntityType="SecurityModel.Directorio_tipo" />
           <EntitySet Name="Directorios" EntityType="SecurityModel.Directorios" />
           <EntitySet Name="Directorios_x_Perfiles" EntityType="SecurityModel.Directorios_x_Perfiles" />
           <EntitySet Name="Directorios_x_Sistemas" EntityType="SecurityModel.Directorios_x_Sistemas" />
@@ -1875,7 +1808,6 @@
           <EntitySet Name="Events" EntityType="SecurityModel.Events" />
           <EntitySet Name="Genero" EntityType="SecurityModel.Genero" />
           <EntitySet Name="Locations" EntityType="SecurityModel.Locations" />
-          <EntitySet Name="LogIn" EntityType="SecurityModel.LogIn" />
           <EntitySet Name="MotivoBaja_x_Cuenta" EntityType="SecurityModel.MotivoBaja_x_Cuenta" />
           <EntitySet Name="Municipios" EntityType="SecurityModel.Municipios" />
           <EntitySet Name="Paises" EntityType="SecurityModel.Paises" />
@@ -1891,7 +1823,7 @@
           <EntitySet Name="Perfiles" EntityType="SecurityModel.Perfiles" />
           <EntitySet Name="Personas" EntityType="SecurityModel.Personas" />
           <EntitySet Name="Preguntas" EntityType="SecurityModel.Preguntas" />
-          <EntitySet Name="Preguntas_x_Login" EntityType="SecurityModel.Preguntas_x_Login" />
+          <EntitySet Name="Preguntas_x_Cuentas" EntityType="SecurityModel.Preguntas_x_Cuentas" />
           <EntitySet Name="Sesiones" EntityType="SecurityModel.Sesiones" />
           <EntitySet Name="Sistemas" EntityType="SecurityModel.Sistemas" />
           <AssociationSet Name="FK_Accion_x_Controlador_Id_Accion" Association="SecurityModel.FK_Accion_x_Controlador_Id_Accion">
@@ -2042,10 +1974,6 @@
             <End Role="Cuentas" EntitySet="Cuentas" />
             <End Role="Cuenta_x_Controlador_x_Accion" EntitySet="Cuenta_x_Controlador_x_Accion" />
           </AssociationSet>
-          <AssociationSet Name="FK_Cuentas_Id_Login" Association="SecurityModel.FK_Cuentas_Id_Login">
-            <End Role="LogIn" EntitySet="LogIn" />
-            <End Role="Cuentas" EntitySet="Cuentas" />
-          </AssociationSet>
           <AssociationSet Name="FK_Cuentas_Id_Perfil" Association="SecurityModel.FK_Cuentas_Id_Perfil">
             <End Role="Perfiles" EntitySet="Perfiles" />
             <End Role="Cuentas" EntitySet="Cuentas" />
@@ -2066,6 +1994,10 @@
             <End Role="Cuentas" EntitySet="Cuentas" />
             <End Role="MotivoBaja_x_Cuenta" EntitySet="MotivoBaja_x_Cuenta" />
           </AssociationSet>
+          <AssociationSet Name="FK_Preguntas_x_Cuentas_Id_Cuenta" Association="SecurityModel.FK_Preguntas_x_Cuentas_Id_Cuenta">
+            <End Role="Cuentas" EntitySet="Cuentas" />
+            <End Role="Preguntas_x_Cuentas" EntitySet="Preguntas_x_Cuentas" />
+          </AssociationSet>
           <AssociationSet Name="FK_Sesiones_Id_Cuenta" Association="SecurityModel.FK_Sesiones_Id_Cuenta">
             <End Role="Cuentas" EntitySet="Cuentas" />
             <End Role="Sesiones" EntitySet="Sesiones" />
@@ -2073,10 +2005,6 @@
           <AssociationSet Name="FK_Cuentas_x_Personas_Id_Persona" Association="SecurityModel.FK_Cuentas_x_Personas_Id_Persona">
             <End Role="Personas" EntitySet="Personas" />
             <End Role="Cuentas_x_Personas" EntitySet="Cuentas_x_Personas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Directorios_Id_DirectorioTipo" Association="SecurityModel.FK_Directorios_Id_DirectorioTipo">
-            <End Role="Directorio_tipo" EntitySet="Directorio_tipo" />
-            <End Role="Directorios" EntitySet="Directorios" />
           </AssociationSet>
           <AssociationSet Name="FK_Directorios_Id_Sistema" Association="SecurityModel.FK_Directorios_Id_Sistema">
             <End Role="Sistemas" EntitySet="Sistemas" />
@@ -2134,14 +2062,6 @@
             <End Role="Genero" EntitySet="Genero" />
             <End Role="Personas" EntitySet="Personas" />
           </AssociationSet>
-          <AssociationSet Name="FK_LogIn_Id_Persona" Association="SecurityModel.FK_LogIn_Id_Persona">
-            <End Role="Personas" EntitySet="Personas" />
-            <End Role="LogIn" EntitySet="LogIn" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Preguntas_x_Login_Id_Login" Association="SecurityModel.FK_Preguntas_x_Login_Id_Login">
-            <End Role="LogIn" EntitySet="LogIn" />
-            <End Role="Preguntas_x_Login" EntitySet="Preguntas_x_Login" />
-          </AssociationSet>
           <AssociationSet Name="FK_Parametros_configuracion_Id_Parametro" Association="SecurityModel.FK_Parametros_configuracion_Id_Parametro">
             <End Role="Parametros" EntitySet="Parametros" />
             <End Role="Parametros_configuracion" EntitySet="Parametros_configuracion" />
@@ -2198,9 +2118,9 @@
             <End Role="Sistemas" EntitySet="Sistemas" />
             <End Role="Perfiles" EntitySet="Perfiles" />
           </AssociationSet>
-          <AssociationSet Name="FK_Preguntas_x_Login_Id_Cuenta" Association="SecurityModel.FK_Preguntas_x_Login_Id_Cuenta">
+          <AssociationSet Name="FK_Preguntas_x_Cuentas_Id_Pregunta" Association="SecurityModel.FK_Preguntas_x_Cuentas_Id_Pregunta">
             <End Role="Preguntas" EntitySet="Preguntas" />
-            <End Role="Preguntas_x_Login" EntitySet="Preguntas_x_Login" />
+            <End Role="Preguntas_x_Cuentas" EntitySet="Preguntas_x_Cuentas" />
           </AssociationSet>
           <AssociationSet Name="FK_Sesiones_Id_Sistema" Association="SecurityModel.FK_Sesiones_Id_Sistema">
             <End Role="Sistemas" EntitySet="Sistemas" />
@@ -2443,11 +2363,12 @@
             <PropertyRef Name="Id_Cuenta" />
           </Key>
           <Property Name="Id_Cuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Id_Login" Type="Int32" Nullable="false" />
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Senha" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Salt" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Id_Perfil" Type="Int16" Nullable="false" />
           <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
-          <Property Name="IntentosCnn" Type="Byte" Nullable="false" />
           <Property Name="InicioBloqueo" Type="DateTime" Precision="3" />
           <Property Name="Id_Sistema" Type="Byte" Nullable="false" />
           <Property Name="Estatus" Type="Boolean" Nullable="false" />
@@ -2457,12 +2378,12 @@
           <NavigationProperty Name="Benficio_x_Cuenta" Relationship="SecurityModel.FK_Benficio_x_Cuenta_Id_Cuenta" FromRole="Cuentas" ToRole="Benficio_x_Cuenta" />
           <NavigationProperty Name="Cuenta_x_AreasDeTrabajo_x_Accion" Relationship="SecurityModel.FK_Cuenta_x_AreasDeTrabajo_x_Accion_Id_Cuenta" FromRole="Cuentas" ToRole="Cuenta_x_AreasDeTrabajo_x_Accion" />
           <NavigationProperty Name="Cuenta_x_Controlador_x_Accion" Relationship="SecurityModel.FK_Cuenta_x_Controlador_x_Accion_Id_Cuenta" FromRole="Cuentas" ToRole="Cuenta_x_Controlador_x_Accion" />
-          <NavigationProperty Name="LogIn" Relationship="SecurityModel.FK_Cuentas_Id_Login" FromRole="Cuentas" ToRole="LogIn" />
           <NavigationProperty Name="Perfiles" Relationship="SecurityModel.FK_Cuentas_Id_Perfil" FromRole="Cuentas" ToRole="Perfiles" />
           <NavigationProperty Name="Sistemas" Relationship="SecurityModel.FK_Cuentas_Id_Sistema" FromRole="Cuentas" ToRole="Sistemas" />
           <NavigationProperty Name="Cuentas_x_Personas" Relationship="SecurityModel.FK_Cuentas_x_Personas_Id_Cuenta" FromRole="Cuentas" ToRole="Cuentas_x_Personas" />
           <NavigationProperty Name="Equipos" Relationship="SecurityModel.FK_Equipos_Id_Cuenta" FromRole="Cuentas" ToRole="Equipos" />
           <NavigationProperty Name="MotivoBaja_x_Cuenta" Relationship="SecurityModel.FK_MotivoBaja_x_Cuenta_Id_Cuenta" FromRole="Cuentas" ToRole="MotivoBaja_x_Cuenta" />
+          <NavigationProperty Name="Preguntas_x_Cuentas" Relationship="SecurityModel.FK_Preguntas_x_Cuentas_Id_Cuenta" FromRole="Cuentas" ToRole="Preguntas_x_Cuentas" />
           <NavigationProperty Name="Sesiones" Relationship="SecurityModel.FK_Sesiones_Id_Cuenta" FromRole="Cuentas" ToRole="Sesiones" />
         </EntityType>
         <EntityType Name="Cuentas_x_Personas">
@@ -2475,25 +2396,15 @@
           <NavigationProperty Name="Cuentas" Relationship="SecurityModel.FK_Cuentas_x_Personas_Id_Cuenta" FromRole="Cuentas_x_Personas" ToRole="Cuentas" />
           <NavigationProperty Name="Personas" Relationship="SecurityModel.FK_Cuentas_x_Personas_Id_Persona" FromRole="Cuentas_x_Personas" ToRole="Personas" />
         </EntityType>
-        <EntityType Name="Directorio_tipo">
-          <Key>
-            <PropertyRef Name="Id_DirectorioTipo" />
-          </Key>
-          <Property Name="Id_DirectorioTipo" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Directorios" Relationship="SecurityModel.FK_Directorios_Id_DirectorioTipo" FromRole="Directorio_tipo" ToRole="Directorios" />
-        </EntityType>
         <EntityType Name="Directorios">
           <Key>
             <PropertyRef Name="Id_Directorio" />
           </Key>
           <Property Name="Id_Directorio" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="Ruta" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Id_DirectorioTipo" Type="Byte" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Ruta" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Estatus" Type="Boolean" Nullable="false" />
           <Property Name="Id_Sistema" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Directorio_tipo" Relationship="SecurityModel.FK_Directorios_Id_DirectorioTipo" FromRole="Directorios" ToRole="Directorio_tipo" />
           <NavigationProperty Name="Sistemas" Relationship="SecurityModel.FK_Directorios_Id_Sistema" FromRole="Directorios" ToRole="Sistemas" />
           <NavigationProperty Name="Directorios_x_Perfiles" Relationship="SecurityModel.FK_Directorios_x_Perfiles_Id_Directorio" FromRole="Directorios" ToRole="Directorios_x_Perfiles" />
           <NavigationProperty Name="Directorios_x_Sistemas" Relationship="SecurityModel.FK_Directorios_x_Sistemas_Id_Directorio" FromRole="Directorios" ToRole="Directorios_x_Sistemas" />
@@ -2576,13 +2487,14 @@
             <PropertyRef Name="Id_Equipo" />
           </Key>
           <Property Name="Id_Equipo" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Hostname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MacAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hostname" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="MacAddress" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Id_EquipoTipo" Type="Byte" Nullable="false" />
           <Property Name="Id_DispositivoTipo" Type="Byte" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Ubiacion" Type="Geography" />
+          <Property Name="Longitud" Type="Double" />
+          <Property Name="Latitud" Type="Double" />
           <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="FechaCaducidad" Type="DateTime" Precision="3" />
           <Property Name="Id_Cuenta" Type="Int32" Nullable="false" />
@@ -2626,20 +2538,6 @@
           <Property Name="LocationName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Latitude" Type="Double" Nullable="false" />
           <Property Name="Longitude" Type="Double" Nullable="false" />
-        </EntityType>
-        <EntityType Name="LogIn">
-          <Key>
-            <PropertyRef Name="Id_Login" />
-          </Key>
-          <Property Name="Id_Login" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Senha" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Salt" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="UsoSalt" Type="Boolean" Nullable="false" />
-          <Property Name="Id_Persona" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cuentas" Relationship="SecurityModel.FK_Cuentas_Id_Login" FromRole="LogIn" ToRole="Cuentas" />
-          <NavigationProperty Name="Personas" Relationship="SecurityModel.FK_LogIn_Id_Persona" FromRole="LogIn" ToRole="Personas" />
-          <NavigationProperty Name="Preguntas_x_Login" Relationship="SecurityModel.FK_Preguntas_x_Login_Id_Login" FromRole="LogIn" ToRole="Preguntas_x_Login" />
         </EntityType>
         <EntityType Name="MotivoBaja_x_Cuenta">
           <Key>
@@ -2822,7 +2720,6 @@
           <NavigationProperty Name="Cuentas_x_Personas" Relationship="SecurityModel.FK_Cuentas_x_Personas_Id_Persona" FromRole="Personas" ToRole="Cuentas_x_Personas" />
           <NavigationProperty Name="Domicilio_x_Personas" Relationship="SecurityModel.FK_Domicilio_x_Personas_Id_Persona" FromRole="Personas" ToRole="Domicilio_x_Personas" />
           <NavigationProperty Name="Genero" Relationship="SecurityModel.FK_Personas_Id_Genero" FromRole="Personas" ToRole="Genero" />
-          <NavigationProperty Name="LogIn" Relationship="SecurityModel.FK_LogIn_Id_Persona" FromRole="Personas" ToRole="LogIn" />
         </EntityType>
         <EntityType Name="Preguntas">
           <Key>
@@ -2830,18 +2727,18 @@
           </Key>
           <Property Name="Id_Pregunta" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Pregunta" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Preguntas_x_Login" Relationship="SecurityModel.FK_Preguntas_x_Login_Id_Cuenta" FromRole="Preguntas" ToRole="Preguntas_x_Login" />
+          <NavigationProperty Name="Preguntas_x_Cuentas" Relationship="SecurityModel.FK_Preguntas_x_Cuentas_Id_Pregunta" FromRole="Preguntas" ToRole="Preguntas_x_Cuentas" />
         </EntityType>
-        <EntityType Name="Preguntas_x_Login">
+        <EntityType Name="Preguntas_x_Cuentas">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Id_Login" Type="Int32" Nullable="false" />
+          <Property Name="Id_Cuenta" Type="Int32" Nullable="false" />
           <Property Name="Id_Pregunta" Type="Byte" Nullable="false" />
           <Property Name="Respuesta" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="LogIn" Relationship="SecurityModel.FK_Preguntas_x_Login_Id_Login" FromRole="Preguntas_x_Login" ToRole="LogIn" />
-          <NavigationProperty Name="Preguntas" Relationship="SecurityModel.FK_Preguntas_x_Login_Id_Cuenta" FromRole="Preguntas_x_Login" ToRole="Preguntas" />
+          <NavigationProperty Name="Cuentas" Relationship="SecurityModel.FK_Preguntas_x_Cuentas_Id_Cuenta" FromRole="Preguntas_x_Cuentas" ToRole="Cuentas" />
+          <NavigationProperty Name="Preguntas" Relationship="SecurityModel.FK_Preguntas_x_Cuentas_Id_Pregunta" FromRole="Preguntas_x_Cuentas" ToRole="Preguntas" />
         </EntityType>
         <EntityType Name="Sesiones">
           <Key>
@@ -2854,7 +2751,8 @@
           <Property Name="OnLine" Type="Boolean" Nullable="false" />
           <Property Name="CierreSesion" Type="Boolean" Nullable="false" />
           <Property Name="UltimoMovimiento" Type="DateTime" Precision="3" />
-          <Property Name="Ubiacion" Type="Geography" />
+          <Property Name="Longitud" Type="Double" />
+          <Property Name="Latitud" Type="Double" />
           <Property Name="Id_Sistema" Type="Byte" Nullable="false" />
           <Property Name="Estatus" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Cuentas" Relationship="SecurityModel.FK_Sesiones_Id_Cuenta" FromRole="Sesiones" ToRole="Cuentas" />
@@ -3325,18 +3223,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Cuentas_Id_Login">
-          <End Type="SecurityModel.LogIn" Role="LogIn" Multiplicity="1" />
-          <End Type="SecurityModel.Cuentas" Role="Cuentas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LogIn">
-              <PropertyRef Name="Id_Login" />
-            </Principal>
-            <Dependent Role="Cuentas">
-              <PropertyRef Name="Id_Login" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Cuentas_Id_Perfil">
           <End Type="SecurityModel.Perfiles" Role="Perfiles" Multiplicity="1" />
           <End Type="SecurityModel.Cuentas" Role="Cuentas" Multiplicity="*" />
@@ -3397,6 +3283,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Preguntas_x_Cuentas_Id_Cuenta">
+          <End Type="SecurityModel.Cuentas" Role="Cuentas" Multiplicity="1" />
+          <End Type="SecurityModel.Preguntas_x_Cuentas" Role="Preguntas_x_Cuentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuentas">
+              <PropertyRef Name="Id_Cuenta" />
+            </Principal>
+            <Dependent Role="Preguntas_x_Cuentas">
+              <PropertyRef Name="Id_Cuenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Sesiones_Id_Cuenta">
           <End Type="SecurityModel.Cuentas" Role="Cuentas" Multiplicity="1" />
           <End Type="SecurityModel.Sesiones" Role="Sesiones" Multiplicity="*" />
@@ -3418,18 +3316,6 @@
             </Principal>
             <Dependent Role="Cuentas_x_Personas">
               <PropertyRef Name="Id_Persona" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Directorios_Id_DirectorioTipo">
-          <End Type="SecurityModel.Directorio_tipo" Role="Directorio_tipo" Multiplicity="1" />
-          <End Type="SecurityModel.Directorios" Role="Directorios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Directorio_tipo">
-              <PropertyRef Name="Id_DirectorioTipo" />
-            </Principal>
-            <Dependent Role="Directorios">
-              <PropertyRef Name="Id_DirectorioTipo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3607,30 +3493,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_LogIn_Id_Persona">
-          <End Type="SecurityModel.Personas" Role="Personas" Multiplicity="1" />
-          <End Type="SecurityModel.LogIn" Role="LogIn" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Personas">
-              <PropertyRef Name="Id_Persona" />
-            </Principal>
-            <Dependent Role="LogIn">
-              <PropertyRef Name="Id_Persona" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Preguntas_x_Login_Id_Login">
-          <End Type="SecurityModel.LogIn" Role="LogIn" Multiplicity="1" />
-          <End Type="SecurityModel.Preguntas_x_Login" Role="Preguntas_x_Login" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LogIn">
-              <PropertyRef Name="Id_Login" />
-            </Principal>
-            <Dependent Role="Preguntas_x_Login">
-              <PropertyRef Name="Id_Login" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Parametros_configuracion_Id_Parametro">
           <End Type="SecurityModel.Parametros" Role="Parametros" Multiplicity="1" />
           <End Type="SecurityModel.Parametros_configuracion" Role="Parametros_configuracion" Multiplicity="*" />
@@ -3799,14 +3661,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Preguntas_x_Login_Id_Cuenta">
+        <Association Name="FK_Preguntas_x_Cuentas_Id_Pregunta">
           <End Type="SecurityModel.Preguntas" Role="Preguntas" Multiplicity="1" />
-          <End Type="SecurityModel.Preguntas_x_Login" Role="Preguntas_x_Login" Multiplicity="*" />
+          <End Type="SecurityModel.Preguntas_x_Cuentas" Role="Preguntas_x_Cuentas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Preguntas">
               <PropertyRef Name="Id_Pregunta" />
             </Principal>
-            <Dependent Role="Preguntas_x_Login">
+            <Dependent Role="Preguntas_x_Cuentas">
               <PropertyRef Name="Id_Pregunta" />
             </Dependent>
           </ReferentialConstraint>
@@ -3823,7 +3685,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -4031,11 +3893,12 @@
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
                 <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
                 <ScalarProperty Name="InicioBloqueo" ColumnName="InicioBloqueo" />
-                <ScalarProperty Name="IntentosCnn" ColumnName="IntentosCnn" />
                 <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
-                <ScalarProperty Name="Id_Login" ColumnName="Id_Login" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="Senha" ColumnName="Senha" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4049,20 +3912,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Directorio_tipo">
-            <EntityTypeMapping TypeName="SecurityModel.Directorio_tipo">
-              <MappingFragment StoreEntitySet="Directorio_tipo">
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Id_DirectorioTipo" ColumnName="Id_DirectorioTipo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Directorios">
             <EntityTypeMapping TypeName="SecurityModel.Directorios">
               <MappingFragment StoreEntitySet="Directorios">
                 <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
-                <ScalarProperty Name="Id_DirectorioTipo" ColumnName="Id_DirectorioTipo" />
                 <ScalarProperty Name="Ruta" ColumnName="Ruta" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Id_Directorio" ColumnName="Id_Directorio" />
@@ -4142,7 +3996,8 @@
                 <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
                 <ScalarProperty Name="FechaCaducidad" ColumnName="FechaCaducidad" />
                 <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
-                <ScalarProperty Name="Ubiacion" ColumnName="Ubiacion" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Id_DispositivoTipo" ColumnName="Id_DispositivoTipo" />
                 <ScalarProperty Name="Id_EquipoTipo" ColumnName="Id_EquipoTipo" />
@@ -4186,18 +4041,6 @@
                 <ScalarProperty Name="Latitude" ColumnName="Latitude" />
                 <ScalarProperty Name="LocationName" ColumnName="LocationName" />
                 <ScalarProperty Name="LocationId" ColumnName="LocationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LogIn">
-            <EntityTypeMapping TypeName="SecurityModel.LogIn">
-              <MappingFragment StoreEntitySet="LogIn">
-                <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
-                <ScalarProperty Name="UsoSalt" ColumnName="UsoSalt" />
-                <ScalarProperty Name="Salt" ColumnName="Salt" />
-                <ScalarProperty Name="Senha" ColumnName="Senha" />
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="Id_Login" ColumnName="Id_Login" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4362,12 +4205,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Preguntas_x_Login">
-            <EntityTypeMapping TypeName="SecurityModel.Preguntas_x_Login">
-              <MappingFragment StoreEntitySet="Preguntas_x_Login">
+          <EntitySetMapping Name="Preguntas_x_Cuentas">
+            <EntityTypeMapping TypeName="SecurityModel.Preguntas_x_Cuentas">
+              <MappingFragment StoreEntitySet="Preguntas_x_Cuentas">
                 <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
                 <ScalarProperty Name="Id_Pregunta" ColumnName="Id_Pregunta" />
-                <ScalarProperty Name="Id_Login" ColumnName="Id_Login" />
+                <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4377,7 +4220,8 @@
               <MappingFragment StoreEntitySet="Sesiones">
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
                 <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
-                <ScalarProperty Name="Ubiacion" ColumnName="Ubiacion" />
+                <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
                 <ScalarProperty Name="UltimoMovimiento" ColumnName="UltimoMovimiento" />
                 <ScalarProperty Name="CierreSesion" ColumnName="CierreSesion" />
                 <ScalarProperty Name="OnLine" ColumnName="OnLine" />

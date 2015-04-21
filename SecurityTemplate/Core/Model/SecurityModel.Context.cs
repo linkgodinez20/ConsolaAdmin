@@ -48,7 +48,6 @@ namespace Security.Core.Model
         public virtual DbSet<Cuenta_x_Controlador_x_Accion> Cuenta_x_Controlador_x_Accion { get; set; }
         public virtual DbSet<Cuentas> Cuentas { get; set; }
         public virtual DbSet<Cuentas_x_Personas> Cuentas_x_Personas { get; set; }
-        public virtual DbSet<Directorio_tipo> Directorio_tipo { get; set; }
         public virtual DbSet<Directorios> Directorios { get; set; }
         public virtual DbSet<Directorios_x_Perfiles> Directorios_x_Perfiles { get; set; }
         public virtual DbSet<Directorios_x_Sistemas> Directorios_x_Sistemas { get; set; }
@@ -61,7 +60,6 @@ namespace Security.Core.Model
         public virtual DbSet<Events> Events { get; set; }
         public virtual DbSet<Genero> Genero { get; set; }
         public virtual DbSet<Locations> Locations { get; set; }
-        public virtual DbSet<LogIn> LogIn { get; set; }
         public virtual DbSet<MotivoBaja_x_Cuenta> MotivoBaja_x_Cuenta { get; set; }
         public virtual DbSet<Municipios> Municipios { get; set; }
         public virtual DbSet<Paises> Paises { get; set; }
@@ -77,7 +75,7 @@ namespace Security.Core.Model
         public virtual DbSet<Perfiles> Perfiles { get; set; }
         public virtual DbSet<Personas> Personas { get; set; }
         public virtual DbSet<Preguntas> Preguntas { get; set; }
-        public virtual DbSet<Preguntas_x_Login> Preguntas_x_Login { get; set; }
+        public virtual DbSet<Preguntas_x_Cuentas> Preguntas_x_Cuentas { get; set; }
         public virtual DbSet<Sesiones> Sesiones { get; set; }
         public virtual DbSet<Sistemas> Sistemas { get; set; }
     }

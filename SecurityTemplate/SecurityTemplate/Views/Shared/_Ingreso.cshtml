@@ -1,0 +1,43 @@
+﻿@model Security.Core.Model.LogIn
+
+<li class="dropdown user user-menu">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <img src="~/Content/Images/user-avatar2-1.png" class=" user-image" alt="User Image" />
+        <span class="hidden-xs">INGRESAR </span>
+    </a>
+    <ul id="dropdown-login" class="dropdown-menu" style="padding: 5px 10px 10px 5px;">
+        @using (Html.BeginForm("Ingresar", "LogIn", FormMethod.Get))
+        {
+            @*@Html.AntiForgeryToken()*@
+            <form>
+                @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@               
+                <div class="form-group has-feedback">
+                    @Html.LabelFor(model => model.Usuario, htmlAttributes: new { @class = "sr-only" })
+                    @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control", placeholder = "Usuario" } })
+                    @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group has-feedback">
+                    @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "sr-only" })
+                    @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", placeholder = "Contraseña" } })
+                    @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })   
+                </div>
+                <div class="form-group-lg">
+                    @if (ViewBag.True == 1)
+                    {                        
+                        <label name="lblError" class="pull-left text-danger">@ViewBag.Error</label>                                            
+                    }                                        
+                    <input type="submit" value="Ingresar" class="btn btn-success pull-right" data-container="body" />                    
+                </div>
+            </form>
+        }
+    </ul>
+</li>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $('#Usuario').focus();
+        });
+    </script>
+}

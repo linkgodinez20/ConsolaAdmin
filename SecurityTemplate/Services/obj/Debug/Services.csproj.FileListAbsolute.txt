@@ -54,3 +54,17 @@ D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\obj\
 D:\Humberto Flores\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\obj\Debug\Services.pdb
 D:\Humberto Flores\Documentos\Visual Studio 2013\Projects\SecurityTemplate\Services\bin\Debug\Core.dll
 D:\Humberto Flores\Documentos\Visual Studio 2013\Projects\SecurityTemplate\Services\bin\Debug\Core.pdb
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\bin\Debug\Services.dll.config
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\bin\Debug\Services.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\bin\Debug\Services.pdb
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\bin\Debug\Core.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\bin\Debug\EntityFramework.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\bin\Debug\EntityFramework.SqlServer.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\bin\Debug\Omu.ValueInjecter.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\bin\Debug\Core.pdb
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\bin\Debug\EntityFramework.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\bin\Debug\EntityFramework.SqlServer.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\bin\Debug\Omu.ValueInjecter.xml
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\obj\Debug\Services.dll
+D:\Carlos\Documentos\GitHub\ConsolaAdmin\SecurityTemplate\Services\obj\Debug\Services.pdb

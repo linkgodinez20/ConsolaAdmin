@@ -203,11 +203,12 @@
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
           <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
           <ScalarProperty Name="InicioBloqueo" ColumnName="InicioBloqueo" />
-          <ScalarProperty Name="IntentosCnn" ColumnName="IntentosCnn" />
           <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
           <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
           <ScalarProperty Name="Id_Perfil" ColumnName="Id_Perfil" />
-          <ScalarProperty Name="Id_Login" ColumnName="Id_Login" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
           <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -221,20 +222,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Directorio_tipo">
-      <EntityTypeMapping TypeName="SecurityModel.Directorio_tipo">
-        <MappingFragment StoreEntitySet="Directorio_tipo">
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-          <ScalarProperty Name="Id_DirectorioTipo" ColumnName="Id_DirectorioTipo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Directorios">
       <EntityTypeMapping TypeName="SecurityModel.Directorios">
         <MappingFragment StoreEntitySet="Directorios">
           <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
-          <ScalarProperty Name="Id_DirectorioTipo" ColumnName="Id_DirectorioTipo" />
           <ScalarProperty Name="Ruta" ColumnName="Ruta" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Id_Directorio" ColumnName="Id_Directorio" />
@@ -314,7 +306,8 @@
           <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
           <ScalarProperty Name="FechaCaducidad" ColumnName="FechaCaducidad" />
           <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
-          <ScalarProperty Name="Ubiacion" ColumnName="Ubiacion" />
+          <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+          <ScalarProperty Name="Longitud" ColumnName="Longitud" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="Id_DispositivoTipo" ColumnName="Id_DispositivoTipo" />
           <ScalarProperty Name="Id_EquipoTipo" ColumnName="Id_EquipoTipo" />
@@ -358,18 +351,6 @@
           <ScalarProperty Name="Latitude" ColumnName="Latitude" />
           <ScalarProperty Name="LocationName" ColumnName="LocationName" />
           <ScalarProperty Name="LocationId" ColumnName="LocationId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="LogIn">
-      <EntityTypeMapping TypeName="SecurityModel.LogIn">
-        <MappingFragment StoreEntitySet="LogIn">
-          <ScalarProperty Name="Id_Persona" ColumnName="Id_Persona" />
-          <ScalarProperty Name="UsoSalt" ColumnName="UsoSalt" />
-          <ScalarProperty Name="Salt" ColumnName="Salt" />
-          <ScalarProperty Name="Senha" ColumnName="Senha" />
-          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-          <ScalarProperty Name="Id_Login" ColumnName="Id_Login" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -534,12 +515,12 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Preguntas_x_Login">
-      <EntityTypeMapping TypeName="SecurityModel.Preguntas_x_Login">
-        <MappingFragment StoreEntitySet="Preguntas_x_Login">
+    <EntitySetMapping Name="Preguntas_x_Cuentas">
+      <EntityTypeMapping TypeName="SecurityModel.Preguntas_x_Cuentas">
+        <MappingFragment StoreEntitySet="Preguntas_x_Cuentas">
           <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
           <ScalarProperty Name="Id_Pregunta" ColumnName="Id_Pregunta" />
-          <ScalarProperty Name="Id_Login" ColumnName="Id_Login" />
+          <ScalarProperty Name="Id_Cuenta" ColumnName="Id_Cuenta" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -549,7 +530,8 @@
         <MappingFragment StoreEntitySet="Sesiones">
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
           <ScalarProperty Name="Id_Sistema" ColumnName="Id_Sistema" />
-          <ScalarProperty Name="Ubiacion" ColumnName="Ubiacion" />
+          <ScalarProperty Name="Latitud" ColumnName="Latitud" />
+          <ScalarProperty Name="Longitud" ColumnName="Longitud" />
           <ScalarProperty Name="UltimoMovimiento" ColumnName="UltimoMovimiento" />
           <ScalarProperty Name="CierreSesion" ColumnName="CierreSesion" />
           <ScalarProperty Name="OnLine" ColumnName="OnLine" />

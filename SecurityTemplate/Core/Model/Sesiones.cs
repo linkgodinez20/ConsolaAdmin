@@ -21,7 +21,8 @@ namespace Security.Core.Model
         public bool OnLine { get; set; }
         public bool CierreSesion { get; set; }
         public Nullable<System.DateTime> UltimoMovimiento { get; set; }
-        public System.Data.Entity.Spatial.DbGeography Ubiacion { get; set; }
+        public Nullable<double> Longitud { get; set; }
+        public Nullable<double> Latitud { get; set; }
         public byte Id_Sistema { get; set; }
         public bool Estatus { get; set; }
     
